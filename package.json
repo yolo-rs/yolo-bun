@@ -16,6 +16,7 @@
     "bench:runtime": "bun run scripts/bench-runtime.ts",
     "source:prepare": "bun run scripts/prepare-bun-source.ts",
     "packages:backends": "bun run scripts/package-backends.ts",
+    "packages:image-plan": "bun run scripts/image-plan.ts",
     "packages:install": "bun run scripts/package-install.ts",
     "packages:resolve": "bun run scripts/package-resolve.ts"
   },

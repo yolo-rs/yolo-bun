@@ -4,7 +4,9 @@
 
 Provide a Bun-hosted CLI for searching the YOLO OS package catalog, resolving a declared OS profile into a reproducible plan, and invoking selected native package backends. Bun is the orchestrator and JS/TS package manager; it is not a new universal repository format and does not replace the transaction, signature, metadata or dependency solver of every ecosystem it connects.
 
-The image build should consume a locked plan and pinned artifacts. The current CLI is an early plan/execute adapter for native tools; it is not yet a package catalog resolver or a locked image-plan generator. `yolo-os` remains responsible for package selection in an image, filesystem layout, image construction, kernel/initramfs choices and boot qualification.
+The image build should consume a locked plan and pinned artifacts. The current CLI provides early native-tool adapters and assembles plans from already resolved artifacts; backend resolution and image integration remain incomplete. `yolo-os` remains responsible for package selection in an image, filesystem layout, image construction, kernel/initramfs choices and boot qualification.
+
+`bun run packages:image-plan <profile.json>` now assembles a deterministic plan from artifacts that have already been resolved: each entry supplies an ID, backend, fixed version, HTTPS URL and SHA-256. The plan sorts entries and includes a digest of its canonical JSON. It does not download artifacts, verify their bytes or signatures, resolve dependencies, or establish backend compatibility; those steps remain necessary before an image build.
 
 ## Backend map
 
