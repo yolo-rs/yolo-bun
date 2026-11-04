@@ -83,7 +83,20 @@
       "revision": "0c485dd5ff3771adae4225a5d799e166da83592a",
       "kind": "framework-monorepo",
       "status": "scaffold",
-      "notes": "Decision record 2026-11-04: TanStack on Bun primary, @yolo-rs/fullstack for the Next migration path, Dioxus 0.8 islands/native, Leptos optional. See docs/DECISION.md and docs/BENCHMARKS.md there."
+      "notes": "ADR 0003 (2026-11-05, docs/decisions/0003-verdict-leptos-dioxus-tanstack.md): Leptos 0.8 SSR + islands on Axum for the SEO site, Dioxus 0.8 for native, @yolo-rs/fullstack as the Next migration bridge only, TanStack reduced to Query/Table/Virtual. Supersedes docs/DECISION.md."
+    },
+    {
+      "id": "yolo-next",
+      "name": "yolo-next (Next.js fork)",
+      "repository": "C:/src/yolo-next",
+      "upstream": "https://github.com/vercel/next.js",
+      "upstreamRevision": "b27317dda6173586a5fb9c979f7159fa12cfabac",
+      "branch": "yolo-bun-rust",
+      "revision": "17a1c0743ac6671757e8f36b061f099f1eb1e40a",
+      "kind": "framework-fork",
+      "status": "transitional",
+      "license": "MIT",
+      "notes": "Local fork of vercel/next.js 16.5.0-canary.40 patched for Bun 1.4.4 (package manager, scripts, bun test, bundler: 'bun' on Bun.build, AOT compile), Rust fat-LTO profiles (release-yolo, release-wasm), wasm32 build script and a native WebGPU crate (wgpu 30, napi cdylib). Receipts in docs/yolo/receipts. A real next build with bundler: 'bun' and AOT of the next CLI are not proven; AOT covers a smoke entry only. Transitional layer per yolo-stack ADR 0003; no GitHub fork published."
     }
   ]
 }
