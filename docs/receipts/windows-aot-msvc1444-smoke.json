@@ -1,0 +1,12 @@
+{
+  "dateUtc": "2026-11-04T21:30:55Z",
+  "sourceCommit": "e57d89ba63a7504957faa2ccc8f416ce2fb15453",
+  "bunSha256": "b306ca4529237a83bea74afa10bd9109c968db1797b2e5e7e834b3d6108c1cba",
+  "fixtureSha256": "29c31dbaccbf16334c8052f0e46ba02d5e4103f163212a899eaf8dd1b1b61b84",
+  "command": "bun compile scripts/fixtures/aot-smoke.ts --outfile artifacts/yolo-aot-msvc1444.exe",
+  "artifactSha256": "37bc4b193a9adf7f54e3d65b8f2250e3f669ed00b696164f6aa1b9d70f4b69dc",
+  "artifactBytes": 150236160,
+  "output": "yolo-aot:4950",
+  "result": "Compile exited 0 and standalone executable returned the expected output.",
+  "limitations": "One Windows fixture; the aligned build and the earlier mismatched build differ in the selected CRT/SDK and fresh build state. This is not broad AOT qualification or runtime performance parity."
+}

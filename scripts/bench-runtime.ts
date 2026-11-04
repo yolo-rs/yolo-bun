@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: MIT OR Apache-2.0
 // Compare explicit Bun executables on the same host. This is a narrow baseline,
 // not a claim about sustained HTTP throughput, memory, installation, or all workloads.
-import { createHash } from "node:crypto";
 import { cpus, platform, arch, release } from "node:os";
 import { resolve } from "node:path";
+import { sha256 } from "./native-hash";
 
-const args = process.argv.slice(2);
+const args = Bun.argv.slice(2);
 function option(name: string): string | undefined {
   const index = args.indexOf(name);
   return index < 0 ? undefined : args[index + 1];
@@ -61,8 +61,9 @@ async function identity(binary: string) {
   const bytes = await Bun.file(binary).arrayBuffer();
   return {
     path: binary,
-    sha256: createHash("sha256").update(new Uint8Array(bytes)).digest("hex"),
+    sha256: sha256(new Uint8Array(bytes)),
     version: invoke(binary, ["--version"]).stdout.trim(),
+    revision: invoke(binary, ["--revision"]).stdout.trim(),
   };
 }
 function median(values: number[]): number {
@@ -98,7 +99,7 @@ for (const [name, workload] of Object.entries(workloads)) {
   const baselineMedianMs = median(samples.baseline);
   const candidateMedianMs = median(samples.candidate);
   results[name] = {
-    codeSha256: createHash("sha256").update(workload.code).digest("hex"),
+    codeSha256: sha256(workload.code),
     samples,
     baselineMedianMs,
     candidateMedianMs,
@@ -106,12 +107,14 @@ for (const [name, workload] of Object.entries(workloads)) {
   };
 }
 const runnerBytes = await Bun.file(import.meta.path).arrayBuffer();
+const hashModuleBytes = await Bun.file(
+  new URL("./native-hash.ts", import.meta.url),
+).arrayBuffer();
 const receipt = {
   schemaVersion: 1,
   generatedAt: new Date().toISOString(),
-  runnerSha256: createHash("sha256")
-    .update(new Uint8Array(runnerBytes))
-    .digest("hex"),
+  runnerSha256: sha256(new Uint8Array(runnerBytes)),
+  hashModuleSha256: sha256(new Uint8Array(hashModuleBytes)),
   host: {
     platform: platform(),
     arch: arch(),
@@ -119,6 +122,12 @@ const receipt = {
     cpu: cpus()[0]?.model ?? "unknown",
   },
   binaries: identities,
+  comparison: {
+    identicalBinaryHashes:
+      identities.baseline.sha256 === identities.candidate.sha256,
+    reportedRevisionsMatch:
+      identities.baseline.revision === identities.candidate.revision,
+  },
   runs,
   workloads: results,
   scope:

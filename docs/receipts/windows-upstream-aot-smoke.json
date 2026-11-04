@@ -1,0 +1,10 @@
+{
+  "dateUtc": "2026-11-04T21:02:45Z",
+  "reportedRevision": "1.4.4-canary.1+cdfa19bba",
+  "bunSha256": "f424e283c15b8b19f59f054abcba462afab46fdcce44721b0f1167eaa67f2864",
+  "fixtureSha256": "29c31dbaccbf16334c8052f0e46ba02d5e4103f163212a899eaf8dd1b1b61b84",
+  "command": "bun compile scripts/fixtures/aot-smoke.ts --outfile artifacts/yolo-aot-upstream-smoke.exe",
+  "artifactSha256": "c81d7bfb89409f22532d120bc5eeaa9ae9d7be0087f849a469c172288fca4e60",
+  "output": "yolo-aot:4950",
+  "limitations": "Installed upstream build, different revision from the newly built candidate; a single fixture only."
+}

@@ -25,7 +25,7 @@ export function planResolution(
 }
 
 if (import.meta.main) {
-  const args = process.argv.slice(2);
+  const args = Bun.argv.slice(2);
   if (args[0] === "--") args.shift();
   if (args.length !== 2 || !args[0] || !args[1]) {
     console.error("Usage: bun run packages:resolve <bun|vcpkg> <package>");

@@ -10,8 +10,8 @@ The documentation tree is organized by source authority and consumer:
 - `BUNOS-PORT.md`: source-to-destination migration map with provenance/license.
 - `AGENT-MCP-LSP.md`: integration boundaries and implementation state.
 - `PLUGIN-MARKETPLACE.md`: plugin APIs versus catalog/distribution ownership.
-- `OS-BOOT.md`: Linux and Asterinas targets, experiments and evidence gates.
+- Linux and Asterinas boot profiles, PID 1 integration and initramfs build code are owned by `yolo-os`.
 - `catalog/`: project records and human-readable Awesome Bun index.
 - `schemas/`: versioned JSON Schemas for project/plugin records when fields stabilize.
 
-Every record uses an explicit status (`upstream`, `mirror`, `archived-fork`, `planned`, `implemented-unverified`, or `qualified`) and source URL. A branch name alone is not a pin; production inputs use a commit SHA plus artifact checksum. A README claim is not a boot receipt.
+Every record uses an explicit status (`upstream`, `mirror`, `archived-fork`, `planned`, `implemented-unverified`, `smoke-tested`, or `qualified`) and source URL. A branch name alone is not a pin; production inputs use a commit SHA plus artifact checksum. A README claim is not a boot receipt.

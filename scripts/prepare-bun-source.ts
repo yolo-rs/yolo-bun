@@ -1,9 +1,10 @@
 // SPDX-License-Identifier: MIT OR Apache-2.0
-// Materialize a pinned, disposable Bun source tree and apply the reviewed patch queue.
-import { createHash } from "node:crypto";
+// Plan/materialize pinned Bun source and apply the runtime patch queue.
 import { mkdir, stat } from "node:fs/promises";
 import { basename, dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { resolvePatchFile } from "./source-guards";
+import { sha256 } from "./native-hash";
 
 type SourceLock = {
   sources: Array<{ name: string; url: string; commit: string }>;
@@ -39,7 +40,7 @@ if (queue.schemaVersion !== 1 || queue.upstreamCommit !== upstream.commit) {
   throw new Error("patches/queue.json must target the pinned upstream commit");
 }
 
-const cliArgs = process.argv.slice(2);
+const cliArgs = Bun.argv.slice(2);
 if (cliArgs[0] === "--") cliArgs.shift();
 let execute = false;
 let sourceCache: string | undefined;
@@ -96,15 +97,9 @@ const operations: Array<{ args: string[]; cwd?: string }> = sourceCache
     ];
 
 for (const item of queue.patches) {
-  const patchPath = resolve(root, "patches", item.file);
-  if (
-    !patchPath.startsWith(resolve(root, "patches") + "/") &&
-    !patchPath.startsWith(resolve(root, "patches") + "\\")
-  ) {
-    throw new Error(`Patch path escapes patches/: ${item.file}`);
-  }
+  const patchPath = await resolvePatchFile(join(root, "patches"), item.file);
   const bytes = new Uint8Array(await Bun.file(patchPath).arrayBuffer());
-  const digest = createHash("sha256").update(bytes).digest("hex");
+  const digest = sha256(bytes);
   if (digest !== item.sha256)
     throw new Error(`Patch checksum mismatch: ${item.file}`);
   operations.push({ args: ["apply", "--check", patchPath], cwd: destination });
@@ -119,10 +114,6 @@ try {
   if (!(error instanceof Error && "code" in error && error.code === "ENOENT"))
     throw error;
 }
-if (destinationExists) {
-  throw new Error(`Refusing to overwrite existing source tree: ${destination}`);
-}
-
 if (!execute) {
   console.log(
     JSON.stringify(
@@ -130,6 +121,8 @@ if (!execute) {
         action: "plan",
         upstreamCommit: upstream.commit,
         sourceTree: destination,
+        sourceTreeExists: destinationExists,
+        executeGuard: destinationExists ? "blocked-existing-tree" : "available",
         sourceCache: sourceCache ?? null,
         patchCount: queue.patches.length,
         operations: operations.map(({ args, cwd }) => ({
@@ -146,6 +139,10 @@ if (!execute) {
     ),
   );
   process.exit(0);
+}
+
+if (destinationExists) {
+  throw new Error(`Refusing to overwrite existing source tree: ${destination}`);
 }
 
 await mkdir(dirname(destination), { recursive: true });

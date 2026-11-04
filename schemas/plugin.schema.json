@@ -20,13 +20,7 @@
     "revision": { "type": "string", "pattern": "^[0-9a-f]{40}$" },
     "license": { "type": "string", "minLength": 1 },
     "api": {
-      "enum": [
-        "bun-runtime-plugin",
-        "bun-bundler-plugin",
-        "agent-adapter",
-        "mcp-adapter",
-        "lsp-adapter"
-      ]
+      "enum": ["bun-runtime-plugin", "bun-bundler-plugin"]
     },
     "capabilities": {
       "type": "array",
@@ -36,9 +30,9 @@
     "status": {
       "enum": [
         "upstream-api",
-        "inventory-only",
         "planned",
         "implemented-unverified",
+        "smoke-tested",
         "qualified"
       ]
     }

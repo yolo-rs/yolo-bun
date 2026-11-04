@@ -1,0 +1,9 @@
+{
+  "dateUtc": "2026-11-04T20:57:37Z",
+  "sourceSha256": "79ec383e795606a3695eb949a82d27b283afbc0a5dea7218de56efc753b8c05e",
+  "testSha256": "a55e983928b9f42c9295c4e83433aa467a5bb39fd702f9bf49c0c39c13470884",
+  "bunSha256": "f424e283c15b8b19f59f054abcba462afab46fdcce44721b0f1167eaa67f2864",
+  "command": "bun test scripts/source-guards.test.ts",
+  "result": "4 passed, 0 failed",
+  "scope": "Windows regular path, traversal, directory and junction escape rejection; no claim about concurrent filesystem mutation."
+}

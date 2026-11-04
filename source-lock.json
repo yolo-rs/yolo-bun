@@ -26,34 +26,6 @@
       "url": "https://github.com/aphrody-labs/bun",
       "commit": "7c57ac563e12c35be817697c4b5488b0fd64cc09",
       "role": "archived integration reference; do not treat as current upstream"
-    },
-    {
-      "name": "bun-os-pid1-source",
-      "url": "https://github.com/aphrody-labs/bun-os",
-      "commit": "ae136439ba7d02039d23e2379e8690f9a260b52e",
-      "path": "packages/bunos-init/src/init.ts",
-      "license": "Apache-2.0",
-      "role": "copied PID 1 prototype"
-    },
-    {
-      "name": "modelcontextprotocol-typescript-sdk",
-      "url": "https://github.com/modelcontextprotocol/typescript-sdk",
-      "ref": "v2.4.0",
-      "license": "Apache-2.0",
-      "role": "Bun-hosted read-only MCP catalog server"
-    },
-    {
-      "name": "linux-mainline",
-      "url": "https://github.com/torvalds/linux",
-      "ref": "v7.4-rc1",
-      "role": "Linux userland PID 1 integration target; no kernel patch implied"
-    },
-    {
-      "name": "asterinas",
-      "url": "https://github.com/asterinas/asterinas",
-      "commit": "925f829a3e64bd91bd9b48435b81173dfbc2860c",
-      "license": "MPL-2.0",
-      "role": "experimental userland boot target; Bun compatibility unverified"
     }
   ]
 }

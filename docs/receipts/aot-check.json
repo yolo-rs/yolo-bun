@@ -8,5 +8,20 @@
   "filesChecked": 113,
   "diagnostics": "AOT reported regular expressions in MCP SDK and Zod dependency code that will run in the interpreter (reason 6).",
   "artifactBuilt": false,
-  "qualification": "AOT analysis only; this is not a compiled-binary or runtime-performance receipt."
+  "qualification": "AOT analysis only; this is not a compiled-binary or runtime-performance receipt.",
+  "migrations": [
+    {
+      "oldPath": "packages/bunos-init/src/init.ts",
+      "newOwner": "yolo-os",
+      "newPath": "packages/bunos-init/src/init.ts",
+      "license": "Apache-2.0"
+    },
+    {
+      "oldPath": "packages/yolo-bun-mcp/src/index.ts",
+      "newOwner": "yolo-ai",
+      "newPath": "scripts/bun-catalog-mcp.ts",
+      "license": "MIT OR Apache-2.0"
+    }
+  ],
+  "note": "This receipt records the pre-migration source paths and AOT analysis. The listed source files now have the owners and paths shown above."
 }

@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "dateUtc": "2026-11-04T21:53:24Z",
+  "scope": "Current yolo package-manager CLI AOT build and read-only host/plan smoke; not a Bun runtime parity benchmark.",
+  "builder": {
+    "path": "vendor/bun-e57d89ba63a7-msvc1444/build/release/bun.exe",
+    "revision": "1.4.4-canary.1+e57d89ba6",
+    "sha256": "B306CA4529237A83BEA74AFA10BD9109C968DB1797B2E5E7E834B3D6108C1CBA"
+  },
+  "sourceLockCommit": "e57d89ba63a7504957faa2ccc8f416ce2fb15453",
+  "command": "bun run packages:cli:build:aot",
+  "build": {
+    "expandedCommand": "bun build --compile --aot --outfile dist/bin/yolo scripts/yolo.ts",
+    "exitCode": 0,
+    "bundleModules": 7,
+    "compileSeconds": 1.597,
+    "buildId": "cf3acfda17e754ac79826bd0c5dbb971"
+  },
+  "aotStaticAnalysis": {
+    "command": "bun run packages:cli:check:aot",
+    "exitCode": 0,
+    "result": "No type errors in 7 files"
+  },
+  "artifact": {
+    "path": "dist/bin/yolo.exe",
+    "bytes": 80332800,
+    "sha256": "7C52C2BE7E9D2A102202906A71215E62F98CFFBDDE3E41CB57D2A58E9A48DAD3"
+  },
+  "inputSha256": {
+    "scripts/yolo.ts": "7EBC8363BCF701B4EC2658A10492BFE5975C3F6573AB076E69B3A51AF2B92FCD",
+    "scripts/package-install.ts": "8C074B7D53F22548810205658734271990AB86010A1823348A108C8B7FA49924",
+    "scripts/package-backends.ts": "B01C22768040AA3EFDB2BBDBEC931E35C0F94BC0E2CA63A7B3ACEA5878D6665E",
+    "scripts/image-plan.ts": "075E8F4403DE628E678E7CFAC1082C713A6863B9FB21952CD4EFEDFB16E12995",
+    "scripts/verify-image-plan.ts": "1855BAC36972DF89493E281BFCB7D9044DFB0DDA8B09C7554BB0F6193765EF40",
+    "scripts/package-resolve.ts": "CA6648B27817BE87C45D466400004A163ABFF5E75D655C1458833BED2C14B555",
+    "package.json": "10B64E2B17EC2B7367CC315AED25AD04CE71DDA05858DCF038983C0D3D3929FA",
+    "bun.lock": "C4F8E8BC3FAB43960063482E331AFD3EE96B6949ED9135CE77FEE831AC3C7E14"
+  },
+  "smoke": {
+    "command": "dist/bin/yolo.exe pkg manage pacman upgrade",
+    "exitCode": 0,
+    "action": "plan",
+    "backend": "pacman",
+    "args": ["-Syu"],
+    "mutationExecuted": false
+  },
+  "limitations": [
+    "The builder has no trim table, so this AOT executable is not trimmed.",
+    "Package backend discovery is read-only and checks only executable versions and Linux distribution identity.",
+    "The receipt validates CLI compilation and plan generation, not package installs, image construction, or Bun runtime performance."
+  ]
+}

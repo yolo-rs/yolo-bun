@@ -25,31 +25,6 @@
     },
     {
       "schemaVersion": 1,
-      "id": "bun-os-agent-adapter",
-      "name": "BunOS agent plugin adapter inventory",
-      "source": "https://github.com/aphrody-labs/bun-os/tree/ca9f2739629a8a421a8c18928a499889372ae25f/packages/bun-os-plugins",
-      "license": "MIT",
-      "api": "agent-adapter",
-      "capabilities": ["agent-plugin command shim"],
-      "status": "inventory-only"
-    },
-    {
-      "schemaVersion": 1,
-      "id": "yolo-bun-init",
-      "name": "BunOS PID 1 prototype",
-      "source": "https://github.com/aphrody-labs/bun-os/tree/ae136439ba7d02039d23e2379e8690f9a260b52e/packages/bunos-init",
-      "revision": "ae136439ba7d02039d23e2379e8690f9a260b52e",
-      "license": "Apache-2.0",
-      "api": "agent-adapter",
-      "capabilities": [
-        "initramfs PID 1 prototype",
-        "child reaping",
-        "shutdown handling"
-      ],
-      "status": "implemented-unverified"
-    },
-    {
-      "schemaVersion": 1,
       "id": "yolo-bun-project-catalog-plugin",
       "name": "YOLO Bun project catalog bundler plugin",
       "source": "https://github.com/yolo-rs/yolo-bun/tree/main/packages/yolo-bun-plugin",
@@ -59,45 +34,7 @@
         "resolve yolo-bun:catalog",
         "embed local project catalog"
       ],
-      "status": "implemented-unverified"
-    },
-    {
-      "schemaVersion": 1,
-      "id": "yolo-bun-mcp-catalog",
-      "name": "YOLO Bun read-only MCP catalog server",
-      "source": "https://github.com/yolo-rs/yolo-bun/tree/main/packages/yolo-bun-mcp",
-      "license": "MIT OR Apache-2.0",
-      "api": "mcp-adapter",
-      "capabilities": ["list Bun projects", "read pinned Bun source lock"],
-      "status": "implemented-unverified"
-    },
-    {
-      "schemaVersion": 1,
-      "id": "yolo-bun-typescript-lsp-launcher",
-      "name": "YOLO Bun TypeScript LSP launcher",
-      "source": "https://github.com/yolo-rs/yolo-bun/tree/main/packages/yolo-bun-lsp",
-      "license": "MIT OR Apache-2.0",
-      "api": "lsp-adapter",
-      "capabilities": [
-        "launch tsgo",
-        "fallback to typescript-language-server",
-        "stdio forwarding"
-      ],
-      "status": "implemented-unverified"
-    },
-    {
-      "schemaVersion": 1,
-      "id": "yolo-bun-agent-skill",
-      "name": "YOLO Bun source and integration agent skill",
-      "source": "https://github.com/yolo-rs/yolo-bun/tree/main/packages/yolo-bun-agent/skills/yolo-bun",
-      "license": "MIT OR Apache-2.0",
-      "api": "agent-adapter",
-      "capabilities": [
-        "pinned source guidance",
-        "upstream mirror policy",
-        "userland boot boundary"
-      ],
-      "status": "implemented-unverified"
+      "status": "smoke-tested"
     }
   ]
 }

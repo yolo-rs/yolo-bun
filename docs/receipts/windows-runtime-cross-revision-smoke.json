@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-04T21:00:48.445Z",
+  "runnerSha256": "6e3f831b65cb13f42ae535695ac353347fa9c41c7455e7b0bbc324b671c3deec",
+  "hashModuleSha256": "75a5c09a0979a0196cb98a4183f8b1b638a33b4da961117ed8d67e02b913e2c3",
+  "host": {
+    "platform": "win32",
+    "arch": "x64",
+    "release": "10.0.28120",
+    "cpu": "13th Gen Intel(R) Core(TM) i7-13700F"
+  },
+  "binaries": {
+    "baseline": {
+      "path": "C:\\Users\\aphro\\.local\\opt\\bun-upstream-canary\\bin\\bun.exe",
+      "sha256": "f424e283c15b8b19f59f054abcba462afab46fdcce44721b0f1167eaa67f2864",
+      "version": "1.4.4",
+      "revision": "1.4.4-canary.1+cdfa19bba"
+    },
+    "candidate": {
+      "path": "C:\\src\\yolo-bun\\vendor\\bun-e57d89ba63a7\\build\\release\\bun.exe",
+      "sha256": "1d2835f75c6273c6a6b5633d77d250091dc0c7bf30cf3cb1db08eb9d81b6ad83",
+      "version": "1.4.4",
+      "revision": "1.4.4-canary.1+e57d89ba6"
+    }
+  },
+  "comparison": {
+    "identicalBinaryHashes": false,
+    "reportedRevisionsMatch": false
+  },
+  "runs": 5,
+  "workloads": {
+    "startup": {
+      "codeSha256": "a6939afb029d17dc6a291291e9d26b97ce9508326c39bd336a4f8af4eedd527c",
+      "samples": {
+        "baseline": [15.6444, 15.4154, 15.4705, 15.73, 15.4399],
+        "candidate": [18.4605, 19.063, 18.6294, 18.8289, 18.5438]
+      },
+      "baselineMedianMs": 15.4705,
+      "candidateMedianMs": 18.6294,
+      "candidateToBaseline": 1.2041886170453444
+    },
+    "compute": {
+      "codeSha256": "4de7217c62c229c414841faaf196f402d54b4e0dca22e6afad04efafd63ce691",
+      "samples": {
+        "baseline": [24.2258, 24.2393, 23.4587, 22.8942, 23.5836],
+        "candidate": [25.7368, 26.434, 26.4938, 26.3049, 25.644]
+      },
+      "baselineMedianMs": 23.5836,
+      "candidateMedianMs": 26.3049,
+      "candidateToBaseline": 1.1153895079631608
+    },
+    "http_loopback": {
+      "codeSha256": "9c8aa61ea657f5737a4c12784d7b067c1243321be271e03b962810678a3916a1",
+      "samples": {
+        "baseline": [22.2153, 21.131, 37.8592, 22.1497, 21.3673],
+        "candidate": [24.6405, 24.9613, 25.1624, 24.8122, 29.6718]
+      },
+      "baselineMedianMs": 22.1497,
+      "candidateMedianMs": 24.9613,
+      "candidateToBaseline": 1.1269362564729997
+    }
+  },
+  "scope": "Process startup, JS compute and 50 sequential loopback HTTP requests including startup; no sustained throughput or overall runtime parity is implied."
+}

@@ -9,8 +9,7 @@
 - Measure runtime performance against the identical upstream source revision, toolchain, flags and host before claiming parity. Cover affected workloads and retain hashes/raw benchmark samples; do not infer overall parity from the current narrow startup/compute/loopback harness.
 - Bun is upstream Rust-first and organized as Cargo crates; its JavaScriptCore integration includes C/C++ and it contains JS/TS sources. Do not call it Zig or claim Rust-only implementation.
 - Treat `bun mcp`, `bun lsp`, and `bun agent-plugin` from `aphrody-labs/bun` as fork-specific commands. Do not attribute them to `oven-sh/bun`.
-- Keep Bun and JavaScript runtimes in user space. Linux Rust-for-Linux code is `no_std` kernel code, not a Bun runtime host. Use `rdinit=/init` for a Bun PID 1 experiment.
-- `factory/asterinas` is an experimental user-space profile. Check each required syscall and runtime shared library against the pinned Asterinas tree before claiming compatibility.
+- Keep OS boot policy and PID 1 code in `yolo-os`. Bun itself remains a user-space runtime; no Bun or JavaScript engine belongs in kernel space.
 - Keep `yolo-os` focused on LFS, root filesystem composition, kernel packaging/configuration and boot receipts. Put reusable Bun adapters, docs, catalogs and plugins here or in their existing neutral owners (`yolo-ai`, `yolo-plugins`, `yolo-standards`).
 - Preserve the full existing dirty state in `C:\src\bun-os-archive`, `C:\src\yolo-os`, and other worktrees. Never reset, clean, or rewrite those source trees as part of a port.
 - Do not claim a build, test, QEMU boot, LFS image, or Asterinas boot unless a dated receipt is stored with source and artifact hashes.

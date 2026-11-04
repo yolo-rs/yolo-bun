@@ -7,7 +7,7 @@ oven-sh/bun (canonical upstream)
         │ exact source mirror; fast-forward only
         ▼
 yolo-rs/bun (no downstream commits)
-        │ pinned source + minimal patch queue
+        │ pinned source + runtime-only patch queue
         ▼
 yolo-bun (Bun runtime integration and package orchestration)
    ├── yolo-web     browser engines, Chromium, CEF, Obscura, browser integrations
@@ -19,7 +19,7 @@ yolo-bun (Bun runtime integration and package orchestration)
    └── yolo-os      LFS image, package selection and boot qualification
 ```
 
-`yolo-rs/bun` follows upstream source byte-for-byte at its pinned revision. Never put a downstream patch, feature branch, release change or generated integration file in that mirror. `yolo-bun` owns a patch queue and integration code kept separate from the imported source. Every patch names the upstream base SHA, rationale, owner, compatibility surface, benchmark impact, and the upstream issue/PR or reason it cannot be upstreamed yet.
+`yolo-rs/bun` follows upstream source byte-for-byte at its pinned revision. Never put a downstream patch, feature branch, release change or generated integration file in that mirror. `yolo-bun` owns only a runtime patch queue and integration code kept separate from the imported source; its current queue is empty. Platform build and cross-compilation patches belong in `yolo-cross`. Every runtime patch names the upstream base SHA, rationale, owner, compatibility surface, benchmark impact, and the upstream issue/PR or reason it cannot be upstreamed yet.
 
 ## Runtime scope
 

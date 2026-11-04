@@ -1,0 +1,20 @@
+{
+  "dateUtc": "2026-11-04T21:30:21Z",
+  "sourceCommit": "e57d89ba63a7504957faa2ccc8f416ce2fb15453",
+  "patchSha256": "14b6eb55ef423c81175a55822c9420030ace0703c061422b8d9f355ca9e6410e",
+  "target": "windows-x64 baseline release, ThinLTO",
+  "rustToolchain": "nightly-2026-09-15-x86_64-pc-windows-msvc",
+  "compiler": "clang 23.1.4",
+  "crt": "14.44.17.14 (MSVC 14.44.35207)",
+  "sdk": "10.0.26100",
+  "artifact": "vendor/bun-e57d89ba63a7-msvc1444/build/release/bun.exe",
+  "artifactSha256": "b306ca4529237a83bea74afa10bd9109c968db1797b2e5e7e834b3d6108c1cba",
+  "artifactBytes": 149645824,
+  "revision": "1.4.4-canary.1+e57d89ba6",
+  "buildLogSha256": "8127e16dd94a386ea98b8f4a19c91f8e89848061dddd8a5bd20129b0591a6418",
+  "checks": [
+    "build exited 0",
+    "upstream revision, export, import, hardening and duplicate-symbol checks passed"
+  ],
+  "limitations": "Linker warned that debug PDBs for Microsoft CRT libraries were unavailable. AOT execution and same-toolchain upstream performance parity remain unverified."
+}
