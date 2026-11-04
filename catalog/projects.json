@@ -65,6 +65,25 @@
       "status": "planned",
       "license": "MPL-2.0",
       "notes": "rdinit/ELF path exists; Bun compatibility is unverified and syscall coverage is partial."
+    },
+    {
+      "id": "yolo-fullstack",
+      "name": "@yolo-rs/fullstack",
+      "repository": "https://github.com/yolo-rs/yolo-ui",
+      "revision": "875dc8bd1",
+      "path": "packages/yolo-fullstack",
+      "kind": "web-framework",
+      "status": "owned-by-yolo-ui",
+      "notes": "Bun-native Next.js replacement (App Router RSC on Bun.build + Bun.serve, next.config, Turbopack config mapping, next/font, next/image CDN, TanStack, Dioxus bridge). Frontend frameworks live in yolo-ui, not here."
+    },
+    {
+      "id": "yolo-stack",
+      "name": "yolo-stack",
+      "repository": "C:/src/yolo-stack",
+      "revision": "0c485dd5ff3771adae4225a5d799e166da83592a",
+      "kind": "framework-monorepo",
+      "status": "scaffold",
+      "notes": "Decision record 2026-11-04: TanStack on Bun primary, @yolo-rs/fullstack for the Next migration path, Dioxus 0.8 islands/native, Leptos optional. See docs/DECISION.md and docs/BENCHMARKS.md there."
     }
   ]
 }
