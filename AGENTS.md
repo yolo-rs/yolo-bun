@@ -1,0 +1,15 @@
+# yolo-bun contributor rules
+
+- Keep `yolo-rs/bun` identical to `oven-sh/bun` upstream. Do not commit patches, adapters, or documentation changes to that mirror.
+- Keep `yolo-rs/bun` identical to upstream. Put only minimal, version-pinned runtime patches here, tied to Bun's own APIs/modules, cookie/environment behavior, Linux/Windows core APIs, or Node/V8 compatibility. Check whether Bun 1.4 already provides the behavior and prefer an upstream PR; record a removal condition for every downstream patch.
+- Put browser/Chromium/Obscura/CEF and Google browser integrations in `yolo-web`; platform toolchains, cross-compilation and Windows/MSVC in `yolo-cross`; UI frameworks, Bun UI plugins, frontend frameworks and Tauri in `yolo-ui`/Bun UI. Preserve upstream commit, source path, license, consumer and attribution for migrated code.
+- Use Bun 1.4 `check`, `lint`, and `fmt` for JS/TS. Use AOT for eligible shipped JS/TS applications, not as a stand-in for optimizing Bun itself. Keep the upstream Rust/C++ LTO release configuration as the baseline; measure any LTO or compiler-flag change separately.
+- YOLO Bun is the Bun-hosted package orchestration layer for YOLO OS. Bun owns JS/TS installs; native backends own their ecosystems. Preserve repository, lockfile, signature, resolver and transaction semantics. F-Droid is Android repository tooling, not a Linux host package backend; treat Omarchy/CachyOS as distro profile inputs.
+- Measure runtime performance against the identical upstream source revision, toolchain, flags and host before claiming parity. Cover affected workloads and retain hashes/raw benchmark samples; do not infer overall parity from the current narrow startup/compute/loopback harness.
+- Bun is upstream Rust-first and organized as Cargo crates; its JavaScriptCore integration includes C/C++ and it contains JS/TS sources. Do not call it Zig or claim Rust-only implementation.
+- Treat `bun mcp`, `bun lsp`, and `bun agent-plugin` from `aphrody-labs/bun` as fork-specific commands. Do not attribute them to `oven-sh/bun`.
+- Keep Bun and JavaScript runtimes in user space. Linux Rust-for-Linux code is `no_std` kernel code, not a Bun runtime host. Use `rdinit=/init` for a Bun PID 1 experiment.
+- `factory/asterinas` is an experimental user-space profile. Check each required syscall and runtime shared library against the pinned Asterinas tree before claiming compatibility.
+- Keep `yolo-os` focused on LFS, root filesystem composition, kernel packaging/configuration and boot receipts. Put reusable Bun adapters, docs, catalogs and plugins here or in their existing neutral owners (`yolo-ai`, `yolo-plugins`, `yolo-standards`).
+- Preserve the full existing dirty state in `C:\src\bun-os-archive`, `C:\src\yolo-os`, and other worktrees. Never reset, clean, or rewrite those source trees as part of a port.
+- Do not claim a build, test, QEMU boot, LFS image, or Asterinas boot unless a dated receipt is stored with source and artifact hashes.

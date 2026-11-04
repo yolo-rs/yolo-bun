@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-04T20:12:49.358Z",
+  "runnerSha256": "23dbe6d04c4dff379349fb92a9796087fe26ecd649208b63957abacae721ef6d",
+  "host": {
+    "platform": "win32",
+    "arch": "x64",
+    "release": "10.0.28120",
+    "cpu": "13th Gen Intel(R) Core(TM) i7-13700F"
+  },
+  "binaries": {
+    "baseline": {
+      "path": "C:\\Users\\aphro\\.local\\opt\\bun-upstream-canary\\bin\\bun.exe",
+      "sha256": "f424e283c15b8b19f59f054abcba462afab46fdcce44721b0f1167eaa67f2864",
+      "version": "1.4.4"
+    },
+    "candidate": {
+      "path": "C:\\Users\\aphro\\.local\\opt\\bun-upstream-canary\\bin\\bun.exe",
+      "sha256": "f424e283c15b8b19f59f054abcba462afab46fdcce44721b0f1167eaa67f2864",
+      "version": "1.4.4"
+    }
+  },
+  "runs": 3,
+  "workloads": {
+    "startup": {
+      "codeSha256": "a6939afb029d17dc6a291291e9d26b97ce9508326c39bd336a4f8af4eedd527c",
+      "samples": {
+        "baseline": [
+          19.5085,
+          16.4764,
+          16.6219
+        ],
+        "candidate": [
+          24.7739,
+          17.5522,
+          15.8755
+        ]
+      },
+      "baselineMedianMs": 16.6219,
+      "candidateMedianMs": 17.5522,
+      "candidateToBaseline": 1.0559683309368963
+    },
+    "compute": {
+      "codeSha256": "4de7217c62c229c414841faaf196f402d54b4e0dca22e6afad04efafd63ce691",
+      "samples": {
+        "baseline": [
+          23.3036,
+          23.1402,
+          23.6059
+        ],
+        "candidate": [
+          23.5351,
+          23.4419,
+          22.8662
+        ]
+      },
+      "baselineMedianMs": 23.3036,
+      "candidateMedianMs": 23.4419,
+      "candidateToBaseline": 1.005934705367411
+    },
+    "http_loopback": {
+      "codeSha256": "9c8aa61ea657f5737a4c12784d7b067c1243321be271e03b962810678a3916a1",
+      "samples": {
+        "baseline": [
+          21.3744,
+          238.6943,
+          21.7354
+        ],
+        "candidate": [
+          21.9033,
+          23.7939,
+          70.0412
+        ]
+      },
+      "baselineMedianMs": 21.7354,
+      "candidateMedianMs": 23.7939,
+      "candidateToBaseline": 1.094707251764403
+    }
+  },
+  "scope": "Process startup, JS compute and 50 sequential loopback HTTP requests including startup; no sustained throughput or overall runtime parity is implied."
+}

@@ -1,0 +1,12 @@
+{
+  "dateUtc": "2026-11-04T20:17:35.1980947Z",
+  "command": "bun run packages:resolve bun cowsay@1.6.0",
+  "exitCode": 0,
+  "observed": "Bun reported downloading and extracting cache entries and printed simulated installed lines; subsequent global listing and bin/module inspection did not find cowsay; no pre-run state snapshot was taken",
+  "limitations": "May access the registry and write cache; not a locked image plan",
+  "sourceSha256": "0f66c2f7b8fd80e262ca074c77830696acee10338a9495ef8570527163c67ac1",
+  "adapterSha256": "f4f0ca3f545042762fb3f9eed27791d5871d216778160e5be4a431875d307336",
+  "testSha256": "be8ead89060178685403a9af41964caeec1182862b0447e6d1ee4c5d39ce03c3",
+  "bunSha256": "f424e283c15b8b19f59f054abcba462afab46fdcce44721b0f1167eaa67f2864",
+  "checks": "5 focused tests pass; bun check and bun lint pass"
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://yolo-rs.github.io/yolo-bun/schemas/project.schema.json",
+  "title": "YOLO Bun project catalog record",
+  "type": "object",
+  "required": ["id", "name", "repository", "kind", "status"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+    "name": { "type": "string", "minLength": 1 },
+    "repository": { "type": "string", "format": "uri" },
+    "revision": { "type": "string", "pattern": "^[0-9a-f]{40}$" },
+    "kind": { "type": "string" },
+    "status": { "enum": ["upstream", "mirror", "archived-fork", "planned", "implemented-unverified", "qualified"] },
+    "license": { "type": "string" },
+    "notes": { "type": "string" }
+  },
+  "additionalProperties": false
+}

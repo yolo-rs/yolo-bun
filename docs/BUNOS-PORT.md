@@ -1,0 +1,14 @@
+# BunOS integration port map
+
+The local source archive is `C:\src\bun-os-archive`, remote `aphrody-labs/bun-os`. Its worktree is heavily modified; preserve it. Source records below distinguish committed code from documentation claims.
+
+| BunOS source | Source/licence evidence | yolo-bun destination | State |
+|---|---|---|---|
+| `packages/bunos-init/src/init.ts` | Commit `ae136439ba7d02039d23e2379e8690f9a260b52e`; file header `SPDX-License-Identifier: Apache-2.0`; package `@aphrody/bunos-init` declares Apache-2.0. | `packages/bunos-init/src/init.ts` | Copied with original SPDX header. It remains a prototype: mounts `/proc`, `/sys`, `/dev`, `/run`, `/tmp`, reaps children and handles reboot; no root discovery/switch-root or full service handoff. |
+| `packages/bun-os-plugins` | Package `@aphrody/bun-os-plugins@1.4.7`, MIT. Its manifest declares `bunos-mcp`, `bunos-agent-plugin`, `bunos-lsp`, `bunos-plugin` and other OS commands. | Split by responsibility: runtime plugin adapters in yolo-bun; neutral cross-host catalog/sync in `yolo-plugins`; OS-only command wiring in `yolo-os`. | Inventory only. Do not copy the whole package: its dispatch reaches BunOS paths and product owners. |
+| `packages/bun-workspace/src/automation/agent-plugin*.ts` | BunOS agent plugin provider/store/sync code; provenance and individual package licensing need source-file review before copying. | `packages/yolo-bun-agent` plus `yolo-plugins` provider adapters | Not ported. Use `yolo-ai` model/tool/agent contracts; keep credentials and provider selection with Aphrody AI/callers. |
+| `bunos mcp` dispatch | BunOS entrypoint is a thin shim; it routes into `crates/aphrody-mcp`. | `packages/yolo-bun-mcp` as Bun transport/launcher only; tools remain with their owning Rust services. | Not ported. No standalone BunOS MCP server can be claimed from the shim alone. |
+| `bunos lsp` dispatch | BunOS entrypoint is a thin shim; dispatcher selects `tsgo --lsp --stdio` or `typescript-language-server --stdio`. | `packages/yolo-bun-lsp` launcher and configuration | Not ported. Upstream Bun's formatter does not expose its own LSP. |
+| `packages/registry` | BunOS registry package declares Apache-2.0 and catalogues MCP servers, skills, plugins and CLIs. | Reuse `yolo-plugins` registry/catalog ownership and `yolo-standards` neutral schemas. | No second competing marketplace created. |
+
+The archive's Linux kernel package pins `7.4-rc1`, but the current production image path observed uses systemd; a commented `rdinit=/init` entry is marked unqualified. Its separate `factory/kernel/boot-bun-init.sh` QEMU harness builds an initramfs experiment. Product docs report receipts, but corresponding receipts were not found in the local archive, so this port records them as historical claims, not independently reproduced evidence.

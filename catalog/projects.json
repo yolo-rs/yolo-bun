@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "snapshotDate": "2026-11-04",
+  "projects": [
+    {
+      "id": "bun-upstream",
+      "name": "Bun",
+      "repository": "https://github.com/oven-sh/bun",
+      "revision": "e57d89ba63a7504957faa2ccc8f416ce2fb15453",
+      "kind": "runtime",
+      "status": "upstream",
+      "notes": "Rust-first Cargo workspace; JavaScriptCore/C++ integration and JS/TS sources."
+    },
+    {
+      "id": "bun-yolo-rs-mirror",
+      "name": "yolo-rs Bun mirror",
+      "repository": "https://github.com/yolo-rs/bun",
+      "revision": "e57d89ba63a7504957faa2ccc8f416ce2fb15453",
+      "kind": "runtime-mirror",
+      "status": "mirror",
+      "notes": "Fast-forward synchronized with oven-sh/bun main; no integration patches belong here."
+    },
+    {
+      "id": "bun-aphrody-archive",
+      "name": "Aphrody Labs Bun fork",
+      "repository": "https://github.com/aphrody-labs/bun",
+      "revision": "7c57ac563e12c35be817697c4b5488b0fd64cc09",
+      "kind": "historical-fork",
+      "status": "archived-fork",
+      "notes": "Divergent BunOS fork; source for historical commands/adapters only, not current upstream behavior."
+    },
+    {
+      "id": "awesome-bun-upstream",
+      "name": "Awesome Bun",
+      "repository": "https://github.com/oven-sh/awesome-bun",
+      "kind": "project-catalog",
+      "status": "upstream",
+      "license": "CC0-1.0",
+      "notes": "Community list; verify individual project status before use."
+    },
+    {
+      "id": "asterinas-kernel",
+      "name": "Asterinas",
+      "repository": "https://github.com/asterinas/asterinas",
+      "revision": "925f829a3e64bd91bd9b48435b81173dfbc2860c",
+      "kind": "experimental-os-target",
+      "status": "planned",
+      "license": "MPL-2.0",
+      "notes": "rdinit/ELF path exists; Bun compatibility is unverified and syscall coverage is partial."
+    }
+  ]
+}

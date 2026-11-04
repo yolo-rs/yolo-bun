@@ -1,0 +1,13 @@
+{
+  "name": "@yolo-rs/bun-mcp",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "license": "MIT OR Apache-2.0",
+  "description": "Read-only MCP tools for the pinned Bun source and project catalog",
+  "bin": { "yolo-bun-mcp": "./src/index.ts" },
+  "dependencies": {
+    "@modelcontextprotocol/server": "2.4.0",
+    "zod": "4.6.7"
+  }
+}

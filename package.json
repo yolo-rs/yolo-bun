@@ -1,0 +1,20 @@
+{
+  "name": "@yolo-rs/yolo-bun",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "bun@1.4.4",
+  "license": "MIT OR Apache-2.0",
+  "workspaces": ["packages/*"],
+  "description": "Patched integration monorepo around the upstream Bun Rust runtime",
+  "scripts": {
+    "bench:runtime": "bun run scripts/bench-runtime.ts",
+    "source:prepare": "bun run scripts/prepare-bun-source.ts",
+    "packages:backends": "bun run scripts/package-backends.ts",
+    "packages:install": "bun run scripts/package-install.ts",
+    "packages:resolve": "bun run scripts/package-resolve.ts"
+  },
+  "devDependencies": {
+    "@types/bun": "1.4.4"
+  }
+}
