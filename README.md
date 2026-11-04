@@ -30,7 +30,7 @@ The package roadmap covers a locked image plan for `yolo-os`, pacman for the sel
 
 - Keep only runtime changes tied to Bun's own APIs/modules, cookie and environment behavior, Linux/Windows core APIs, or Node/V8 compatibility. The pinned upstream already contains cookie-map, dotenv, Windows system and V8 compatibility implementations, so first identify a concrete gap; prefer upstreaming and make any downstream patch minimal, pinned and temporary.
 - Bun's package manager owns JavaScript/TypeScript dependencies. Other package ecosystems retain their resolvers, locks, signatures and repositories.
-- Browser engines and Chromium/CEF/Obscura integrations belong in `yolo-web`; cross-compilation and MSVC belong in `yolo-cross`; Tauri, UI frameworks and frontend work belong in `yolo-ui`.
+- Browser engines and Chromium/CEF/Obscura integrations belong in `yolo-web`; cross-compilation, MSVC and FFI shims belong in `yolo-cross`; a focused native `bun:windows` runtime API may be contributed here; Tauri, UI frameworks and frontend work belong in `yolo-ui`.
 - Keep kernel and OS image policy in `yolo-os`. Bun may run as `/init` in a qualified userland PID 1 profile; it does not run in kernel ring 0.
 
 ## Current evidence
@@ -38,7 +38,7 @@ The package roadmap covers a locked image plan for `yolo-os`, pacman for the sel
 - `upstream/bun` is a local ignored, shallow checkout of the earlier upstream snapshot `05a0ec93`; it does not match the current source-lock revision `e57d89ba`. It is clean and detached, with no declared Git submodules, and is not yet a built or modified YOLO runtime. See [the source receipt](docs/receipts/bun-upstream-checkout.json).
 
 - `yolo-rs/bun` was synchronized to upstream `main` at `e57d89ba63a7504957faa2ccc8f416ce2fb15453` on 2026-11-04.
-- `bun run source:prepare` prints the plan to materialize that exact mirror revision in an ignored disposable directory and apply the SHA-256-locked patch queue. The current queue is empty; no runtime divergence is claimed yet.
+- `bun run source:prepare` prints the plan to materialize that exact mirror revision in an ignored disposable directory and apply the SHA-256-locked patch queue. `--source-cache upstream/bun` can fetch the pinned commit from an existing local Git object store while keeping a separate checkout. Add `--execute` to materialize it. The current queue is empty; no runtime divergence is claimed yet.
 - `scripts/package-install.ts` creates argument-safe native plans for Bun, uv, Cargo, Flatpak, WinGet, pacman and vcpkg. `--execute` runs the selected executable without a shell; it can alter the selected environment or host.
 - The runtime harness compares process startup, a JavaScript compute loop and 50 sequential loopback HTTP requests. Its self-check compares one executable to itself; neither artifact is a performance claim for yolo-bun runtime changes.
 - Initial adapters include a read-only MCP server, a TypeScript LSP launcher, a Bun bundler catalog plugin, and a source-cited agent skill. They are separate from upstream Bun CLI features and have not been built or tested here.
