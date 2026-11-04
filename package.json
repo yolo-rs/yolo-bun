@@ -17,6 +17,7 @@
     "source:prepare": "bun run scripts/prepare-bun-source.ts",
     "packages:backends": "bun run scripts/package-backends.ts",
     "packages:image-plan": "bun run scripts/image-plan.ts",
+    "packages:verify-image-plan": "bun run scripts/verify-image-plan.ts",
     "packages:install": "bun run scripts/package-install.ts",
     "packages:resolve": "bun run scripts/package-resolve.ts"
   },

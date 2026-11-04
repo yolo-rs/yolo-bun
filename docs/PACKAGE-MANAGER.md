@@ -8,6 +8,8 @@ The image build should consume a locked plan and pinned artifacts. The current C
 
 `bun run packages:image-plan <profile.json>` now assembles a deterministic plan from artifacts that have already been resolved: each entry supplies an ID, backend, fixed version, HTTPS URL and SHA-256. The plan sorts entries and includes a digest of its canonical JSON. It does not download artifacts, verify their bytes or signatures, resolve dependencies, or establish backend compatibility; those steps remain necessary before an image build.
 
+`bun run packages:verify-image-plan <plan.json> <files.json>` checks the plan digest and hashes local files. The files JSON maps artifact IDs to local paths, for example `{ "bun": "/cache/bun.tar.gz" }`. The command emits a receipt and exits nonzero on a mismatch. It verifies bytes against the plan, not repository signatures or the authenticity of the plan itself.
+
 ## Backend map
 
 | Ecosystem                               | Intended role                                                                                     | Authority to preserve                                                                                                                           |
