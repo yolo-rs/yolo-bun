@@ -1,6 +1,6 @@
 # Awesome Bun projects
 
-The upstream community list is [`oven-sh/awesome-bun`](https://github.com/oven-sh/awesome-bun). GitHub metadata shows it as CC0-1.0 and last pushed 2025-07-20 in the 2026-11-04 audit. Treat it as a source index, not a current compatibility guarantee. Preserve the upstream link and license when syncing entries.
+The upstream community list is [`oven-sh/awesome-bun`](https://github.com/oven-sh/awesome-bun). GitHub metadata shows it as CC0-1.0 and last pushed 2025-07-20 in the 2026-11-04 audit. The organizational fork is [`yolo-rs/awesome-bun`](https://github.com/yolo-rs/awesome-bun). Treat it as a source index, not a current compatibility guarantee. Preserve the upstream link and license when syncing entries.
 
 ## Source categories to track
 

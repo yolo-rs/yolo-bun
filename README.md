@@ -28,12 +28,14 @@ The package roadmap covers a locked image plan for `yolo-os`, pacman for the sel
 
 ## Runtime and product boundaries
 
-- Keep only runtime changes tied to Bun's own APIs/modules, cookie and environment behavior, Linux/Windows core APIs, or Node/V8 compatibility. Verify Bun 1.4 does not already provide the behavior; prefer upstreaming and make downstream patches minimal, pinned and temporary.
+- Keep only runtime changes tied to Bun's own APIs/modules, cookie and environment behavior, Linux/Windows core APIs, or Node/V8 compatibility. The pinned upstream already contains cookie-map, dotenv, Windows system and V8 compatibility implementations, so first identify a concrete gap; prefer upstreaming and make any downstream patch minimal, pinned and temporary.
 - Bun's package manager owns JavaScript/TypeScript dependencies. Other package ecosystems retain their resolvers, locks, signatures and repositories.
 - Browser engines and Chromium/CEF/Obscura integrations belong in `yolo-web`; cross-compilation and MSVC belong in `yolo-cross`; Tauri, UI frameworks and frontend work belong in `yolo-ui`.
 - Keep kernel and OS image policy in `yolo-os`. Bun may run as `/init` in a qualified userland PID 1 profile; it does not run in kernel ring 0.
 
 ## Current evidence
+
+- `upstream/bun` is a local ignored, shallow checkout of the earlier upstream snapshot `05a0ec93`; it does not match the current source-lock revision `e57d89ba`. It is clean and detached, with no declared Git submodules, and is not yet a built or modified YOLO runtime. See [the source receipt](docs/receipts/bun-upstream-checkout.json).
 
 - `yolo-rs/bun` was synchronized to upstream `main` at `e57d89ba63a7504957faa2ccc8f416ce2fb15453` on 2026-11-04.
 - `bun run source:prepare` prints the plan to materialize that exact mirror revision in an ignored disposable directory and apply the SHA-256-locked patch queue. The current queue is empty; no runtime divergence is claimed yet.

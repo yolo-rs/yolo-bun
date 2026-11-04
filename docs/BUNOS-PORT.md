@@ -2,6 +2,18 @@
 
 The local source archive is `C:\src\bun-os-archive`, remote `aphrody-labs/bun-os`. Its worktree is heavily modified; preserve it. Source records below distinguish committed code from documentation claims.
 
+## Historical Bun fork: verified source mapping
+
+The historical `aphrody-labs/bun` commit `7c57ac563e12c35be817697c4b5488b0fd64cc09` is available locally as `refs/yolo/aphrody-baseline`. The current `source-lock.json` upstream commit `e57d89ba63a7504957faa2ccc8f416ce2fb15453` is available as `refs/yolo/upstream-locked`; the working checkout remains on the earlier `05a0ec93` snapshot. These are shallow snapshots, so a direct tree diff includes upstream evolution and is not an attribution of every difference to Aphrody.
+
+| Historical source | Observed destination and next action |
+|---|---|
+| `packages/bun-chromium` (Apache-2.0) reexports fork-specific `bun:chromium` and `bun:chrome`; the implementation lived under `src/js/bun/chromium.ts`. | `C:\src\yolo-web\packages\chromium` already contains a Bun plugin and CDP-oriented implementation with explicit source commit attribution. It is untracked in that worktree; preserve it and qualify its dependency closure and behavior before deleting the original. The plugin supplies virtual modules rather than proving an upstream built-in exists. |
+| `src/runtime/windows/sys` and `src/js/bun/windows.ts` provide the old `bun:windows` surface, including core OS and broader administrative APIs. | `C:\src\yolo-cross\packages\windows` already supplies opt-in virtual-module aliases via `bun:ffi`, with Apache-2.0 attribution, but remains untracked and named `@aphrody/windows`. A focused Windows read-only smoke passed for version, system info and memory; see `docs/receipts/windows-port-smoke.json`. It does not establish full fork parity: ConPTY, Job objects and other listed members remain absent. Review remaining APIs individually, move WinUI/frontend ownership to `yolo-ui`, and reconcile package naming and consumers before release. No native Bun runtime port or performance claim follows from the adapter. |
+| `src/runtime/yolo` imports `aphrody_jev` protocol symbols. | Map neutral agent/protocol contracts to `yolo-ai` and product-specific integration to Aphrody AI; do not embed the product protocol in Bun without a demonstrated runtime requirement. |
+
+The original fork commit and its licensing remain the provenance authority until each target's source files, notices, consumers and build evidence have been reviewed.
+
 | BunOS source | Source/licence evidence | yolo-bun destination | State |
 |---|---|---|---|
 | `packages/bunos-init/src/init.ts` | Commit `ae136439ba7d02039d23e2379e8690f9a260b52e`; file header `SPDX-License-Identifier: Apache-2.0`; package `@aphrody/bunos-init` declares Apache-2.0. | `packages/bunos-init/src/init.ts` | Copied with original SPDX header. It remains a prototype: mounts `/proc`, `/sys`, `/dev`, `/run`, `/tmp`, reaps children and handles reboot; no root discovery/switch-root or full service handoff. |

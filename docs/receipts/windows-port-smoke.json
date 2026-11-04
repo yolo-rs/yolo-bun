@@ -1,0 +1,12 @@
+{
+  "dateUtc": "2026-11-04T20:25:22.1128293Z",
+  "command": "bun test packages/windows/test/fork-windows.test.ts --test-name-pattern 'version|systemInfo|physical'",
+  "workingDirectory": "C:\\src\\yolo-cross",
+  "upstreamForkCommit": "7c57ac563e12c35be817697c4b5488b0fd64cc09",
+  "implementationSha256": "e3e1f82328054d38f7c01cf5d78f4403978739837d2a48587cc322ce992d5b3b",
+  "testSha256": "4b3955074b067da7a10ae2794e3b2ac053c2eea567f087eb8604b715bad5b489",
+  "bunSha256": "f424e283c15b8b19f59f054abcba462afab46fdcce44721b0f1167eaa67f2864",
+  "result": "3 passed, 1 skipped, 0 failed",
+  "scope": "Windows version, system information and memory; no registry or clipboard tests run",
+  "limitations": "Does not establish whole API compatibility, build qualification or runtime performance"
+}

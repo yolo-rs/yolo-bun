@@ -1,0 +1,13 @@
+{
+  "dateUtc": "2026-11-04T20:23:12.2006888Z",
+  "source": "https://github.com/oven-sh/bun.git",
+  "commit": "05a0ec93a614b69389ed2593463f6b08e697391e",
+  "shallow": true,
+  "status": "clean, detached",
+  "declaredSubmodules": 0,
+  "cargoTomlSha256": "042b599930e4b9b7d299662aa5879c4b456c5af1d4374a2c239932baaff1c3a0",
+  "rustToolchainSha256": "242f0f35398ac408c400d44468eef953ff05b5c1d81f4c03e5358526d1724b2e",
+  "cookieMapSha256": "1fa39f8e3b2b8bff119a56dc9294ff98977d7df069305a321a66cabd8a1b6410",
+  "dotenvLoaderSha256": "2e74b3c674241e6cc4b3251babf3a1643b0bc2c1fd9c4c6f6b293604e7c1afed",
+  "build": "not attempted"
+}

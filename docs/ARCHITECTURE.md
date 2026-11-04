@@ -23,9 +23,9 @@ yolo-bun (Bun runtime integration and package orchestration)
 
 ## Runtime scope
 
-Keep changes tied to Bun's runtime/toolkit structure: runtime APIs and modules, JSCore/Node/V8 compatibility, environment and cookie behavior, and the core Linux/Windows interfaces needed by Bun itself. Treat these as candidates, not permission to add unrelated products. First check whether Bun 1.4 already provides the feature; then prefer an upstream contribution. A downstream patch is a temporary, minimal delta with upstream tests/fixtures preserved and an explicit removal condition.
+Keep changes tied to Bun's runtime/toolkit structure: runtime APIs and modules, JSCore/Node/V8 compatibility, environment and cookie behavior, and the core Linux/Windows interfaces needed by Bun itself. The current pinned source already has cookie-map, dotenv/environment, Windows system and V8/Node compatibility implementations. Treat requested work on those areas as a parity-gap audit first; do not port the same surface from Aphrody's older fork. Prefer an upstream contribution. A downstream patch is a temporary, minimal delta with upstream fixtures preserved and an explicit removal condition.
 
-Do not absorb Chromium, `bun:chromium`, CEF, Obscura or Google/browser-specific integrations (`yolo-web`); cross compilation, sysroots, toolchain packaging, Windows/MSVC implementation (`yolo-cross`); Tauri, frontend frameworks, UI plugin ecosystems or Bun UI (`yolo-ui`). Keep OS image assembly and boot policy in `yolo-os`.
+Do not absorb Chromium, `bun:chromium`, CEF, Obscura or Google/browser-specific integrations (`yolo-web`); cross compilation, sysroots, toolchain packaging, Windows/MSVC implementation (`yolo-cross`); Tauri, frontend frameworks, UI plugin ecosystems or Bun UI (`yolo-ui`). A Bun-native `bun:windows` API may be a runtime contribution; cross-target compilation and the independent FFI adapter belong to `yolo-cross`. Keep OS image assembly and boot policy in `yolo-os`.
 
 ## Bun 1.4 development and release policy
 
