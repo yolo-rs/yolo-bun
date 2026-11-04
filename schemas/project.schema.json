@@ -10,7 +10,16 @@
     "repository": { "type": "string", "format": "uri" },
     "revision": { "type": "string", "pattern": "^[0-9a-f]{40}$" },
     "kind": { "type": "string" },
-    "status": { "enum": ["upstream", "mirror", "archived-fork", "planned", "implemented-unverified", "qualified"] },
+    "status": {
+      "enum": [
+        "upstream",
+        "mirror",
+        "archived-fork",
+        "planned",
+        "implemented-unverified",
+        "qualified"
+      ]
+    },
     "license": { "type": "string" },
     "notes": { "type": "string" }
   },

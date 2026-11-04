@@ -10,8 +10,6 @@ The BunOS `bun agent-plugin` command is a fork-specific entrypoint routed throug
 
 The audited upstream Bun source did not establish a first-party MCP server. BunOS `bunos mcp` routes into `aphrody-mcp`; the wrapper is not an independent MCP implementation. The first yolo-bun MCP package is a read-only stdio server with two tools: `list_bun_projects` and `get_bun_upstream`. It uses the [official Model Context Protocol TypeScript server SDK v2.4.0](https://github.com/modelcontextprotocol/typescript-sdk/tree/v2.4.0), whose upstream README documents Bun support. It reads only the local project catalog and source lock. Domain operations remain with their owning services. The implementation is present but has not been tested in this workspace.
 
-
-
 ## LSP
 
 Upstream's formatter migration guide says `bun fmt` has no language server. BunOS's `bunos lsp` wrapper chooses `tsgo --lsp --stdio` or `typescript-language-server --stdio`; another fork-specific `bun lsp` capability is not proof of an upstream Bun LSP.

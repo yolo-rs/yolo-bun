@@ -13,7 +13,8 @@ export function planResolution(
     return {
       ...plan,
       args: ["add", "--global", "--dry-run", packageSpec],
-      scope: "Bun global dry-run; may read global state and download to cache; output can describe simulated installs",
+      scope:
+        "Bun global dry-run; may read global state and download to cache; output can describe simulated installs",
     };
   }
   return {

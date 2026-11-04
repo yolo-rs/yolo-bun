@@ -6,6 +6,7 @@ The documentation tree is organized by source authority and consumer:
 - `ARCHITECTURE.md`: repository ownership, patch bar and upstream-first workflow.
 - `PERFORMANCE.md`: Bun 1.4 tooling, AOT/LTO separation and parity evidence rules.
 - `PACKAGE-MANAGER.md`: native backend boundaries and YOLO OS package-plan roadmap.
+- `receipts/`: dated evidence with precise scope; an AOT check is not a binary build or performance qualification.
 - `BUNOS-PORT.md`: source-to-destination migration map with provenance/license.
 - `AGENT-MCP-LSP.md`: integration boundaries and implementation state.
 - `PLUGIN-MARKETPLACE.md`: plugin APIs versus catalog/distribution ownership.

@@ -5,5 +5,7 @@
   "type": "module",
   "license": "MIT OR Apache-2.0",
   "description": "Bun TypeScript language-server launcher",
-  "bin": { "yolo-bun-lsp": "./src/index.ts" }
+  "bin": {
+    "yolo-bun-lsp": "./src/index.ts"
+  }
 }

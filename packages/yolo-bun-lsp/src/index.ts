@@ -1,4 +1,5 @@
 #!/usr/bin/env bun
+export {};
 
 const candidates: Array<[string, string[]]> = [
   ["tsgo", ["--lsp", "--stdio"]],
@@ -16,5 +17,7 @@ for (const [name, args] of candidates) {
   process.exit(await child.exited);
 }
 
-console.error("yolo-bun-lsp: install tsgo or typescript-language-server to provide the TypeScript LSP");
+console.error(
+  "yolo-bun-lsp: install tsgo or typescript-language-server to provide the TypeScript LSP",
+);
 process.exit(127);

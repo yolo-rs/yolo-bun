@@ -1,11 +1,17 @@
 import { fileURLToPath } from "node:url";
+import type { BunPlugin } from "bun";
 
-const catalogPath = fileURLToPath(new URL("../../../catalog/projects.json", import.meta.url));
+const catalogPath = fileURLToPath(
+  new URL("../../../catalog/projects.json", import.meta.url),
+);
 
-export const yoloBunCatalogPlugin = {
+export const yoloBunCatalogPlugin: BunPlugin = {
   name: "yolo-bun-project-catalog",
-  setup(build: any) {
-    build.onResolve({ filter: /^yolo-bun:catalog$/ }, () => ({ path: "catalog", namespace: "yolo-bun" }));
+  setup(build) {
+    build.onResolve({ filter: /^yolo-bun:catalog$/ }, () => ({
+      path: "catalog",
+      namespace: "yolo-bun",
+    }));
     build.onLoad({ filter: /.*/, namespace: "yolo-bun" }, async () => {
       const catalog = await Bun.file(catalogPath).json();
       return {

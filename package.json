@@ -5,9 +5,14 @@
   "type": "module",
   "packageManager": "bun@1.4.4",
   "license": "MIT OR Apache-2.0",
-  "workspaces": ["packages/*"],
+  "workspaces": [
+    "packages/*"
+  ],
   "description": "Patched integration monorepo around the upstream Bun Rust runtime",
   "scripts": {
+    "check": "bun check",
+    "lint": "bun lint",
+    "fmt": "bun fmt",
     "bench:runtime": "bun run scripts/bench-runtime.ts",
     "source:prepare": "bun run scripts/prepare-bun-source.ts",
     "packages:backends": "bun run scripts/package-backends.ts",

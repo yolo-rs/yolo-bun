@@ -4,14 +4,14 @@ This policy is for maintaining upstream-level Bun runtime performance while usin
 
 ## Use the upstream toolchain
 
-| Capability | Use in yolo-bun | Scope |
-|---|---|---|
-| `bun check` | Type-check JS/TS source and declarations, including AOT eligibility where applicable. | Source validation / compiler analysis. |
-| `bun lint` | Lint JS/TS using Bun's native linter. | Source quality. |
-| `bun fmt` | Format JS/TS using Bun's native formatter. | Source formatting. |
-| Bun native APIs/modules | Prefer Bun's built-in APIs for supported runtime operations; avoid vendored duplicate packages when the native surface is sufficient. | Shipped Bun applications and runtime work. |
-| `bun build --compile --aot` | Produce standalone AOT executables for eligible fixed-entrypoint tools and services; inspect AOT diagnostics and dynamic-code limitations. | Application binaries, not Bun itself. |
-| Bun release LTO | Use the exact upstream release configuration as baseline, including its cross-language Rust/C++ LTO pipeline. | Bun runtime binary. |
+| Capability                  | Use in yolo-bun                                                                                                                            | Scope                                      |
+| --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------ |
+| `bun check`                 | Type-check JS/TS source and declarations, including AOT eligibility where applicable.                                                      | Source validation / compiler analysis.     |
+| `bun lint`                  | Lint JS/TS using Bun's native linter.                                                                                                      | Source quality.                            |
+| `bun fmt`                   | Format JS/TS using Bun's native formatter.                                                                                                 | Source formatting.                         |
+| Bun native APIs/modules     | Prefer Bun's built-in APIs for supported runtime operations; avoid vendored duplicate packages when the native surface is sufficient.      | Shipped Bun applications and runtime work. |
+| `bun build --compile --aot` | Produce standalone AOT executables for eligible fixed-entrypoint tools and services; inspect AOT diagnostics and dynamic-code limitations. | Application binaries, not Bun itself.      |
+| Bun release LTO             | Use the exact upstream release configuration as baseline, including its cross-language Rust/C++ LTO pipeline.                              | Bun runtime binary.                        |
 
 The published Bun 1.4 documentation describes AOT trimming and `bun check --aot`; it also lists `bun lint`, `bun fmt`, `bun check`, package management and AOT as separately trimmable executable capabilities. AOT may be blocked by dynamic `eval`, `Function`, imports, native addons, `bun:ffi`, Bun plugins, externals or other runtime-code paths. Retain required features and record why trimming is blocked.
 

@@ -5,7 +5,10 @@ This package implements a Bun bundler plugin that resolves `yolo-bun:catalog` to
 ```ts
 import { yoloBunCatalogPlugin } from "@yolo-rs/bun-plugin-catalog";
 
-await Bun.build({ entrypoints: ["./src/index.ts"], plugins: [yoloBunCatalogPlugin] });
+await Bun.build({
+  entrypoints: ["./src/index.ts"],
+  plugins: [yoloBunCatalogPlugin],
+});
 ```
 
 ```ts

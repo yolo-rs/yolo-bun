@@ -8,17 +8,17 @@ The image build should consume a locked plan and pinned artifacts. The current C
 
 ## Backend map
 
-| Ecosystem | Intended role | Authority to preserve |
-|---|---|---|
-| Bun `install` / npm-compatible registry | YOLO JS/TS source workspaces and Bun-native applications. | Bun lockfile, npm registry metadata, package lifecycle policy and integrity hashes. |
-| Flatpak / Flathub | Sandboxed desktop applications available to the OS. | Flatpak remotes, refs, OSTree commits, app metadata and Flatpak permission model. Package/update/install operations use the native Flatpak CLI. |
-| F-Droid | Android build/repository workflows if YOLO ships an Android profile or companion app. | `fdroidserver` metadata, reproducible build model, signing keys and repository indexes. It is not a Linux desktop/general OS package backend. |
-| WinGet | Windows application installation and Windows developer profile integration. | WinGet manifests, package source policy, installer hashes, agreements and native client behavior. |
-| uv | Python project environments and Python CLI/developer tools used by build or operations workflows. | `pyproject.toml`, `uv.lock`, indexes, hashes and isolated environments. |
-| Cargo / rustup | Rust crates and Rust toolchains used by developers and source builds. | `Cargo.lock`, Cargo sources/configuration, rustup toolchain channels and checksums. Cargo is not the system package transaction engine. |
-| vcpkg | C/C++ source dependencies and toolchain integration for native builds. | Registry/baseline, port versions, triplets, overlays, binary cache and package hashes. |
-| pacman | Arch-family base/system packages and an Arch-derived YOLO OS profile. | Pacman databases, repository signatures, package signatures, dependency resolution and transaction model. |
-| Omarchy / CachyOS | Distribution-specific profile sources, defaults and compatibility inputs for Arch-derived images. | Upstream distro release/configuration and package repository boundaries; don't silently fork their package sets. |
+| Ecosystem                               | Intended role                                                                                     | Authority to preserve                                                                                                                           |
+| --------------------------------------- | ------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| Bun `install` / npm-compatible registry | YOLO JS/TS source workspaces and Bun-native applications.                                         | Bun lockfile, npm registry metadata, package lifecycle policy and integrity hashes.                                                             |
+| Flatpak / Flathub                       | Sandboxed desktop applications available to the OS.                                               | Flatpak remotes, refs, OSTree commits, app metadata and Flatpak permission model. Package/update/install operations use the native Flatpak CLI. |
+| F-Droid                                 | Android build/repository workflows if YOLO ships an Android profile or companion app.             | `fdroidserver` metadata, reproducible build model, signing keys and repository indexes. It is not a Linux desktop/general OS package backend.   |
+| WinGet                                  | Windows application installation and Windows developer profile integration.                       | WinGet manifests, package source policy, installer hashes, agreements and native client behavior.                                               |
+| uv                                      | Python project environments and Python CLI/developer tools used by build or operations workflows. | `pyproject.toml`, `uv.lock`, indexes, hashes and isolated environments.                                                                         |
+| Cargo / rustup                          | Rust crates and Rust toolchains used by developers and source builds.                             | `Cargo.lock`, Cargo sources/configuration, rustup toolchain channels and checksums. Cargo is not the system package transaction engine.         |
+| vcpkg                                   | C/C++ source dependencies and toolchain integration for native builds.                            | Registry/baseline, port versions, triplets, overlays, binary cache and package hashes.                                                          |
+| pacman                                  | Arch-family base/system packages and an Arch-derived YOLO OS profile.                             | Pacman databases, repository signatures, package signatures, dependency resolution and transaction model.                                       |
+| Omarchy / CachyOS                       | Distribution-specific profile sources, defaults and compatibility inputs for Arch-derived images. | Upstream distro release/configuration and package repository boundaries; don't silently fork their package sets.                                |
 
 Flatpak CLI and Flathub are related but different: `flatpak` is the native client/runtime manager and Flathub is a repository/service. Similarly, F-Droid's server tooling publishes Android repositories; it is not an interchangeable Linux host package manager.
 

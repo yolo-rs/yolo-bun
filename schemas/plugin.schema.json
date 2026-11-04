@@ -3,7 +3,15 @@
   "$id": "https://yolo-rs.github.io/yolo-bun/schemas/plugin.schema.json",
   "title": "YOLO Bun plugin catalog record",
   "type": "object",
-  "required": ["schemaVersion", "id", "name", "source", "license", "api", "status"],
+  "required": [
+    "schemaVersion",
+    "id",
+    "name",
+    "source",
+    "license",
+    "api",
+    "status"
+  ],
   "properties": {
     "schemaVersion": { "const": 1 },
     "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
@@ -11,9 +19,29 @@
     "source": { "type": "string", "format": "uri" },
     "revision": { "type": "string", "pattern": "^[0-9a-f]{40}$" },
     "license": { "type": "string", "minLength": 1 },
-    "api": { "enum": ["bun-runtime-plugin", "bun-bundler-plugin", "agent-adapter", "mcp-adapter", "lsp-adapter"] },
-    "capabilities": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
-    "status": { "enum": ["upstream-api", "inventory-only", "planned", "implemented-unverified", "qualified"] }
+    "api": {
+      "enum": [
+        "bun-runtime-plugin",
+        "bun-bundler-plugin",
+        "agent-adapter",
+        "mcp-adapter",
+        "lsp-adapter"
+      ]
+    },
+    "capabilities": {
+      "type": "array",
+      "items": { "type": "string" },
+      "uniqueItems": true
+    },
+    "status": {
+      "enum": [
+        "upstream-api",
+        "inventory-only",
+        "planned",
+        "implemented-unverified",
+        "qualified"
+      ]
+    }
   },
   "additionalProperties": false
 }

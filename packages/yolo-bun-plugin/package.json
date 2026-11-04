@@ -5,5 +5,7 @@
   "type": "module",
   "license": "MIT OR Apache-2.0",
   "description": "Bun bundler plugin that exposes the pinned yolo-bun project catalog",
-  "exports": { ".": "./src/index.ts" }
+  "exports": {
+    ".": "./src/index.ts"
+  }
 }

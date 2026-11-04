@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-11-04T20:31:00Z",
+  "tool": "bun 1.4.4-canary.1",
+  "command": "bun check --aot packages/bunos-init/src/init.ts scripts/package-install.ts packages/yolo-bun-mcp/src/index.ts packages/yolo-bun-plugin/src/index.ts",
+  "exitCode": 0,
+  "typeErrors": 0,
+  "filesChecked": 113,
+  "diagnostics": "AOT reported regular expressions in MCP SDK and Zod dependency code that will run in the interpreter (reason 6).",
+  "artifactBuilt": false,
+  "qualification": "AOT analysis only; this is not a compiled-binary or runtime-performance receipt."
+}

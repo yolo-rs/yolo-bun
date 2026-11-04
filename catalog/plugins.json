@@ -41,7 +41,11 @@
       "revision": "ae136439ba7d02039d23e2379e8690f9a260b52e",
       "license": "Apache-2.0",
       "api": "agent-adapter",
-      "capabilities": ["initramfs PID 1 prototype", "child reaping", "shutdown handling"],
+      "capabilities": [
+        "initramfs PID 1 prototype",
+        "child reaping",
+        "shutdown handling"
+      ],
       "status": "implemented-unverified"
     },
     {
@@ -51,7 +55,10 @@
       "source": "https://github.com/yolo-rs/yolo-bun/tree/main/packages/yolo-bun-plugin",
       "license": "MIT OR Apache-2.0",
       "api": "bun-bundler-plugin",
-      "capabilities": ["resolve yolo-bun:catalog", "embed local project catalog"],
+      "capabilities": [
+        "resolve yolo-bun:catalog",
+        "embed local project catalog"
+      ],
       "status": "implemented-unverified"
     },
     {
@@ -71,7 +78,11 @@
       "source": "https://github.com/yolo-rs/yolo-bun/tree/main/packages/yolo-bun-lsp",
       "license": "MIT OR Apache-2.0",
       "api": "lsp-adapter",
-      "capabilities": ["launch tsgo", "fallback to typescript-language-server", "stdio forwarding"],
+      "capabilities": [
+        "launch tsgo",
+        "fallback to typescript-language-server",
+        "stdio forwarding"
+      ],
       "status": "implemented-unverified"
     },
     {
@@ -81,7 +92,11 @@
       "source": "https://github.com/yolo-rs/yolo-bun/tree/main/packages/yolo-bun-agent/skills/yolo-bun",
       "license": "MIT OR Apache-2.0",
       "api": "agent-adapter",
-      "capabilities": ["pinned source guidance", "upstream mirror policy", "userland boot boundary"],
+      "capabilities": [
+        "pinned source guidance",
+        "upstream mirror policy",
+        "userland boot boundary"
+      ],
       "status": "implemented-unverified"
     }
   ]

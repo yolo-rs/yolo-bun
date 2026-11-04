@@ -13,12 +13,27 @@
 import { dlopen, FFIType, ptr } from "bun:ffi";
 
 const libc = dlopen("libc.so.6", {
-  mount: { args: [FFIType.cstring, FFIType.cstring, FFIType.cstring, FFIType.u64, FFIType.ptr], returns: FFIType.i32 },
-  waitpid: { args: [FFIType.i32, FFIType.ptr, FFIType.i32], returns: FFIType.i32 },
+  mount: {
+    args: [
+      FFIType.cstring,
+      FFIType.cstring,
+      FFIType.cstring,
+      FFIType.u64,
+      FFIType.ptr,
+    ],
+    returns: FFIType.i32,
+  },
+  waitpid: {
+    args: [FFIType.i32, FFIType.ptr, FFIType.i32],
+    returns: FFIType.i32,
+  },
   reboot: { args: [FFIType.i32], returns: FFIType.i32 },
   sync: { args: [], returns: FFIType.void },
   sethostname: { args: [FFIType.cstring, FFIType.u64], returns: FFIType.i32 },
-  ioctl: { args: [FFIType.i32, FFIType.u64, FFIType.ptr], returns: FFIType.i32 },
+  ioctl: {
+    args: [FFIType.i32, FFIType.u64, FFIType.ptr],
+    returns: FFIType.i32,
+  },
 });
 
 const MS_NOSUID = 2;
@@ -31,11 +46,25 @@ const RB_AUTOBOOT = 0x01234567;
 const cstr = (s: string) => ptr(Buffer.from(`${s}\0`));
 const log = (msg: string) => console.log(`[bunos-init] ${msg}`);
 
-function mount(source: string, target: string, type: string, flags: number, data = "") {
+function mount(
+  source: string,
+  target: string,
+  type: string,
+  flags: number,
+  data = "",
+) {
   try {
     require("node:fs").mkdirSync(target, { recursive: true });
-  } catch {}
-  const rc = libc.symbols.mount(cstr(source), cstr(target), cstr(type), flags, data ? cstr(data) : null);
+  } catch {
+    // The mount call below reports this path's failure to the init log.
+  }
+  const rc = libc.symbols.mount(
+    cstr(source),
+    cstr(target),
+    cstr(type),
+    flags,
+    data ? cstr(data) : null,
+  );
   log(`mount ${type} on ${target}: ${rc === 0 ? "ok" : "failed"}`);
   return rc === 0;
 }
@@ -95,11 +124,17 @@ const facts = {
   memTotal: /MemTotal:\s+(\d+)/.exec(read("/proc/meminfo"))?.[1],
   uptime: read("/proc/uptime").split(" ")[0],
 };
-log(`kernel ${facts.kernel}, ${facts.cpus} cpu, ${facts.memTotal} kB, uptime ${facts.uptime}s`);
+log(
+  `kernel ${facts.kernel}, ${facts.cpus} cpu, ${facts.memTotal} kB, uptime ${facts.uptime}s`,
+);
 
 // Self-test: spawn a child and let it exit, so the reaper is exercised as it would be for a real service.
-const child = Bun.spawnSync([process.execPath], { env: { ...process.env, BUNOS_INIT_CHILD: "1" } });
-log(`child process exit ${child.exitCode}, stdout ${child.stdout.toString().trim()}`);
+const child = Bun.spawnSync([process.execPath], {
+  env: { ...process.env, BUNOS_INIT_CHILD: "1" },
+});
+log(
+  `child process exit ${child.exitCode}, stdout ${child.stdout.toString().trim()}`,
+);
 const ok = facts.kernel !== "" && child.exitCode === 0;
 console.log(ok ? "BUNOS-INIT-OK" : "BUNOS-INIT-FAILED");
 
@@ -111,12 +146,16 @@ const BINDER_CTL_ADD = 0xc1086201;
 if (mode === "android") {
   const dir = "/dev/binderfs";
   // No MS_NODEV: binderfs exists to hold device nodes (Android's init mounts it the same way).
-  const report: Record<string, unknown> = { mounted: mount("binder", dir, "binder", MS_NOSUID | MS_NOEXEC) };
+  const report: Record<string, unknown> = {
+    mounted: mount("binder", dir, "binder", MS_NOSUID | MS_NOEXEC),
+  };
   let androidOk = false;
   try {
     const nodes = fs.readdirSync(dir).sort();
     report.nodes = nodes;
-    report.devices = ["binder", "hwbinder", "vndbinder"].every(n => nodes.includes(n));
+    report.devices = ["binder", "hwbinder", "vndbinder"].every((n) =>
+      nodes.includes(n),
+    );
     const version = new Int32Array(1);
     const fd = fs.openSync(`${dir}/binder`, fs.constants.O_RDWR);
     report.versionIoctl = libc.symbols.ioctl(fd, BINDER_VERSION, ptr(version));
@@ -128,11 +167,18 @@ if (mode === "android") {
     const ctl = fs.openSync(`${dir}/binder-control`, fs.constants.O_RDWR);
     report.ctlAdd = libc.symbols.ioctl(ctl, BINDER_CTL_ADD, ptr(dev));
     const node = fs.existsSync(`${dir}/bunos-test`);
-    report.allocated = { major: dev.readUInt32LE(256), minor: dev.readUInt32LE(260), node };
+    report.allocated = {
+      major: dev.readUInt32LE(256),
+      minor: dev.readUInt32LE(260),
+      node,
+    };
     fs.closeSync(ctl);
     const features = `${dir}/features`;
     report.features = Object.fromEntries(
-      (fs.existsSync(features) ? fs.readdirSync(features) : []).map(n => [n, read(`${features}/${n}`)]),
+      (fs.existsSync(features) ? fs.readdirSync(features) : []).map((n) => [
+        n,
+        read(`${features}/${n}`),
+      ]),
     );
     androidOk =
       report.mounted === true &&
@@ -153,9 +199,14 @@ if (mode === "serve") {
   Bun.serve({
     port: 80,
     hostname: "0.0.0.0",
-    fetch: req =>
+    fetch: (req) =>
       new URL(req.url).pathname === "/health"
-        ? Response.json({ status: "ok", init: "bun", pid: process.pid, ...facts })
+        ? Response.json({
+            status: "ok",
+            init: "bun",
+            pid: process.pid,
+            ...facts,
+          })
         : new Response("Bun OS: Bun is PID 1\n"),
   });
   log("serving on :80");

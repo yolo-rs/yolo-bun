@@ -39,6 +39,24 @@
       "notes": "Community list; verify individual project status before use."
     },
     {
+      "id": "awesome-bun-yolo-rs",
+      "name": "YOLO Awesome Bun mirror",
+      "repository": "https://github.com/yolo-rs/awesome-bun",
+      "kind": "project-catalog-mirror",
+      "status": "mirror",
+      "license": "CC0-1.0",
+      "notes": "Organizational fork of oven-sh/awesome-bun; source entries still require per-project verification."
+    },
+    {
+      "id": "yolo-bun-monorepo",
+      "name": "YOLO Bun",
+      "repository": "https://github.com/yolo-rs/yolo-bun",
+      "kind": "integration-monorepo",
+      "status": "implemented-unverified",
+      "license": "MIT OR Apache-2.0",
+      "notes": "Public Bun 1.4 integration monorepo; pinned source checkout prepared, runtime patch queue empty, no runtime build or performance parity qualified."
+    },
+    {
       "id": "asterinas-kernel",
       "name": "Asterinas",
       "repository": "https://github.com/asterinas/asterinas",

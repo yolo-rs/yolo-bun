@@ -6,15 +6,15 @@ The runtime goal is performance at least matching the same upstream revision. Us
 
 ## Repository roles
 
-| Repository | Role |
-|---|---|
-| [`oven-sh/bun`](https://github.com/oven-sh/bun) | Canonical Bun source. Rust-first Cargo workspace with JavaScriptCore/C++ integration and JS/TS sources. |
-| [`yolo-rs/bun`](https://github.com/yolo-rs/bun) | Exact fast-forward mirror of upstream. No downstream patches. |
-| `yolo-bun` | Minimal Bun patches, Bun-specific adapters, package orchestration, docs/catalogs and userland packaging. |
-| `yolo-web` | Chromium, CEF, Obscura and browser-specific integrations, including `bun:chromium` work. |
-| `yolo-cross` | Cross toolchains, target builds, Windows/MSVC and sysroots. |
-| `yolo-ui` / Bun UI | UI frameworks, Tauri, frontend plugins and frontend integrations. |
-| `yolo-os` | LFS image composition, kernel configuration and boot qualification. Bun stays in userland. |
+| Repository                                      | Role                                                                                                     |
+| ----------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| [`oven-sh/bun`](https://github.com/oven-sh/bun) | Canonical Bun source. Rust-first Cargo workspace with JavaScriptCore/C++ integration and JS/TS sources.  |
+| [`yolo-rs/bun`](https://github.com/yolo-rs/bun) | Exact fast-forward mirror of upstream. No downstream patches.                                            |
+| `yolo-bun`                                      | Minimal Bun patches, Bun-specific adapters, package orchestration, docs/catalogs and userland packaging. |
+| `yolo-web`                                      | Chromium, CEF, Obscura and browser-specific integrations, including `bun:chromium` work.                 |
+| `yolo-cross`                                    | Cross toolchains, target builds, Windows/MSVC and sysroots.                                              |
+| `yolo-ui` / Bun UI                              | UI frameworks, Tauri, frontend plugins and frontend integrations.                                        |
+| `yolo-os`                                       | LFS image composition, kernel configuration and boot qualification. Bun stays in userland.               |
 
 ## Package manager for YOLO OS
 
@@ -36,8 +36,10 @@ The package roadmap covers a locked image plan for `yolo-os`, pacman for the sel
 ## Current evidence
 
 - `upstream/bun` is a local ignored, shallow checkout of the earlier upstream snapshot `05a0ec93`; it does not match the current source-lock revision `e57d89ba`. It is clean and detached, with no declared Git submodules, and is not yet a built or modified YOLO runtime. See [the source receipt](docs/receipts/bun-upstream-checkout.json).
+- The current locked revision `e57d89ba` was independently materialized from that local object store at `vendor/bun-e57d89ba63a7`; it has no Git object alternates and the patch queue was empty. See [the preparation receipt](docs/receipts/bun-prepared-source.json). No runtime build or parity claim follows from source preparation.
 
 - `yolo-rs/bun` was synchronized to upstream `main` at `e57d89ba63a7504957faa2ccc8f416ce2fb15453` on 2026-11-04.
+- Bun 1.4.4-canary.1 `fmt`, `check`, and `lint` completed; `check` reported no type errors in 10 files and `lint` no problems. `bun check --aot` reported no type errors across 113 files, with dependency regexes marked for interpreter execution; it did not build a binary. See the [AOT analysis receipt](docs/receipts/aot-check.json).
 - `bun run source:prepare` prints the plan to materialize that exact mirror revision in an ignored disposable directory and apply the SHA-256-locked patch queue. `--source-cache upstream/bun` can fetch the pinned commit from an existing local Git object store while keeping a separate checkout. Add `--execute` to materialize it. The current queue is empty; no runtime divergence is claimed yet.
 - `scripts/package-install.ts` creates argument-safe native plans for Bun, uv, Cargo, Flatpak, WinGet, pacman and vcpkg. `--execute` runs the selected executable without a shell; it can alter the selected environment or host.
 - The runtime harness compares process startup, a JavaScript compute loop and 50 sequential loopback HTTP requests. Its self-check compares one executable to itself; neither artifact is a performance claim for yolo-bun runtime changes.

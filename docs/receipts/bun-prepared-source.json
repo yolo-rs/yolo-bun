@@ -1,0 +1,16 @@
+{
+  "dateUtc": "2026-11-04T20:29:36.9619881Z",
+  "command": "bun run source:prepare --source-cache upstream/bun --execute",
+  "sourceCache": "upstream/bun",
+  "destination": "vendor/bun-e57d89ba63a7",
+  "commit": "e57d89ba63a7504957faa2ccc8f416ce2fb15453",
+  "origin": "https://github.com/yolo-rs/bun",
+  "status": "clean, detached",
+  "objectAlternates": false,
+  "patchCount": 0,
+  "scriptSha256": "6b4469b56061d0d6c1577f74baf94336e453e08c63ab86ca7a23575c5df355e3",
+  "sourceLockSha256": "27418b417af8febb8ca9c89aa460c829a52ead9d2abeb7c3a06c4a69e82e8051",
+  "patchQueueSha256": "882619e0f1006fe4b698eaf47888e186637b71716ff5b1d2b1cc6fea7ab866d3",
+  "cargoManifestSha256": "042b599930e4b9b7d299662aa5879c4b456c5af1d4374a2c239932baaff1c3a0",
+  "validation": "bun check and bun lint passed; invalid cache rejected; no runtime build attempted"
+}
