@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "dateUtc": "2026-11-04",
+  "package": "@yolo/windows",
+  "version": "1.4.7",
+  "artifact": {
+    "path": "artifacts/yolo-windows-1.4.7.tgz",
+    "bytes": 53792,
+    "sha256": "CE2D1B0D7168DE9419CE3B5C44D8865D2F14B8B3DAD272B0666EF6ACEE45C0A2",
+    "shasum": "afbb4714ad534007a48c6bd58e51c65621ebf94b",
+    "files": 17,
+    "unpackedBytes": 191078
+  },
+  "checks": {
+    "command": "bun check --no-script --project packages/windows/tsconfig.json",
+    "result": "No type errors in 18 files"
+  },
+  "publication": {
+    "publishConfig": "public",
+    "registry": "https://registry.npmjs.org/",
+    "status": "not-published",
+    "reason": "npm authentication currently returns HTTP 401; no registry write was attempted"
+  }
+}

@@ -59,6 +59,68 @@ const backends: Backend[] = [
   },
 ];
 
+// Stable source names for yolo-os profiles. These describe native authorities;
+// they are not evidence that a host has configured or trusts those sources.
+const sourceCatalog = [
+  {
+    id: "bun-npm",
+    backend: "bun",
+    authority: "npm-compatible registry metadata and integrity hashes",
+    role: "JavaScript and TypeScript packages",
+    targetScope: "build-time and Bun application dependencies",
+  },
+  {
+    id: "flatpak-flathub",
+    backend: "flatpak",
+    authority: "Flathub refs, OSTree commits, metadata and permissions",
+    role: "sandboxed desktop apps and runtimes",
+    targetScope: "Linux desktop profiles",
+  },
+  {
+    id: "fdroid-configured",
+    backend: "fdroid",
+    authority: "fdroidcl configured repositories and local index",
+    role: "Android app lifecycle through ADB",
+    targetScope: "connected Android device; not a host OS image source",
+  },
+  {
+    id: "winget-community",
+    backend: "winget",
+    authority: "WinGet source manifests and installer policy",
+    role: "Windows apps and developer tools",
+    targetScope: "Windows host or Windows build profile",
+  },
+  {
+    id: "uv-index",
+    backend: "uv",
+    authority: "Python indexes, uv.lock and artifact hashes",
+    role: "Python project and isolated CLI dependencies",
+    targetScope: "build-time and developer profiles",
+  },
+  {
+    id: "cargo-crates-io",
+    backend: "cargo",
+    authority: "Cargo registry sources, Cargo.lock and checksums",
+    role: "Rust crates and developer tools",
+    targetScope: "build-time and developer profiles",
+  },
+  {
+    id: "vcpkg-registry",
+    backend: "vcpkg",
+    authority: "vcpkg registry baseline, port versions and triplets",
+    role: "native C and C++ dependencies",
+    targetScope: "build-time toolchain profiles",
+  },
+  {
+    id: "pacman-configured",
+    backend: "pacman",
+    authority:
+      "configured pacman repositories, package and database signatures",
+    role: "Arch-family system packages",
+    targetScope: "Arch, CachyOS, Omarchy and derived image profiles",
+  },
+] as const;
+
 type HostProfile = {
   id: string | null;
   idLike: string[];
@@ -163,14 +225,10 @@ export async function inspectPackageBackends() {
     hostProfile: await inspectHostProfile(),
     scope:
       "Checks executable versions and Linux distribution identity only; repositories, trust settings, ADB devices and installs are not checked.",
-    sources: [
-      {
-        id: "flathub",
-        backend: "flatpak",
-        kind: "repository",
-        checked: false,
-      },
-    ],
+    sourceCatalog: sourceCatalog.map((source) => ({
+      ...source,
+      checked: false,
+    })),
     backends: results,
   };
 }

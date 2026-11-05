@@ -9,11 +9,13 @@
   },
   "license": "MIT OR Apache-2.0",
   "workspaces": [
-    "packages/yolo-bun-plugin"
+    "packages/yolo-bun-plugin",
+    "packages/windows"
   ],
   "description": "Patched integration monorepo around the upstream Bun Rust runtime",
   "scripts": {
     "check": "bun check --no-script",
+    "check:aot": "bun run scripts/check-aot.ts",
     "lint": "bun lint --no-script",
     "fmt": "bun fmt --no-script scripts packages README.md docs/receipts package.json",
     "fmt:check": "bun fmt --no-script --check scripts packages README.md docs/receipts package.json",
