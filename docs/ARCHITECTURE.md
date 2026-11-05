@@ -7,7 +7,7 @@ oven-sh/bun (canonical upstream)
         │ exact source mirror; fast-forward only
         ▼
 yolo-rs/bun (no downstream commits)
-        │ pinned source + minimal patch queue
+        │ pinned source + runtime-only patch queue
         ▼
 yolo-bun (Bun runtime integration and package orchestration)
    ├── yolo-web     browser engines, Chromium, CEF, Obscura, browser integrations
@@ -19,13 +19,17 @@ yolo-bun (Bun runtime integration and package orchestration)
    └── yolo-os      LFS image, package selection and boot qualification
 ```
 
-`yolo-rs/bun` follows upstream source byte-for-byte at its pinned revision. Never put a downstream patch, feature branch, release change or generated integration file in that mirror. `yolo-bun` owns a patch queue and integration code kept separate from the imported source. Every patch names the upstream base SHA, rationale, owner, compatibility surface, benchmark impact, and the upstream issue/PR or reason it cannot be upstreamed yet.
+`yolo-rs/bun` follows upstream source byte-for-byte at its pinned revision. Never put a downstream patch, feature branch, release change or generated integration file in that mirror. `yolo-bun` owns only a runtime patch queue and integration code kept separate from the imported source; its current queue is empty. Platform build and cross-compilation patches belong in `yolo-cross`. Every runtime patch names the upstream base SHA, rationale, owner, compatibility surface, benchmark impact, and the upstream issue/PR or reason it cannot be upstreamed yet.
 
 ## Runtime scope
 
 Keep changes tied to Bun's runtime/toolkit structure: runtime APIs and modules, JSCore/Node/V8 compatibility, environment and cookie behavior, and the core Linux/Windows interfaces needed by Bun itself. The current pinned source already has cookie-map, dotenv/environment, Windows system and V8/Node compatibility implementations. Treat requested work on those areas as a parity-gap audit first; do not port the same surface from Aphrody's older fork. Prefer an upstream contribution. A downstream patch is a temporary, minimal delta with upstream fixtures preserved and an explicit removal condition.
 
 Do not absorb Chromium, `bun:chromium`, CEF, Obscura or Google/browser-specific integrations (`yolo-web`); cross compilation, sysroots, toolchain packaging, Windows/MSVC implementation (`yolo-cross`); Tauri, frontend frameworks, UI plugin ecosystems or Bun UI (`yolo-ui`). A Bun-native `bun:windows` API may be a runtime contribution; cross-target compilation and the independent FFI adapter belong to `yolo-cross`. Keep OS image assembly and boot policy in `yolo-os`.
+
+## Local source and build cache
+
+`vendor/` is ignored local build state, not a tracked or shipped source directory. It currently contains two duplicate checkouts of the pinned Bun source used by recorded MSVC builds, plus xwin downloads, sysroots and Microsoft ATL VSIX payloads. Bun's own upstream source retains its MIT, WebKit/JSC and dependency notices; those files are not represented as newly authored first-party code. The Windows SDK, CRT, sysroot and ATL payloads belong to `yolo-cross` and remain subject to their vendor terms. `yolo-bun` owns the pinned disposable source-preparation flow and runtime receipts. Build receipts still reference these cache paths, so relocate the caches only after the references are updated and the build flow is requalified. Runtime and package CLI code does not import from these cache paths.
 
 ## Bun 1.4 development and release policy
 

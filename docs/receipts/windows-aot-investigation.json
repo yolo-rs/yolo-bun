@@ -1,0 +1,23 @@
+{
+  "observedAtUtc": "2026-11-04T21:03:59Z",
+  "sourceCommit": "e57d89ba63a7504957faa2ccc8f416ce2fb15453",
+  "bunSha256": "1d2835f75c6273c6a6b5633d77d250091dc0c7bf30cf3cb1db08eb9d81b6ad83",
+  "fixtureSha256": "29c31dbaccbf16334c8052f0e46ba02d5e4103f163212a899eaf8dd1b1b61b84",
+  "stackLogSha256": "0bf2c1b677d19f50826ebac572413b5e23ddad42f5c70313cecc002846e561fe",
+  "clockLogSha256": "b413fec98d20157550e031c54d24c87cfe683836d41c5f2e5bf5c93301d9fbeb",
+  "conditionDisassemblyLogSha256": "0e0f6d6b61dc24b6c50647a1bca33376582e5aaaeb3963c44382ec18de46bcb6",
+  "semaphoreDisassemblyLogSha256": "b23ad3acf101ffbeb9731981d33100bea531ffec2086b0c831c0bfa864d5e8bf",
+  "preLtoObjectSha256": "36f227c65e8eafba1803f47e9e013c9bab9c4b202bf5a9b3bbf141b3a6af9818",
+  "preLtoIrExcerptSha256": "60d9dab320a0695dc57b7293bd749bf0754252685e03b27b9512667cec247adf",
+  "webkitClockObjectSha256": "bec9ec4d0de71183be81cb751c040f67630c8b5442d876ee5d782c225d727aff",
+  "webkitClockIrExcerptSha256": "6139c75fc2191236060859f36faa3a7bf510d744cee685b5251164884a3ec7d5",
+  "alignedObjectObservedUtc": "2026-11-04T21:22:39Z",
+  "alignedObjectSha256": "2e263299fcfd0207a6efbbc6f7bfd5d6fb1182c917b61a4682b61fcb24d22239",
+  "alignedIrExcerptSha256": "a96bb19374c9efb7384dbf140b9500e2ac16fb1b7424dff83ed2bf2ac0ac2c7a",
+  "observation": "The compile process remained live without output. Two debugger samples showed the main thread in JavaScriptCore AOT compileProgram/BinarySemaphore::wait and a worker in BinarySemaphore::signal acquiring a lock. The debugger detached and the original process remained live.",
+  "disassemblyObservation": "The machine code at the sampled Condition::waitUntilUnchecked symbol calls TimeWithDynamicClockType::now and returns, without visible lock or park operations, whereas the cached header describes those operations. The sampled BinarySemaphore::waitUntil acquires its lock, calls that same address and tests the returned low byte while looping. An extracted pre-LTO IR definition from the mapped translation unit contains a comparison, conditional branches and an atomic unlock. This narrows the discrepancy to link-time selection or optimization, but does not identify its cause. The process used clang 23.1.4; upstream CI pins 23.1.1 but accepts the 23.1 range.",
+  "abiObservation": "The Bun translation unit calls the clock comparison symbol as void with an sret pointer and two operands; the extracted prebuilt WTF.lib object defines that same mangled symbol as i8 with two pointer operands. These IR signatures differ. Its debug metadata identifies Ubuntu clang 23.1.2 as producer, while the Bun translation unit was built on Windows using clang 23.1.4. IR conversion reported a target-triple override; the reason for the different return ABIs remains unverified.",
+  "typeMetadataObservation": "The prebuilt object's debug metadata marks std::partial_ordering as pass-by-value and references a compare header with MD5 078f390d0bce355bd61ff2af9be459b6. The Bun translation unit marks the type nontrivial and references MSVC 14.51.36231 compare with MD5 79d30f844773e9affab02c5975a96afc. The compare header extracted from the CI-pinned CRT 14.44.17.14 package has the same MD5 as the prebuilt header. That VSIX has SHA-256 852382a9aa73502b7849c1bcadfb603ba7175c4e8b60e6aba03c7de711d4ece5.",
+  "alignedObjectObservation": "The corresponding real Bun translation unit rebuilt with the 14.44 INCLUDE/LIB environment calls the clock comparison as i8 with two pointer operands, matching the prebuilt definition's IR signature.",
+  "limitations": "The ABI mismatch is established for these input objects, but the reason and its precise causal role in the AOT stall need verification. A debugger command failed before detach and the original compile terminated. New attempts are running separately. This is one fixture, revision and Windows build; the independent installed upstream is a different revision."
+}

@@ -1,0 +1,17 @@
+{
+  "dateUtc": "2026-11-04T21:32:34Z",
+  "bunSha256": "b306ca4529237a83bea74afa10bd9109c968db1797b2e5e7e834b3d6108c1cba",
+  "sourceSha256": {
+    "scripts/yolo.ts": "7ebc8363bcf701b4ec2658a10492bfe5975c3f6573ab076e69b3a51af2b92fcd",
+    "scripts/package-backends.ts": "e7cdb06f8ea6dae2a55a89cfe1ebc3b4b66cd23a125ac2a63f2e092ccf07c97f",
+    "scripts/package-install.ts": "8c074b7d53f22548810205658734271990ab86010a1823348a108c8b7fa49924",
+    "scripts/package-resolve.ts": "ca6648b27817be87c45d466400004a163abff5e75d655c1458833bed2c14b555",
+    "scripts/image-plan.ts": "075e8f4403de628e678e7cfac1082c713a6863b9fb21952cd4efedfb16e12995",
+    "scripts/verify-image-plan.ts": "1855bac36972df89493e281bfcb7d9044dfb0dda8b09c7554bb0f6193765ef40",
+    "scripts/native-hash.ts": "75a5c09a0979a0196cb98a4183f8b1b638a33b4da961117ed8d67e02b913e2c3"
+  },
+  "command": "bun compile scripts/yolo.ts --outfile artifacts/yolo-pkg-aot.exe",
+  "artifactSha256": "f94f388eae61354f9297b39afdda61c1cd59bf8cb8b07a18e4639ca5278904a8",
+  "smoke": "The executable printed a plan for pkg install bun cowsay@1.6.0 and exited 0; no package installation was requested.",
+  "limitations": "One CLI planning path only; other commands, native backend execution and release distribution are not qualified."
+}

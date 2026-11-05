@@ -6,9 +6,9 @@ Provide a Bun-hosted CLI for searching the YOLO OS package catalog, resolving a 
 
 The image build should consume a locked plan and pinned artifacts. The current CLI provides early native-tool adapters and assembles plans from already resolved artifacts; backend resolution and image integration remain incomplete. `yolo-os` remains responsible for package selection in an image, filesystem layout, image construction, kernel/initramfs choices and boot qualification.
 
-`bun run packages:image-plan <profile.json>` now assembles a deterministic plan from artifacts that have already been resolved: each entry supplies an ID, backend, fixed version, HTTPS URL and SHA-256. The plan sorts entries and includes a digest of its canonical JSON. It does not download artifacts, verify their bytes or signatures, resolve dependencies, or establish backend compatibility; those steps remain necessary before an image build.
+`bun run yolo pkg image-plan <profile.json>` validates a schema-version-2 target profile and assembles a deterministic plan from artifacts that have already been resolved. Each entry carries a stable artifact ID, native package ID, backend, source ID, fixed version, HTTPS artifact URL and SHA-256. The profile declares a structured OS/architecture/distribution target and source records (`id`, owning `backend`, source `kind`, and native `ref`). Each artifact must reference a declared source owned by its own backend. The plan sorts sources and artifacts and includes a digest of its canonical JSON. It does not download artifacts, verify their bytes or signatures, resolve dependencies, or establish backend compatibility.
 
-`bun run packages:verify-image-plan <plan.json> <files.json>` checks the plan digest and hashes local files. The files JSON maps artifact IDs to local paths, for example `{ "bun": "/cache/bun.tar.gz" }`. The command emits a receipt and exits nonzero on a mismatch. It verifies bytes against the plan, not repository signatures or the authenticity of the plan itself.
+`bun run yolo pkg verify-image-plan <plan.json> <files.json>` checks the plan digest, rejects unknown plan/artifact fields and non-canonical artifact order, then hashes local files using Bun's streaming `Bun.CryptoHasher` API. The files JSON must map exactly the plan's artifact IDs to local paths, for example `{ "bun": "/cache/bun.tar.gz" }`. The command emits a receipt and exits nonzero on a mismatch. It verifies bytes against the plan, not repository signatures or the authenticity of the plan itself.
 
 ## Backend map
 
@@ -16,7 +16,7 @@ The image build should consume a locked plan and pinned artifacts. The current C
 | --------------------------------------- | ------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
 | Bun `install` / npm-compatible registry | YOLO JS/TS source workspaces and Bun-native applications.                                         | Bun lockfile, npm registry metadata, package lifecycle policy and integrity hashes.                                                             |
 | Flatpak / Flathub                       | Sandboxed desktop applications available to the OS.                                               | Flatpak remotes, refs, OSTree commits, app metadata and Flatpak permission model. Package/update/install operations use the native Flatpak CLI. |
-| F-Droid                                 | Android build/repository workflows if YOLO ships an Android profile or companion app.             | `fdroidserver` metadata, reproducible build model, signing keys and repository indexes. It is not a Linux desktop/general OS package backend.   |
+| F-Droid                                 | Android app search and lifecycle on a connected Android device.                                   | `fdroidcl` owns configured repositories, its local index, downloads and ADB operations. It is not a Linux desktop/general OS package backend.   |
 | WinGet                                  | Windows application installation and Windows developer profile integration.                       | WinGet manifests, package source policy, installer hashes, agreements and native client behavior.                                               |
 | uv                                      | Python project environments and Python CLI/developer tools used by build or operations workflows. | `pyproject.toml`, `uv.lock`, indexes, hashes and isolated environments.                                                                         |
 | Cargo / rustup                          | Rust crates and Rust toolchains used by developers and source builds.                             | `Cargo.lock`, Cargo sources/configuration, rustup toolchain channels and checksums. Cargo is not the system package transaction engine.         |
@@ -28,7 +28,66 @@ Flatpak CLI and Flathub are related but different: `flatpak` is the native clien
 
 ## Current adapter state
 
-The current `packages:install` script prints native commands and runs them only when `--execute` is explicitly supplied. Its implemented backends are Bun, uv, Cargo, Flatpak, WinGet, pacman and vcpkg. Execution invokes an executable with an argument array, without a shell; it can still change the selected user environment or host. The CLI does not yet make a staging-root image transaction or lock package resolution. F-Droid is discovery-only repository tooling and has no install backend.
+The unified `yolo pkg` CLI provides `manage` for native search, installed-list,
+upgrade and remove operations where supported:
+
+| Backend | Search                                                 | Installed list                   | Upgrade                                   | Remove                           | Scope and limits                                                 |
+| ------- | ------------------------------------------------------ | -------------------------------- | ----------------------------------------- | -------------------------------- | ---------------------------------------------------------------- |
+| Bun     | Unsupported: no native package registry search command | Global tools                     | One or all global tools                   | One global tool                  | Does not change a project manifest or lockfile.                  |
+| Flatpak | Configured remotes                                     | User-installed apps and runtimes | One or all user apps/runtimes             | One user app/runtime             | Uses `--user`; remote must already exist.                        |
+| WinGet  | `winget` source                                        | Installed Windows apps           | One or all upgradeable apps from `winget` | One exact ID from `winget`       | Installer can request machine scope/elevation.                   |
+| uv      | Unsupported: no native tool search command             | Installed uv tools               | One or all uv tools                       | One uv tool                      | Does not update a project's `uv.lock`.                           |
+| Cargo   | Crates.io                                              | Cargo-installed binary crates    | Reinstall one binary crate with `--force` | One Cargo-installed binary crate | No bulk upgrade mapping.                                         |
+| pacman  | Configured sync databases                              | Installed system packages        | System-wide `-Syu` only                   | One package with `-R`            | Upgrade affects the whole system; requires system privileges.    |
+| vcpkg   | Configured registries                                  | Classic-mode installed tree      | All outdated Classic packages             | One Classic-mode port            | Upgrade has no rollback; remove is unsupported in Manifest mode. |
+
+Syntax is `yolo pkg manage <backend> <search|list|installed|upgrade|remove>
+[query-or-package] [--execute]`. Search/list run their read-only native command
+directly. Upgrade/remove print a native plan and require `--execute`. All
+execution uses an argument array without a shell. Package validation rejects
+option-looking IDs and unsafe values. Bun and uv do not gain a synthetic search
+API; use their native package metadata workflows instead. For F-Droid, use the
+separate `yolo pkg fdroid` commands; they remain plan-only unless `--execute`
+is supplied.
+
+Install-plan mappings exist for Bun, uv, Cargo, Flatpak, WinGet, pacman, vcpkg
+and F-Droid through `fdroidcl`. Only Bun and vcpkg expose dependency dry-run
+resolution. The F-Droid adapter targets a connected ADB device, not the host;
+it does not implement an APK downloader, signature verifier, repository
+manager, or rollback layer. `fdroidcl` documents that its index verification
+relies on HTTPS rather than JAR signatures, so the adapter does not claim the
+official F-Droid Android client's signature guarantees.
+
+`yolo pkg backends` is discovery-only: it probes executable names/versions and
+reads `/etc/os-release` on Linux to report the host distribution family. Arch
+and CachyOS map to the pacman profile. Omarchy is detected from its
+`omarchy-pkg-add` or `omarchy-pkg-drop` helper because its current `/etc/os-release`
+identifies as Arch. The profile label does not choose repositories or ISA
+tiers. It does not inspect configured sources, repository metadata, permissions,
+signatures, connected devices or installability.
+
+The same command emits a stable `sourceCatalog` for profile authors. IDs such
+as `flatpak-flathub`, `cargo-crates-io`, `vcpkg-registry` and
+`pacman-configured` identify which native authority a profile intends to use;
+each entry has `checked: false` because the catalog is descriptive and does not
+probe configuration, trust or reachability. Use these IDs in image-profile
+source records while keeping each ecosystem's native lock, refs, signatures and
+repository configuration authoritative. `fdroid-configured` is explicitly
+scoped to a connected Android device and must not be treated as a host image
+repository.
+
+The pacman adapter is not a complete Omarchy host integration. Omarchy provides
+its own package helpers and update lifecycle; a raw `pacman -Syu` bypasses the
+Omarchy update flow. Use `omarchy update` for an Omarchy host update and its
+package add/drop helpers for host package changes. The current `yolo pkg manage
+pacman` adapter is intended for Arch-family package operations where direct
+pacman use is appropriate, including controlled image/build contexts. It does
+not claim to preserve Omarchy snapshots, migrations, channel configuration or
+other update hooks.
+
+The schema records source ownership; it does not configure native repositories. A CachyOS or Omarchy profile names its distribution/channel and references repository IDs owned by `pacman`. CachyOS ISA-tier repository selection must be tied to a qualified target CPU; `cpuTier` is descriptive and is not hardware detection. Flathub, F-Droid repositories, WinGet sources, Cargo/uv registries and vcpkg registries remain configured by their native tools. A profile source reference does not prove that a source is configured or trusted.
+
+The F-Droid CLI is optional and is never installed by YOLO. Install and configure `fdroidcl` and ADB using the platform's normal trusted process. `yolo pkg backends` only probes whether `fdroidcl` is on `PATH`; it does not check connected devices, repositories, signatures or installability.
 
 ## Catalog and plan format
 
@@ -45,14 +104,27 @@ The YOLO catalog records only the adapter-level information needed to choose a b
 
 Do not flatten different lockfiles or signing systems into invented universal fields. Keep source records and backend-native lock files alongside a generated plan; the plan links to their hashes. A plan must be deterministic for pinned inputs and reject floating refs in release/image mode.
 
+Image profile schema v2 requires:
+
+| Field         | Contents                                                                                                                                        |
+| ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| `target`      | `os`, `arch`, and optional `distribution`, `release`, `channel`, and descriptive `cpuTier`. Supported OS values are Linux, Windows and Android. |
+| `sources[]`   | Stable `id`, owning `backend`, source `kind`, and a native `ref` such as a configured repository or registry identity.                          |
+| `artifacts[]` | Stable artifact `id`, exact native `package` ID, `backend`, source ID, pinned `version`, HTTPS artifact URL, and SHA-256.                       |
+
+Each artifact's backend must match its source record's backend. For example, a
+CachyOS profile lists pacman repositories as pacman sources, and a Flatpak app
+references a Flatpak remote. The schema preserves these declarations in the
+plan digest; it does not query or configure the repository.
+
 ## Operations
 
-1. `search`: search the local source-linked catalog; optionally query a backend only when the user asks for freshness.
-2. `resolve`: delegate ecosystem-specific resolution to the native backend and emit a reviewable locked plan.
-3. `fetch`: download through the native manager or cache its verified artifact; record checksums and provenance.
-4. `install`: operate inside a selected environment/root and let the backend perform its transaction. Host modifications require explicit CLI targeting; image builds use a staging root.
-5. `image`: hand the locked package set to `yolo-os`; never build or boot an OS implicitly from an interactive package command.
-6. `verify`: validate hashes, signatures and plan consistency; report the evidence and backend version.
+The current CLI implements install planning/execution, selected native dry runs,
+F-Droid lifecycle forwarding, image-plan assembly, and local file hash checks.
+It does not yet implement a local package catalog, general search, multi-backend
+dependency solving, artifact fetching, image-root installation, or signature
+verification. Those are planned integration work; the schema declarations are
+not runtime source configuration.
 
 The adapter contract must make dry-run/plan output available, propagate failures, and never reinterpret a failed backend call as success. Add rollback only where the backend provides a meaningful transaction/snapshot model; do not promise cross-backend atomicity.
 
@@ -75,5 +147,6 @@ The adapter contract must make dry-run/plan output available, propagate failures
 - [Cargo](https://doc.rust-lang.org/cargo/)
 - [vcpkg](https://github.com/microsoft/vcpkg)
 - [pacman](https://gitlab.archlinux.org/pacman/pacman)
-- [Omarchy](https://github.com/basecamp/omarchy)
+- [Omarchy](https://github.com/omacom/omarchy)
 - [CachyOS packages](https://github.com/CachyOS)
+- Native lifecycle command references: [Bun update](https://bun.sh/docs/pm/cli/update), [Bun remove](https://bun.sh/docs/pm/cli/remove), [Bun global package listing](https://bun.sh/docs/pm/cli/pm), [Flatpak CLI](https://docs.flatpak.org/en/latest/using-flatpak.html), [WinGet](https://learn.microsoft.com/en-us/windows/package-manager/winget/), [uv tools](https://docs.astral.sh/uv/guides/tools/), [Cargo install](https://doc.rust-lang.org/cargo/commands/cargo-install.html), [pacman](https://man.archlinux.org/man/pacman.8.en), [Omarchy package helpers and updates](https://github.com/omacom/omarchy/blob/quattro/AGENTS.md), and [vcpkg commands](https://learn.microsoft.com/en-us/vcpkg/commands/help).

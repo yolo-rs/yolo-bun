@@ -1,0 +1,13 @@
+{
+  "dateUtc": "2026-11-04T21:13:00Z",
+  "fixtureSha256": "cd6f08b9437cb7e48b759714827840e8187c3f4ac9a760f37df43701d6272258",
+  "compiler": "Windows clang++ 23.1.4",
+  "compilerSha256": "cfc98ffdc58255a57fbe916f2fe29d363f01a255b83908ee226feeb94a189a9a",
+  "msvc1444CompareSha256": "8f185f3771075b2dd0c41c13f4c12ff4995566c1f7240a2881d810ced72679ae",
+  "msvc1444IrSha256": "e49ca5f4dae01866fafadd00e8e2434c2af2d7a65ea49114657d1648d488f2be",
+  "msvc1451IrSha256": "0ab9f946345fcf440fe6a0d0b38106e8aeee92730fdcec151b19a72ba9c4ab2a",
+  "msvc1444BuildEnvironmentIrSha256": "6a15d7b9a7d163323813c1ee039830a4b942c522762ac02146cac3c716947b53",
+  "buildEnvironmentObservedUtc": "2026-11-04T21:16:08Z",
+  "observation": "The same compiler and fixture emitted an i8 return with the 14.44 header and an sret pointer with the 14.51 header, reproducing the differing object signatures. The exact INCLUDE and LIB environment selected for the independent build also emits the i8 return for the fixture.",
+  "limitations": "Compiler IR experiment only; a complete Bun rebuild and AOT execution with aligned toolchain remain required."
+}

@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "dateUtc": "2026-11-04T21:46:30Z",
+  "scope": "AOT compilation and read-only package-plan smoke for the current yolo package-manager CLI; not a Bun runtime parity or performance benchmark.",
+  "builder": {
+    "path": "vendor/bun-e57d89ba63a7-msvc1444/build/release/bun.exe",
+    "revision": "1.4.4-canary.1+e57d89ba6",
+    "sha256": "B306CA4529237A83BEA74AFA10BD9109C968DB1797B2E5E7E834B3D6108C1CBA"
+  },
+  "sourceLockCommit": "e57d89ba63a7504957faa2ccc8f416ce2fb15453",
+  "command": "bun build --compile --aot --outfile artifacts/yolo-pkg-manage-aot-20261104.exe scripts/yolo.ts",
+  "result": {
+    "exitCode": 0,
+    "bundleModules": 7,
+    "compileSeconds": 14.642,
+    "buildId": "68d90691a1ebe8d4599caab51307b7a7"
+  },
+  "aotStaticAnalysis": {
+    "command": "bun check --aot C:/src/yolo-bun/scripts/yolo.ts",
+    "exitCode": 0,
+    "result": "No type errors in 7 files"
+  },
+  "trimAttempt": {
+    "command": "bun build --compile --aot --trim --outfile artifacts/yolo-pkg-manage-aot-20261104.exe scripts/yolo.ts",
+    "exitCode": 1,
+    "error": "this build of Bun doesn't support --trim (NoTrimTable)",
+    "note": "Retried without --trim; the produced executable is AOT but not trimmed."
+  },
+  "artifact": {
+    "path": "artifacts/yolo-pkg-manage-aot-20261104.exe",
+    "bytes": 152808448,
+    "sha256": "4BB290586699DA70DB6601075CE25D4913AB3031258DE98F9BD22455F2969229"
+  },
+  "inputSha256": {
+    "scripts/yolo.ts": "7EBC8363BCF701B4EC2658A10492BFE5975C3F6573AB076E69B3A51AF2B92FCD",
+    "scripts/package-install.ts": "8C074B7D53F22548810205658734271990AB86010A1823348A108C8B7FA49924",
+    "scripts/package-backends.ts": "E7CDB06F8EA6DAE2A55A89CFE1EBC3B4B66CD23A125AC2A63F2E092CCF07C97F",
+    "scripts/package-resolve.ts": "CA6648B27817BE87C45D466400004A163ABFF5E75D655C1458833BED2C14B555",
+    "scripts/image-plan.ts": "075E8F4403DE628E678E7CFAC1082C713A6863B9FB21952CD4EFEDFB16E12995",
+    "scripts/verify-image-plan.ts": "1855BAC36972DF89493E281BFCB7D9044DFB0DDA8B09C7554BB0F6193765EF40",
+    "package.json": "4CFBAAAA86BAA9DB470E8410CB9460465479A6B454C6A66A93C0D91DDB6AE278",
+    "bun.lock": "C4F8E8BC3FAB43960063482E331AFD3EE96B6949ED9135CE77FEE831AC3C7E14"
+  },
+  "smoke": {
+    "command": "artifacts/yolo-pkg-manage-aot-20261104.exe pkg manage pacman upgrade",
+    "exitCode": 0,
+    "stdout": {
+      "action": "plan",
+      "backend": "pacman",
+      "executable": "pacman",
+      "args": ["-Syu"],
+      "scope": "System-wide pacman upgrade"
+    },
+    "mutationExecuted": false
+  },
+  "limitations": [
+    "This is an application AOT build, not a new Bun runtime build.",
+    "The builder's missing trim table prevents --trim; executable size is not minimized.",
+    "The smoke validates plan generation only; no package manager command was executed.",
+    "No runtime performance or matched upstream/candidate parity is inferred."
+  ]
+}

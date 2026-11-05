@@ -1,0 +1,21 @@
+{
+  "dateUtc": "2026-11-04T21:00:32Z",
+  "sourceCommit": "e57d89ba63a7504957faa2ccc8f416ce2fb15453",
+  "patchSha256": "14b6eb55ef423c81175a55822c9420030ace0703c061422b8d9f355ca9e6410e",
+  "patchedAotSourceSha256": "eaea54d86b01559ec77702f33b216c63132e7ce8234d7636eaadc3c61abe998b",
+  "patchedCodegenSourceSha256": "57fa6bcacc7e05b1d461385b5f1e9e2c7af7571040f28b4628832c1e2909d0d7",
+  "target": "windows-x64 baseline release, ThinLTO",
+  "rustToolchain": "nightly-2026-09-15-x86_64-pc-windows-msvc",
+  "msvcToolset": "14.51.36231",
+  "artifact": "vendor/bun-e57d89ba63a7/build/release/bun.exe",
+  "artifactSha256": "1d2835f75c6273c6a6b5633d77d250091dc0c7bf30cf3cb1db08eb9d81b6ad83",
+  "artifactBytes": 149726720,
+  "revision": "1.4.4-canary.1+e57d89ba6",
+  "finalIncrementalLogSha256": "a86d5e303a4ad7748eb71e113ab1f5b99012d3c3a3f6d4e7a3d7f3b40696ff62",
+  "checks": [
+    "build exited 0",
+    "upstream binary revision, export, import, hardening and duplicate-symbol checks passed",
+    "bun -e printed yolo-bun-ok"
+  ],
+  "limitations": "Incremental build after source-path and local ATL recovery; no comprehensive runtime tests, same-revision upstream comparison or performance parity claim."
+}

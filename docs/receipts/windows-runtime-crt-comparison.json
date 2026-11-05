@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "comparisonLimitations": "Both binaries report the same source revision, but are separate local builds using different CRT/SDK versions and paths. The baseline failed the AOT smoke test. This narrow 15-sample run does not isolate CRT effects or prove upstream performance parity.",
+  "generatedAt": "2026-11-04T21:32:05.397Z",
+  "runnerSha256": "5c6d41fd251264dc485153848cc98a849ce3ad07822418e42482d3ba153e3beb",
+  "hashModuleSha256": "75a5c09a0979a0196cb98a4183f8b1b638a33b4da961117ed8d67e02b913e2c3",
+  "host": {
+    "platform": "win32",
+    "arch": "x64",
+    "release": "10.0.28120",
+    "cpu": "13th Gen Intel(R) Core(TM) i7-13700F"
+  },
+  "binaries": {
+    "baseline": {
+      "path": "C:\\src\\yolo-bun\\vendor\\bun-e57d89ba63a7\\build\\release\\bun.exe",
+      "sha256": "1d2835f75c6273c6a6b5633d77d250091dc0c7bf30cf3cb1db08eb9d81b6ad83",
+      "version": "1.4.4",
+      "revision": "1.4.4-canary.1+e57d89ba6"
+    },
+    "candidate": {
+      "path": "C:\\src\\yolo-bun\\vendor\\bun-e57d89ba63a7-msvc1444\\build\\release\\bun.exe",
+      "sha256": "b306ca4529237a83bea74afa10bd9109c968db1797b2e5e7e834b3d6108c1cba",
+      "version": "1.4.4",
+      "revision": "1.4.4-canary.1+e57d89ba6"
+    }
+  },
+  "comparison": {
+    "identicalBinaryHashes": false,
+    "reportedRevisionsMatch": true
+  },
+  "runs": 15,
+  "workloads": {
+    "startup": {
+      "codeSha256": "a6939afb029d17dc6a291291e9d26b97ce9508326c39bd336a4f8af4eedd527c",
+      "samples": {
+        "baseline": [
+          25.0932, 27.088, 28.6036, 23.5221, 24.6277, 25.1127, 25.8634, 34.8648,
+          26.7826, 24.8224, 26.5719, 25.8214, 24.443, 22.5401, 21.1918
+        ],
+        "candidate": [
+          27.7807, 25.7335, 28.4923, 24.7952, 24.1187, 26.7336, 28.4713,
+          32.9582, 29.6482, 29.1854, 30.8939, 28.7234, 24.1189, 24.5266, 21.0174
+        ]
+      },
+      "baselineMedianMs": 25.1127,
+      "candidateMedianMs": 27.7807,
+      "candidateToBaseline": 1.106241065277728
+    },
+    "compute": {
+      "codeSha256": "4de7217c62c229c414841faaf196f402d54b4e0dca22e6afad04efafd63ce691",
+      "samples": {
+        "baseline": [
+          31.7849, 34.5549, 33.8829, 31.7135, 33.6121, 38.0434, 43.9555,
+          33.7917, 33.7448, 31.9222, 31.7054, 34.3371, 33.3297, 35.4121, 34.6704
+        ],
+        "candidate": [
+          30.6735, 34.0843, 37.1141, 33.5154, 35.026, 34.8204, 40.0784, 33.5863,
+          32.1243, 32.9443, 32.0477, 34.1855, 38.2602, 35.7919, 34.2581
+        ]
+      },
+      "baselineMedianMs": 33.7917,
+      "candidateMedianMs": 34.1855,
+      "candidateToBaseline": 1.0116537492934654
+    },
+    "http_loopback": {
+      "codeSha256": "9c8aa61ea657f5737a4c12784d7b067c1243321be271e03b962810678a3916a1",
+      "samples": {
+        "baseline": [
+          91.5738, 31.5442, 31.8156, 33.7069, 36.4178, 47.3678, 37.1883,
+          40.4361, 37.9188, 38.7987, 37.1721, 36.624, 39.8245, 36.163, 39.6069
+        ],
+        "candidate": [
+          30.1789, 31.3203, 34.0975, 33.6961, 39.3004, 36.0604, 40.9895,
+          42.0581, 45.3559, 37.6699, 37.8081, 45.0858, 39.5214, 38.2633, 36.4789
+        ]
+      },
+      "baselineMedianMs": 37.1883,
+      "candidateMedianMs": 37.8081,
+      "candidateToBaseline": 1.0166665322157777
+    }
+  },
+  "scope": "Process startup, JS compute and 50 sequential loopback HTTP requests including startup; no sustained throughput or overall runtime parity is implied."
+}

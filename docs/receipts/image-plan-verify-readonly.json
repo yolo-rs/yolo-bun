@@ -1,0 +1,11 @@
+{
+  "dateUtc": "2026-11-04T20:55:13Z",
+  "testSha256": "194524beb886ecd5efdfb6ede460c01e256f2a3bf809ac4c3ce973269b319c6f",
+  "verifierSha256": "d073ee3deaf4ff8c13ff4ea4c553450ba0b4ca21a2d5350378ea258750783303",
+  "hashModuleAndInputArtifactSha256": "75a5c09a0979a0196cb98a4183f8b1b638a33b4da961117ed8d67e02b913e2c3",
+  "planSourceSha256": "a348b38e93b0a2d60d450e7914fc911572faab603a1de5530e8938aed8d07d9c",
+  "bunSha256": "f424e283c15b8b19f59f054abcba462afab46fdcce44721b0f1167eaa67f2864",
+  "command": "bun test scripts/verify-image-plan-readonly.test.ts",
+  "result": "1 passed, 0 failed, 4 assertions",
+  "scope": "Actual local file hashing, mismatch and missing-file handling; no source authenticity or signature verification."
+}

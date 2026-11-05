@@ -1,0 +1,10 @@
+{
+  "dateUtc": "2026-11-04T21:02:45Z",
+  "sourceCommit": "e57d89ba63a7504957faa2ccc8f416ce2fb15453",
+  "bunSha256": "1d2835f75c6273c6a6b5633d77d250091dc0c7bf30cf3cb1db08eb9d81b6ad83",
+  "fixtureSha256": "29c31dbaccbf16334c8052f0e46ba02d5e4103f163212a899eaf8dd1b1b61b84",
+  "command": "bun build --compile --bytecode scripts/fixtures/aot-smoke.ts --outfile artifacts/yolo-bytecode-smoke.exe",
+  "artifactSha256": "823490326efc5f8b4facb682a8bbeea1915b7d562c26231b10d11c9a9ad3da91",
+  "output": "yolo-aot:4950",
+  "limitations": "One Windows bytecode fixture only; not an AOT compiler qualification."
+}

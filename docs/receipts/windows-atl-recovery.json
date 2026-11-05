@@ -1,0 +1,12 @@
+{
+  "dateUtc": "2026-11-04",
+  "upstreamCommit": "e57d89ba63a7504957faa2ccc8f416ce2fb15453",
+  "msvcVersion": "14.51.36231",
+  "atlPackage": "Microsoft.VC.14.51.ATL.Headers.base.vsix",
+  "atlPackageSha256": "df87bd5da5bb3d101ca8238cc4d5f90d648336202c41f2ab80b5549b7ac495d1",
+  "atlLibraryPackage": "Microsoft.VC.14.51.ATL.X64.base.vsix",
+  "atlLibraryPackageSha256": "6bf1c9950675fe9e5f46d861663ae19abcd18ce8e28602675194c32550ab3b04",
+  "source": "Microsoft Visual Studio 18 release manifest, retrieved by xwin",
+  "observation": "The incremental build compiled rescle.cpp using the local ATL headers, then failed to link because atls.lib was missing. The matching x64 ATL library was extracted and the build restarted.",
+  "limitations": "This receipt captures the recovery step. A subsequent build completed; see windows-bun-release-build.json. Runtime performance remains unverified."
+}

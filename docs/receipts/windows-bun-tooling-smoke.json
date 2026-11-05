@@ -1,0 +1,13 @@
+{
+  "dateUtc": "2026-11-04T21:01:58Z",
+  "sourceCommit": "e57d89ba63a7504957faa2ccc8f416ce2fb15453",
+  "bunSha256": "1d2835f75c6273c6a6b5633d77d250091dc0c7bf30cf3cb1db08eb9d81b6ad83",
+  "fixtureSha256": "29c31dbaccbf16334c8052f0e46ba02d5e4103f163212a899eaf8dd1b1b61b84",
+  "commands": [
+    "bun check --no-script scripts/fixtures/aot-smoke.ts",
+    "bun lint --no-script scripts/fixtures/aot-smoke.ts",
+    "bun fmt --no-script --check scripts/fixtures/aot-smoke.ts"
+  ],
+  "result": "All three commands passed for the single fixture using the newly built executable.",
+  "limitations": "This checks one simple file; it does not qualify large projects or AOT compilation."
+}

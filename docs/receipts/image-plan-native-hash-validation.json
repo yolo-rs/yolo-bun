@@ -1,0 +1,10 @@
+{
+  "dateUtc": "2026-11-04T20:54:27Z",
+  "sourceSha256": "a348b38e93b0a2d60d450e7914fc911572faab603a1de5530e8938aed8d07d9c",
+  "hashModuleSha256": "75a5c09a0979a0196cb98a4183f8b1b638a33b4da961117ed8d67e02b913e2c3",
+  "testSha256": "b8c14d0b00dd73c59dd0fd5adf49e8868aa30232c9f77245cbf5c170b61212f3",
+  "bunSha256": "f424e283c15b8b19f59f054abcba462afab46fdcce44721b0f1167eaa67f2864",
+  "command": "bun test scripts/image-plan.test.ts",
+  "result": "3 passed, 0 failed, 9 assertions",
+  "scope": "Current Bun-native hash implementation and image-plan validation; no artifact download, signatures, image build or boot."
+}

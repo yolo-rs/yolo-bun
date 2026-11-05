@@ -1,0 +1,9 @@
+{
+  "dateUtc": "2026-11-04T20:50:40Z",
+  "sourceSha256": "8991a435fb4894e7e38f84bf42055a1ae8336cc5a9593b0e90d5eea9d6c73267",
+  "testSha256": "b8c14d0b00dd73c59dd0fd5adf49e8868aa30232c9f77245cbf5c170b61212f3",
+  "bunSha256": "f424e283c15b8b19f59f054abcba462afab46fdcce44721b0f1167eaa67f2864",
+  "command": "bun test scripts/image-plan.test.ts",
+  "result": "3 passed, 0 failed, 9 assertions",
+  "scope": "Determinism and input validation only; no artifact download, signature verification, image build or boot."
+}
