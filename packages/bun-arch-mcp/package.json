@@ -1,0 +1,21 @@
+{
+  "name": "@aphrody/bun-arch-mcp",
+  "version": "1.4.7",
+  "description": "Arch Linux, Omarchy and Hyprland MCP server: offline Arch Wiki and Omarchy manual (bun:sqlite FTS5), AUR RPC, official packages, pacman/expac, systemd/journal, hyprctl and PKGBUILD lint.",
+  "license": "MIT",
+  "bin": {
+    "bun-arch-docs": "./src/docs.ts",
+    "bun-arch-mcp": "./src/mcp.ts"
+  },
+  "type": "module",
+  "exports": {
+    ".": "./src/mcp.ts",
+    "./docs": "./src/docs.ts"
+  },
+  "scripts": {
+    "typecheck": "bun check -p tsconfig.json --noEmit"
+  },
+  "engines": {
+    "bun": "1.4.4-canary.20261028.1"
+  }
+}

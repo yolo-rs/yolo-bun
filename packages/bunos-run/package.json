@@ -1,0 +1,14 @@
+{
+  "version": "1.0.0",
+  "//": "Unnamed on purpose: not a root workspace member, like packages/wasmos.",
+  "description": "bunos: the Bun OS front door (fleet, promote, api, services, sync, auto, image built-ins; bunos-<name> plugins from PATH) and bunos run/detect for ELF, apk, exe, wasm, deb and scripts.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "private": true,
+  "bin": {
+    "bunos": "./src/bunos.ts"
+  },
+  "scripts": {
+    "test": "bun test"
+  }
+}
