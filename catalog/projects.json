@@ -65,6 +65,38 @@
       "status": "planned",
       "license": "MPL-2.0",
       "notes": "rdinit/ELF path exists; Bun compatibility is unverified and syscall coverage is partial."
+    },
+    {
+      "id": "yolo-fullstack",
+      "name": "@yolo-rs/fullstack",
+      "repository": "https://github.com/yolo-rs/yolo-ui",
+      "revision": "875dc8bd1",
+      "path": "packages/yolo-fullstack",
+      "kind": "web-framework",
+      "status": "owned-by-yolo-ui",
+      "notes": "Bun-native Next.js replacement (App Router RSC on Bun.build + Bun.serve, next.config, Turbopack config mapping, next/font, next/image CDN, TanStack, Dioxus bridge). Frontend frameworks live in yolo-ui, not here."
+    },
+    {
+      "id": "yolo-stack",
+      "name": "yolo-stack",
+      "repository": "C:/src/yolo-stack",
+      "revision": "0c485dd5ff3771adae4225a5d799e166da83592a",
+      "kind": "framework-monorepo",
+      "status": "scaffold",
+      "notes": "ADR 0003 (2026-11-05, docs/decisions/0003-verdict-leptos-dioxus-tanstack.md): Leptos 0.8 SSR + islands on Axum for the SEO site, Dioxus 0.8 for native, @yolo-rs/fullstack as the Next migration bridge only, TanStack reduced to Query/Table/Virtual. Supersedes docs/DECISION.md."
+    },
+    {
+      "id": "yolo-next",
+      "name": "yolo-next (Next.js fork)",
+      "repository": "C:/src/yolo-next",
+      "upstream": "https://github.com/vercel/next.js",
+      "upstreamRevision": "b27317dda6173586a5fb9c979f7159fa12cfabac",
+      "branch": "yolo-bun-rust",
+      "revision": "17a1c0743ac6671757e8f36b061f099f1eb1e40a",
+      "kind": "framework-fork",
+      "status": "transitional",
+      "license": "MIT",
+      "notes": "Local fork of vercel/next.js 16.5.0-canary.40 patched for Bun 1.4.4 (package manager, scripts, bun test, bundler: 'bun' on Bun.build, AOT compile), Rust fat-LTO profiles (release-yolo, release-wasm), wasm32 build script and a native WebGPU crate (wgpu 30, napi cdylib). Receipts in docs/yolo/receipts. A real next build with bundler: 'bun' and AOT of the next CLI are not proven; AOT covers a smoke entry only. Transitional layer per yolo-stack ADR 0003; no GitHub fork published."
     }
   ]
 }

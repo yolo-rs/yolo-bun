@@ -66,6 +66,16 @@ identifies as Arch. The profile label does not choose repositories or ISA
 tiers. It does not inspect configured sources, repository metadata, permissions,
 signatures, connected devices or installability.
 
+The same command emits a stable `sourceCatalog` for profile authors. IDs such
+as `flatpak-flathub`, `cargo-crates-io`, `vcpkg-registry` and
+`pacman-configured` identify which native authority a profile intends to use;
+each entry has `checked: false` because the catalog is descriptive and does not
+probe configuration, trust or reachability. Use these IDs in image-profile
+source records while keeping each ecosystem's native lock, refs, signatures and
+repository configuration authoritative. `fdroid-configured` is explicitly
+scoped to a connected Android device and must not be treated as a host image
+repository.
+
 The pacman adapter is not a complete Omarchy host integration. Omarchy provides
 its own package helpers and update lifecycle; a raw `pacman -Syu` bypasses the
 Omarchy update flow. Use `omarchy update` for an Omarchy host update and its

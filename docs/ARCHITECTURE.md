@@ -27,6 +27,10 @@ Keep changes tied to Bun's runtime/toolkit structure: runtime APIs and modules, 
 
 Do not absorb Chromium, `bun:chromium`, CEF, Obscura or Google/browser-specific integrations (`yolo-web`); cross compilation, sysroots, toolchain packaging, Windows/MSVC implementation (`yolo-cross`); Tauri, frontend frameworks, UI plugin ecosystems or Bun UI (`yolo-ui`). A Bun-native `bun:windows` API may be a runtime contribution; cross-target compilation and the independent FFI adapter belong to `yolo-cross`. Keep OS image assembly and boot policy in `yolo-os`.
 
+## Local source and build cache
+
+`vendor/` is ignored local build state, not a tracked or shipped source directory. It currently contains two duplicate checkouts of the pinned Bun source used by recorded MSVC builds, plus xwin downloads, sysroots and Microsoft ATL VSIX payloads. Bun's own upstream source retains its MIT, WebKit/JSC and dependency notices; those files are not represented as newly authored first-party code. The Windows SDK, CRT, sysroot and ATL payloads belong to `yolo-cross` and remain subject to their vendor terms. `yolo-bun` owns the pinned disposable source-preparation flow and runtime receipts. Build receipts still reference these cache paths, so relocate the caches only after the references are updated and the build flow is requalified. Runtime and package CLI code does not import from these cache paths.
+
 ## Bun 1.4 development and release policy
 
 - Run Bun's `bun check`, `bun lint`, and `bun fmt` as the canonical JS/TS source quality commands. Preserve and use upstream Rust/C++ checks and formatting for those languages; do not replace them with a parallel toolchain.
