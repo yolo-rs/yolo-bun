@@ -1,13 +1,37 @@
 // SPDX-License-Identifier: MIT OR Apache-2.0
 // Native tool installation adapters. Each backend keeps its own package format.
 export type Backend =
-  "bun" | "uv" | "cargo" | "flatpak" | "winget" | "pacman" | "vcpkg" | "fdroid";
+  | "bun"
+  | "uv"
+  | "cargo"
+  | "flatpak"
+  | "winget"
+  | "pacman"
+  | "nix"
+  | "vcpkg"
+  | "fdroid"
+  | "play-store";
 export type InstallPlan = {
   backend: Backend;
   executable: string;
   args: string[];
   scope: string;
 };
+
+export const GOOGLEBOOK_2026_ANDROID_17_X64_PACKAGES = {
+  desktopPlay: "system-images;android-37.1;android-desktop;x86_64",
+  desktopAosp: "system-images;android-37.0;android-desktop;x86_64",
+  playstoreTablet: "system-images;android-37.0;google_apis_playstore;x86_64",
+  playServices: "extras;google;google_play_services",
+} as const;
+
+export function isPlayStorePackageId(value: string): boolean {
+  return (
+    /^(?:system-images|platforms|build-tools|cmdline-tools|extras|ndk|cmake|sources)(?:;[A-Za-z0-9._-]+)+$/.test(
+      value,
+    ) || /^[A-Za-z0-9_][A-Za-z0-9._-]*(?:\.[A-Za-z0-9._-]+)+$/.test(value)
+  );
+}
 
 export function planInstall(backend: string, packageSpec: string): InstallPlan {
   if (
@@ -17,7 +41,11 @@ export function planInstall(backend: string, packageSpec: string): InstallPlan {
       ? /^[a-z0-9][a-z0-9-]*(?:\[[a-z0-9-]+(?:,[a-z0-9-]+)*\])?(?::[a-z0-9][a-z0-9-]*)?$/.test(
           packageSpec,
         )
-      : /^[a-zA-Z0-9@/._+~^=<>!-]+$/.test(packageSpec))
+      : backend === "play-store"
+        ? isPlayStorePackageId(packageSpec)
+        : backend === "nix"
+          ? /^(?:nixpkgs#)?[A-Za-z0-9][A-Za-z0-9._+-]*$/.test(packageSpec)
+          : /^[a-zA-Z0-9@/._+~^=<>!-]+$/.test(packageSpec))
   ) {
     throw new Error(
       "Invalid package spec: use a registry package name and optional version constraint",
@@ -74,6 +102,17 @@ export function planInstall(backend: string, packageSpec: string): InstallPlan {
         args: ["-S", "--needed", packageSpec],
         scope: "Arch system installation; requires appropriate privileges",
       };
+    case "nix": {
+      const flakeRef = packageSpec.startsWith("nixpkgs#")
+        ? packageSpec
+        : `nixpkgs#${packageSpec}`;
+      return {
+        backend,
+        executable: "nix",
+        args: ["profile", "install", flakeRef],
+        scope: "Nix user profile from nixpkgs flake",
+      };
+    }
     case "vcpkg":
       return {
         backend,
@@ -91,6 +130,16 @@ export function planInstall(backend: string, packageSpec: string): InstallPlan {
         args: ["install", packageSpec],
         scope: "F-Droid app installed on the selected Android device via ADB",
       };
+    case "play-store": {
+      const channel = packageSpec.includes(";android-desktop;") ? "3" : "0";
+      return {
+        backend,
+        executable: "sdkmanager",
+        args: [`--channel=${channel}`, "--install", packageSpec],
+        scope:
+          "Android 17 x64 Google Play / GoogleBook (API 37.x, ChromiumOS, Aluminium OS) system image or SDK package",
+      };
+    }
     default:
       throw new Error(`Unsupported backend: ${backend}`);
   }
@@ -195,10 +244,14 @@ function isManagedPackageId(
       return /^[A-Za-z0-9][A-Za-z0-9._-]*$/.test(value);
     case "pacman":
       return /^[A-Za-z0-9][A-Za-z0-9@._+/-]*$/.test(value);
+    case "nix":
+      return /^(?:nixpkgs#)?[A-Za-z0-9][A-Za-z0-9._+-]*$/.test(value);
     case "vcpkg":
       return /^[a-z0-9][a-z0-9-]*(?:\[[a-z0-9-]+(?:,[a-z0-9-]+)*\])?(?::[a-z0-9][a-z0-9-]*)?$/.test(
         value,
       );
+    case "play-store":
+      return isPlayStorePackageId(value);
   }
 }
 
@@ -207,7 +260,8 @@ function packageManagerPlan(
   args: string[],
   scope: string,
 ): InstallPlan {
-  return { backend, executable: backend, args, scope };
+  const executable = backend === "play-store" ? "sdkmanager" : backend;
+  return { backend, executable, args, scope };
 }
 
 /** Map supported package lifecycle commands to native manager invocations. */
@@ -219,16 +273,24 @@ export function planManageCommand(
   if (backend === "fdroid")
     throw new Error("Use `yolo pkg fdroid` for F-Droid lifecycle commands");
   if (
-    !["bun", "uv", "cargo", "flatpak", "winget", "pacman", "vcpkg"].includes(
-      backend,
-    )
+    ![
+      "bun",
+      "uv",
+      "cargo",
+      "flatpak",
+      "winget",
+      "pacman",
+      "nix",
+      "vcpkg",
+      "play-store",
+    ].includes(backend)
   )
     throw new Error(`Unsupported package manager: ${backend}`);
   const manager = backend as Exclude<Backend, "fdroid">;
   if (operation === "installed") operation = "list";
 
   if (operation === "search") {
-    if (manager === "bun" || manager === "uv")
+    if (manager === "bun" || manager === "uv" || manager === "play-store")
       throw new Error(
         `Search is not supported for ${manager}; its native CLI has no package search command`,
       );
@@ -262,6 +324,12 @@ export function planManageCommand(
           manager,
           ["-Ss", packageSpec],
           "Configured pacman sync databases",
+        );
+      case "nix":
+        return packageManagerPlan(
+          manager,
+          ["search", "nixpkgs", packageSpec],
+          "Nixpkgs flake search",
         );
       case "vcpkg":
         return packageManagerPlan(
@@ -308,11 +376,23 @@ export function planManageCommand(
         );
       case "pacman":
         return packageManagerPlan(manager, ["-Q"], "Installed pacman database");
+      case "nix":
+        return packageManagerPlan(
+          manager,
+          ["profile", "list"],
+          "Nix user profile packages",
+        );
       case "vcpkg":
         return packageManagerPlan(
           manager,
           ["list"],
           "vcpkg classic installed tree",
+        );
+      case "play-store":
+        return packageManagerPlan(
+          manager,
+          ["--list_installed"],
+          "Installed Android 17 x64 Google Play / GoogleBook SDK packages",
         );
     }
   }
@@ -419,6 +499,27 @@ export function planManageCommand(
         ["-R", packageSpec],
         "System pacman database; removal requires system privileges",
       );
+    case "nix":
+      if (operation === "upgrade")
+        return packageManagerPlan(
+          manager,
+          [
+            "profile",
+            "upgrade",
+            ...(packageSpec
+              ? [packageSpec.replace(/^nixpkgs#/, "")]
+              : ["--all"]),
+          ],
+          packageSpec
+            ? "Selected Nix profile package"
+            : "All Nix profile packages",
+        );
+      if (!packageSpec) throw new Error("Nix remove requires a package ID");
+      return packageManagerPlan(
+        manager,
+        ["profile", "remove", packageSpec.replace(/^nixpkgs#/, "")],
+        "Nix user profile",
+      );
     case "vcpkg":
       if (operation === "upgrade") {
         if (packageSpec)
@@ -436,6 +537,25 @@ export function planManageCommand(
         manager,
         ["remove", packageSpec],
         "vcpkg classic installed tree",
+      );
+    case "play-store":
+      if (operation === "upgrade") {
+        if (packageSpec)
+          throw new Error(
+            "play-store upgrade updates all installed Android SDK packages; omit the package ID",
+          );
+        return packageManagerPlan(
+          manager,
+          ["--update"],
+          "All installed Android 17 x64 Google Play / GoogleBook SDK packages",
+        );
+      }
+      if (!packageSpec)
+        throw new Error("play-store remove requires an SDK package ID");
+      return packageManagerPlan(
+        manager,
+        ["--uninstall", packageSpec],
+        "Android 17 x64 Google Play / GoogleBook SDK root",
       );
   }
 }
@@ -466,7 +586,7 @@ if (import.meta.main) {
     args.length > 3
   ) {
     console.error(
-      "Usage: bun run packages:install <bun|uv|cargo|flatpak|winget|pacman|vcpkg|fdroid> <package> [--execute]",
+      "Usage: bun run packages:install <bun|uv|cargo|flatpak|winget|pacman|nix|vcpkg|fdroid|play-store> <package> [--execute]",
     );
     process.exit(2);
   }

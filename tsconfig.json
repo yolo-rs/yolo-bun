@@ -10,6 +10,11 @@
     "skipLibCheck": true,
     "allowImportingTsExtensions": true
   },
-  "include": ["scripts/**/*.ts", "packages/**/*.ts"],
+  "include": [
+    "scripts/**/*.ts",
+    "packages/yolo-bun-plugin/src/**/*.ts",
+    "packages/windows/src/**/*.ts",
+    "packages/windows/test/**/*.ts"
+  ],
   "exclude": ["node_modules", "upstream", "vendor", "dist", "target"]
 }

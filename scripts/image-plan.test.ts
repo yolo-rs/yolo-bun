@@ -118,3 +118,75 @@ test("rejects malformed and credential-bearing URLs and empty image plans", () =
   expect(() => makeImagePlan({ ...profile, artifacts: [] })).toThrow();
   expect(() => makeImagePlan({ ...profile, profile: " " })).toThrow();
 });
+
+test("supports GoogleBook 2026 (Android 17 x64 + ChromiumOS + Aluminium OS) play-store, fdroid and nix profiles", () => {
+  const googlebookProfile = {
+    schemaVersion: 2,
+    profile: "googlebook-2026-android17-x64",
+    target: {
+      os: "android",
+      arch: "x86_64",
+      distribution: "googlebook-aluminiumos-chromiumos",
+      release: "17",
+      channel: "canary",
+      cpuTier: "x86_64-v3",
+    },
+    sources: [
+      {
+        id: "play-store-google-sdk",
+        backend: "play-store",
+        kind: "sdk-repository",
+        ref: "https://dl.google.com/android/repository/sys-img/android-desktop/sys-img2-3.xml",
+      },
+      {
+        id: "fdroid-main",
+        backend: "fdroid",
+        kind: "repository",
+        ref: "https://f-droid.org/repo",
+      },
+      {
+        id: "nix-nixpkgs",
+        backend: "nix",
+        kind: "flake",
+        ref: "github:NixOS/nixpkgs/nixos-unstable",
+      },
+    ],
+    artifacts: [
+      {
+        id: "android-desktop-play-x64",
+        package: "system-images;android-37.1;android-desktop;x86_64",
+        backend: "play-store",
+        source: "play-store-google-sdk",
+        version: "37.1.0-r1",
+        url: "https://dl.google.com/android/repository/sys-img/android-desktop/x86_64-37.1_r01.zip",
+        sha256: "b".repeat(64),
+      },
+      {
+        id: "fdroid-client",
+        package: "org.fdroid.fdroid",
+        backend: "fdroid",
+        source: "fdroid-main",
+        version: "1.21.1",
+        url: "https://f-droid.org/repo/org.fdroid.fdroid_1021050.apk",
+        sha256: "c".repeat(64),
+      },
+      {
+        id: "nix-ripgrep",
+        package: "nixpkgs#ripgrep",
+        backend: "nix",
+        source: "nix-nixpkgs",
+        version: "14.1.1",
+        url: "https://cache.nixos.org/nar/ripgrep.nar.xz",
+        sha256: "d".repeat(64),
+      },
+    ],
+  };
+  const plan = makeImagePlan(googlebookProfile);
+  expect(plan.profile).toBe("googlebook-2026-android17-x64");
+  expect(plan.target.os).toBe("android");
+  expect(plan.artifacts.map((a) => a.backend)).toEqual([
+    "play-store",
+    "fdroid",
+    "nix",
+  ]);
+});

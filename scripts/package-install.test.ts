@@ -1,6 +1,7 @@
 import { describe, expect, test } from "bun:test";
 import {
   executePlan,
+  GOOGLEBOOK_2026_ANDROID_17_X64_PACKAGES,
   planFdroidCommand,
   planInstall,
   planManageCommand,
@@ -43,6 +44,16 @@ describe("package install adapters", () => {
       "--needed",
       "core/openssh",
     ]);
+    expect(planInstall("nix", "ripgrep").args).toEqual([
+      "profile",
+      "install",
+      "nixpkgs#ripgrep",
+    ]);
+    expect(planInstall("nix", "nixpkgs#hello").args).toEqual([
+      "profile",
+      "install",
+      "nixpkgs#hello",
+    ]);
     expect(planInstall("vcpkg", "curl[ssl,http2]:x64-windows").args).toEqual([
       "install",
       "--classic",
@@ -52,15 +63,38 @@ describe("package install adapters", () => {
       "install",
       "org.adaway",
     ]);
+    expect(
+      planInstall(
+        "play-store",
+        GOOGLEBOOK_2026_ANDROID_17_X64_PACKAGES.desktopPlay,
+      ).args,
+    ).toEqual([
+      "--channel=3",
+      "--install",
+      "system-images;android-37.1;android-desktop;x86_64",
+    ]);
+    expect(
+      planInstall(
+        "play-store",
+        GOOGLEBOOK_2026_ANDROID_17_X64_PACKAGES.playstoreTablet,
+      ).args,
+    ).toEqual([
+      "--channel=0",
+      "--install",
+      "system-images;android-37.0;google_apis_playstore;x86_64",
+    ]);
   });
   test("rejects options, shell syntax and unsupported backends", () => {
     expect(() => planInstall("cargo", "--force")).toThrow();
     expect(() => planInstall("bun", "name;other")).toThrow();
     expect(() => planInstall("flatpak", "--system")).toThrow();
     expect(() => planInstall("winget", "Git.Git@latest")).toThrow();
+    expect(() => planInstall("nix", "--impure")).toThrow();
     expect(() => planInstall("vcpkg", "zlib:--triplet")).toThrow();
     expect(() => planInstall("fdroid", "--system")).toThrow();
     expect(() => planInstall("fdroid", "org.example.App;other")).toThrow();
+    expect(() => planInstall("play-store", "--install")).toThrow();
+    expect(() => planInstall("play-store", "bad;cmd")).toThrow();
   });
   test("maps F-Droid lifecycle commands to fdroidcl native operations", () => {
     expect(planFdroidCommand("search", ["adaway"]).args).toEqual([
@@ -115,6 +149,11 @@ describe("package install adapters", () => {
       "-Ss",
       "^vim",
     ]);
+    expect(planManageCommand("nix", "search", "ripgrep").args).toEqual([
+      "search",
+      "nixpkgs",
+      "ripgrep",
+    ]);
     expect(planManageCommand("vcpkg", "search", "zlib").args).toEqual([
       "search",
       "zlib",
@@ -139,7 +178,11 @@ describe("package install adapters", () => {
     ]);
     expect(planManageCommand("winget", "list").args).toEqual(["list"]);
     expect(planManageCommand("pacman", "list").args).toEqual(["-Q"]);
+    expect(planManageCommand("nix", "list").args).toEqual(["profile", "list"]);
     expect(planManageCommand("vcpkg", "list").args).toEqual(["list"]);
+    expect(planManageCommand("play-store", "list").args).toEqual([
+      "--list_installed",
+    ]);
   });
   test("maps package upgrades and removals with backend-native scope", () => {
     expect(planManageCommand("bun", "upgrade", "@scope/tool").args).toEqual([
@@ -173,9 +216,20 @@ describe("package install adapters", () => {
       "winget",
     ]);
     expect(planManageCommand("pacman", "upgrade").args).toEqual(["-Syu"]);
+    expect(planManageCommand("nix", "upgrade").args).toEqual([
+      "profile",
+      "upgrade",
+      "--all",
+    ]);
+    expect(planManageCommand("nix", "upgrade", "nixpkgs#ripgrep").args).toEqual(
+      ["profile", "upgrade", "ripgrep"],
+    );
     expect(planManageCommand("vcpkg", "upgrade").args).toEqual([
       "upgrade",
       "--no-dry-run",
+    ]);
+    expect(planManageCommand("play-store", "upgrade").args).toEqual([
+      "--update",
     ]);
 
     expect(planManageCommand("bun", "remove", "@scope/tool").args).toEqual([
@@ -207,9 +261,24 @@ describe("package install adapters", () => {
       "-R",
       "vim",
     ]);
+    expect(planManageCommand("nix", "remove", "ripgrep").args).toEqual([
+      "profile",
+      "remove",
+      "ripgrep",
+    ]);
     expect(planManageCommand("vcpkg", "remove", "zlib").args).toEqual([
       "remove",
       "zlib",
+    ]);
+    expect(
+      planManageCommand(
+        "play-store",
+        "remove",
+        GOOGLEBOOK_2026_ANDROID_17_X64_PACKAGES.desktopPlay,
+      ).args,
+    ).toEqual([
+      "--uninstall",
+      "system-images;android-37.1;android-desktop;x86_64",
     ]);
   });
   test("rejects unsupported queries, unsafe IDs, and misleading partial upgrades", () => {
@@ -219,9 +288,19 @@ describe("package install adapters", () => {
     expect(() => planManageCommand("uv", "search", "ruff")).toThrow(
       "no package search command",
     );
+    expect(() =>
+      planManageCommand("play-store", "search", "android-37"),
+    ).toThrow("no package search command");
     expect(() => planManageCommand("pacman", "upgrade", "vim")).toThrow(
       "system-wide",
     );
+    expect(() =>
+      planManageCommand(
+        "play-store",
+        "upgrade",
+        GOOGLEBOOK_2026_ANDROID_17_X64_PACKAGES.desktopPlay,
+      ),
+    ).toThrow("all installed");
     expect(() => planManageCommand("vcpkg", "upgrade", "zlib")).toThrow(
       "all outdated",
     );
@@ -295,6 +374,21 @@ describe("package install adapters", () => {
       "--global",
       "--dry-run",
       "cowsay@1.6.0",
+    ]);
+    expect(planResolution("nix", "ripgrep").args).toEqual([
+      "eval",
+      "--raw",
+      "nixpkgs#ripgrep.outPath",
+    ]);
+    expect(
+      planResolution(
+        "play-store",
+        GOOGLEBOOK_2026_ANDROID_17_X64_PACKAGES.desktopPlay,
+      ).args,
+    ).toEqual([
+      "--channel=3",
+      "--list",
+      "system-images;android-37.1;android-desktop;x86_64",
     ]);
   });
 });

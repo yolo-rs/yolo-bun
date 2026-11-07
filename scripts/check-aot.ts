@@ -1,6 +1,10 @@
 // SPDX-License-Identifier: MIT OR Apache-2.0
 // Run Bun's AOT compatibility analysis over every first-party TS entrypoint.
-const roots = ["scripts", "packages"];
+const roots = [
+  "scripts",
+  "packages/yolo-bun-plugin/src",
+  "packages/windows/src",
+];
 const entrypoints = roots.flatMap((root) =>
   Array.from(
     new Bun.Glob("**/*.ts").scanSync({ cwd: root }),

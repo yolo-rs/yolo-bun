@@ -5,12 +5,14 @@ import { sha256 } from "./native-hash";
 const backends = [
   "bun",
   "pacman",
+  "nix",
   "flatpak",
   "cargo",
   "uv",
   "vcpkg",
   "winget",
   "fdroid",
+  "play-store",
 ] as const;
 
 type Backend = (typeof backends)[number];
@@ -21,7 +23,7 @@ type Source = {
   ref: string;
 };
 type Target = {
-  os: "linux" | "windows" | "android";
+  os: "linux" | "windows" | "android" | "chromiumos" | "aluminiumos";
   arch: string;
   distribution?: string;
   release?: string;
@@ -68,6 +70,14 @@ function isNativePackageId(backend: string, value: string): boolean {
       );
     case "fdroid":
       return /^[A-Za-z0-9_][A-Za-z0-9._]*$/.test(value);
+    case "play-store":
+      return (
+        /^(?:system-images|platforms|build-tools|cmdline-tools|extras|ndk|cmake|sources)(?:;[A-Za-z0-9._-]+)+$/.test(
+          value,
+        ) || /^[A-Za-z0-9_][A-Za-z0-9._-]*(?:\.[A-Za-z0-9._-]+)+$/.test(value)
+      );
+    case "nix":
+      return /^(?:nixpkgs#)?[A-Za-z0-9][A-Za-z0-9._+-]*$/.test(value);
     case "cargo":
     case "uv":
       return /^[A-Za-z0-9][A-Za-z0-9._-]*$/.test(value);
@@ -109,7 +119,9 @@ export function makeImagePlan(input: unknown) {
     Object.keys(targetInput).some((key) => !targetKeys.includes(key)) ||
     !("os" in targetInput) ||
     !("arch" in targetInput) ||
-    !["linux", "windows", "android"].includes(String(targetInput.os)) ||
+    !["linux", "windows", "android", "chromiumos", "aluminiumos"].includes(
+      String(targetInput.os),
+    ) ||
     typeof targetInput.arch !== "string" ||
     !/^[A-Za-z0-9][A-Za-z0-9_.+-]*$/.test(targetInput.arch)
   )

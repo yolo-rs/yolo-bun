@@ -57,6 +57,19 @@ const backends: Backend[] = [
     versionArgs: ["--version"],
     domain: "Arch system packages",
   },
+  {
+    id: "nix",
+    executable: "nix",
+    versionArgs: ["--version"],
+    domain: "Nix declarative packages and flakes",
+  },
+  {
+    id: "play-store",
+    executable: "sdkmanager",
+    versionArgs: ["--version"],
+    domain:
+      "Android 17 x64 Google Play / GoogleBook (API 37.x, ChromiumOS, Aluminium OS) system images and packages",
+  },
 ];
 
 // Stable source names for yolo-os profiles. These describe native authorities;
@@ -118,6 +131,22 @@ const sourceCatalog = [
       "configured pacman repositories, package and database signatures",
     role: "Arch-family system packages",
     targetScope: "Arch, CachyOS, Omarchy and derived image profiles",
+  },
+  {
+    id: "nix-nixpkgs",
+    backend: "nix",
+    authority: "nixpkgs flake lock, store paths and content hashes",
+    role: "declarative reproducible packages and profiles",
+    targetScope: "Linux and developer profiles",
+  },
+  {
+    id: "play-store-google-sdk",
+    backend: "play-store",
+    authority:
+      "Google Android SDK repository manifests, system-image revisions and Play Store image checksums",
+    role: "Android 17 x64 Google Play and GoogleBook 2026 (API 37.1 android-desktop, ChromiumOS, Aluminium OS) system images and packages",
+    targetScope:
+      "GoogleBook 2026 Android 17 x64 + ChromiumOS + Aluminium OS image profiles",
   },
 ] as const;
 

@@ -15,10 +15,10 @@ import { verifyImagePlan } from "./verify-image-plan";
 function usage(): never {
   console.error(`Usage:
   yolo pkg backends
-  yolo pkg install <bun|uv|cargo|flatpak|winget|pacman|vcpkg|fdroid> <package> [--execute]
+  yolo pkg install <bun|uv|cargo|flatpak|winget|pacman|nix|vcpkg|fdroid|play-store> <package> [--execute]
   yolo pkg manage <backend> <search|list|installed|upgrade|remove> [query-or-package] [--execute]
   yolo pkg fdroid <search|show|update|install|upgrade|remove|devices|repos> [arguments...] [--execute]
-  yolo pkg resolve <bun|vcpkg> <package>
+  yolo pkg resolve <bun|vcpkg|nix|play-store> <package>
   yolo pkg image-plan <resolved-profile.json>
   yolo pkg verify-image-plan <plan.json> <files.json>`);
   process.exit(2);
