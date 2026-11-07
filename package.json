@@ -20,6 +20,8 @@
     "fmt": "bun fmt --no-script scripts packages README.md docs/receipts package.json",
     "fmt:check": "bun fmt --no-script --check scripts packages README.md docs/receipts package.json",
     "yolo": "bun scripts/yolo.ts",
+    "upstream:watch": "bun run scripts/upstream-watch/cli.ts",
+    "test:upstream-watch": "bun test scripts/upstream-watch",
     "bench:runtime": "bun run scripts/bench-runtime.ts",
     "source:prepare": "bun run scripts/prepare-bun-source.ts",
     "packages:backends": "bun run scripts/package-backends.ts",
