@@ -19,7 +19,7 @@
     "./package.json": "./package.json"
   },
   "scripts": {
-    "typecheck": "tsc --noEmit -p ."
+    "typecheck": "bun check"
   },
   "engines": {
     "bun": "1.4.4-canary.20261028.1"
