@@ -13,3 +13,4 @@ vendor/xwin-atl-vs18/
 vendor/xwin-atl-lib-vs18/
 *.log
 .state/
+!docs/upstream/

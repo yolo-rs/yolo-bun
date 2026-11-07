@@ -1,0 +1,119 @@
+{
+  "generatedAt": "2026-11-07T00:45:02.965Z",
+  "pin": {
+    "commit": "e57d89ba63a7504957faa2ccc8f416ce2fb15453",
+    "stable": {
+      "ref": "bun-v1.4.4",
+      "commit": "38afee6c84fcf48c0edb2466aa4b27d287a59c30"
+    },
+    "snapshotDate": "2026-11-04"
+  },
+  "repo": {
+    "stars": 96666,
+    "forks": 5272,
+    "openIssuesAndPrs": 9804,
+    "language": "Rust",
+    "pushedAt": "2026-11-07T00:44:02Z"
+  },
+  "main": {
+    "sha": "b1305ddc7ceebad383019d796d1367cc68f66ba0",
+    "date": "2026-11-05T22:34:01Z",
+    "message": "ci: leave the SSH server out of the Linux images (#47981)",
+    "vsPin": {
+      "status": "ahead",
+      "aheadBy": 2,
+      "behindBy": 0,
+      "totalCommits": 2
+    }
+  },
+  "stable": {
+    "tag": "bun-v1.4.4",
+    "publishedAt": "2026-10-22T10:11:32Z",
+    "commit": "38afee6c84fcf48c0edb2466aa4b27d287a59c30",
+    "vsPin": {
+      "status": "behind",
+      "aheadBy": 0,
+      "behindBy": 88,
+      "totalCommits": 0
+    }
+  },
+  "canary": {
+    "tag": "canary",
+    "commit": "0d4b4c494243cf73bf704971dcc0711c5882a8aa",
+    "publishedAt": "2022-07-22T08:28:04Z",
+    "vsPin": {
+      "status": "behind",
+      "aheadBy": 0,
+      "behindBy": 15516,
+      "totalCommits": 0
+    },
+    "vsMain": "differs"
+  },
+  "recentReleases": [
+    {
+      "tag": "bun-v1.4.4",
+      "prerelease": false,
+      "publishedAt": "2026-10-22T10:11:32Z"
+    },
+    {
+      "tag": "bun-v1.4.3",
+      "prerelease": false,
+      "publishedAt": "2026-10-10T05:24:54Z"
+    },
+    {
+      "tag": "bun-v1.4.2",
+      "prerelease": false,
+      "publishedAt": "2026-09-05T05:55:48Z"
+    },
+    {
+      "tag": "bun-v1.4.1",
+      "prerelease": false,
+      "publishedAt": "2026-09-04T08:33:19Z"
+    },
+    {
+      "tag": "bun-v1.4.0",
+      "prerelease": false,
+      "publishedAt": "2026-08-20T14:07:21Z"
+    },
+    {
+      "tag": "bun-v1.3.14",
+      "prerelease": false,
+      "publishedAt": "2026-05-13T03:48:28Z"
+    },
+    {
+      "tag": "bun-v1.3.13",
+      "prerelease": false,
+      "publishedAt": "2026-04-20T08:07:57Z"
+    },
+    {
+      "tag": "bun-v1.3.12",
+      "prerelease": false,
+      "publishedAt": "2026-04-10T03:04:46Z"
+    }
+  ],
+  "velocity": {
+    "since": "2026-10-31",
+    "prOpen": 6100,
+    "prOpened7": 450,
+    "prMerged7": 40,
+    "issOpen": 3704,
+    "issOpened7": 92,
+    "issClosed7": 38
+  },
+  "cargo": {
+    "membersMain": 134,
+    "membersPin": 134,
+    "srcMembersMain": 134,
+    "srcMembersPin": 134,
+    "added": [],
+    "removed": []
+  },
+  "webkit": {
+    "pin": "4d45755fed4aeef19e95beb90d3d0c884a2812bd",
+    "main": "4d45755fed4aeef19e95beb90d3d0c884a2812bd",
+    "changed": false
+  },
+  "changes": [
+    "no change since last snapshot"
+  ]
+}

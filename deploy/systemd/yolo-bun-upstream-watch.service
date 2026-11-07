@@ -1,0 +1,16 @@
+[Unit]
+Description=yolo-bun upstream watch (oven-sh/bun, oven-sh org, yolo-rs mirror drift)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=%h/src/yolo-bun
+# GITHUB_TOKEN=... in a user-controlled file (chmod 600); never committed.
+EnvironmentFile=%h/.config/yolo/github.env
+ExecStart=%h/.bun/bin/bun run scripts/upstream-watch/cli.ts all --db %h/.local/state/yolo-bun/upstream-watch.sqlite --out %h/.local/state/yolo-bun/upstream
+Nice=10
+TimeoutStartSec=15min
+NoNewPrivileges=yes
+ProtectSystem=strict
+ReadWritePaths=%h/.local/state/yolo-bun
