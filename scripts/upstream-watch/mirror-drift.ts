@@ -27,6 +27,23 @@ async function pool<T, R>(items: T[], n: number, fn: (t: T) => Promise<R>) {
   return out;
 }
 
+interface GitHubRepoInfo {
+  name: string;
+  fork: boolean;
+  default_branch: string;
+  pushed_at: string | null;
+  parent?: {
+    full_name: string;
+    default_branch: string;
+  };
+}
+
+interface GitHubCompareInfo {
+  status: string;
+  behind_by: number;
+  ahead_by: number;
+}
+
 export async function driftFor(
   gh: GitHub,
   org: string,
@@ -42,16 +59,16 @@ export async function driftFor(
     mirrorPushedAt: null,
   };
   try {
-    const r = await gh.get(`/repos/${org}/${name}`);
+    const r = await gh.get<GitHubRepoInfo>(`/repos/${org}/${name}`);
     if (!r.fork || !r.parent) return { ...base, error: "not a fork" };
-    const up = r.parent.full_name as string;
-    const upBranch = r.parent.default_branch as string;
-    const branch = r.default_branch as string;
-    const c = await gh.get(
+    const up = r.parent.full_name;
+    const upBranch = r.parent.default_branch;
+    const branch = r.default_branch;
+    const c = await gh.get<GitHubCompareInfo>(
       `/repos/${org}/${name}/compare/${up.split("/")[0]}:${upBranch}...${org}:${branch}?per_page=1`,
     );
-    const behind = c.behind_by as number;
-    const ahead = c.ahead_by as number;
+    const behind = c.behind_by;
+    const ahead = c.ahead_by;
     return {
       ...base,
       upstream: up,
@@ -91,10 +108,10 @@ export async function collectDrift(
   const parents = opts.parents ?? ["oven-sh"];
   let names = opts.names;
   if (!names) {
-    const list = await gh.paginate<any>(
+    const list = await gh.paginate<{ name: string; fork: boolean }>(
       `/orgs/${org}/repos?per_page=100&type=forks`,
     );
-    names = list.filter((r) => r.fork).map((r) => r.name as string);
+    names = list.filter((r) => r.fork).map((r) => r.name);
   }
   const rows = await pool(names, opts.concurrency ?? 6, (n) =>
     driftFor(gh, org, n),

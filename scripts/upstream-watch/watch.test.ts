@@ -90,7 +90,7 @@ describe("client", () => {
     let auth = "";
     const gh = client(
       (_u, i) => (
-        (auth = (i!.headers as any).authorization),
+        (auth = (i!.headers as Record<string, string>).authorization ?? ""),
         json({}, {}, 404)
       ),
       { token: "t0k" },

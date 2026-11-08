@@ -13,7 +13,8 @@ declare module "*.nes" {
   export const platform: string;
   export const sections: import("../../bun-engine/src/formats/types").Section[];
   export const entry: number | undefined;
-  export const arch: import("../../bun-engine/src/formats/types").Arch | undefined;
+  export const arch:
+    import("../../bun-engine/src/formats/types").Arch | undefined;
   export const summary: import("../../bun-engine/src/formats/image").ImageSummary<
     import("../../bun-engine/src/formats/headers").NesHeader
   >;
@@ -30,7 +31,8 @@ declare module "*.fds" {
   export const platform: string;
   export const sections: import("../../bun-engine/src/formats/types").Section[];
   export const entry: number | undefined;
-  export const arch: import("../../bun-engine/src/formats/types").Arch | undefined;
+  export const arch:
+    import("../../bun-engine/src/formats/types").Arch | undefined;
   export const summary: import("../../bun-engine/src/formats/image").ImageSummary<
     import("../../bun-engine/src/formats/headers").FdsHeader
   >;
@@ -47,7 +49,8 @@ declare module "*.gb" {
   export const platform: string;
   export const sections: import("../../bun-engine/src/formats/types").Section[];
   export const entry: number | undefined;
-  export const arch: import("../../bun-engine/src/formats/types").Arch | undefined;
+  export const arch:
+    import("../../bun-engine/src/formats/types").Arch | undefined;
   export const summary: import("../../bun-engine/src/formats/image").ImageSummary<
     import("../../bun-engine/src/formats/headers").GameBoyHeader
   >;
@@ -64,7 +67,8 @@ declare module "*.gbc" {
   export const platform: string;
   export const sections: import("../../bun-engine/src/formats/types").Section[];
   export const entry: number | undefined;
-  export const arch: import("../../bun-engine/src/formats/types").Arch | undefined;
+  export const arch:
+    import("../../bun-engine/src/formats/types").Arch | undefined;
   export const summary: import("../../bun-engine/src/formats/image").ImageSummary<
     import("../../bun-engine/src/formats/headers").GameBoyHeader
   >;
@@ -81,7 +85,8 @@ declare module "*.gba" {
   export const platform: string;
   export const sections: import("../../bun-engine/src/formats/types").Section[];
   export const entry: number | undefined;
-  export const arch: import("../../bun-engine/src/formats/types").Arch | undefined;
+  export const arch:
+    import("../../bun-engine/src/formats/types").Arch | undefined;
   export const summary: import("../../bun-engine/src/formats/image").ImageSummary<
     import("../../bun-engine/src/formats/headers").GbaHeader
   >;
@@ -98,7 +103,8 @@ declare module "*.agb" {
   export const platform: string;
   export const sections: import("../../bun-engine/src/formats/types").Section[];
   export const entry: number | undefined;
-  export const arch: import("../../bun-engine/src/formats/types").Arch | undefined;
+  export const arch:
+    import("../../bun-engine/src/formats/types").Arch | undefined;
   export const summary: import("../../bun-engine/src/formats/image").ImageSummary<
     import("../../bun-engine/src/formats/headers").GbaHeader
   >;
@@ -115,7 +121,8 @@ declare module "*.mb" {
   export const platform: string;
   export const sections: import("../../bun-engine/src/formats/types").Section[];
   export const entry: number | undefined;
-  export const arch: import("../../bun-engine/src/formats/types").Arch | undefined;
+  export const arch:
+    import("../../bun-engine/src/formats/types").Arch | undefined;
   export const summary: import("../../bun-engine/src/formats/image").ImageSummary<
     import("../../bun-engine/src/formats/headers").GbaHeader
   >;
@@ -132,7 +139,8 @@ declare module "*.nds" {
   export const platform: string;
   export const sections: import("../../bun-engine/src/formats/types").Section[];
   export const entry: number | undefined;
-  export const arch: import("../../bun-engine/src/formats/types").Arch | undefined;
+  export const arch:
+    import("../../bun-engine/src/formats/types").Arch | undefined;
   export const summary: import("../../bun-engine/src/formats/image").ImageSummary<
     import("../../bun-engine/src/formats/headers").NdsHeader
   >;
@@ -149,7 +157,8 @@ declare module "*.dsi" {
   export const platform: string;
   export const sections: import("../../bun-engine/src/formats/types").Section[];
   export const entry: number | undefined;
-  export const arch: import("../../bun-engine/src/formats/types").Arch | undefined;
+  export const arch:
+    import("../../bun-engine/src/formats/types").Arch | undefined;
   export const summary: import("../../bun-engine/src/formats/image").ImageSummary<
     import("../../bun-engine/src/formats/headers").NdsHeader
   >;
@@ -166,7 +175,8 @@ declare module "*.srl" {
   export const platform: string;
   export const sections: import("../../bun-engine/src/formats/types").Section[];
   export const entry: number | undefined;
-  export const arch: import("../../bun-engine/src/formats/types").Arch | undefined;
+  export const arch:
+    import("../../bun-engine/src/formats/types").Arch | undefined;
   export const summary: import("../../bun-engine/src/formats/image").ImageSummary<
     import("../../bun-engine/src/formats/headers").NdsHeader
   >;
@@ -183,7 +193,8 @@ declare module "*.n64" {
   export const platform: string;
   export const sections: import("../../bun-engine/src/formats/types").Section[];
   export const entry: number | undefined;
-  export const arch: import("../../bun-engine/src/formats/types").Arch | undefined;
+  export const arch:
+    import("../../bun-engine/src/formats/types").Arch | undefined;
   export const summary: import("../../bun-engine/src/formats/image").ImageSummary<
     import("../../bun-engine/src/formats/headers").N64Header
   >;
@@ -200,7 +211,8 @@ declare module "*.z64" {
   export const platform: string;
   export const sections: import("../../bun-engine/src/formats/types").Section[];
   export const entry: number | undefined;
-  export const arch: import("../../bun-engine/src/formats/types").Arch | undefined;
+  export const arch:
+    import("../../bun-engine/src/formats/types").Arch | undefined;
   export const summary: import("../../bun-engine/src/formats/image").ImageSummary<
     import("../../bun-engine/src/formats/headers").N64Header
   >;
@@ -217,7 +229,8 @@ declare module "*.v64" {
   export const platform: string;
   export const sections: import("../../bun-engine/src/formats/types").Section[];
   export const entry: number | undefined;
-  export const arch: import("../../bun-engine/src/formats/types").Arch | undefined;
+  export const arch:
+    import("../../bun-engine/src/formats/types").Arch | undefined;
   export const summary: import("../../bun-engine/src/formats/image").ImageSummary<
     import("../../bun-engine/src/formats/headers").N64Header
   >;
@@ -234,7 +247,8 @@ declare module "*.dol" {
   export const platform: string;
   export const sections: import("../../bun-engine/src/formats/types").Section[];
   export const entry: number | undefined;
-  export const arch: import("../../bun-engine/src/formats/types").Arch | undefined;
+  export const arch:
+    import("../../bun-engine/src/formats/types").Arch | undefined;
   export const summary: import("../../bun-engine/src/formats/image").ImageSummary<
     import("../../bun-engine/src/formats/headers").DolHeader
   >;
@@ -251,7 +265,8 @@ declare module "*.elf" {
   export const platform: string;
   export const sections: import("../../bun-engine/src/formats/types").Section[];
   export const entry: number | undefined;
-  export const arch: import("../../bun-engine/src/formats/types").Arch | undefined;
+  export const arch:
+    import("../../bun-engine/src/formats/types").Arch | undefined;
   export const summary: import("../../bun-engine/src/formats/image").ImageSummary<
     import("../../bun-engine/src/formats/headers").ElfHeader
   >;
@@ -268,7 +283,8 @@ declare module "*.axf" {
   export const platform: string;
   export const sections: import("../../bun-engine/src/formats/types").Section[];
   export const entry: number | undefined;
-  export const arch: import("../../bun-engine/src/formats/types").Arch | undefined;
+  export const arch:
+    import("../../bun-engine/src/formats/types").Arch | undefined;
   export const summary: import("../../bun-engine/src/formats/image").ImageSummary<
     import("../../bun-engine/src/formats/headers").ElfHeader
   >;
@@ -285,7 +301,8 @@ declare module "*.gcm" {
   export const platform: string;
   export const sections: import("../../bun-engine/src/formats/types").Section[];
   export const entry: number | undefined;
-  export const arch: import("../../bun-engine/src/formats/types").Arch | undefined;
+  export const arch:
+    import("../../bun-engine/src/formats/types").Arch | undefined;
   export const summary: import("../../bun-engine/src/formats/image").ImageSummary<
     import("../../bun-engine/src/formats/headers").DiscHeader
   >;
@@ -302,7 +319,8 @@ declare module "*.wbfs" {
   export const platform: string;
   export const sections: import("../../bun-engine/src/formats/types").Section[];
   export const entry: number | undefined;
-  export const arch: import("../../bun-engine/src/formats/types").Arch | undefined;
+  export const arch:
+    import("../../bun-engine/src/formats/types").Arch | undefined;
   export const summary: import("../../bun-engine/src/formats/image").ImageSummary<
     import("../../bun-engine/src/formats/headers").WbfsHeader
   >;
@@ -319,7 +337,8 @@ declare module "*.rvz" {
   export const platform: string;
   export const sections: import("../../bun-engine/src/formats/types").Section[];
   export const entry: number | undefined;
-  export const arch: import("../../bun-engine/src/formats/types").Arch | undefined;
+  export const arch:
+    import("../../bun-engine/src/formats/types").Arch | undefined;
   export const summary: import("../../bun-engine/src/formats/image").ImageSummary<
     import("../../bun-engine/src/formats/headers").WiaHeader
   >;
@@ -336,14 +355,17 @@ declare module "*.wia" {
   export const platform: string;
   export const sections: import("../../bun-engine/src/formats/types").Section[];
   export const entry: number | undefined;
-  export const arch: import("../../bun-engine/src/formats/types").Arch | undefined;
+  export const arch:
+    import("../../bun-engine/src/formats/types").Arch | undefined;
   export const summary: import("../../bun-engine/src/formats/image").ImageSummary<
     import("../../bun-engine/src/formats/headers").WiaHeader
   >;
 }
 
 declare module "*.iso" {
-  const image: import("../../bun-engine/src/formats/image").BinaryImage<Record<string, unknown>>;
+  const image: import("../../bun-engine/src/formats/image").BinaryImage<
+    Record<string, unknown>
+  >;
   export default image;
   export { image };
   export const header: Record<string, unknown>;
@@ -351,12 +373,17 @@ declare module "*.iso" {
   export const platform: string;
   export const sections: import("../../bun-engine/src/formats/types").Section[];
   export const entry: number | undefined;
-  export const arch: import("../../bun-engine/src/formats/types").Arch | undefined;
-  export const summary: import("../../bun-engine/src/formats/image").ImageSummary<Record<string, unknown>>;
+  export const arch:
+    import("../../bun-engine/src/formats/types").Arch | undefined;
+  export const summary: import("../../bun-engine/src/formats/image").ImageSummary<
+    Record<string, unknown>
+  >;
 }
 
 declare module "*.bin" {
-  const image: import("../../bun-engine/src/formats/image").BinaryImage<Record<string, unknown>>;
+  const image: import("../../bun-engine/src/formats/image").BinaryImage<
+    Record<string, unknown>
+  >;
   export default image;
   export { image };
   export const header: Record<string, unknown>;
@@ -364,12 +391,17 @@ declare module "*.bin" {
   export const platform: string;
   export const sections: import("../../bun-engine/src/formats/types").Section[];
   export const entry: number | undefined;
-  export const arch: import("../../bun-engine/src/formats/types").Arch | undefined;
-  export const summary: import("../../bun-engine/src/formats/image").ImageSummary<Record<string, unknown>>;
+  export const arch:
+    import("../../bun-engine/src/formats/types").Arch | undefined;
+  export const summary: import("../../bun-engine/src/formats/image").ImageSummary<
+    Record<string, unknown>
+  >;
 }
 
 declare module "*.cue" {
-  const image: import("../../bun-engine/src/formats/image").BinaryImage<Record<string, unknown>>;
+  const image: import("../../bun-engine/src/formats/image").BinaryImage<
+    Record<string, unknown>
+  >;
   export default image;
   export { image };
   export const header: Record<string, unknown>;
@@ -377,12 +409,17 @@ declare module "*.cue" {
   export const platform: string;
   export const sections: import("../../bun-engine/src/formats/types").Section[];
   export const entry: number | undefined;
-  export const arch: import("../../bun-engine/src/formats/types").Arch | undefined;
-  export const summary: import("../../bun-engine/src/formats/image").ImageSummary<Record<string, unknown>>;
+  export const arch:
+    import("../../bun-engine/src/formats/types").Arch | undefined;
+  export const summary: import("../../bun-engine/src/formats/image").ImageSummary<
+    Record<string, unknown>
+  >;
 }
 
 declare module "*.chd" {
-  const image: import("../../bun-engine/src/formats/image").BinaryImage<Record<string, unknown>>;
+  const image: import("../../bun-engine/src/formats/image").BinaryImage<
+    Record<string, unknown>
+  >;
   export default image;
   export { image };
   export const header: Record<string, unknown>;
@@ -390,12 +427,17 @@ declare module "*.chd" {
   export const platform: string;
   export const sections: import("../../bun-engine/src/formats/types").Section[];
   export const entry: number | undefined;
-  export const arch: import("../../bun-engine/src/formats/types").Arch | undefined;
-  export const summary: import("../../bun-engine/src/formats/image").ImageSummary<Record<string, unknown>>;
+  export const arch:
+    import("../../bun-engine/src/formats/types").Arch | undefined;
+  export const summary: import("../../bun-engine/src/formats/image").ImageSummary<
+    Record<string, unknown>
+  >;
 }
 
 declare module "*.pbp" {
-  const image: import("../../bun-engine/src/formats/image").BinaryImage<Record<string, unknown>>;
+  const image: import("../../bun-engine/src/formats/image").BinaryImage<
+    Record<string, unknown>
+  >;
   export default image;
   export { image };
   export const header: Record<string, unknown>;
@@ -403,12 +445,17 @@ declare module "*.pbp" {
   export const platform: string;
   export const sections: import("../../bun-engine/src/formats/types").Section[];
   export const entry: number | undefined;
-  export const arch: import("../../bun-engine/src/formats/types").Arch | undefined;
-  export const summary: import("../../bun-engine/src/formats/image").ImageSummary<Record<string, unknown>>;
+  export const arch:
+    import("../../bun-engine/src/formats/types").Arch | undefined;
+  export const summary: import("../../bun-engine/src/formats/image").ImageSummary<
+    Record<string, unknown>
+  >;
 }
 
 declare module "*.psx" {
-  const image: import("../../bun-engine/src/formats/image").BinaryImage<Record<string, unknown>>;
+  const image: import("../../bun-engine/src/formats/image").BinaryImage<
+    Record<string, unknown>
+  >;
   export default image;
   export { image };
   export const header: Record<string, unknown>;
@@ -416,12 +463,17 @@ declare module "*.psx" {
   export const platform: string;
   export const sections: import("../../bun-engine/src/formats/types").Section[];
   export const entry: number | undefined;
-  export const arch: import("../../bun-engine/src/formats/types").Arch | undefined;
-  export const summary: import("../../bun-engine/src/formats/image").ImageSummary<Record<string, unknown>>;
+  export const arch:
+    import("../../bun-engine/src/formats/types").Arch | undefined;
+  export const summary: import("../../bun-engine/src/formats/image").ImageSummary<
+    Record<string, unknown>
+  >;
 }
 
 declare module "*.3ds" {
-  const image: import("../../bun-engine/src/formats/image").BinaryImage<Record<string, unknown>>;
+  const image: import("../../bun-engine/src/formats/image").BinaryImage<
+    Record<string, unknown>
+  >;
   export default image;
   export { image };
   export const header: Record<string, unknown>;
@@ -429,12 +481,17 @@ declare module "*.3ds" {
   export const platform: string;
   export const sections: import("../../bun-engine/src/formats/types").Section[];
   export const entry: number | undefined;
-  export const arch: import("../../bun-engine/src/formats/types").Arch | undefined;
-  export const summary: import("../../bun-engine/src/formats/image").ImageSummary<Record<string, unknown>>;
+  export const arch:
+    import("../../bun-engine/src/formats/types").Arch | undefined;
+  export const summary: import("../../bun-engine/src/formats/image").ImageSummary<
+    Record<string, unknown>
+  >;
 }
 
 declare module "*.cci" {
-  const image: import("../../bun-engine/src/formats/image").BinaryImage<Record<string, unknown>>;
+  const image: import("../../bun-engine/src/formats/image").BinaryImage<
+    Record<string, unknown>
+  >;
   export default image;
   export { image };
   export const header: Record<string, unknown>;
@@ -442,12 +499,17 @@ declare module "*.cci" {
   export const platform: string;
   export const sections: import("../../bun-engine/src/formats/types").Section[];
   export const entry: number | undefined;
-  export const arch: import("../../bun-engine/src/formats/types").Arch | undefined;
-  export const summary: import("../../bun-engine/src/formats/image").ImageSummary<Record<string, unknown>>;
+  export const arch:
+    import("../../bun-engine/src/formats/types").Arch | undefined;
+  export const summary: import("../../bun-engine/src/formats/image").ImageSummary<
+    Record<string, unknown>
+  >;
 }
 
 declare module "*.cxi" {
-  const image: import("../../bun-engine/src/formats/image").BinaryImage<Record<string, unknown>>;
+  const image: import("../../bun-engine/src/formats/image").BinaryImage<
+    Record<string, unknown>
+  >;
   export default image;
   export { image };
   export const header: Record<string, unknown>;
@@ -455,12 +517,17 @@ declare module "*.cxi" {
   export const platform: string;
   export const sections: import("../../bun-engine/src/formats/types").Section[];
   export const entry: number | undefined;
-  export const arch: import("../../bun-engine/src/formats/types").Arch | undefined;
-  export const summary: import("../../bun-engine/src/formats/image").ImageSummary<Record<string, unknown>>;
+  export const arch:
+    import("../../bun-engine/src/formats/types").Arch | undefined;
+  export const summary: import("../../bun-engine/src/formats/image").ImageSummary<
+    Record<string, unknown>
+  >;
 }
 
 declare module "*.nsp" {
-  const image: import("../../bun-engine/src/formats/image").BinaryImage<Record<string, unknown>>;
+  const image: import("../../bun-engine/src/formats/image").BinaryImage<
+    Record<string, unknown>
+  >;
   export default image;
   export { image };
   export const header: Record<string, unknown>;
@@ -468,12 +535,17 @@ declare module "*.nsp" {
   export const platform: string;
   export const sections: import("../../bun-engine/src/formats/types").Section[];
   export const entry: number | undefined;
-  export const arch: import("../../bun-engine/src/formats/types").Arch | undefined;
-  export const summary: import("../../bun-engine/src/formats/image").ImageSummary<Record<string, unknown>>;
+  export const arch:
+    import("../../bun-engine/src/formats/types").Arch | undefined;
+  export const summary: import("../../bun-engine/src/formats/image").ImageSummary<
+    Record<string, unknown>
+  >;
 }
 
 declare module "*.xci" {
-  const image: import("../../bun-engine/src/formats/image").BinaryImage<Record<string, unknown>>;
+  const image: import("../../bun-engine/src/formats/image").BinaryImage<
+    Record<string, unknown>
+  >;
   export default image;
   export { image };
   export const header: Record<string, unknown>;
@@ -481,12 +553,17 @@ declare module "*.xci" {
   export const platform: string;
   export const sections: import("../../bun-engine/src/formats/types").Section[];
   export const entry: number | undefined;
-  export const arch: import("../../bun-engine/src/formats/types").Arch | undefined;
-  export const summary: import("../../bun-engine/src/formats/image").ImageSummary<Record<string, unknown>>;
+  export const arch:
+    import("../../bun-engine/src/formats/types").Arch | undefined;
+  export const summary: import("../../bun-engine/src/formats/image").ImageSummary<
+    Record<string, unknown>
+  >;
 }
 
 declare module "*.nro" {
-  const image: import("../../bun-engine/src/formats/image").BinaryImage<Record<string, unknown>>;
+  const image: import("../../bun-engine/src/formats/image").BinaryImage<
+    Record<string, unknown>
+  >;
   export default image;
   export { image };
   export const header: Record<string, unknown>;
@@ -494,12 +571,17 @@ declare module "*.nro" {
   export const platform: string;
   export const sections: import("../../bun-engine/src/formats/types").Section[];
   export const entry: number | undefined;
-  export const arch: import("../../bun-engine/src/formats/types").Arch | undefined;
-  export const summary: import("../../bun-engine/src/formats/image").ImageSummary<Record<string, unknown>>;
+  export const arch:
+    import("../../bun-engine/src/formats/types").Arch | undefined;
+  export const summary: import("../../bun-engine/src/formats/image").ImageSummary<
+    Record<string, unknown>
+  >;
 }
 
 declare module "*.rom" {
-  const image: import("../../bun-engine/src/formats/image").BinaryImage<Record<string, unknown>>;
+  const image: import("../../bun-engine/src/formats/image").BinaryImage<
+    Record<string, unknown>
+  >;
   export default image;
   export { image };
   export const header: Record<string, unknown>;
@@ -507,12 +589,17 @@ declare module "*.rom" {
   export const platform: string;
   export const sections: import("../../bun-engine/src/formats/types").Section[];
   export const entry: number | undefined;
-  export const arch: import("../../bun-engine/src/formats/types").Arch | undefined;
-  export const summary: import("../../bun-engine/src/formats/image").ImageSummary<Record<string, unknown>>;
+  export const arch:
+    import("../../bun-engine/src/formats/types").Arch | undefined;
+  export const summary: import("../../bun-engine/src/formats/image").ImageSummary<
+    Record<string, unknown>
+  >;
 }
 
 declare module "*.bios" {
-  const image: import("../../bun-engine/src/formats/image").BinaryImage<Record<string, unknown>>;
+  const image: import("../../bun-engine/src/formats/image").BinaryImage<
+    Record<string, unknown>
+  >;
   export default image;
   export { image };
   export const header: Record<string, unknown>;
@@ -520,12 +607,17 @@ declare module "*.bios" {
   export const platform: string;
   export const sections: import("../../bun-engine/src/formats/types").Section[];
   export const entry: number | undefined;
-  export const arch: import("../../bun-engine/src/formats/types").Arch | undefined;
-  export const summary: import("../../bun-engine/src/formats/image").ImageSummary<Record<string, unknown>>;
+  export const arch:
+    import("../../bun-engine/src/formats/types").Arch | undefined;
+  export const summary: import("../../bun-engine/src/formats/image").ImageSummary<
+    Record<string, unknown>
+  >;
 }
 
 declare module "*.firmware" {
-  const image: import("../../bun-engine/src/formats/image").BinaryImage<Record<string, unknown>>;
+  const image: import("../../bun-engine/src/formats/image").BinaryImage<
+    Record<string, unknown>
+  >;
   export default image;
   export { image };
   export const header: Record<string, unknown>;
@@ -533,8 +625,11 @@ declare module "*.firmware" {
   export const platform: string;
   export const sections: import("../../bun-engine/src/formats/types").Section[];
   export const entry: number | undefined;
-  export const arch: import("../../bun-engine/src/formats/types").Arch | undefined;
-  export const summary: import("../../bun-engine/src/formats/image").ImageSummary<Record<string, unknown>>;
+  export const arch:
+    import("../../bun-engine/src/formats/types").Arch | undefined;
+  export const summary: import("../../bun-engine/src/formats/image").ImageSummary<
+    Record<string, unknown>
+  >;
 }
 
 declare module "*.md" {
@@ -548,7 +643,8 @@ declare module "*.md" {
   export const platform: string;
   export const sections: import("../../bun-engine/src/formats/types").Section[];
   export const entry: number | undefined;
-  export const arch: import("../../bun-engine/src/formats/types").Arch | undefined;
+  export const arch:
+    import("../../bun-engine/src/formats/types").Arch | undefined;
   export const summary: import("../../bun-engine/src/formats/image").ImageSummary<
     import("../../bun-engine/src/formats/headers").GenesisHeader
   >;
@@ -565,7 +661,8 @@ declare module "*.gen" {
   export const platform: string;
   export const sections: import("../../bun-engine/src/formats/types").Section[];
   export const entry: number | undefined;
-  export const arch: import("../../bun-engine/src/formats/types").Arch | undefined;
+  export const arch:
+    import("../../bun-engine/src/formats/types").Arch | undefined;
   export const summary: import("../../bun-engine/src/formats/image").ImageSummary<
     import("../../bun-engine/src/formats/headers").GenesisHeader
   >;
@@ -582,7 +679,8 @@ declare module "*.smd" {
   export const platform: string;
   export const sections: import("../../bun-engine/src/formats/types").Section[];
   export const entry: number | undefined;
-  export const arch: import("../../bun-engine/src/formats/types").Arch | undefined;
+  export const arch:
+    import("../../bun-engine/src/formats/types").Arch | undefined;
   export const summary: import("../../bun-engine/src/formats/image").ImageSummary<
     import("../../bun-engine/src/formats/headers").GenesisHeader
   >;

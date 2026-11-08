@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 import { LIMITS } from "./types.ts";
-import { runProcess } from "@aphrody/bun-workspace/process";
+import { runProcess } from "../../bun-workspace/src/process.ts";
 import { boundedZstd } from "./zstd.ts";
 
 async function collect(stream: ReadableStream<Uint8Array>, limit: number, abort?: () => void): Promise<Uint8Array> {
@@ -70,7 +70,7 @@ export async function decompress(data: Uint8Array, nativeDecoder?: string): Prom
         maxOutputBytes: LIMITS.unpacked + 65536,
         stdout: "discard",
         stderr: "discard",
-        onOutput(channel, chunk) {
+        onOutput(channel: "stdout" | "stderr", chunk: Uint8Array) {
           if (channel === "stderr") {
             errorLength += chunk.byteLength;
             if (errorLength > 65536) errorExceeded = true;

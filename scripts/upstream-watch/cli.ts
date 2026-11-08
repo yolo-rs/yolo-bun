@@ -10,6 +10,8 @@ import {
   lastSnapshot,
   readPin,
   saveSnapshot,
+  type BunWatch,
+  type OrgWatch,
 } from "./watch";
 import { collectDrift } from "./mirror-drift";
 import { bunMarkdown, driftMarkdown, orgMarkdown } from "./report";
@@ -29,7 +31,9 @@ async function sh(cmd: string[]): Promise<string> {
 }
 
 export async function audit(gh: GitHub) {
-  const rl = await gh.tryGet("/rate_limit");
+  const rl = await gh.tryGet<{
+    resources: { core: unknown; search: unknown };
+  }>("/rate_limit");
   return {
     remotes: (await sh(["git", "remote", "-v"])).split(/\r?\n/),
     ghAuth: (await sh(["gh", "auth", "status"]))
@@ -82,7 +86,7 @@ export async function main(argv: string[], gh?: GitHub) {
   const date = at.slice(0, 10);
 
   if (target === "bun" || target === "all") {
-    const prev = lastSnapshot(db, "bun");
+    const prev = lastSnapshot<BunWatch>(db, "bun");
     const data = await collectBun(gh, await readPin(), now);
     const changes = bunChanges(prev, data);
     saveSnapshot(db, "bun", data, at);
@@ -109,7 +113,7 @@ export async function main(argv: string[], gh?: GitHub) {
     );
   }
   if (target === "oven-sh" || target === "all") {
-    const prev = lastSnapshot(db, "oven-sh");
+    const prev = lastSnapshot<OrgWatch>(db, "oven-sh");
     const data = await collectOrg(gh);
     saveSnapshot(db, "oven-sh", data, at);
     if (report)

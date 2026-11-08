@@ -12,6 +12,7 @@ import { planResolution } from "./package-resolve";
 import { makeImagePlan } from "./image-plan";
 import { verifyImagePlan } from "./verify-image-plan";
 import {
+  auditBunComForkWebVitals,
   buildBunComSiteIndex,
   createBunComFetchHandler,
   generateBunComLlmsTxt,
@@ -29,6 +30,7 @@ function usage(): never {
   yolo pkg verify-image-plan <plan.json> <files.json>
   yolo site index
   yolo site search <query>
+  yolo site audit
   yolo site serve [port]`);
   process.exit(2);
 }
@@ -64,6 +66,14 @@ async function main() {
     if (command === "search" && args.length > 0) {
       const hits = await searchBunComDocs(args.join(" "));
       console.log(JSON.stringify(hits, null, 2));
+      return;
+    }
+    if (command === "audit" && args.length === 0) {
+      const report = await auditBunComForkWebVitals(index);
+      console.log(JSON.stringify(report, null, 2));
+      if (report.overallScore < 100 || !report.coreWebVitals.withinBudget) {
+        process.exitCode = 1;
+      }
       return;
     }
     if (command === "serve") {

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-import { hashContent } from "@aphrody/bun-workspace/hash";
+import { hashContent } from "../../bun-workspace/src/hash.ts";
 
 export type Ecosystem = "debian" | "ubuntu" | "cosmic" | "alpm" | "msys2" | "mingw" | "cygwin";
 export type InputFormat = "deb" | "deb822" | "pkginfo" | "srcinfo" | "cygwin" | "alpm-archive" | "source-archive";

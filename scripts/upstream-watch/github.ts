@@ -157,12 +157,12 @@ export class GitHub {
     }
   }
 
-  async get<T = any>(path: string): Promise<T> {
+  async get<T = Record<string, unknown>>(path: string): Promise<T> {
     return JSON.parse((await this.getRaw(path)).text) as T;
   }
 
   /** Returns null on 404 instead of throwing. */
-  async tryGet<T = any>(path: string): Promise<T | null> {
+  async tryGet<T = Record<string, unknown>>(path: string): Promise<T | null> {
     try {
       return await this.get<T>(path);
     } catch (e) {
@@ -181,7 +181,10 @@ export class GitHub {
   }
 
   /** Follows Link rel=next. Handles both array and {items: []} bodies. */
-  async paginate<T = any>(path: string, maxPages = 50): Promise<T[]> {
+  async paginate<T = Record<string, unknown>>(
+    path: string,
+    maxPages = 50,
+  ): Promise<T[]> {
     const out: T[] = [];
     let next: string | null = this.url(path);
     for (let i = 0; next && i < maxPages; i++) {

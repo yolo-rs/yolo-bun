@@ -9,16 +9,27 @@ export interface Pin {
   snapshotDate: string;
 }
 
+interface SourceLockEntry {
+  name?: string;
+  ref?: string;
+  commit: string;
+}
+
+interface SourceLockFile {
+  snapshotDate: string;
+  sources: SourceLockEntry[];
+}
+
 export async function readPin(
   lockPath = join(import.meta.dir, "..", "..", "source-lock.json"),
 ): Promise<Pin> {
-  const lock = await Bun.file(lockPath).json();
-  const main = lock.sources.find((s: any) => s.name === "bun-upstream-main");
+  const lock = (await Bun.file(lockPath).json()) as SourceLockFile;
+  const main = lock.sources.find((s) => s.name === "bun-upstream-main");
   if (!main) throw new Error("source-lock.json has no bun-upstream-main");
-  const st = lock.sources.find((s: any) => s.name?.startsWith("bun-stable-"));
+  const st = lock.sources.find((s) => s.name?.startsWith("bun-stable-"));
   return {
     commit: main.commit,
-    stable: st ? { ref: st.ref, commit: st.commit } : null,
+    stable: st && st.ref ? { ref: st.ref, commit: st.commit } : null,
     snapshotDate: lock.snapshotDate,
   };
 }
@@ -86,6 +97,31 @@ async function searchCount(gh: GitHub, q: string): Promise<number | null> {
   return r ? (r.total_count as number) : null;
 }
 
+interface GitHubReleaseItem {
+  tag_name: string;
+  prerelease: boolean;
+  draft?: boolean;
+  published_at: string;
+  target_commitish?: string;
+  name?: string;
+}
+
+interface GitHubCommitItem {
+  sha: string;
+  commit: {
+    message: string;
+    committer: { date: string };
+  };
+}
+
+interface GitHubRepoMeta {
+  stargazers_count: number;
+  forks_count: number;
+  open_issues_count: number;
+  language: string;
+  pushed_at: string;
+}
+
 export async function collectBun(gh: GitHub, pin: Pin, now = new Date()) {
   const repo = "repo:oven-sh/bun";
   const day = (n: number) =>
@@ -93,16 +129,25 @@ export async function collectBun(gh: GitHub, pin: Pin, now = new Date()) {
   const d7 = day(7);
 
   const [meta, head, releases, canaryRef] = await Promise.all([
-    gh.get("/repos/oven-sh/bun"),
-    gh.get("/repos/oven-sh/bun/commits/main"),
-    gh.get<any[]>("/repos/oven-sh/bun/releases?per_page=30"),
-    gh.tryGet("/repos/oven-sh/bun/git/ref/tags/canary"),
+    gh.get<GitHubRepoMeta>("/repos/oven-sh/bun"),
+    gh.get<GitHubCommitItem>("/repos/oven-sh/bun/commits/main"),
+    gh.get<GitHubReleaseItem[]>("/repos/oven-sh/bun/releases?per_page=30"),
+    gh.tryGet<{ object?: { sha?: string } }>(
+      "/repos/oven-sh/bun/git/ref/tags/canary",
+    ),
   ]);
   const stableRel = releases.find((r) => !r.prerelease && !r.draft);
-  const canaryRel = await gh.tryGet("/repos/oven-sh/bun/releases/tags/canary");
+  const canaryRel = await gh.tryGet<GitHubReleaseItem>(
+    "/repos/oven-sh/bun/releases/tags/canary",
+  );
   const stableCommit = stableRel
-    ? ((await gh.tryGet(`/repos/oven-sh/bun/commits/${stableRel.tag_name}`))
-        ?.sha ?? stableRel.target_commitish)
+    ? ((
+        await gh.tryGet<{ sha?: string }>(
+          `/repos/oven-sh/bun/commits/${stableRel.tag_name}`,
+        )
+      )?.sha ??
+      stableRel.target_commitish ??
+      null)
     : null;
   const canaryCommit: string | null =
     canaryRef?.object?.sha ??
@@ -199,32 +244,47 @@ export async function collectBun(gh: GitHub, pin: Pin, now = new Date()) {
 
 export type BunWatch = Awaited<ReturnType<typeof collectBun>>;
 
+interface GitHubOrgRepo {
+  name: string;
+  stargazers_count: number;
+  forks_count: number;
+  open_issues_count: number;
+  language?: string | null;
+  pushed_at: string;
+  archived?: boolean;
+  fork?: boolean;
+  description?: string | null;
+}
+
 export async function collectOrg(gh: GitHub, org = "oven-sh") {
-  const repos = await gh.paginate<any>(
+  const repos = await gh.paginate<GitHubOrgRepo>(
     `/orgs/${org}/repos?per_page=100&type=public`,
   );
   return repos
     .map((r) => ({
-      name: r.name as string,
-      stars: r.stargazers_count as number,
-      forks: r.forks_count as number,
-      openIssues: r.open_issues_count as number,
-      language: (r.language ?? null) as string | null,
-      pushedAt: r.pushed_at as string,
+      name: r.name,
+      stars: r.stargazers_count,
+      forks: r.forks_count,
+      openIssues: r.open_issues_count,
+      language: r.language ?? null,
+      pushedAt: r.pushed_at,
       archived: !!r.archived,
       fork: !!r.fork,
-      description: (r.description ?? null) as string | null,
+      description: r.description ?? null,
     }))
     .sort((a, b) => b.stars - a.stars);
 }
 
 export type OrgWatch = Awaited<ReturnType<typeof collectOrg>>;
 
-export function lastSnapshot(db: Database, kind: string): any | null {
+export function lastSnapshot<T = Record<string, unknown>>(
+  db: Database,
+  kind: string,
+): T | null {
   const row = db
     .query("SELECT data FROM snapshot WHERE kind = ? ORDER BY id DESC LIMIT 1")
     .get(kind) as { data: string } | null;
-  return row ? JSON.parse(row.data) : null;
+  return row ? (JSON.parse(row.data) as T) : null;
 }
 
 export function saveSnapshot(

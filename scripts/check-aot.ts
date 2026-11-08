@@ -3,7 +3,8 @@
 const roots = [
   "scripts",
   "packages/yolo-bun-plugin/src",
-  "packages/windows/src",
+  "packages/bun-loaders/src",
+  "packages/package-converter/src",
 ];
 const entrypoints = roots.flatMap((root) =>
   Array.from(

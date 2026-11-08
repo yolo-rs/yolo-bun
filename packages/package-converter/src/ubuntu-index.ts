@@ -4,7 +4,7 @@
 import type { Database } from "bun:sqlite";
 import { mkdir } from "node:fs/promises";
 import { join } from "node:path";
-import { runProcess } from "@aphrody/bun-workspace/process";
+import { runProcess } from "../../bun-workspace/src/process.ts";
 import { deb822 } from "./deb822.ts";
 import { decodedFile, download, lines } from "./remote.ts";
 

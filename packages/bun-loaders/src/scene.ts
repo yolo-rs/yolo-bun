@@ -1,7 +1,6 @@
 // SPDX-License-Identifier: MIT
-/** Read-only 3D scene inspection: glTF/GLB and OBJ natively, every other format through bun-blender. */
+/** Read-only 3D scene inspection: glTF/GLB and OBJ natively, every other format through headless Blender CLI. */
 import { extname, resolve } from "node:path";
-import { evalPython, info, jsonPython } from "../../bun-blender/src/headless.ts";
 
 export interface SceneInfo {
   path: string;
@@ -35,30 +34,71 @@ const SUMMARY = `{
   "images": [i.name for i in bpy.data.images],
 }`;
 
+function jsonPython(expr: string): string {
+  return `import bpy, json\nprint("__BLENDER_JSON__" + json.dumps(${expr}))\n`;
+}
+
+async function evalBlenderPython(
+  code: string,
+  blendFile?: string,
+): Promise<Record<string, unknown>> {
+  const blender = Bun.env.BLENDER_EXECUTABLE ?? Bun.which("blender");
+  if (!blender) {
+    throw new Error(
+      "Headless Blender executable ('blender') is required to inspect non-glTF/OBJ 3D scenes",
+    );
+  }
+  const args = [
+    "-b",
+    ...(blendFile ? [blendFile] : ["--factory-startup"]),
+    "--python-expr",
+    code,
+  ];
+  const proc = Bun.spawn([blender, ...args], {
+    stdout: "pipe",
+    stderr: "pipe",
+    windowsHide: true,
+  });
+  const [stdout, stderr, exitCode] = await Promise.all([
+    new Response(proc.stdout).text(),
+    new Response(proc.stderr).text(),
+    proc.exited,
+  ]);
+  if (exitCode !== 0) {
+    throw new Error(`blender exited ${exitCode}: ${(stderr || stdout).trim()}`);
+  }
+  const marker = "__BLENDER_JSON__";
+  const idx = stdout.indexOf(marker);
+  if (idx < 0) throw new Error("blender did not emit JSON summary");
+  const line = stdout.slice(idx + marker.length).split(/\r?\n/, 1)[0]!;
+  return JSON.parse(line) as Record<string, unknown>;
+}
+
 function gltf(
   json: Record<string, unknown[] | Record<string, unknown> | undefined>,
   path: string,
   format: string,
 ): SceneInfo {
-  const list = (k: string) => (Array.isArray(json[k]) ? (json[k] as Record<string, unknown>[]) : []);
+  const list = (k: string) =>
+    Array.isArray(json[k]) ? (json[k] as Record<string, unknown>[]) : [];
   return {
     path,
     format,
     backend: "native",
     asset: json.asset,
     extensionsUsed: json.extensionsUsed ?? [],
-    scenes: list("scenes").map(s => s.name ?? null),
-    nodes: list("nodes").map(n => n.name ?? null),
-    meshes: list("meshes").map(m => ({
+    scenes: list("scenes").map((s) => s.name ?? null),
+    nodes: list("nodes").map((n) => n.name ?? null),
+    meshes: list("meshes").map((m) => ({
       name: m.name ?? null,
       primitives: (m.primitives as unknown[] | undefined)?.length ?? 0,
     })),
-    materials: list("materials").map(m => m.name ?? null),
-    animations: list("animations").map(a => a.name ?? null),
+    materials: list("materials").map((m) => m.name ?? null),
+    animations: list("animations").map((a) => a.name ?? null),
     skins: list("skins").length,
     textures: list("textures").length,
-    images: list("images").map(i => i.uri ?? i.name ?? null),
-    buffers: list("buffers").map(b => ({
+    images: list("images").map((i) => i.uri ?? i.name ?? null),
+    buffers: list("buffers").map((b) => ({
       uri: b.uri ?? null,
       byteLength: b.byteLength,
     })),
@@ -102,15 +142,27 @@ export async function inspectScene(input: string): Promise<SceneInfo> {
   if (ext === ".glb") {
     const bytes = await Bun.file(path).bytes();
     const view = new DataView(bytes.buffer, bytes.byteOffset, bytes.byteLength);
-    if (view.getUint32(0, true) !== 0x46546c67) throw new TypeError(`not a GLB file: ${path}`);
+    if (view.getUint32(0, true) !== 0x46546c67)
+      throw new TypeError(`not a GLB file: ${path}`);
     const length = view.getUint32(12, true);
     return {
-      ...gltf(JSON.parse(new TextDecoder().decode(bytes.subarray(20, 20 + length))), path, "glb"),
+      ...gltf(
+        JSON.parse(new TextDecoder().decode(bytes.subarray(20, 20 + length))),
+        path,
+        "glb",
+      ),
       version: view.getUint32(4, true),
     };
   }
   if (ext === ".obj") return obj(path);
-  if (ext === ".blend") return { path, format: "blend", backend: "blender", ...(await info(path)) };
+  if (ext === ".blend") {
+    return {
+      path,
+      format: "blend",
+      backend: "blender",
+      ...(await evalBlenderPython(jsonPython(SUMMARY), path)),
+    };
+  }
   const importer = IMPORTERS[ext];
   if (!importer) throw new TypeError(`unsupported 3D format: ${ext}`);
   const code = jsonPython(SUMMARY).replace(
@@ -121,6 +173,6 @@ export async function inspectScene(input: string): Promise<SceneInfo> {
     path,
     format: ext.slice(1),
     backend: "blender",
-    ...(await evalPython<Record<string, unknown>>(code)),
+    ...(await evalBlenderPython(code)),
   };
 }

@@ -4,12 +4,16 @@
 import { Database } from "bun:sqlite";
 import { mkdir } from "node:fs/promises";
 import { join } from "node:path";
-import { pacmanRepositories, repositoryUrls, type PacmanRepository } from "../../../factory/arch/index.ts";
-import { verifyPacmanSignature } from "../../../factory/arch/signatures.ts";
+import {
+  pacmanRepositories,
+  repositoryUrls,
+  verifyPacmanSignature,
+  type PacmanRepository,
+} from "./arch-support.ts";
 import { decodedFile, download } from "./remote.ts";
 import { tarStream } from "./tar.ts";
 
-export type { PacmanRepository } from "../../../factory/arch/index.ts";
+export type { PacmanRepository } from "./arch-support.ts";
 
 export interface PacmanPackage {
   repo: string;
