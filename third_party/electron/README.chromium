@@ -1,0 +1,22 @@
+Name: Electron (Chromium + Node.js Desktop Application Framework & Build/Patch/Roller Infrastructure)
+Short Name: electron
+URL: https://github.com/electron/electron
+License: MIT
+License File: LICENSE
+Version: 39.0.0-nightly.20261108
+Revision: HEAD
+Security Critical: yes
+Shipped: yes
+
+Description:
+Electron is the industry-standard cross-platform framework embedding Chromium, V8, and Node.js.
+In the YOLO / Google Chromium Stack, Electron's multi-year engineering heritage for managing massive Chromium source trees is extracted as a reference architecture and native Bun workflow (`yolo-bun:electron-workflow`):
+- `@electron/build-tools` (`e` CLI: `e init`, `e sync`, `e build`, `e patches`, `e d`, `e backport` and `.evm-config.json` profiles for `main`, `testing`, `release`, `canary`).
+- Deterministic Git patch queue orchestration (`patches/config.json`, `.patches` manifests, `Patch-Dir` / `Patch-Filename` footers, `git-import-patches` with `index.skipHash=true` / `index.version=4` / `--3way` merge, `git-export-patches`).
+- `electron/roller` automated Chromium DEPS rolling (`chromium_version`, `node_version`), milestone branch synchronization (`main` and `XX-x-y`), and V8/Blink/Skia/Mojo breakage bisection.
+- Joint Node.js + Chromium V8 + BoringSSL ABI bridge (`NodeBindings`, `uv_loop_t` integration into `base::MessagePump`, `node_openssl_path = "//third_party/boringssl"`, `node_v8_path = "//v8"`, `node_use_v8_platform = false`, `v8_embedder_data_array_size = 40`).
+- GN build configuration hierarchy (`build/args/all.gn`, `release.gn`, `testing.gn`, `debug.gn`) and header hygiene verification (`script/gn-check.js`).
+
+Local Modifications:
+- Replaced legacy Python (`apply_all_patches.py`, `export_all_patches.py`) and Node.js (`@electron/build-tools`, `gn-check.js`) scripts with 100% native Bun TypeScript (`packages/yolo-bun-plugin/src/electron-workflow.ts` and `C:/src/google/devtools/electron-chromium-workflow`).
+- In YOLO desktop applications (Antigravity IDE 2.0, Gemini Desktop), Electron's heavyweight multi-process renderer UI is superseded by native Rust GPUI 0.8 + WGPU/Blade at 120 FPS, while retaining Electron's battle-tested Chromium patch queue and DEPS roller engineering for `yolo-web` (Obscura / Servo / Chromium).

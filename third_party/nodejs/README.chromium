@@ -1,0 +1,19 @@
+Name: Node.js Upstream & Electron-Node V8/BoringSSL Co-ABI Layer
+Short Name: nodejs
+URL: https://github.com/nodejs/node
+License: MIT
+License File: LICENSE
+Version: 26.13.0
+Revision: HEAD
+Security Critical: yes
+Shipped: yes
+
+Description:
+Upstream Node.js runtime (`nodejs/node`) and Electron's patched fork (`electron/node` mounted at `src/third_party/electron_node`) used as the reference specification for co-embedding a server-side JavaScript runtime with Chromium's V8 and BoringSSL:
+- Neutralizes bundled `deps/v8` and `deps/openssl` in favor of Chromium's `//v8` and `//third_party/boringssl`.
+- Integrates `libuv` (`uv_loop_t`, `uv_backend_fd`, `uv_backend_timeout`) into Chromium's `base::SingleThreadTaskRunner` and `MessagePump` via `electron::NodeBindings` (`UvHandle<uv_async_t>`).
+- Shares `v8::Context` embedder data slots (`v8_embedder_data_array_size = 40`, `kContextTag = 39`, `kElectronContextEmbedderDataIndex = 5`) alongside Blink/Gin.
+
+Local Modifications:
+- Tracked solely for N-API / Node-API ABI compatibility (`node_module_version = 154`) and `NodeBindings` co-loop architectural reference.
+- Runtime execution in YOLO is 100% Upstream Bun v1.4.4+ (`oven-sh/bun`) with native N-API, `bun:ffi`, and isolated V8/JSC context bridges.

@@ -1,0 +1,17 @@
+Name: Chromium Embedded Framework (CEF C/C++ Content API Wrapper & Automate-Git Build System)
+Short Name: cef
+URL: https://github.com/chromiumembedded/cef
+License: BSD-3-Clause
+License File: LICENSE.txt
+Version: 144.0.0-cef.20261108
+Revision: HEAD
+Security Critical: yes
+Shipped: yes
+
+Description:
+The Chromium Embedded Framework (CEF) is a C/C++ framework for embedding Chromium browsers via a stable C ABI wrapper generated from C++ headers (`translator.bat` / `libcef_dll_wrapper`) around the Chromium Content API (`//content/public`).
+Includes `tools/automate/automate-git.py` for end-to-end Chromium checkout, branch switching, `patch/patch.cfg` application (`gritsettings`, `gn_config`, `runhooks`, `component_build`, `os_crypt_keychain_config`), and project generation (`cef_create_projects.bat`).
+
+Local Modifications:
+- Analyzed and benchmarked against Electron's `.patches` workflow and YOLO's native Rust GPUI + WGPU + Servo Stylo + Obscura CDP architecture (`docs/upstream/electron-cef-chromium-workflows.md`).
+- Exposed via `yolo-bun:electron-workflow` (`CEF_AUTOMATE_WORKFLOW_SPEC`) for automated C ABI comparison and patch strategy evaluation (`patch.cfg` dictionary rules vs Electron `.patches` 3-way `git am` vs Brave `chromium_src`).

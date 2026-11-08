@@ -1,0 +1,17 @@
+Name: Dawn WebGPU Implementation
+Short Name: dawn
+URL: https://dawn.googlesource.com/dawn.git
+Version: 0.20261022.0
+Revision: chromium/7103
+License: BSD-3-Clause
+License File: LICENSE
+Security Critical: yes
+Shipped: yes
+
+Description:
+Google's open-source C++ implementation of the WebGPU standard (`webgpu.h`) and the Tint
+WGSL shader compiler. Provides native backends for Direct3D 12, Metal, Vulkan, and OpenGL ES.
+Aligned in YOLO with `yolo-gpu` (`wgpu 30.0.1` + `naga 30.0.0`) and Skia Graphite.
+
+Local Modifications:
+Managed across `stable` (M156), `dev` (M157), and `canary` (M158) via `yolo cvm`.

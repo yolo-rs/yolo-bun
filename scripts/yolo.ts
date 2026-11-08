@@ -28,10 +28,15 @@ import {
   searchBunComDocs,
 } from "./bun-com-fork";
 import {
+  auditNodeBunV8BoringSslCoAbi,
   auditTypeScriptSourceForGts,
+  CEF_AUTOMATE_WORKFLOW_SPEC,
   CHROMIUM_DASHBOARD_FEATURES_2026,
   CHROMIUM_GITHUB_COLLABORATION_SPEC,
   CHROMIUM_OS_SOVEREIGN_PROFILE,
+  ELECTRON_GN_ARGS_HIERARCHY,
+  ELECTRON_PATCH_CONFIG_TARGETS,
+  executeElectronBuildToolsCommand,
   GOOGLE_APIS_CATALOG_2026,
   GOOGLE_M3_DARK_TOKENS,
   HELIUM_BRAVE_CHROMIUM_PATCHES,
@@ -40,8 +45,10 @@ import {
   loadMergedStandardsSchemas,
   MODERN_WEB_GUIDANCE_RULES_2026,
   orchestrateSrcTree,
+  planChromiumRollerUpdate,
   verifyThirdPartyDeps,
   WEB_GUIDELINES_CATALOG_2026,
+  type EvmProfileType,
 } from "../packages/yolo-bun-plugin/src/index";
 import {
   resolveSlotForDirectory,
@@ -49,6 +56,15 @@ import {
   switchBunVersion,
   type BunChannelSlot,
 } from "./bvm";
+import {
+  auditWorkspaceChromiumAlignment,
+  CHROMIUM_CHANNEL_PROFILES_2026,
+  CHROMIUM_THIRD_PARTY_ALIGNMENT_MATRIX,
+  resolveChromiumChannelForDirectory,
+  switchChromiumChannel,
+  UPSTREAM_ENGINES_MATRIX_2026,
+  type ChromiumReleaseChannel,
+} from "./cvm";
 
 const rawDir = import.meta.dir;
 const root =
@@ -240,6 +256,85 @@ async function main() {
     usage();
   }
 
+  // 1b. Chromium Version Manager (`yolo cvm ...` or `yolo chromium ...`)
+  if (domain === "cvm" || domain === "chromium") {
+    const sub = command ?? "status";
+    if (sub === "status" || sub === "list" || sub === "ls") {
+      const resolved = resolveChromiumChannelForDirectory(process.cwd());
+      const audit = auditWorkspaceChromiumAlignment(resolved.channel);
+      console.log(
+        JSON.stringify(
+          {
+            resolvedForCwd: resolved,
+            channels: CHROMIUM_CHANNEL_PROFILES_2026,
+            audit,
+          },
+          null,
+          2,
+        ),
+      );
+      return;
+    }
+    if (sub === "matrix" || sub === "engines") {
+      console.log(
+        JSON.stringify(
+          {
+            upstreamEngines: UPSTREAM_ENGINES_MATRIX_2026,
+            thirdPartyMatrix: CHROMIUM_THIRD_PARTY_ALIGNMENT_MATRIX,
+          },
+          null,
+          2,
+        ),
+      );
+      return;
+    }
+    if (sub === "audit" || sub === "align") {
+      const targetChannel =
+        (args[0] as ChromiumReleaseChannel | undefined) ??
+        resolveChromiumChannelForDirectory(process.cwd()).channel;
+      const audit = auditWorkspaceChromiumAlignment(targetChannel);
+      console.log(JSON.stringify(audit, null, 2));
+      if (audit.alignedCount < audit.totalConsumersChecked) {
+        process.exitCode = 1;
+      }
+      return;
+    }
+    if (sub === "use" || sub === "switch") {
+      const targetChannel = args[0] as ChromiumReleaseChannel | undefined;
+      if (
+        targetChannel !== "stable" &&
+        targetChannel !== "dev" &&
+        targetChannel !== "canary"
+      ) {
+        usage();
+      }
+      const pinInCwd = args.includes("--pin") ? process.cwd() : undefined;
+      const result = switchChromiumChannel(targetChannel, {
+        pinDirectory: pinInCwd,
+      });
+      console.log(
+        JSON.stringify(
+          {
+            action: "chromium-channel-switched",
+            activeChannel: result.state.activeChannel,
+            alignedBvmSlot: result.state.alignedBvmSlot,
+            profile: result.profile,
+            pinnedInDir: pinInCwd ?? null,
+            auditSummary: {
+              totalComponents: result.audit.totalComponents,
+              totalConsumersChecked: result.audit.totalConsumersChecked,
+              alignedCount: result.audit.alignedCount,
+            },
+          },
+          null,
+          2,
+        ),
+      );
+      return;
+    }
+    usage();
+  }
+
   // 2. YOLO Fleet commands (`status`, `fleet`, `git`, `publish`, etc.)
   if (domain in FLEET_COMMANDS) {
     const fleetCmd = FLEET_COMMANDS[domain]!;
@@ -336,6 +431,57 @@ async function main() {
     if (command === "orchestrate") {
       const report = orchestrateSrcTree(args[0] ?? "C:/src");
       console.log(JSON.stringify(report, null, 2));
+      return;
+    }
+    if (command === "electron" || command === "cef") {
+      const sub = args[0] ?? "summary";
+      if (sub === "e") {
+        const eCmd = (args[1] ?? "sync") as
+          | "init"
+          | "sync"
+          | "build"
+          | "patches"
+          | "d"
+          | "backport"
+          | "gn-check"
+          | "roll";
+        const profile = (args[2] ?? "testing") as EvmProfileType;
+        console.log(
+          JSON.stringify(
+            executeElectronBuildToolsCommand(eCmd, { profile }),
+            null,
+            2,
+          ),
+        );
+        return;
+      }
+      if (sub === "roller") {
+        const roll = planChromiumRollerUpdate({
+          branch: args[1] ?? "main",
+          currentChromiumVersion: args[2] ?? "156.0.7103.48",
+          targetChannel: "canary",
+          channels: {
+            stable: "156.0.7103.48",
+            beta: "157.0.7151.10",
+            dev: "157.0.7151.14",
+            canary: "158.0.7192.2",
+          },
+        });
+        console.log(JSON.stringify(roll, null, 2));
+        return;
+      }
+      console.log(
+        JSON.stringify(
+          {
+            electronPatchTargets: ELECTRON_PATCH_CONFIG_TARGETS,
+            electronGnArgsHierarchy: ELECTRON_GN_ARGS_HIERARCHY,
+            coAbiSpec: auditNodeBunV8BoringSslCoAbi(),
+            cefWorkflowSpec: CEF_AUTOMATE_WORKFLOW_SPEC,
+          },
+          null,
+          2,
+        ),
+      );
       return;
     }
     usage();

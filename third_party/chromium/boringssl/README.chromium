@@ -1,0 +1,16 @@
+Name: BoringSSL
+Short Name: boringssl
+URL: https://boringssl.googlesource.com/boringssl.git
+Version: fips-2026-m156
+Revision: chromium-stable-m156
+License: ISC AND OpenSSL AND BSD-3-Clause
+License File: LICENSE
+Security Critical: yes
+Shipped: yes
+
+Description:
+Google's fork of OpenSSL designed for Chromium, Android, Bun (`boringssl_sys`), Electron,
+and `wreq-util` (Chrome JA3/JA4 TLS & Post-Quantum X25519MLKEM768 emulation).
+
+Local Modifications:
+Shared ABI symbols verified across Bun `boringssl_sys`, `wreq-util`, and Electron/Node crypto.

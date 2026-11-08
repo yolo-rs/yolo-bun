@@ -1,0 +1,18 @@
+Name: V8 JavaScript and WebAssembly Engine
+Short Name: v8
+URL: https://chromium.googlesource.com/v8/v8.git
+Version: 15.6.210.12
+Revision: branch-heads/15.6
+License: BSD-3-Clause
+License File: LICENSE
+Security Critical: yes
+Shipped: yes
+
+Description:
+Google's open source high-performance JavaScript and WebAssembly engine, written in C++.
+Used in Chromium, Node.js, Electron, CEF, and YOLO's `obscura-js` (`deno_core` / `serde_v8`).
+Includes Sparkplug baseline compiler, Maglev mid-tier JIT, Turboshaft optimizing compiler,
+Pointer Compression, Oilpan CppGC, and the V8 Sandbox.
+
+Local Modifications:
+Managed across `stable` (M156), `dev` (M157), and `canary` (M158) via `yolo cvm`.

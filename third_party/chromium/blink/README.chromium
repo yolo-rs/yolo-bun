@@ -1,0 +1,17 @@
+Name: Chromium Blink Rendering Engine
+Short Name: blink
+URL: https://chromium.googlesource.com/chromium/src/+/main/third_party/blink
+Version: 156.0.7103.48
+Revision: refs/branch-heads/7103
+License: BSD-3-Clause AND LGPL-2.1
+License File: LICENSE
+Security Critical: yes
+Shipped: yes
+
+Description:
+Chromium's web platform rendering engine implementing HTML5 DOM, LayoutNG, CSS Anchor
+Positioning, View Transitions Level 2, Speculation Rules Prerender2, Canvas2D, and WebIDL
+bindings over V8 and Oilpan GC. Paired in YOLO with `yolo-chromium` (CEF) and Servo Stylo.
+
+Local Modifications:
+Managed across `stable` (M156), `dev` (M157), and `canary` (M158) via `yolo cvm`.

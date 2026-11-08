@@ -69,6 +69,28 @@ deps = {
     Var('github_url') + '/oxc-project/oxc.git@HEAD',
   'third_party/vercel-labs':
     Var('github_url') + '/vercel-labs/agent-browser.git@HEAD',
+
+  # 7. Electron, CEF & Node.js Chromium Build/Patch/Roller & Co-ABI Governance
+  'third_party/electron':
+    Var('github_url') + '/electron/electron.git@HEAD',
+  'third_party/cef':
+    Var('github_url') + '/chromiumembedded/cef.git@HEAD',
+  'third_party/nodejs':
+    Var('github_url') + '/nodejs/node.git@HEAD',
+
+  # 8. Chromium Core Third-Party Engines (V8, Dawn/WebGPU, Blink, Skia, BoringSSL, HarfBuzz)
+  'third_party/chromium/v8':
+    Var('chromium_git') + '/v8/v8.git@' + Var('chromium_revision'),
+  'third_party/chromium/dawn':
+    'https://dawn.googlesource.com/dawn.git@' + Var('chromium_revision'),
+  'third_party/chromium/blink':
+    Var('chromium_git') + '/chromium/src.git@' + Var('chromium_revision'),
+  'third_party/chromium/skia':
+    'https://skia.googlesource.com/skia.git@' + Var('chromium_revision'),
+  'third_party/chromium/boringssl':
+    'https://boringssl.googlesource.com/boringssl.git@' + Var('chromium_revision'),
+  'third_party/chromium/harfbuzz':
+    Var('chromium_git') + '/external/github.com/harfbuzz/harfbuzz.git@' + Var('chromium_revision'),
 }
 
 hooks = [

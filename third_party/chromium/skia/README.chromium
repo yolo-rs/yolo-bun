@@ -1,0 +1,18 @@
+Name: Skia 2D Graphics Library (Ganesh & Graphite)
+Short Name: skia
+URL: https://skia.googlesource.com/skia.git
+Version: 0.156.0
+Revision: chrome/m156
+License: BSD-3-Clause
+License File: LICENSE
+Security Critical: yes
+Shipped: yes
+
+Description:
+Google's complete 2D graphic library for drawing text, geometries, and images across
+Chromium, Android, Flutter, Electron, and CEF. Includes both Ganesh (Direct3D 12, Metal,
+Vulkan, OpenGL) and Graphite (modern Dawn/WebGPU-native GPU backend). Consumed in YOLO
+via `anyrender_skia` (`skia-safe = 0.156.0`), `tiny-skia = 0.12`, and `vello = 0.11`.
+
+Local Modifications:
+Aligned with `skia-safe = 0.156.0` (milestone m156) and `yolo cvm`.

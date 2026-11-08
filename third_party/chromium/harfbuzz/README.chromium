@@ -1,0 +1,17 @@
+Name: HarfBuzz & Google Fontations (Skrifa / Read-Fonts)
+Short Name: harfbuzz
+URL: https://chromium.googlesource.com/external/github.com/harfbuzz/harfbuzz.git
+Version: 10.2.0
+Revision: chrome/m156
+License: MIT
+License File: COPYING
+Security Critical: yes
+Shipped: yes
+
+Description:
+OpenType text shaping engine paired with Google's memory-safe Rust Fontations stack
+(`skrifa = 0.44`, `read-fonts = 0.41`, `cosmic-text = 0.14.2`, `swash = 0.2.0`) used in
+Chromium M156+, `yolo-gpu`, `anyrender_skia`, and `obscura-render`.
+
+Local Modifications:
+Aligned across `yolo-ui` and `yolo-web` via `yolo cvm`.

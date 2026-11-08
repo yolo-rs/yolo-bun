@@ -1,0 +1,32 @@
+# Electron Build Args Reference (build/args/all.gn)
+# Extracted from electron/electron for YOLO Chromium/V8/BoringSSL Co-ABI Governance
+
+is_electron_build = true
+root_extra_deps = [ "//electron" ]
+node_module_version = 154
+node_openssl_path = "//third_party/boringssl"
+node_v8_path = "//v8"
+node_use_v8_platform = false
+v8_promise_internal_field_count = 1
+v8_embedder_data_array_size = 40
+v8_enable_snapshot_native_code_counters = false
+v8_enable_javascript_promise_hooks = true
+v8_enable_private_mapping_fork_optimization = true
+v8_expose_public_symbols = true
+enable_cdm_host_verification = false
+enable_widevine = true
+ffmpeg_branding = "Chrome"
+proprietary_codecs = true
+enable_printing = true
+angle_enable_vulkan_validation_layers = false
+dawn_enable_vulkan_validation_layers = false
+enable_pseudolocales = false
+allow_runtime_configurable_key_storage = true
+enable_cet_shadow_stack = false
+is_cfi = false
+use_qt5 = false
+use_qt6 = false
+enable_linux_installer = false
+enable_pdf_save_to_drive = false
+produce_v8_compile_hints = false
+enable_resource_allowlist_generation = true

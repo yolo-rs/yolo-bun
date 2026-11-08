@@ -162,3 +162,44 @@ declare module "yolo-bun:src-orchestrator" {
   };
   export default srcOrchestration;
 }
+
+declare module "yolo-bun:electron-workflow" {
+  const electronWorkflow: {
+    readonly patchTargets: readonly Record<string, unknown>[];
+    readonly gnArgsHierarchy: Record<string, unknown>;
+    readonly gnCheckTargets: readonly string[];
+    readonly coAbiAudit: Record<string, unknown>;
+    readonly profiles: Record<string, unknown>;
+  };
+  export default electronWorkflow;
+}
+
+declare module "yolo-bun:cef-workflow" {
+  const cefWorkflow: {
+    readonly orchestratorScript: string;
+    readonly projectGenerator: string;
+    readonly patchConfigFile: string;
+    readonly cAbiTranslator: string;
+    readonly wrapperLibrary: string;
+    readonly corePatches: readonly Record<string, unknown>[];
+    readonly comparisonWithElectronAndYolo: Record<string, string>;
+  };
+  export default cefWorkflow;
+}
+
+declare module "yolo-bun:chromium-roller" {
+  const chromiumRoller: {
+    readonly branch: string;
+    readonly currentChromiumVersion: string;
+    readonly targetChromiumVersion: string;
+    readonly currentMilestone: number;
+    readonly targetMilestone: number;
+    readonly upgradeAvailable: boolean;
+    readonly coveredByMainRoll: boolean;
+    readonly gitilesCompareUrl: string;
+    readonly affectedSubsystems: readonly string[];
+    readonly prBranchName: string;
+    readonly backportLabels: readonly string[];
+  };
+  export default chromiumRoller;
+}
