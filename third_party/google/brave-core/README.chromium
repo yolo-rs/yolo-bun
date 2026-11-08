@@ -1,0 +1,15 @@
+Name: Brave Core & Shields Adblock/Privacy Patch Architecture
+Short Name: brave-core
+URL: https://github.com/brave/brave-core
+License: MPL-2.0
+License File: LICENSE
+Version: 1.85.0
+Revision: HEAD
+Security Critical: yes
+Shipped: yes
+
+Description:
+Brave browser core patches (chromium_src overrides, Brave Shields adblock-rust hooks, CookieCrumbler, and Client Hints normalization).
+
+Local Modifications:
+- Integrated into yolo-bun (yolo-bun:chromium-toolkit) for chromium_src override planning and stealth/privacy verification.

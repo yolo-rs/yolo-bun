@@ -1,0 +1,15 @@
+Name: ChromiumOS & Cros SDK Overlay
+Short Name: chromiumos-overlay
+URL: https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay
+License: BSD-3-Clause
+License File: LICENSE
+Version: R144
+Revision: HEAD
+Security Critical: yes
+Shipped: yes
+
+Description:
+ChromiumOS ebuild overlays, Minijail seccomp-BPF sandboxing, Crostini VM guest integration, and Aluminium OS x86_64/ARM64 profiles.
+
+Local Modifications:
+- Integrated into yolo-bun (yolo-bun:chromiumos) for ChromiumOS / GoogleBook 2026 image planning and cros_sdk orchestration.

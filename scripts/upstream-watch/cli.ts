@@ -69,9 +69,19 @@ export async function main(argv: string[], gh?: GitHub) {
     return i >= 0 ? argv[i + 1] : undefined;
   };
   const target = args[0] ?? "all";
-  if (!["bun", "oven-sh", "mirror-drift", "all"].includes(target)) {
+  if (
+    ![
+      "bun",
+      "oven-sh",
+      "google",
+      "googlechrome",
+      "chromium",
+      "mirror-drift",
+      "all",
+    ].includes(target)
+  ) {
     console.error(
-      "Usage: upstream:watch -- bun|oven-sh|mirror-drift|all [--db path] [--out dir] [--all-forks] [--no-report]",
+      "Usage: upstream:watch -- bun|oven-sh|google|googlechrome|chromium|mirror-drift|all [--db path] [--out dir] [--all-forks] [--no-report]",
     );
     return 2;
   }
@@ -128,6 +138,38 @@ export async function main(argv: string[], gh?: GitHub) {
       data
         .slice(0, 10)
         .map((r, i) => `${i + 1}. ${r.name} ${r.stars}`)
+        .join("\n"),
+    );
+  }
+  if (target === "google") {
+    const prev = lastSnapshot<OrgWatch>(db, "google");
+    const data = await collectOrg(gh, "google");
+    saveSnapshot(db, "google", data, at);
+    if (report)
+      writeReport(out, "google-watch", date, orgMarkdown(data, prev, at), data);
+    console.log(
+      data
+        .slice(0, 15)
+        .map((r, i) => `${i + 1}. google/${r.name} ${r.stars}`)
+        .join("\n"),
+    );
+  }
+  if (target === "googlechrome" || target === "chromium") {
+    const prev = lastSnapshot<OrgWatch>(db, "GoogleChrome");
+    const data = await collectOrg(gh, "GoogleChrome");
+    saveSnapshot(db, "GoogleChrome", data, at);
+    if (report)
+      writeReport(
+        out,
+        "googlechrome-watch",
+        date,
+        orgMarkdown(data, prev, at),
+        data,
+      );
+    console.log(
+      data
+        .slice(0, 15)
+        .map((r, i) => `${i + 1}. GoogleChrome/${r.name} ${r.stars}`)
         .join("\n"),
     );
   }

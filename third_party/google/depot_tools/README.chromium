@@ -1,0 +1,17 @@
+Name: Chromium depot_tools (gclient, gn, autoninja, git-cl, cipd, repo)
+Short Name: depot_tools
+URL: https://chromium.googlesource.com/chromium/tools/depot_tools
+License: BSD-3-Clause
+License File: LICENSE
+Version: 2026.11.0
+Revision: HEAD
+Security Critical: yes
+Shipped: yes
+
+Description:
+Google's official build and source management toolkit for Chromium, ChromiumOS, V8, Skia, Dawn, and Angle.
+Includes gclient, gn, autoninja, git-cl, cipd, fetch, and cros_sdk workflows.
+
+Local Modifications:
+- Wrapped by native Bun toolkit in yolo-bun (yolo-bun:depot-tools) and C:/src/google/devtools/depot-tools.
+- Bridges directly to local C:/src/depot_tools and C:/src/chromium/src without Python wrapper overhead where possible.

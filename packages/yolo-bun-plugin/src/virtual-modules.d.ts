@@ -52,8 +52,11 @@ declare module "yolo-bun:web-vitals" {
 declare module "yolo-bun:google-styleguide" {
   const googleStyleguide: {
     readonly version: string;
-    readonly updatedAt: string;
-    readonly languages: Record<string, unknown>;
+    readonly upstreams: Record<string, string>;
+    readonly rust: Record<string, unknown>;
+    readonly typescript: Record<string, unknown>;
+    readonly cppChromium: Record<string, unknown>;
+    readonly aospAndroid17: Record<string, unknown>;
   };
   export default googleStyleguide;
 }
@@ -88,4 +91,74 @@ declare module "yolo-bun:third-party" {
     readonly valid: boolean;
   };
   export default thirdPartyReport;
+}
+
+declare module "yolo-bun:chromium-toolkit" {
+  const chromiumToolkit: {
+    readonly collaboration: Record<string, unknown>;
+    readonly patches: readonly Record<string, unknown>[];
+    readonly dashboardFeatures: readonly Record<string, unknown>[];
+    readonly guidanceRules: readonly Record<string, unknown>[];
+    readonly chromiumOs: Record<string, unknown>;
+  };
+  export default chromiumToolkit;
+}
+
+declare module "yolo-bun:depot-tools" {
+  const depotTools: {
+    readonly depotToolsDir: string;
+    readonly chromiumSrcDir: string;
+    readonly isDepotToolsPresent: boolean;
+    readonly isChromiumSrcPresent: boolean;
+    readonly binaries: Record<
+      string,
+      { readonly path: string; readonly exists: boolean }
+    >;
+  };
+  export default depotTools;
+}
+
+declare module "yolo-bun:chromium-dashboard" {
+  const chromiumDashboard: {
+    readonly dashboardUrl: string;
+    readonly repoUrl: string;
+    readonly features: readonly Record<string, unknown>[];
+  };
+  export default chromiumDashboard;
+}
+
+declare module "yolo-bun:modern-web-guidance" {
+  const modernWebGuidance: {
+    readonly repoUrl: string;
+    readonly rules: readonly Record<string, unknown>[];
+  };
+  export default modernWebGuidance;
+}
+
+declare module "yolo-bun:chromiumos" {
+  const chromiumOs: {
+    readonly milestone: string;
+    readonly board: string;
+    readonly kernel: string;
+    readonly sandbox: readonly string[];
+    readonly androidContainer: string;
+    readonly buildCommands: readonly string[];
+  };
+  export default chromiumOs;
+}
+
+declare module "yolo-bun:src-orchestrator" {
+  const srcOrchestration: {
+    readonly rootDir: string;
+    readonly scannedAt: string;
+    readonly totalPillars: number;
+    readonly gitReposCount: number;
+    readonly bunWorkspacesCount: number;
+    readonly cargoWorkspacesCount: number;
+    readonly bazelWorkspacesCount: number;
+    readonly depotToolsReady: boolean;
+    readonly chromiumSrcReady: boolean;
+    readonly pillars: readonly Record<string, unknown>[];
+  };
+  export default srcOrchestration;
 }

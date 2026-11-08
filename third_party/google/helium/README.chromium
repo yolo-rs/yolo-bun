@@ -1,0 +1,15 @@
+Name: Helium Chromium Patch & De-Bloat Workflow
+Short Name: helium
+URL: https://github.com/imputnet/helium
+License: GPL-3.0-or-later WITH Classpath-exception-2.0 / BSD-3-Clause
+License File: LICENSE
+Version: 2026.11.0
+Revision: HEAD
+Security Critical: yes
+Shipped: yes
+
+Description:
+Minimalist, privacy-hardened Chromium patch series and quilt-style patch queue workflow inspired by Helium and ungoogled-chromium.
+
+Local Modifications:
+- Reimplemented in pure Bun as a quilt-compatible series/series.json non-destructive Git index patch verifier in yolo-bun:chromium-toolkit.

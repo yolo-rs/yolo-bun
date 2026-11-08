@@ -20,10 +20,17 @@ import {
 } from "./bun-com-fork";
 import {
   auditTypeScriptSourceForGts,
+  CHROMIUM_DASHBOARD_FEATURES_2026,
+  CHROMIUM_GITHUB_COLLABORATION_SPEC,
+  CHROMIUM_OS_SOVEREIGN_PROFILE,
   GOOGLE_APIS_CATALOG_2026,
   GOOGLE_M3_DARK_TOKENS,
+  HELIUM_BRAVE_CHROMIUM_PATCHES,
+  inspectDepotTools,
   loadGoogleStyleguide2026,
   loadMergedStandardsSchemas,
+  MODERN_WEB_GUIDANCE_RULES_2026,
+  orchestrateSrcTree,
   verifyThirdPartyDeps,
   WEB_GUIDELINES_CATALOG_2026,
 } from "../packages/yolo-bun-plugin/src/index";
@@ -44,7 +51,10 @@ function usage(): never {
   yolo google third-party
   yolo google styleguide [file]
   yolo google standards
-  yolo google stack`);
+  yolo google stack
+  yolo google chromium
+  yolo google depot-tools
+  yolo google orchestrate [src-root]`);
   process.exit(2);
 }
 
@@ -99,6 +109,31 @@ async function main() {
           2,
         ),
       );
+      return;
+    }
+    if (command === "chromium" && args.length === 0) {
+      console.log(
+        JSON.stringify(
+          {
+            collaboration: CHROMIUM_GITHUB_COLLABORATION_SPEC,
+            dashboardFeatures: CHROMIUM_DASHBOARD_FEATURES_2026,
+            modernWebGuidance: MODERN_WEB_GUIDANCE_RULES_2026,
+            heliumBravePatches: HELIUM_BRAVE_CHROMIUM_PATCHES,
+            chromiumOs: CHROMIUM_OS_SOVEREIGN_PROFILE,
+          },
+          null,
+          2,
+        ),
+      );
+      return;
+    }
+    if (command === "depot-tools" && args.length === 0) {
+      console.log(JSON.stringify(inspectDepotTools(), null, 2));
+      return;
+    }
+    if (command === "orchestrate") {
+      const report = orchestrateSrcTree(args[0] ?? "C:/src");
+      console.log(JSON.stringify(report, null, 2));
       return;
     }
     usage();

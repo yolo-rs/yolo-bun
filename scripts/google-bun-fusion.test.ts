@@ -189,5 +189,37 @@ describe("Unified yolo-bun + yolo-standards + google-bun Runtime & Plugins", () 
 
     const tpMod = await import("yolo-bun:third-party");
     expect(tpMod.default.valid).toBe(true);
+
+    const tkMod = await import("yolo-bun:chromium-toolkit");
+    expect(tkMod.default.patches.length).toBeGreaterThanOrEqual(6);
+
+    const dtMod = await import("yolo-bun:depot-tools");
+    expect(dtMod.default.depotToolsDir).toBe("C:/src/depot_tools");
+
+    const cdMod = await import("yolo-bun:chromium-dashboard");
+    expect(cdMod.default.repoUrl).toBe(
+      "https://github.com/GoogleChrome/chromium-dashboard",
+    );
+
+    const mwgMod = await import("yolo-bun:modern-web-guidance");
+    expect(mwgMod.default.repoUrl).toBe(
+      "https://github.com/GoogleChrome/modern-web-guidance-src",
+    );
+
+    const crosMod = await import("yolo-bun:chromiumos");
+    expect(crosMod.default.milestone).toContain("R144");
+
+    const orchMod = await import("yolo-bun:src-orchestrator");
+    expect(orchMod.default.totalPillars).toBeGreaterThanOrEqual(10);
+    expect(
+      orchMod.default.pillars.some(
+        (p: Record<string, unknown>) => p.name === "google",
+      ),
+    ).toBe(true);
+    expect(
+      orchMod.default.pillars.some(
+        (p: Record<string, unknown>) => p.name === "yolo-bun",
+      ),
+    ).toBe(true);
   });
 });

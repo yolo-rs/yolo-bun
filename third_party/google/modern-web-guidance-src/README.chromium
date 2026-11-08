@@ -1,0 +1,20 @@
+Name: Google Chrome Modern Web Guidance Source (web.dev & developer.chrome.com)
+Short Name: modern-web-guidance-src
+URL: https://github.com/GoogleChrome/modern-web-guidance-src
+License: Apache-2.0
+License File: LICENSE
+Version: 2026.11.0
+Revision: HEAD
+Security Critical: yes
+Shipped: yes
+Forks:
+  - https://github.com/aphrody-labs/modern-web-guidance-src
+  - https://github.com/yolo-rs/modern-web-guidance-src
+
+Description:
+Official Google Chrome Modern Web Guidance source repository powering modern web engineering patterns,
+Baseline 2026 guidance, Core Web Vitals optimization recipes, and Chromium developer documentation.
+
+Local Modifications:
+- Migrated into pure Upstream Bun v1.4.4+ in packages/yolo-bun-plugin (yolo-bun:modern-web-guidance).
+- Provides executable guidance checks and automatic HTML/HTTP transforms across all /src/ repositories.

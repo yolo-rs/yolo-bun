@@ -1,10 +1,10 @@
 {
   "name": "@yolo-rs/bun-plugin-catalog",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": true,
   "type": "module",
   "license": "MIT OR Apache-2.0",
-  "description": "Unified Bun bundler & runtime plugin suite for yolo-bun, yolo-standards, and google-bun (Lighthouse, Web Vitals, Modern Web Guidelines, Google Styleguide 2026, Google APIs, BOQ/Wiz/M3, and Chromium third_party)",
+  "description": "Complete Native Google Open Source, Chromium, ChromiumOS, Depot Tools, Helium/Brave Patch Workflow, Chromium Dashboard, Modern Web Guidance & Recursive /src/ Orchestrator Toolkit for Bun",
   "exports": {
     ".": "./src/index.ts",
     "./register": "./src/register.ts",
@@ -13,6 +13,7 @@
     "./web-vitals": "./src/web-vitals.ts",
     "./google-styleguide": "./src/google-styleguide.ts",
     "./googleapis": "./src/google-apis.ts",
-    "./third-party": "./src/third-party-manager.ts"
+    "./third-party": "./src/third-party-manager.ts",
+    "./chromium-toolkit": "./src/chromium-toolkit.ts"
   }
 }

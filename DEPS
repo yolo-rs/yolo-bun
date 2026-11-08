@@ -24,13 +24,25 @@ deps = {
   'third_party/google/gts':
     Var('github_url') + '/google/gts.git@HEAD',
 
-  # 2. Chromium Web Quality, Auditing & Core Web Vitals
+  # 2. Chromium Web Quality, Auditing, Core Web Vitals, Dashboard & Modern Web Guidance
   'third_party/google/lighthouse':
     Var('github_url') + '/GoogleChrome/lighthouse.git@HEAD',
   'third_party/google/web-vitals':
     Var('github_url') + '/GoogleChrome/web-vitals.git@HEAD',
   'third_party/google/chrome-standards':
     Var('github_url') + '/GoogleChrome/developer.chrome.com.git@HEAD',
+  'third_party/google/chromium-dashboard':
+    Var('github_url') + '/GoogleChrome/chromium-dashboard.git@HEAD',
+  'third_party/google/modern-web-guidance-src':
+    Var('github_url') + '/GoogleChrome/modern-web-guidance-src.git@HEAD',
+  'third_party/google/depot_tools':
+    Var('chromium_git') + '/chromium/tools/depot_tools.git@HEAD',
+  'third_party/google/chromiumos-overlay':
+    Var('chromium_git') + '/chromiumos/overlays/chromiumos-overlay.git@HEAD',
+  'third_party/google/helium':
+    Var('github_url') + '/imputnet/helium.git@HEAD',
+  'third_party/google/brave-core':
+    Var('github_url') + '/brave/brave-core.git@HEAD',
 
   # 3. Google APIs TypeScript, Cloud, Workspace & Discovery
   'third_party/google/googleapis':

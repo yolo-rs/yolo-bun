@@ -2,6 +2,24 @@
 import { fileURLToPath } from "node:url";
 import type { BunPlugin } from "bun";
 import {
+  CHROMIUM_DASHBOARD_FEATURES_2026,
+  CHROMIUM_GITHUB_COLLABORATION_SPEC,
+  CHROMIUM_OS_SOVEREIGN_PROFILE,
+  chromiumToolkitPlugin,
+  HELIUM_BRAVE_CHROMIUM_PATCHES,
+  inspectDepotTools,
+  MODERN_WEB_GUIDANCE_RULES_2026,
+  orchestrateSrcTree,
+  type ChromiumDashboardFeature,
+  type ChromiumGitHubCollaborationSpec,
+  type ChromiumOsProfile,
+  type DepotToolsInspection,
+  type HeliumBravePatchRule,
+  type ModernWebGuidanceRule,
+  type SrcPillarInventoryEntry,
+  type SrcRecursiveOrchestrationReport,
+} from "./chromium-toolkit.ts";
+import {
   BoqServerEngine,
   createSignal,
   generateM3CssVariables,
@@ -92,6 +110,7 @@ export const yoloBunCatalogPlugin: BunPlugin = {
     googleStyleguidePlugin.setup(build);
     googleApisPlugin.setup(build);
     thirdPartyPlugin.setup(build);
+    chromiumToolkitPlugin.setup(build);
   },
 };
 
@@ -104,6 +123,10 @@ export {
   auditTypeScriptSourceForGts,
   BoqServerEngine,
   buildModernWebSecurityHeaders,
+  CHROMIUM_DASHBOARD_FEATURES_2026,
+  CHROMIUM_GITHUB_COLLABORATION_SPEC,
+  CHROMIUM_OS_SOVEREIGN_PROFILE,
+  chromiumToolkitPlugin,
   createChromiumFriendlyFetchHandler,
   createSignal,
   generateM3CssVariables,
@@ -114,11 +137,15 @@ export {
   GoogleApisClient,
   googleApisPlugin,
   googleStyleguidePlugin,
+  HELIUM_BRAVE_CHROMIUM_PATCHES,
+  inspectDepotTools,
   lighthousePlugin,
   loadGoogleStyleguide2026,
   loadMergedStandardsSchemas,
+  MODERN_WEB_GUIDANCE_RULES_2026,
   MODERN_WEB_GUIDELINES_2026,
   modernWebGuidelinesPlugin,
+  orchestrateSrcTree,
   parseReadmeChromium,
   renderChromiumFriendlyHtmlDocument,
   thirdPartyPlugin,
@@ -126,15 +153,23 @@ export {
   WEB_GUIDELINES_CATALOG_2026,
   webVitalsPlugin,
   type BatchExecuteRpcCall,
+  type ChromiumDashboardFeature,
   type ChromiumFriendlyAppOptions,
+  type ChromiumGitHubCollaborationSpec,
+  type ChromiumOsProfile,
+  type DepotToolsInspection,
   type GoogleApisClientConfig,
   type GoogleM3ColorTokens,
   type GoogleServiceDescriptor,
   type GoogleStyleguide2026Schema,
   type GtsAuditResult,
+  type HeliumBravePatchRule,
   type LighthouseAuditInput,
   type LighthouseAuditReport,
+  type ModernWebGuidanceRule,
   type ReadmeChromiumMetadata,
+  type SrcPillarInventoryEntry,
+  type SrcRecursiveOrchestrationReport,
   type ThirdPartyVerificationReport,
   type WebGuidelineEntry,
   type WizGlobalDataConfig,

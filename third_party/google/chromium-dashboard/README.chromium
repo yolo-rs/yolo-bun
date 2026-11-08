@@ -1,0 +1,20 @@
+Name: Chrome Platform Status Dashboard (chromestatus.com)
+Short Name: chromium-dashboard
+URL: https://github.com/GoogleChrome/chromium-dashboard
+License: Apache-2.0
+License File: LICENSE
+Version: 2026.11.0
+Revision: HEAD
+Security Critical: yes
+Shipped: yes
+Forks:
+  - https://github.com/aphrody-labs/chromium-dashboard
+  - https://github.com/yolo-rs/chromium-dashboard
+
+Description:
+Official Chrome Platform Status dashboard (chromestatus.com) tracking Web Platform features,
+Blink intents (Intent to Prototype, Experiment, Ship), Origin Trials, and Milestone schedules.
+
+Local Modifications:
+- Migrated and integrated into yolo-bun (packages/yolo-bun-plugin/src/chromium-toolkit.ts) as yolo-bun:chromium-dashboard.
+- Tracks Blink shipping milestones, WebGPU, Speculation Rules v2, View Transitions Level 2, and WebMCP.
