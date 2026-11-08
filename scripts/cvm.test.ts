@@ -131,8 +131,8 @@ describe("CVM (Chromium Version Manager & 5-Engine Third-Party Alignment Matrix)
     const coAbi = auditNodeBunV8BoringSslCoAbi();
     expect(coAbi.valid).toBe(true);
     expect(coAbi.v8EmbedderDataArraySize).toBe(40);
-    expect(CEF_AUTOMATE_WORKFLOW_SPEC.automateGitFlags.length).toBeGreaterThan(
-      3,
+    expect(CEF_AUTOMATE_WORKFLOW_SPEC.orchestratorScript).toContain(
+      "automate-git.py",
     );
   });
 });
