@@ -1,0 +1,19 @@
+Name: zx (Google Shell Scripting for Bun.$)
+Short Name: zx
+URL: https://github.com/google/zx
+License: Apache-2.0
+License File: LICENSE
+Version: 8.5.0
+Revision: HEAD
+Security Critical: yes
+Shipped: yes
+Forks:
+  - https://github.com/aphrody-labs/zx
+  - https://github.com/yolo-rs/zx
+
+Description:
+A tool for writing better scripts developed by Google, providing concise syntax for child processes and pipelines.
+
+Local Modifications:
+- Powered by native Bun.$ shell, Bun.Glob, and Bun.file with zero Node.js child_process overhead.
+- Exposed via yolo-bun:google-stack and yolo-bun:zx.

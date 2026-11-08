@@ -1,11 +1,18 @@
 {
   "name": "@yolo-rs/bun-plugin-catalog",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "type": "module",
   "license": "MIT OR Apache-2.0",
-  "description": "Bun bundler plugin that exposes the pinned yolo-bun project catalog",
+  "description": "Unified Bun bundler & runtime plugin suite for yolo-bun, yolo-standards, and google-bun (Lighthouse, Web Vitals, Modern Web Guidelines, Google Styleguide 2026, Google APIs, BOQ/Wiz/M3, and Chromium third_party)",
   "exports": {
-    ".": "./src/index.ts"
+    ".": "./src/index.ts",
+    "./register": "./src/register.ts",
+    "./lighthouse": "./src/lighthouse.ts",
+    "./web-guidelines": "./src/modern-web-guidelines.ts",
+    "./web-vitals": "./src/web-vitals.ts",
+    "./google-styleguide": "./src/google-styleguide.ts",
+    "./googleapis": "./src/google-apis.ts",
+    "./third-party": "./src/third-party-manager.ts"
   }
 }

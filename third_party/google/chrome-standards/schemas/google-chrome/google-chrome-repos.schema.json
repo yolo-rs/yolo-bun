@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "GoogleChromeTopRepositoriesSchema2026",
+  "type": "object",
+  "required": [
+    "version",
+    "organization",
+    "query",
+    "updatedAt",
+    "repositories",
+    "standardsAlignment"
+  ],
+  "properties": {
+    "version": { "type": "string" },
+    "organization": { "type": "string" },
+    "query": { "type": "string" },
+    "updatedAt": { "type": "string" },
+    "repositories": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "repoUrl",
+          "rankByStars",
+          "category",
+          "primaryLanguage",
+          "standards"
+        ],
+        "properties": {
+          "name": { "type": "string" },
+          "repoUrl": { "type": "string" },
+          "rankByStars": { "type": "number" },
+          "category": { "type": "string" },
+          "primaryLanguage": { "type": "string" },
+          "standards": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "roleInWebStandards": { "type": "string" }
+        }
+      }
+    },
+    "standardsAlignment": {
+      "type": "object",
+      "required": ["coreWebVitals", "pwaServiceWorker", "automationCDP", "renderingCSS", "securityIdentity"],
+      "properties": {
+        "coreWebVitals": { "type": "array", "items": { "type": "string" } },
+        "pwaServiceWorker": { "type": "array", "items": { "type": "string" } },
+        "automationCDP": { "type": "array", "items": { "type": "string" } },
+        "renderingCSS": { "type": "array", "items": { "type": "string" } },
+        "securityIdentity": { "type": "array", "items": { "type": "string" } }
+      }
+    }
+  }
+}

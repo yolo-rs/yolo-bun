@@ -1,0 +1,19 @@
+Name: Google Chrome & Modern Web Platform Standards
+Short Name: chrome-standards
+URL: https://github.com/GoogleChrome/developer.chrome.com
+License: Apache-2.0
+License File: LICENSE
+Version: 2026.1.0
+Revision: HEAD
+Security Critical: yes
+Shipped: yes
+Forks:
+  - https://github.com/aphrody-labs/developer.chrome.com
+  - https://github.com/yolo-rs/developer.chrome.com
+
+Description:
+Unified Chromium 144+, W3C, WHATWG, MDN Baseline 2026, TC39 ES2026, WebAssembly 3.0, and MCP 2026 schema catalog.
+
+Local Modifications:
+- Merges yolo-standards schemas (google-chrome, mdn, tc39, webassembly, mcp) directly into yolo-bun/third_party/google/chrome-standards/schemas.
+- Exposed via yolo-bun:web-guidelines and yolo-bun:chrome-standards.

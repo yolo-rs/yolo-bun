@@ -1,0 +1,19 @@
+Name: Google Lighthouse
+Short Name: lighthouse
+URL: https://github.com/GoogleChrome/lighthouse
+License: Apache-2.0
+License File: LICENSE
+Version: 12.4.0
+Revision: HEAD
+Security Critical: yes
+Shipped: yes
+Forks:
+  - https://github.com/aphrody-labs/lighthouse
+  - https://github.com/yolo-rs/lighthouse
+
+Description:
+Automated auditing, performance metrics, Accessibility (WCAG 2.2 AA/AAA), Best Practices, and SEO engine for Chromium web applications.
+
+Local Modifications:
+- Integrated as a native Bun.plugin (yolo-bun:lighthouse) and zero-overhead HTML/HTTP response auditor in packages/yolo-bun-plugin.
+- Evaluates Performance, Accessibility, Best Practices, and SEO categories with deterministic 100/100 gates.

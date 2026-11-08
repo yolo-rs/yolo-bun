@@ -1,0 +1,18 @@
+Name: google-cloud-go
+Short Name: google-cloud-go
+URL: https://github.com/googleapis/google-cloud-go
+License: Apache-2.0
+License File: LICENSE
+Version: 0.120.0
+Revision: HEAD
+Security Critical: yes
+Shipped: yes
+Forks:
+  - https://github.com/aphrody-labs/google-cloud-go
+  - https://github.com/yolo-rs/google-cloud-go
+
+Description:
+Google Cloud client libraries for Go (Cloud Storage, Spanner, BigQuery, Secret Manager, Cloud Run, Vertex AI, Cloud DNS).
+
+Local Modifications:
+- Synced with project=aphrody (468000409790) keyless ADC and OAuth2 token bridge in yolo-bun.

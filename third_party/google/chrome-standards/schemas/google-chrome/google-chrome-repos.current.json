@@ -1,0 +1,147 @@
+{
+  "version": "2026.1.0",
+  "organization": "GoogleChrome",
+  "query": "org:GoogleChrome sort:stars",
+  "updatedAt": "2026-11-08T07:52:00Z",
+  "repositories": [
+    {
+      "name": "puppeteer",
+      "repoUrl": "https://github.com/puppeteer/puppeteer",
+      "rankByStars": 1,
+      "category": "Browser Automation & Headless Protocol",
+      "primaryLanguage": "TypeScript",
+      "standards": [
+        "Chrome DevTools Protocol (CDP)",
+        "W3C WebDriver BiDi",
+        "W3C Permissions API"
+      ],
+      "roleInWebStandards": "De facto standard for browser automation, headless rendering and WebDriver BiDi dual-protocol implementation."
+    },
+    {
+      "name": "lighthouse",
+      "repoUrl": "https://github.com/GoogleChrome/lighthouse",
+      "rankByStars": 2,
+      "category": "Auditing, Core Web Vitals & Quality",
+      "primaryLanguage": "JavaScript / TypeScript",
+      "standards": [
+        "W3C Navigation Timing / Resource Timing",
+        "Chromium Core Web Vitals (INP, LCP, CLS)",
+        "WCAG 2.2 Accessibility Rules",
+        "Progressive Web App (PWA) Spec"
+      ],
+      "roleInWebStandards": "Official reference implementation for automated web quality auditing, Lighthouse CI and performance budgets."
+    },
+    {
+      "name": "workbox",
+      "repoUrl": "https://github.com/GoogleChrome/workbox",
+      "rankByStars": 3,
+      "category": "Service Worker & Offline PWA Tooling",
+      "primaryLanguage": "TypeScript",
+      "standards": [
+        "W3C Service Workers",
+        "W3C Cache Storage API",
+        "W3C Background Sync API",
+        "W3C Periodic Background Sync"
+      ],
+      "roleInWebStandards": "Definitive production library for caching strategies (StaleWhileRevalidate, CacheFirst, NetworkFirst) and offline PWA resilience."
+    },
+    {
+      "name": "developer.chrome.com",
+      "repoUrl": "https://github.com/GoogleChrome/developer.chrome.com",
+      "rankByStars": 4,
+      "category": "Official Documentation & Platform Guidance",
+      "primaryLanguage": "TypeScript / Markdown",
+      "standards": [
+        "Chrome Extensions Manifest V3",
+        "Origin Trials & Web Capabilities (Project Fugu)",
+        "W3C Web Platform Status"
+      ],
+      "roleInWebStandards": "Primary knowledge base for Chromium capabilities, extension runtime policies, and modern browser APIs."
+    },
+    {
+      "name": "web-vitals",
+      "repoUrl": "https://github.com/GoogleChrome/web-vitals",
+      "rankByStars": 5,
+      "category": "Real-User Monitoring (RUM) Metrics",
+      "primaryLanguage": "TypeScript",
+      "standards": [
+        "W3C Performance Timeline API",
+        "W3C Long Animation Frames (LoAF)",
+        "W3C Event Timing API (INP)",
+        "W3C Layout Instability API (CLS)",
+        "W3C Largest Contentful Paint (LCP)"
+      ],
+      "roleInWebStandards": "Zero-dependency, tiny production library accurately measuring real-user Core Web Vitals in 2026."
+    },
+    {
+      "name": "samples",
+      "repoUrl": "https://github.com/GoogleChrome/samples",
+      "rankByStars": 6,
+      "category": "Web Platform API Reference Implementations",
+      "primaryLanguage": "JavaScript",
+      "standards": [
+        "W3C WebGPU Samples",
+        "W3C Web Audio API",
+        "W3C WebAuthn Passkeys",
+        "W3C WebHID / WebUSB / WebSerial"
+      ],
+      "roleInWebStandards": "Canonical code recipes showing direct web API usage."
+    },
+    {
+      "name": "chrome-extensions-samples",
+      "repoUrl": "https://github.com/GoogleChrome/chrome-extensions-samples",
+      "rankByStars": 7,
+      "category": "Extensions Manifest V3 Patterns",
+      "primaryLanguage": "JavaScript / TypeScript",
+      "standards": [
+        "W3C WebExtensions Community Group (WECG)",
+        "Manifest V3 Service Workers",
+        "Declarative Net Request API"
+      ],
+      "roleInWebStandards": "Reference implementations for high-security extension sandboxing without arbitrary remote script execution."
+    },
+    {
+      "name": "rendertron",
+      "repoUrl": "https://github.com/GoogleChrome/rendertron",
+      "rankByStars": 8,
+      "category": "Headless Server-Side Rendering",
+      "primaryLanguage": "TypeScript",
+      "standards": [
+        "W3C HTML5 DOM Serialization",
+        "Chrome DevTools Protocol (CDP)"
+      ],
+      "roleInWebStandards": "Cloud-native headless Chrome server for dynamic rendering and bot hydration."
+    }
+  ],
+  "standardsAlignment": {
+    "coreWebVitals": [
+      "W3C Long Animation Frames API (LoAF)",
+      "W3C Event Timing API (INP < 200ms)",
+      "W3C Largest Contentful Paint API (LCP < 2.5s)",
+      "W3C Layout Instability API (CLS < 0.1)"
+    ],
+    "pwaServiceWorker": [
+      "W3C Service Workers Level 2",
+      "W3C Cache Storage API",
+      "W3C Web App Manifest",
+      "W3C Background Fetch & Sync"
+    ],
+    "automationCDP": [
+      "Chrome DevTools Protocol (CDP)",
+      "W3C WebDriver BiDi Specification",
+      "Target, Page, Network, Runtime domains"
+    ],
+    "renderingCSS": [
+      "W3C View Transitions API (Level 1 & 2)",
+      "W3C CSS Container Queries",
+      "W3C Subgrid & CSS Nesting",
+      "W3C WebGPU & WGSL Shaders"
+    ],
+    "securityIdentity": [
+      "W3C WebAuthn Level 3 (FIDO2 & Passkeys with PRF)",
+      "W3C Federated Credential Management (FedCM)",
+      "W3C Permissions-Policy & Content-Security-Policy Level 3",
+      "Private State Tokens & Privacy Sandbox APIs"
+    ]
+  }
+}

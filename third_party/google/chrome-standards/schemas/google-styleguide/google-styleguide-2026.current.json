@@ -1,0 +1,80 @@
+{
+  "version": "2026.1.0",
+  "upstreams": {
+    "googleStyleguide": "https://github.com/google/styleguide",
+    "googleSkills": "https://github.com/google/skills",
+    "openSourceGoogle": "https://opensource.google/",
+    "comprehensiveRust": "https://google.github.io/comprehensive-rust/",
+    "deepMind": "https://github.com/google-deepmind",
+    "chromium": "https://chromium.googlesource.com/chromium/src",
+    "aosp": "https://android.googlesource.com/"
+  },
+  "rust": {
+    "edition": "2024",
+    "comprehensiveRustUrl": "https://google.github.io/comprehensive-rust/",
+    "chromiumFfiSafety": {
+      "requireCxxOrCrubit": true,
+      "prohibitCatchUnwind": true,
+      "panicStrategy": "abort",
+      "forbidUncheckedUnsafe": true,
+      "gtestInterop": "rust_gtest_interop"
+    },
+    "linter": "clippy",
+    "formatter": "rustfmt",
+    "rules": [
+      "no-panic-catch-unwind",
+      "prefer-format-or-write-macro",
+      "explicit-safety-docs-on-unsafe",
+      "cxx-bridge-or-crubit-for-cpp-ffi",
+      "clippy-all-targets-zero-warnings",
+      "rustfmt-edition-2024"
+    ]
+  },
+  "typescript": {
+    "styleguideUrl": "https://google.github.io/styleguide/tsguide.html",
+    "runtime": "bun",
+    "minBunVersion": "1.4.4",
+    "commands": {
+      "format": "bun fmt",
+      "lint": "bun lint --type-aware",
+      "check": "bun check"
+    },
+    "rules": [
+      "named-exports-only",
+      "no-default-exports",
+      "no-var-require-const-or-let",
+      "strict-type-checking",
+      "no-any-prefer-unknown",
+      "module-import-type-separation"
+    ]
+  },
+  "cppChromium": {
+    "styleguideUrl": "https://google.github.io/styleguide/cppguide.html",
+    "stdVersion": "c++20",
+    "subsystems": ["chromium", "skia", "wgpu", "dawn", "v8", "angle"],
+    "buildTools": ["gn", "ninja", "depot_tools", "gclient", "repo"],
+    "rules": [
+      "no-rtti-no-exceptions-in-chromium",
+      "raw-ptr-miracleptr-memory-safety",
+      "gn-ninja-hermetic-build",
+      "clang-format-chromium-style"
+    ]
+  },
+  "aospAndroid17": {
+    "apiLevel": 37,
+    "releaseName": "Android 17",
+    "buildSystems": ["soong", "bazel", "repo"],
+    "virtualDevice": {
+      "runtime": "cuttlefish",
+      "architecture": "x86_64",
+      "imageFlavor": "google_apis_playstore",
+      "launchCommand": "launch_cvd --daemon --gpu_mode=gfxstream"
+    },
+    "rules": [
+      "android-bp-soong-first",
+      "rust-in-aosp-memory-safe-hal",
+      "bazel-bzlmod-hermetic-toolchains",
+      "cuttlefish-x86_64-google-play-verification"
+    ]
+  }
+}

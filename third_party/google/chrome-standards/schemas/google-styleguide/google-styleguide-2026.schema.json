@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Google / DeepMind / Chromium / AOSP Styleguide & Build Tooling 2026 Schema",
+  "description": "Schema definition for Google Styleguide, Comprehensive Rust, Chromium C++/Skia/WGPU, Bun v1.4.4+ TypeScript, and AOSP Android 17 build tooling",
+  "type": "object",
+  "required": ["version", "upstreams", "rust", "typescript", "cppChromium", "aospAndroid17"],
+  "properties": {
+    "version": { "type": "string" },
+    "upstreams": {
+      "type": "object",
+      "required": ["googleStyleguide", "googleSkills", "openSourceGoogle", "comprehensiveRust", "deepMind", "chromium", "aosp"],
+      "properties": {
+        "googleStyleguide": { "type": "string" },
+        "googleSkills": { "type": "string" },
+        "openSourceGoogle": { "type": "string" },
+        "comprehensiveRust": { "type": "string" },
+        "deepMind": { "type": "string" },
+        "chromium": { "type": "string" },
+        "aosp": { "type": "string" }
+      }
+    },
+    "rust": {
+      "type": "object",
+      "required": ["edition", "comprehensiveRustUrl", "chromiumFfiSafety", "linter", "formatter", "rules"],
+      "properties": {
+        "edition": { "type": "string", "enum": ["2024"] },
+        "comprehensiveRustUrl": { "type": "string" },
+        "chromiumFfiSafety": {
+          "type": "object",
+          "required": ["requireCxxOrCrubit", "prohibitCatchUnwind", "panicStrategy", "forbidUncheckedUnsafe", "gtestInterop"],
+          "properties": {
+            "requireCxxOrCrubit": { "type": "boolean" },
+            "prohibitCatchUnwind": { "type": "boolean" },
+            "panicStrategy": { "type": "string", "enum": ["abort"] },
+            "forbidUncheckedUnsafe": { "type": "boolean" },
+            "gtestInterop": { "type": "string" }
+          }
+        },
+        "linter": { "type": "string", "enum": ["clippy"] },
+        "formatter": { "type": "string", "enum": ["rustfmt"] },
+        "rules": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "typescript": {
+      "type": "object",
+      "required": ["styleguideUrl", "runtime", "minBunVersion", "commands", "rules"],
+      "properties": {
+        "styleguideUrl": { "type": "string" },
+        "runtime": { "type": "string", "enum": ["bun"] },
+        "minBunVersion": { "type": "string" },
+        "commands": {
+          "type": "object",
+          "required": ["format", "lint", "check"],
+          "properties": {
+            "format": { "type": "string", "const": "bun fmt" },
+            "lint": { "type": "string", "const": "bun lint --type-aware" },
+            "check": { "type": "string", "const": "bun check" }
+          }
+        },
+        "rules": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "cppChromium": {
+      "type": "object",
+      "required": ["styleguideUrl", "stdVersion", "subsystems", "buildTools", "rules"],
+      "properties": {
+        "styleguideUrl": { "type": "string" },
+        "stdVersion": { "type": "string" },
+        "subsystems": { "type": "array", "items": { "type": "string" } },
+        "buildTools": { "type": "array", "items": { "type": "string" } },
+        "rules": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "aospAndroid17": {
+      "type": "object",
+      "required": ["apiLevel", "releaseName", "buildSystems", "virtualDevice", "rules"],
+      "properties": {
+        "apiLevel": { "type": "number" },
+        "releaseName": { "type": "string" },
+        "buildSystems": { "type": "array", "items": { "type": "string" } },
+        "virtualDevice": {
+          "type": "object",
+          "required": ["runtime", "architecture", "imageFlavor", "launchCommand"],
+          "properties": {
+            "runtime": { "type": "string", "const": "cuttlefish" },
+            "architecture": { "type": "string", "const": "x86_64" },
+            "imageFlavor": { "type": "string", "const": "google_apis_playstore" },
+            "launchCommand": { "type": "string" }
+          }
+        },
+        "rules": { "type": "array", "items": { "type": "string" } }
+      }
+    }
+  }
+}

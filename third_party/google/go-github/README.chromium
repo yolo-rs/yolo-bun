@@ -1,0 +1,18 @@
+Name: go-github
+Short Name: go-github
+URL: https://github.com/google/go-github
+License: BSD-3-Clause
+License File: LICENSE
+Version: v69.2.0
+Revision: HEAD
+Security Critical: yes
+Shipped: yes
+Forks:
+  - https://github.com/aphrody-labs/go-github
+  - https://github.com/yolo-rs/go-github
+
+Description:
+Go library for accessing the GitHub REST API v3 across upstream-watch and repository mirroring pipelines.
+
+Local Modifications:
+- Integrated with yolo-bun upstream-watch and GitHub token rotation.

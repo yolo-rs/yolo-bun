@@ -1,0 +1,19 @@
+Name: Google BOQ & Wiz Resumable Signals Runtime
+Short Name: boq-wiz
+URL: https://github.com/angular/angular
+License: MIT
+License File: LICENSE
+Version: 20.0.0
+Revision: HEAD
+Security Critical: yes
+Shipped: yes
+Forks:
+  - https://github.com/aphrody-labs/angular
+  - https://github.com/yolo-rs/angular
+
+Description:
+Google's internal production web architecture combining BOQ (window.WIZ_global_data, batchexecute RPC framing with XSSI prefix, AF_initDataCallback streaming SSR islands) and Wiz + Angular Signals zero-eager-hydration jsaction event delegation.
+
+Local Modifications:
+- Ported from google-bun/packages/google-stack into yolo-bun/packages/yolo-bun-plugin (yolo-bun:google-stack).
+- Integrated natively with Bun.serve() for instant Chromium SSR and RPC batching.

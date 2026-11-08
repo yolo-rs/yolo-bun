@@ -18,6 +18,15 @@ import {
   generateBunComLlmsTxt,
   searchBunComDocs,
 } from "./bun-com-fork";
+import {
+  auditTypeScriptSourceForGts,
+  GOOGLE_APIS_CATALOG_2026,
+  GOOGLE_M3_DARK_TOKENS,
+  loadGoogleStyleguide2026,
+  loadMergedStandardsSchemas,
+  verifyThirdPartyDeps,
+  WEB_GUIDELINES_CATALOG_2026,
+} from "../packages/yolo-bun-plugin/src/index";
 
 function usage(): never {
   console.error(`Usage:
@@ -31,12 +40,69 @@ function usage(): never {
   yolo site index
   yolo site search <query>
   yolo site audit
-  yolo site serve [port]`);
+  yolo site serve [port]
+  yolo google third-party
+  yolo google styleguide [file]
+  yolo google standards
+  yolo google stack`);
   process.exit(2);
 }
 
 async function main() {
   const [, , domain, command, ...args] = Bun.argv;
+  if (domain === "google") {
+    if (command === "third-party" && args.length === 0) {
+      const report = verifyThirdPartyDeps();
+      console.log(JSON.stringify(report, null, 2));
+      if (!report.valid) process.exitCode = 1;
+      return;
+    }
+    if (command === "styleguide") {
+      const styleguide = loadGoogleStyleguide2026();
+      const targetFile = args[0];
+      if (targetFile) {
+        const source = await Bun.file(targetFile).text();
+        const audit = auditTypeScriptSourceForGts(source);
+        console.log(
+          JSON.stringify({ styleguide, file: targetFile, audit }, null, 2),
+        );
+        if (!audit.valid) process.exitCode = 1;
+        return;
+      }
+      console.log(JSON.stringify(styleguide, null, 2));
+      return;
+    }
+    if (command === "standards" && args.length === 0) {
+      const schemas = loadMergedStandardsSchemas();
+      console.log(
+        JSON.stringify(
+          {
+            webGuidelines: WEB_GUIDELINES_CATALOG_2026,
+            schemas,
+          },
+          null,
+          2,
+        ),
+      );
+      return;
+    }
+    if (command === "stack" && args.length === 0) {
+      console.log(
+        JSON.stringify(
+          {
+            runtime: "yolo-bun + yolo-standards + google-bun unified",
+            chromiumTarget: "v144+",
+            m3DarkTokens: GOOGLE_M3_DARK_TOKENS,
+            googleApisCatalog: GOOGLE_APIS_CATALOG_2026,
+          },
+          null,
+          2,
+        ),
+      );
+      return;
+    }
+    usage();
+  }
   if (domain === "site") {
     const index = await buildBunComSiteIndex();
     if (command === "index" && args.length === 0) {

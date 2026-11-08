@@ -1,0 +1,19 @@
+Name: gts (Google TypeScript Style)
+Short Name: gts
+URL: https://github.com/google/gts
+License: Apache-2.0
+License File: LICENSE
+Version: 2026.1.0
+Revision: HEAD
+Security Critical: yes
+Shipped: yes
+Forks:
+  - https://github.com/aphrody-labs/gts
+  - https://github.com/yolo-rs/gts
+
+Description:
+Google's TypeScript style guide, configuration, linter, and automatic code fixer.
+
+Local Modifications:
+- Refactored into 100% Native Upstream Bun v1.4.4+ in packages/yolo-bun-plugin (yolo-bun:google-styleguide).
+- Enforces no-any, named exports only, no const enum, no namespace, private #fields, and strict ES module imports.

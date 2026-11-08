@@ -1,0 +1,18 @@
+Name: Oxc (The JavaScript Oxidation Compiler)
+Short Name: oxc
+URL: https://github.com/oxc-project/oxc
+License: MIT
+License File: LICENSE
+Version: 0.62.0
+Revision: HEAD
+Security Critical: yes
+Shipped: yes
+Forks:
+  - https://github.com/aphrody-labs/oxc
+  - https://github.com/yolo-rs/tsgolint
+
+Description:
+Collection of high-performance JavaScript/TypeScript tools written in Rust: parser, linter (oxlint), formatter (oxfmt), transformer, minifier, and resolver.
+
+Local Modifications:
+- Used alongside Upstream Bun v1.4.4+ and GTS for sub-millisecond static analysis.

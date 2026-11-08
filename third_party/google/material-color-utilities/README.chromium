@@ -1,0 +1,18 @@
+Name: Material Color Utilities (Material Design 3 Expressive HCT & CAM16)
+Short Name: material-color-utilities
+URL: https://github.com/material-foundation/material-color-utilities
+License: Apache-2.0
+License File: LICENSE
+Version: 0.3.0
+Revision: HEAD
+Security Critical: no
+Shipped: yes
+Forks:
+  - https://github.com/aphrody-labs/material-color-utilities
+  - https://github.com/yolo-rs/material-color-utilities
+
+Description:
+Algorithms and utilities that power the Material Design 3 (M3) color system, including HCT (Hue, Chroma, Tone) perceptual color space and multi-surface token generation.
+
+Local Modifications:
+- Integrated with GoogleMultiSurfaceCompiler (Web Wiz M3, Android Jetpack Compose, Flutter Dart, Zed GPUI Rust 2024, Google TV Leanback) in yolo-bun:google-stack.

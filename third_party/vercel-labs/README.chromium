@@ -1,0 +1,19 @@
+Name: Vercel Labs AI Agent, Edge Caching & Generative UI Suite
+Short Name: vercel-labs
+URL: https://github.com/orgs/vercel-labs/repositories
+License: Apache-2.0
+License File: LICENSE
+Version: 2026.1.0
+Revision: HEAD
+Security Critical: yes
+Shipped: yes
+Forks:
+  - https://github.com/aphrody-labs/agent-browser
+  - https://github.com/aphrody-labs/json-render
+  - https://github.com/yolo-rs/json-render
+
+Description:
+Vercel Labs agent-browser, json-render streaming UI schema, and Edge stale-while-revalidate caching primitives.
+
+Local Modifications:
+- Fused with Google M3 UI compiler and Core Web Vitals middleware in yolo-bun.

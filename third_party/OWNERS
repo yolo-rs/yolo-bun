@@ -1,0 +1,5 @@
+set noparent
+# Chromium-style third_party OWNERS governance for yolo-bun
+yohanpierre15@gmail.com
+aphrody-yolo@users.noreply.github.com
+per-file */README.chromium=*

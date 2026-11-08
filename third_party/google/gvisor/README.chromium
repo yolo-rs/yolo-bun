@@ -1,0 +1,18 @@
+Name: gVisor Container Sandbox Runtime
+Short Name: gvisor
+URL: https://github.com/google/gvisor
+License: Apache-2.0
+License File: LICENSE
+Version: 2026.11.0
+Revision: HEAD
+Security Critical: yes
+Shipped: yes
+Forks:
+  - https://github.com/aphrody-labs/gvisor
+  - https://github.com/yolo-rs/gvisor
+
+Description:
+Container runtime sandbox with user-space system call virtualization (Sentry) and isolated LISAFS filesystem proxy (Gofer).
+
+Local Modifications:
+- Provides syscall isolation profiles and Cloud Run (europe-west9) sandbox descriptors for yolo-bun.

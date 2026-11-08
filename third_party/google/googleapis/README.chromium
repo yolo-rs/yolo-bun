@@ -1,0 +1,19 @@
+Name: Google APIs TypeScript Client (Discovery, OAuth2, Cloud, Workspace, Vertex AI & Gemini)
+Short Name: googleapis
+URL: https://github.com/googleapis/google-api-nodejs-client
+License: Apache-2.0
+License File: LICENSE
+Version: 148.0.0
+Revision: HEAD
+Security Critical: yes
+Shipped: yes
+Forks:
+  - https://github.com/aphrody-labs/google-api-nodejs-client
+  - https://github.com/yolo-rs/google-api-nodejs-client
+
+Description:
+Official Google APIs client library covering Google Cloud (project=aphrody, Secret Manager, KMS, Storage, Cloud Run, BigQuery, Spanner, Vertex AI), Google Workspace (Drive, Gmail, Docs, Sheets, Calendar, People), and Gemini APIs.
+
+Local Modifications:
+- Re-architected for 100% Native Upstream Bun v1.4.4+ fetch() + WebCrypto OAuth2/OIDC JWT & Passkeys PRF without Node.js http/https polyfills.
+- Exposed as a native Bun.plugin virtual module (yolo-bun:googleapis).

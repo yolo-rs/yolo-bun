@@ -1,0 +1,18 @@
+Name: Google Chrome Web Vitals
+Short Name: web-vitals
+URL: https://github.com/GoogleChrome/web-vitals
+License: Apache-2.0
+License File: LICENSE
+Version: 4.2.4
+Revision: HEAD
+Security Critical: yes
+Shipped: yes
+Forks:
+  - https://github.com/aphrody-labs/web-vitals
+  - https://github.com/yolo-rs/web-vitals
+
+Description:
+Essential metrics for a healthy Chromium site (LCP < 2500ms, INP < 150ms, CLS < 0.1, FCP < 1800ms, TTFB < 50ms).
+
+Local Modifications:
+- Exposed as a native Bun.plugin (yolo-bun:web-vitals) with automatic W3C PerformanceObserver script injection, Server-Timing headers, and Speculation Rules prefetch/prerender generation.

@@ -13,8 +13,9 @@
   "include": [
     "scripts/**/*.ts",
     "packages/yolo-bun-plugin/src/**/*.ts",
-    "packages/windows/src/**/*.ts",
-    "packages/windows/test/**/*.ts"
+    "packages/bun-loaders/src/**/*.ts",
+    "packages/package-converter/src/**/*.ts",
+    "packages/bun-workspace/src/**/*.ts"
   ],
   "exclude": ["node_modules", "upstream", "vendor", "dist", "target"]
 }
