@@ -1,0 +1,17 @@
+[project]
+name = "gemma-train"
+version = "1.0.0"
+description = "Gemma 4 Fine-Tuning, Post-Training and Real-Time Bun Upstream Ingestion"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = ["carbon-core"]
+
+[project.scripts]
+gemma-train-py = "gemma_train.train:print_training_plan"
+
+[tool.uv.sources]
+carbon-core = { workspace = true }
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

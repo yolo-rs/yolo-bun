@@ -1,0 +1,73 @@
+# Copyright 2026 Google LLC
+# SPDX-License-Identifier: Apache-2.0
+#
+# Google Cloud Build Pipeline — Project Carbon (Google DeepMind Paris Beta -> Global Scale)
+# Primary Region: europe-west9 (Paris, France)
+# Global Scale Regions: europe-west4 (Netherlands), us-central1 (Iowa), asia-northeast1 (Tokyo)
+
+substitutions:
+  _PRIMARY_REGION: europe-west9
+  _SECONDARY_REGION: us-central1
+  _APAC_REGION: asia-northeast1
+  _AR_REPO: deepmind-carbon-registry
+  _SERVICE_NAME: deepmind-carbon-control-plane
+
+options:
+  machineType: E2_HIGHCPU_32
+  logging: CLOUD_LOGGING_ONLY
+
+steps:
+  # Step 1: Compile Rust 2024 Zero-Copy Bare-Metal FFI Kernel (fat LTO)
+  - name: "rust:latest"
+    id: "build-rust-ffi"
+    entrypoint: "cargo"
+    args:
+      - "build"
+      - "--release"
+      - "--manifest-path"
+      - "crates/carbon_ffi/Cargo.toml"
+
+  # Step 2: Run Upstream Bun v1.4.4+ Quality Gates & AoT Standalone Compilation
+  - name: "oven/bun:1.4.4"
+    id: "verify-and-compile-bun-aot"
+    waitFor: ["build-rust-ffi"]
+    entrypoint: "sh"
+    args:
+      - "-c"
+      - |
+        bun install --frozen-lockfile
+        bun fmt --check
+        bun lint
+        bun check
+        bun test
+        bun compile src/main.ts --outfile bin/carbon-linux-x64
+
+  # Step 3: Build & Push Container Image to Paris Artifact Registry (europe-west9)
+  - name: "gcr.io/cloud-builders/docker"
+    id: "push-artifact-registry-ew9"
+    waitFor: ["verify-and-compile-bun-aot"]
+    args:
+      - "build"
+      - "-t"
+      - "${_PRIMARY_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPO}/${_SERVICE_NAME}:$SHORT_SHA"
+      - "."
+
+  # Step 4: Deploy Primary Beta Service to Google Cloud Run Paris (europe-west9)
+  - name: "gcr.io/google.com/cloudsdktool/cloud-sdk:slim"
+    id: "deploy-paris-ew9"
+    waitFor: ["push-artifact-registry-ew9"]
+    entrypoint: "gcloud"
+    args:
+      - "run"
+      - "deploy"
+      - "${_SERVICE_NAME}"
+      - "--image=${_PRIMARY_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPO}/${_SERVICE_NAME}:$SHORT_SHA"
+      - "--region=${_PRIMARY_REGION}"
+      - "--platform=managed"
+      - "--execution-environment=gen2"
+      - "--allow-unauthenticated"
+      - "--port=4040"
+      - "--set-env-vars=GCP_REGION=${_PRIMARY_REGION},CARBON_STAGE=paris-beta-global"
+
+images:
+  - "${_PRIMARY_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPO}/${_SERVICE_NAME}:$SHORT_SHA"

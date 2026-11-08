@@ -1,0 +1,11 @@
+[project]
+name = "carbon-core"
+version = "1.0.0"
+description = "Core data structures and loaders for Gemini 4 Carbon Intelligence"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = []
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

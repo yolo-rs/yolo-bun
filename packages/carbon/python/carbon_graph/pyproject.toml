@@ -1,0 +1,14 @@
+[project]
+name = "carbon-graph"
+version = "1.0.0"
+description = "Graph and ingestion bridge querying Bun Upstream Architecture Knowledge Graph"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.scripts]
+carbon-graph-py = "carbon_graph:get_graph_summary"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

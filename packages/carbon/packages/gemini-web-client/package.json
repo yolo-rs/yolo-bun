@@ -1,0 +1,20 @@
+{
+  "name": "@carbon/gemini-web-client",
+  "version": "4.0.0",
+  "private": true,
+  "license": "Apache-2.0",
+  "type": "module",
+  "sideEffects": false,
+  "main": "src/index.ts",
+  "dependencies": {
+    "@carbon/core": "workspace:*",
+    "@carbon/webgpu-gemma": "workspace:*"
+  },
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "check": "bun check",
+    "test": "bun test"
+  }
+}

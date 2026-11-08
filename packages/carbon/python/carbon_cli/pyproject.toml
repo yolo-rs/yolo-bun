@@ -1,0 +1,17 @@
+[project]
+name = "carbon-cli"
+version = "1.0.0"
+description = "Python CLI tool for Gemini 4 Carbon, DeepMind & Vertex AI updates"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = ["carbon-core"]
+
+[project.scripts]
+carbon-py = "carbon_cli.main:cli_entry"
+
+[tool.uv.sources]
+carbon-core = { workspace = true }
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

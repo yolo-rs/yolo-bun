@@ -1,0 +1,11 @@
+{
+  "name": "@google-bun/github-client",
+  "version": "2026.11.0",
+  "description": "Native GitHub Client for Upstream Bun wrapping google/go-github & gh CLI for automated repository discovery, git cloning, org admin & commit indexing.",
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "scripts": {
+    "test": "bun test"
+  }
+}

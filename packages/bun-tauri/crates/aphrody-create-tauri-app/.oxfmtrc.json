@@ -1,3 +1,0 @@
-{
-  "ignorePatterns": ["CHANGELOG.md", "node/index.js", "node/index.d.ts"]
-}

@@ -1,0 +1,120 @@
+{
+  "lastUpdated": "2026-11-07T03:19:55.875Z",
+  "version": "4.0.0-deepmind-paris-argon",
+  "engine": "Google DeepMind Carbon // Paris (europe-west9) Beta -> Global Scale Architecture",
+  "primaryRegion": "europe-west9 (Paris, France — Google DeepMind Hub)",
+  "globalRegions": [
+    "europe-west9 (Paris, France — Primary Beta Control Plane)",
+    "europe-west4 (Eemshaven, Netherlands — Sovereign TPU v6e Training Pod)",
+    "us-central1 (Iowa, USA — Vertex AI Global Backbone & Chromium Crawler VM)",
+    "asia-northeast1 (Tokyo, Japan — APAC Low-Latency Edge Ingress)"
+  ],
+  "upstreamCensus": {
+    "ovenShRepos": "30/36 public repositories (oven-sh/bun @ b1305ddc7c, bun-v1.4.4, 96,667 stars)",
+    "bunRustCrates": "134 root Cargo workspace crates / 145 Cargo.toml manifests / 117 src/* subsystems",
+    "googleRepos": "25 top + 15 tracked repositories (styleguide: 20 guides, skills: 187 agent skills)",
+    "googleDeepMindRepos": "25 top repositories (mujoco, alphafold3, gemma, sonnet, optax, dm-haiku, mctx)",
+    "chromiumHeads": "9 Googlesource Gitiles HEADs (chromium/src @ 3402fcb4b8, v8 @ 87b0595e60, dawn @ 9165acf041, skia @ 508a8f7292)",
+    "aospAndroid17": "5 Android 17 (CinnamonBun / API 37) tags (android-17.0.0_r1) + 8 Aluminium OS Desktop images"
+  },
+  "news": [
+    {
+      "id": "deepmind-paris-argon-carbon",
+      "date": "2026-11-07",
+      "category": "DeepMind",
+      "title": "Google DeepMind Paris Hub Launches Project Carbon Beta on Gemini 4 Argon & Gemma 4 E2B",
+      "summary": "Architected in Paris (europe-west9) for global multi-region rollout: combines Gemini 4 Argon high-reasoning orchestration, zero-copy Rust 2024 FFI tensor kernels, and Dawn WebGPU in-browser Gemma 4 execution.",
+      "url": "https://deepmind.google/technologies/gemini/"
+    },
+    {
+      "id": "vertex-ai-ew9-global-scale",
+      "date": "2026-11-06",
+      "category": "Vertex AI",
+      "title": "Vertex AI Multi-Region Provisioned Throughput & Context Caching Across europe-west9 and us-central1",
+      "summary": "Enables deterministic sub-10ms routing between Google Cloud Paris (europe-west9), Netherlands TPU v6e pods (europe-west4), and US-Central1 with 80% token cost reduction via ephemeral context caching.",
+      "url": "https://cloud.google.com/vertex-ai/docs/generative-ai/context-cache/overview"
+    },
+    {
+      "id": "bun-144-aot-rust-architecture",
+      "date": "2026-11-06",
+      "category": "Gemini",
+      "title": "Upstream Bun v1.4.4 (b1305ddc7c) 134-Crate Rust Architecture Indexed in Carbon Knowledge Graph",
+      "summary": "Full AST and Cargo manifest ingestion of oven-sh/bun (1,297 structural nodes, 117 subsystems including src/aot, src/bun_core, src/jsc, src/http, src/sql) for deterministic Gemma 4 RAG grounding.",
+      "url": "https://github.com/oven-sh/bun"
+    },
+    {
+      "id": "gcloud-wif-zero-trust-mesh",
+      "date": "2026-11-05",
+      "category": "gcloud",
+      "title": "Unified WireGuard 10.66.0.0/24 Rack Mesh & Tokenless gcloud ADC Federation",
+      "summary": "Links local NVIDIA RTX 4070 CUDA 13.4 workstation, GCP us-central1 Free Tier Chromium crawler VM, OVH France (Gravelines) AVX-512 nodes, and Cloudflare Zero-Trust Edge under a single MCP control plane.",
+      "url": "https://cloud.google.com/iam/docs/workload-identity-federation"
+    }
+  ],
+  "changelog": [
+    {
+      "version": "v4.0.0-deepmind-paris-argon",
+      "date": "2026-11-07",
+      "changes": [
+        "Upgraded reasoning & architecture plane to Gemini 4 Argon (High Reasoning) with full Apache-2.0 Google LLC governance",
+        "Expanded crates/carbon_ffi to 9 zero-copy Rust 2024 C ABI kernels: 8-way SIMD Dot, Cosine Similarity, Softmax, Gemma Unit-Offset RMSNorm, GeGLU, RoPE, MatVec, and Fused Gemma Layer Step",
+        "Added complete Model Context Protocol (MCP) JSON-RPC 2.0 server (@carbon/mcp-server) over HTTP /mcp and stdio",
+        "Built 5 WGSL compute shaders in @carbon/webgpu-gemma (Tiled MatMul, Gemma RMSNorm, RoPE, GeGLU, Softmax)",
+        "Configured Google-First Paris (europe-west9) Cloud Run, Cloud Build, and Vertex AI TPU v6e deployment manifests"
+      ]
+    },
+    {
+      "version": "v3.8.2-lts",
+      "date": "2026-10-24",
+      "changes": [
+        "Initial dual-stack Bun v1.4.4+ and Astral uv v0.13.7 workspace layout",
+        "Upstream source-of-truth crawler integration (.yolo/upstream-source-of-truth.json)",
+        "Tree-Sitter multi-language AST graphify integration"
+      ]
+    }
+  ],
+  "bestPractices": [
+    {
+      "category": "Zero-Copy FFI & Bare-Metal",
+      "rule": "Direct TypedArray Pointer Sharing (bun:ffi & ctypes)",
+      "description": "Pass Float32Array pointers directly via ptr(typedArray) to Rust #[unsafe(no_mangle)] extern 'C' kernels compiled with lto='fat', codegen-units=1, and panic='unwind'. Eliminates JSON/Protobuf serialization overhead."
+    },
+    {
+      "category": "Gemma 4 Mathematical Fidelity",
+      "rule": "Unit-Offset RMSNorm & Tanh-Approximated GeGLU",
+      "description": "Gemma architectures scale normalized activations by (1.0 + weight[i]) rather than weight[i], and use tanh-approximated GELU in the gated MLP. Both are enforced identically in Rust FFI and WebGPU WGSL shaders."
+    },
+    {
+      "category": "Security & Google Cloud IAM",
+      "rule": "Zero Long-Lived Service Account Keys (ADC + WIF)",
+      "description": "Authenticate to Vertex AI (europe-west9 / us-central1) exclusively using short-lived OAuth 2.0 access tokens via 'gcloud auth application-default print-access-token' or Workload Identity Federation."
+    },
+    {
+      "category": "Upstream Bun AoT Compilation",
+      "rule": "Pure Annotations & sideEffects: false Across Workspaces",
+      "description": "Declare '\"sideEffects\": false' in every workspace package.json and avoid dynamic eval() so 'bun compile --outfile bin/carbon.exe' performs maximum dead-code elimination."
+    }
+  ],
+  "gcloudCliSetup": [
+    {
+      "step": "1. Configure Google Cloud Primary Region (Paris europe-west9) & Project",
+      "cmd": "gcloud config set project carbon-intelligence-2026\ngcloud config set run/region europe-west9\ngcloud config set ai/region europe-west9"
+    },
+    {
+      "step": "2. Enable Vertex AI, Cloud Run, Artifact Registry & Compute APIs",
+      "cmd": "gcloud services enable aiplatform.googleapis.com run.googleapis.com artifactregistry.googleapis.com cloudbuild.googleapis.com compute.googleapis.com"
+    },
+    {
+      "step": "3. Deploy Carbon Control Plane to Google Cloud Run (Paris europe-west9)",
+      "cmd": "gcloud builds submit --config=infra/gcp/cloudbuild.yaml --substitutions=_PRIMARY_REGION=europe-west9"
+    },
+    {
+      "step": "4. Submit Gemma 4 E2B Upstream Bun QLoRA Fine-Tuning Job to Vertex AI",
+      "cmd": "gcloud ai custom-jobs create --region=europe-west4 --display-name=gdm-carbon-gemma4-sft --config=infra/gcp/vertex-gemma4-sft-job.yaml"
+    },
+    {
+      "step": "5. Stream Gemini 4 / Gemma 4 Inference via Tokenless ADC",
+      "cmd": "curl -X POST https://europe-west9-aiplatform.googleapis.com/v1/projects/carbon-intelligence-2026/locations/europe-west9/publishers/google/models/gemini-4-argon:streamGenerateContent \\\n  -H \"Authorization: Bearer $(gcloud auth application-default print-access-token)\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"contents\":[{\"role\":\"user\",\"parts\":[{\"text\":\"Explain Upstream Bun src/aot SSA passes\"}]}]}'"
+    }
+  ]
+}

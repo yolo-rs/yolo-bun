@@ -1,0 +1,28 @@
+{
+  "lastSyncedAt": "2026-11-07T07:20:04.146Z",
+  "sourceUrl": "https://gemini.google.com/saved-info",
+  "savedInfoFacts": [
+    "Primary Beta Hub: Google DeepMind Paris (europe-west9) scaling globally to europe-west4, us-central1, and asia-northeast1.",
+    "Runtime Purity: 100% Upstream Bun v1.4.4+, Rust 2024 cdylib (crates/carbon_ffi), and Astral uv v0.13.7.",
+    "Gemma 4 Mathematical Invariant: Unit-Offset RMSNorm (1.0 + weight) and Tanh-approximated GeGLU MLP.",
+    "Gateway Standard: OpenAI-compatible /v1/chat/completions & Model Context Protocol (MCP) JSON-RPC 2.0 on :4040.",
+    "Verified Paris europe-west9 OpenAI Gateway",
+    "Native GPUI Desktop & IDE: Antigravity IDE 2.0 and Gemini Desktop replace Electron with a pure Rust GPUI 0.8 + Taffy 0.15 + WGPU/Blade fork of Zed (yolo-ui/packages/yolo-gpui).",
+    "Keyless Google AI Ultra Subscription: Zero API key required. Synchronizes active Chrome profile (yohanpierre15@gmail.com -> aphrody-yolo) into AES-256-GCM vault (SQLite WAL, Postgres, Redis) with RFC 6238 TOTP, QR SVG, and FIDO2 Passkeys, fusing Gemini Web App and agy CLI into one session and token usage budget.",
+    "Local Uncensored Creative Suite: Local uncensored Image (Flux/SDXL/Imagen WebGPU), Video (Veo/SVD), 3D (Gaussian Splatting GPUI), and Music synthesis integrated with Craft Creative Suite, OpenCode, and yolo-ai TUI/CLI.",
+    "Universal Polyglot Pipeline: Rust 2024 + Upstream Bun v1.4.4+ + Python uv + Go 1.27 with dynamic multi-OS FFI resolution and automated scripts/pipeline.ts + GitHub Actions publishing to npm, crates.io, PyPI, and GitHub Releases.",
+    "Single-owner domain consolidation verified."
+  ],
+  "activeGems": [
+    {
+      "id": "gem-deepmind-carbon-architect",
+      "name": "DeepMind Carbon Systems Architect",
+      "instruction": "Enforce zero-copy Rust FFI tensor kernels, Google Sans / 4-color brand identity, and Google Cloud europe-west9 first deployments."
+    },
+    {
+      "id": "gem-bun-upstream-reviewer",
+      "name": "Upstream Bun v1.4.4 Core Reviewer",
+      "instruction": "Audit changes against the 1,297-node Bun architecture graph (134 Cargo crates, JSC GC safety rules, and AoT --trim readiness)."
+    }
+  ]
+}

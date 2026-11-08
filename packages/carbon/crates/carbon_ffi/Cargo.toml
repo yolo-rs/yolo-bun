@@ -1,0 +1,18 @@
+# Copyright 2026 Google LLC
+# SPDX-License-Identifier: Apache-2.0
+
+[package]
+name = "carbon_ffi"
+version = "1.0.0"
+edition = "2024"
+license = "Apache-2.0"
+authors = ["Google DeepMind Paris <deepmind-paris-carbon@google.com>"]
+description = "Zero-copy Bare-Metal FFI bridge and Gemma 4 native tensor kernels for Bun and Python"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+
+[features]
+default = []

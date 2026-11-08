@@ -1,0 +1,22 @@
+{
+  "name": "Google DeepMind Carbon Unified Gateway (Paris europe-west9)",
+  "openai_api_base_urls": [
+    "http://127.0.0.1:4040/v1",
+    "https://openrouter.ai/api/v1"
+  ],
+  "openai_api_keys": ["sk-carbon-deepmind-paris", "${OPENROUTER_API_KEY}"],
+  "default_models": [
+    "gemini-4-argon",
+    "gemini-4-carbon",
+    "gemini-web-deep-research",
+    "gemini-web-canvas",
+    "gemma-4-e2b-it"
+  ],
+  "mcp_servers": [
+    {
+      "name": "google-deepmind-carbon-mcp",
+      "transport": "http",
+      "url": "http://127.0.0.1:4040/mcp"
+    }
+  ]
+}

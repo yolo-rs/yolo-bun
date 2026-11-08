@@ -1,0 +1,26 @@
+<!-- Copyright 2026 Google LLC. SPDX-License-Identifier: Apache-2.0 -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 48" fill="none">
+  <defs>
+    <linearGradient id="gdm-blue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8AB4F8"/>
+      <stop offset="50%" stop-color="#4285F4"/>
+      <stop offset="100%" stop-color="#1A73E8"/>
+    </linearGradient>
+    <linearGradient id="gdm-spark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4285F4"/>
+      <stop offset="35%" stop-color="#9B72CB"/>
+      <stop offset="70%" stop-color="#D96570"/>
+      <stop offset="100%" stop-color="#FBBC04"/>
+    </linearGradient>
+  </defs>
+  <!-- Google DeepMind Geometric Hex-Sparkle Emblem -->
+  <g transform="translate(4, 4)">
+    <path d="M20 0C20 11.0457 28.9543 20 40 20C28.9543 20 20 28.9543 20 40C20 28.9543 11.0457 20 0 20C11.0457 20 20 11.0457 20 0Z" fill="url(#gdm-spark)"/>
+    <circle cx="20" cy="20" r="4" fill="#FFFFFF"/>
+    <rect x="36" y="4" width="6" height="6" rx="3" fill="#34A853"/>
+    <rect x="36" y="30" width="6" height="6" rx="3" fill="#EA4335"/>
+  </g>
+  <!-- Typography Lockup -->
+  <text x="56" y="23" fill="#F8FAFC" font-family="'Google Sans', 'Product Sans', system-ui, sans-serif" font-size="16" font-weight="600" letter-spacing="-0.02em">Google DeepMind</text>
+  <text x="56" y="39" fill="#8AB4F8" font-family="'Google Sans Mono', monospace" font-size="11" font-weight="500" letter-spacing="0.08em">CARBON // PARIS-EW9</text>
+</svg>

@@ -1,0 +1,17 @@
+[project]
+name = "carbon-web"
+version = "1.0.0"
+description = "FastAPI / Starlette web server for Gemini 4 Carbon Intelligence"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = ["carbon-core"]
+
+[project.scripts]
+carbon-web-py = "carbon_web.server:run_server"
+
+[tool.uv.sources]
+carbon-core = { workspace = true }
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

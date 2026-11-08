@@ -1,0 +1,45 @@
+{
+  "name": "@carbon/cli",
+  "version": "4.0.0",
+  "private": true,
+  "license": "Apache-2.0",
+  "type": "module",
+  "sideEffects": false,
+  "bin": {
+    "carbon": "src/index.ts"
+  },
+  "scripts": {
+    "start": "bun run src/index.ts",
+    "status": "bun run src/index.ts status",
+    "news": "bun run src/index.ts news",
+    "changelog": "bun run src/index.ts changelog",
+    "practices": "bun run src/index.ts practices",
+    "gcloud": "bun run src/index.ts gcloud",
+    "sync": "bun run src/index.ts sync",
+    "ffi-benchmark": "bun run src/index.ts ffi-benchmark",
+    "gemma-step": "bun run src/index.ts gemma-step",
+    "graph-query": "bun run src/index.ts graph-query",
+    "mesh": "bun run src/index.ts mesh",
+    "mcp-tools": "bun run src/index.ts mcp-tools",
+    "gemini-web": "bun run src/index.ts gemini-web",
+    "benchmarks": "bun run src/index.ts benchmarks",
+    "crawl-design": "bun run src/index.ts crawl-design",
+    "yolo-web": "bun run src/index.ts yolo-web",
+    "check": "bun check",
+    "test": "bun test"
+  },
+  "dependencies": {
+    "@carbon/core": "workspace:*",
+    "@carbon/dataset": "workspace:*",
+    "@carbon/design-crawler": "workspace:*",
+    "@carbon/gemini-web-client": "workspace:*",
+    "@carbon/graph-engine": "workspace:*",
+    "@carbon/mcp-server": "workspace:*",
+    "@carbon/mesh-cluster": "workspace:*",
+    "@carbon/webgpu-gemma": "workspace:*"
+  },
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "main": "src/index.ts"
+}

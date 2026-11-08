@@ -1,0 +1,29 @@
+{
+  "name": "@bun-os/re",
+  "version": "1.4.7",
+  "private": true,
+  "description": "Bun OS RE command and pipeline facade over the canonical aphrody-labs/rea source owner in vendor/rea.",
+  "license": "MIT AND Apache-2.0",
+  "type": "module",
+  "bin": {
+    "re": "scripts/rea.mjs"
+  },
+  "exports": {
+    "./pipeline": "./src/pipeline/index.ts"
+  },
+  "scripts": {
+    "build": "bun run --cwd ../../vendor/rea build",
+    "typecheck": "bun check -p tsconfig.json --noEmit",
+    "lint": "bun lint scripts src",
+    "test": "bun test --isolate ../../vendor/rea/tests/bun-os"
+  },
+  "dependencies": {
+    "rea-agents": "workspace:*"
+  },
+  "devDependencies": {
+    "bun-types": "catalog:"
+  },
+  "engines": {
+    "bun": "1.4.4-canary.20261028.1"
+  }
+}

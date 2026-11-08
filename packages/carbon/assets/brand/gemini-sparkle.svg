@@ -1,0 +1,12 @@
+<!-- Copyright 2026 Google LLC. SPDX-License-Identifier: Apache-2.0 -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <radialGradient id="gemini-argon-grad" cx="25%" cy="25%" r="80%">
+      <stop offset="0%" stop-color="#8AB4F8"/>
+      <stop offset="35%" stop-color="#4285F4"/>
+      <stop offset="68%" stop-color="#9B72CB"/>
+      <stop offset="100%" stop-color="#EA4335"/>
+    </radialGradient>
+  </defs>
+  <path d="M32 2C32 18.5685 45.4315 32 62 32C45.4315 32 32 45.4315 32 62C32 45.4315 18.5685 32 2 32C18.5685 32 32 18.5685 32 2Z" fill="url(#gemini-argon-grad)"/>
+</svg>
