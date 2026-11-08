@@ -1,6 +1,15 @@
 #!/usr/bin/env bun
 // SPDX-License-Identifier: MIT OR Apache-2.0
-// Unified YOLO Bun package CLI. Native package managers retain their own plans.
+/**
+ * Unified `yolo` Binary (with complete `bun` and `.bun` compatibility aliases).
+ *
+ * Merges:
+ * 1. `yolo` Fleet & Meta-Platform Orchestrator (`status`, `fleet`, `git`, `publish`, `registry`, `storage`, `sync`, `upstream`, `arena`, `winclean`, `org`, `leak`, `dashboard`)
+ * 2. `yolo-bun` Package, Site & Google/Chromium Runtime (`pkg`, `site`, `google`)
+ * 3. `yolo bvm` (Bun Version Manager — `uv` / `fnm` / `mise` equivalent for `stable`, `canary`, and `custom-aot` switching + `.bun-version` resolution)
+ * 4. Complete `bun` and `.bun` CLI passthrough (`run`, `test`, `install`, `add`, `remove`, `build`, `fmt`, `lint`, `check`, `upgrade`, `x`, `--version`, `--revision`, or invoked via `bun` / `.bun` alias)
+ */
+import { basename, resolve } from "node:path";
 import { inspectPackageBackends } from "./package-backends";
 import {
   executePlan,
@@ -34,9 +43,83 @@ import {
   verifyThirdPartyDeps,
   WEB_GUIDELINES_CATALOG_2026,
 } from "../packages/yolo-bun-plugin/src/index";
+import {
+  resolveSlotForDirectory,
+  setupBvmAndAliases,
+  switchBunVersion,
+  type BunChannelSlot,
+} from "./bvm";
+
+const rawDir = import.meta.dir;
+const root =
+  rawDir.startsWith("B:\\~BUN") || rawDir.startsWith("/$bunfs")
+    ? (process.env.YOLO_REPO_ROOT ?? "C:/src/yolo")
+    : resolve(rawDir, "..");
+
+const BUN_NATIVE_SUBCOMMANDS = new Set([
+  "run",
+  "test",
+  "install",
+  "i",
+  "add",
+  "a",
+  "remove",
+  "rm",
+  "update",
+  "outdated",
+  "link",
+  "unlink",
+  "pm",
+  "build",
+  "compile",
+  "init",
+  "create",
+  "upgrade",
+  "fmt",
+  "lint",
+  "check",
+  "x",
+  "exec",
+  "repl",
+  "patch",
+  "audit",
+  "why",
+  "--version",
+  "-v",
+  "--revision",
+]);
+
+const FLEET_COMMANDS: Record<string, string[]> = {
+  status: ["run", "scripts/status.ts"],
+  registry: ["run", "scripts/registry-check.ts"],
+  publish: ["run", "scripts/publish-all.ts"],
+  fleet: ["run", "fleet/fleet.ts"],
+  storage: ["run", "scripts/storage-status.ts"],
+  sync: ["run", "scripts/fleet-sync.ts"],
+  upstream: ["run", "scripts/upstream-monitor.ts"],
+  git: ["run", "scripts/yolo-git.ts"],
+  arena: ["run", "../yolo-ai/scripts/yolo-a2a-arena.ts"],
+  winclean: ["run", "../yolo-ai/scripts/yolo-a2a-arena.ts", "winclean"],
+  org: ["run", "scripts/org-manager.ts"],
+  leak: ["run", "scripts/leak-detector.ts"],
+  "github-app": ["run", "scripts/github-app-setup.ts"],
+  dashboard: ["run", "scripts/dashboard-runner.ts"],
+};
 
 function usage(): never {
-  console.error(`Usage:
+  console.error(`Usage (Unified yolo & bun / .bun binary):
+  # 1. Bun Version Manager (uv / fnm / mise equivalent for Bun)
+  yolo bvm status
+  yolo bvm list
+  yolo bvm use <stable|canary|custom-aot> [--pin]
+  yolo bvm which
+  yolo bvm setup
+
+  # 2. Complete Bun & .bun Compatibility Alias / Passthrough
+  yolo --as-bun <any-bun-args...>
+  yolo <run|test|install|add|remove|build|fmt|lint|check|upgrade|x> [args...]
+
+  # 3. Package & Image Management (yolo-bun)
   yolo pkg backends
   yolo pkg install <bun|uv|cargo|flatpak|winget|pacman|nix|vcpkg|fdroid|play-store> <package> [--execute]
   yolo pkg manage <backend> <search|list|installed|upgrade|remove> [query-or-package] [--execute]
@@ -44,22 +127,141 @@ function usage(): never {
   yolo pkg resolve <bun|vcpkg|nix|play-store> <package>
   yolo pkg image-plan <resolved-profile.json>
   yolo pkg verify-image-plan <plan.json> <files.json>
+
+  # 4. Sovereign bun.com Fork & Web Vitals 4x100
   yolo site index
   yolo site search <query>
   yolo site audit
   yolo site serve [port]
+
+  # 5. Google Open Source, Chromium, depot_tools & /src Orchestrator
   yolo google third-party
   yolo google styleguide [file]
   yolo google standards
   yolo google stack
   yolo google chromium
   yolo google depot-tools
-  yolo google orchestrate [src-root]`);
+  yolo google orchestrate [src-root]
+
+  # 6. YOLO Fleet & Meta-Platform Commands
+  yolo <status|fleet|git|publish|registry|storage|sync|upstream|arena|winclean|org|leak|dashboard> [args...]`);
   process.exit(2);
 }
 
+async function delegateToSelectedBun(
+  args: string[],
+  cwd = process.cwd(),
+): Promise<number> {
+  const report = setupBvmAndAliases({ yoloRepoRoot: root });
+  const targetBin = report.resolvedForCwd.binaryPath;
+  const child = Bun.spawn([targetBin, ...args], {
+    cwd,
+    env: process.env,
+    stdin: "inherit",
+    stdout: "inherit",
+    stderr: "inherit",
+  });
+  return await child.exited;
+}
+
 async function main() {
-  const [, , domain, command, ...args] = Bun.argv;
+  const rawArgv = Bun.argv.slice(2);
+  const invokedName = basename(Bun.argv[1] ?? "yolo").toLowerCase();
+
+  // Direct `bun` or `.bun` alias invocation or explicit `--as-bun` flag
+  if (
+    rawArgv[0] === "--as-bun" ||
+    invokedName === "bun" ||
+    invokedName === "bun.exe" ||
+    invokedName === "bun.cmd" ||
+    invokedName === ".bun" ||
+    invokedName === ".bun.exe" ||
+    invokedName === ".bun.cmd"
+  ) {
+    const bunArgs = rawArgv[0] === "--as-bun" ? rawArgv.slice(1) : rawArgv;
+    process.exitCode = await delegateToSelectedBun(bunArgs);
+    return;
+  }
+
+  const [domain, command, ...args] = rawArgv;
+  if (!domain || domain === "help" || domain === "--help" || domain === "-h") {
+    usage();
+  }
+
+  // 1. Bun Version Manager (`yolo bvm ...` or `yolo use ...`)
+  if (domain === "bvm" || domain === "version") {
+    const sub = command ?? "status";
+    if (sub === "status" || sub === "list" || sub === "ls") {
+      const report = setupBvmAndAliases({ yoloRepoRoot: root });
+      console.log(JSON.stringify(report, null, 2));
+      return;
+    }
+    if (sub === "setup") {
+      const report = setupBvmAndAliases({ yoloRepoRoot: root });
+      console.log(
+        JSON.stringify({ action: "bvm-setup-complete", ...report }, null, 2),
+      );
+      return;
+    }
+    if (sub === "which") {
+      const report = setupBvmAndAliases({ yoloRepoRoot: root });
+      console.log(JSON.stringify(report.resolvedForCwd, null, 2));
+      return;
+    }
+    if (sub === "use" || sub === "switch") {
+      const targetSlot = args[0] as BunChannelSlot | undefined;
+      if (
+        targetSlot !== "stable" &&
+        targetSlot !== "canary" &&
+        targetSlot !== "custom-aot"
+      ) {
+        usage();
+      }
+      const pinInCwd = args.includes("--pin") ? process.cwd() : undefined;
+      const report = switchBunVersion(targetSlot, {
+        yoloRepoRoot: root,
+        writeBunVersionFile: pinInCwd,
+      });
+      console.log(
+        JSON.stringify(
+          {
+            action: "switched",
+            activeSlot: report.activeSlot,
+            activeBinary: report.slots[report.activeSlot].binaryPath,
+            activeRevision: report.slots[report.activeSlot].revision,
+            pinnedInDir: pinInCwd ?? null,
+          },
+          null,
+          2,
+        ),
+      );
+      return;
+    }
+    usage();
+  }
+
+  // 2. YOLO Fleet commands (`status`, `fleet`, `git`, `publish`, etc.)
+  if (domain in FLEET_COMMANDS) {
+    const fleetCmd = FLEET_COMMANDS[domain]!;
+    const forwarded = [command, ...args].filter(Boolean);
+    const child = Bun.spawn([process.execPath, ...fleetCmd, ...forwarded], {
+      cwd: root,
+      env: process.env,
+      stdin: "inherit",
+      stdout: "inherit",
+      stderr: "inherit",
+    });
+    process.exitCode = await child.exited;
+    return;
+  }
+
+  // 3. Native Bun subcommand passthrough (`yolo test`, `yolo run`, `yolo fmt`, `yolo check`, etc.)
+  if (BUN_NATIVE_SUBCOMMANDS.has(domain)) {
+    process.exitCode = await delegateToSelectedBun(rawArgv);
+    return;
+  }
+
+  // 4. Google & Chromium Toolkit (`yolo google ...`)
   if (domain === "google") {
     if (command === "third-party" && args.length === 0) {
       const report = verifyThirdPartyDeps();
@@ -100,7 +302,7 @@ async function main() {
       console.log(
         JSON.stringify(
           {
-            runtime: "yolo-bun + yolo-standards + google-bun unified",
+            runtime: "yolo + yolo-bun + yolo-standards + google-bun unified",
             chromiumTarget: "v144+",
             m3DarkTokens: GOOGLE_M3_DARK_TOKENS,
             googleApisCatalog: GOOGLE_APIS_CATALOG_2026,
@@ -131,10 +333,6 @@ async function main() {
       console.log(JSON.stringify(inspectDepotTools(), null, 2));
       return;
     }
-    if (command === "cros" && args.length === 0) {
-      console.log(JSON.stringify(CHROMIUM_OS_SOVEREIGN_PROFILE, null, 2));
-      return;
-    }
     if (command === "orchestrate") {
       const report = orchestrateSrcTree(args[0] ?? "C:/src");
       console.log(JSON.stringify(report, null, 2));
@@ -142,6 +340,8 @@ async function main() {
     }
     usage();
   }
+
+  // 5. Sovereign bun.com Fork (`yolo site ...`)
   if (domain === "site") {
     const index = await buildBunComSiteIndex();
     if (command === "index" && args.length === 0) {
@@ -194,6 +394,8 @@ async function main() {
     }
     usage();
   }
+
+  // 6. Native Package Management (`yolo pkg ...`)
   if (domain !== "pkg") usage();
 
   if (command === "backends") {
@@ -282,9 +484,9 @@ async function main() {
   usage();
 }
 
-try {
-  await main();
-} catch (error) {
+export { resolveSlotForDirectory };
+
+main().catch((error: unknown) => {
   console.error(error instanceof Error ? error.message : String(error));
   process.exitCode = 1;
-}
+});
