@@ -1,8 +1,0 @@
-{
-  "name": "@google-bun/google-unified-fabric",
-  "version": "2026.11.0",
-  "description": "Sovereign Unified Cloud Service, Local/VPS SQLite WAL & PostgreSQL SQL Gateway, WireGuard SSH Mesh Executor, Authenticated API Client, Security Vulnerability Scanner & C:/src Git Clone Garbage Collector.",
-  "type": "module",
-  "main": "src/index.ts",
-  "sideEffects": false
-}

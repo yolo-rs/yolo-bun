@@ -52,11 +52,14 @@ The package roadmap covers locked `yolo-os` image plans, pacman for the selected
 
 ```text
 yolo-bun/
+├── artifacts/               # Compiled AOT and bytecode runtime binaries
 ├── catalog/                 # Source-linked Bun project and Awesome Bun indexes
 ├── docs/                    # Architecture, upstream facts, performance, packages, OS profiles
-├── packages/                # Bun-native bundler plugin integration
+├── packages/                # Core Bun packages: bun-loaders, package-converter, bun-workspace, yolo-bun-plugin
 ├── patches/                 # Minimal, version-pinned runtime patches
-└── scripts/                 # Benchmark and native package-manager adapters
+├── scripts/                 # Benchmark, upstream-watch, and native package-manager adapters
+├── upstream/bun/            # Upstream Bun engine checkout (https://github.com/oven-sh/bun.git)
+└── vendor/                  # Hermetic MSVC / xwin headers and materialized upstream source
 ```
 
 See [architecture](docs/ARCHITECTURE.md), [performance policy](docs/PERFORMANCE.md), [package-manager plan](docs/PACKAGE-MANAGER.md), [upstream facts](docs/UPSTREAM.md), and [BunOS port map](docs/BUNOS-PORT.md). Linux/Asterinas boot policy is maintained by the separate `yolo-os` repository.

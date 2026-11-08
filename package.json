@@ -9,17 +9,19 @@
   },
   "license": "MIT OR Apache-2.0",
   "workspaces": [
-    "packages/yolo-bun-plugin",
-    "packages/windows"
+    "packages/bun-loaders",
+    "packages/package-converter",
+    "packages/bun-workspace",
+    "packages/yolo-bun-plugin"
   ],
   "description": "Patched integration monorepo around the upstream Bun Rust runtime",
   "scripts": {
     "test": "bun test ./scripts",
-    "check": "bun check --no-script ./scripts ./packages/yolo-bun-plugin/src ./packages/windows/src",
+    "check": "bun check --no-script ./scripts ./packages/yolo-bun-plugin/src",
     "check:aot": "bun run scripts/check-aot.ts",
-    "lint": "bun lint --no-script ./scripts ./packages/yolo-bun-plugin/src ./packages/windows/src",
-    "fmt": "bun fmt --no-script scripts packages/yolo-bun-plugin packages/windows README.md docs/receipts package.json",
-    "fmt:check": "bun fmt --no-script --check scripts packages/yolo-bun-plugin packages/windows README.md docs/receipts package.json",
+    "lint": "bun lint --no-script ./scripts ./packages/yolo-bun-plugin/src",
+    "fmt": "bun fmt --no-script scripts packages/yolo-bun-plugin README.md docs/receipts package.json",
+    "fmt:check": "bun fmt --no-script --check scripts packages/yolo-bun-plugin README.md docs/receipts package.json",
     "yolo": "bun scripts/yolo.ts",
     "upstream:watch": "bun run scripts/upstream-watch/cli.ts",
     "test:upstream-watch": "bun test ./scripts/upstream-watch",

@@ -1,8 +1,0 @@
-{
-  "name": "@google-bun/carbon",
-  "version": "2026.11.0",
-  "description": "Google DeepMind Carbon — Paris Beta to Global Scale Intelligence, Gemini Web App & OpenAI Gateway, Gemma 4 WebGPU/FFI Runtime, Upstream Bun Knowledge Graph & Google Design Mirror",
-  "type": "module",
-  "main": "src/index.ts",
-  "sideEffects": false
-}
