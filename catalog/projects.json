@@ -21,6 +21,16 @@
       "notes": "Fast-forward synchronized with oven-sh/bun main; no integration patches belong here."
     },
     {
+      "id": "bun-com-fork",
+      "name": "Bun.com Documentation & Site Fork",
+      "repository": "https://bun.com",
+      "upstream": "https://github.com/oven-sh/bun/tree/main/docs",
+      "revision": "e57d89ba63a7504957faa2ccc8f416ce2fb15453",
+      "kind": "docs-site-fork",
+      "status": "synchronized",
+      "notes": "Sovereign fork and offline index of bun.com (docs.json, MDX pages, llms.txt, and local Bun.serve portal)."
+    },
+    {
       "id": "bun-aphrody-archive",
       "name": "Aphrody Labs Bun fork",
       "repository": "https://github.com/aphrody-labs/bun",

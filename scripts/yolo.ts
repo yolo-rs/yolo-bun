@@ -11,6 +11,12 @@ import {
 import { planResolution } from "./package-resolve";
 import { makeImagePlan } from "./image-plan";
 import { verifyImagePlan } from "./verify-image-plan";
+import {
+  buildBunComSiteIndex,
+  createBunComFetchHandler,
+  generateBunComLlmsTxt,
+  searchBunComDocs,
+} from "./bun-com-fork";
 
 function usage(): never {
   console.error(`Usage:
@@ -20,12 +26,59 @@ function usage(): never {
   yolo pkg fdroid <search|show|update|install|upgrade|remove|devices|repos> [arguments...] [--execute]
   yolo pkg resolve <bun|vcpkg|nix|play-store> <package>
   yolo pkg image-plan <resolved-profile.json>
-  yolo pkg verify-image-plan <plan.json> <files.json>`);
+  yolo pkg verify-image-plan <plan.json> <files.json>
+  yolo site index
+  yolo site search <query>
+  yolo site serve [port]`);
   process.exit(2);
 }
 
 async function main() {
   const [, , domain, command, ...args] = Bun.argv;
+  if (domain === "site") {
+    const index = await buildBunComSiteIndex();
+    if (command === "index" && args.length === 0) {
+      await Bun.write(
+        "catalog/bun-com-index.json",
+        JSON.stringify(index, null, 2) + "\n",
+      );
+      await Bun.write(
+        "docs/upstream/bun-com-llms.txt",
+        generateBunComLlmsTxt(index),
+      );
+      console.log(
+        JSON.stringify(
+          {
+            action: "indexed",
+            canonicalOrigin: index.canonicalOrigin,
+            upstreamCommit: index.upstreamCommit,
+            totalPages: index.totalPages,
+            totalMdxFiles: index.totalMdxFiles,
+          },
+          null,
+          2,
+        ),
+      );
+      return;
+    }
+    if (command === "search" && args.length > 0) {
+      const hits = await searchBunComDocs(args.join(" "));
+      console.log(JSON.stringify(hits, null, 2));
+      return;
+    }
+    if (command === "serve") {
+      const port = Number(args[0] ?? 3144);
+      const server = Bun.serve({
+        port,
+        fetch: createBunComFetchHandler(index),
+      });
+      console.log(
+        `Serving sovereign bun.com fork at http://127.0.0.1:${server.port}`,
+      );
+      return;
+    }
+    usage();
+  }
   if (domain !== "pkg") usage();
 
   if (command === "backends") {

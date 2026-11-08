@@ -1,0 +1,2609 @@
+{
+  "schemaVersion": 1,
+  "canonicalOrigin": "https://bun.com",
+  "upstreamRepo": "https://github.com/oven-sh/bun",
+  "forkRepo": "https://github.com/yolo-rs/bun",
+  "upstreamCommit": "e57d89ba63a7504957faa2ccc8f416ce2fb15453",
+  "siteName": "Bun",
+  "theme": "aspen",
+  "totalPages": 369,
+  "totalMdxFiles": 1407,
+  "tabs": [
+    "Runtime",
+    "Package Manager",
+    "Bundler",
+    "Compiler",
+    "Test Runner",
+    "Linter",
+    "Formatter",
+    "Guides",
+    "Reference",
+    "Blog",
+    "Feedback"
+  ],
+  "pages": [
+    {
+      "tab": "Runtime",
+      "group": "Get Started",
+      "route": "/index",
+      "filePath": "upstream/bun/docs/index.mdx",
+      "url": "https://bun.com/docs"
+    },
+    {
+      "tab": "Runtime",
+      "group": "Get Started",
+      "route": "/installation",
+      "filePath": "upstream/bun/docs/installation.mdx",
+      "url": "https://bun.com/docs/installation"
+    },
+    {
+      "tab": "Runtime",
+      "group": "Get Started",
+      "route": "/quickstart",
+      "filePath": "upstream/bun/docs/quickstart.mdx",
+      "url": "https://bun.com/docs/quickstart"
+    },
+    {
+      "tab": "Runtime",
+      "group": "Get Started",
+      "route": "/typescript",
+      "filePath": "upstream/bun/docs/typescript.mdx",
+      "url": "https://bun.com/docs/typescript"
+    },
+    {
+      "tab": "Runtime",
+      "group": "Get Started",
+      "route": "/typescript-6",
+      "filePath": "upstream/bun/docs/typescript-6.mdx",
+      "url": "https://bun.com/docs/typescript-6"
+    },
+    {
+      "tab": "Runtime",
+      "group": "Get Started",
+      "route": "/runtime/templating/init",
+      "filePath": "upstream/bun/docs/runtime/templating/init.mdx",
+      "url": "https://bun.com/docs/runtime/templating/init"
+    },
+    {
+      "tab": "Runtime",
+      "group": "Get Started",
+      "route": "/runtime/templating/create",
+      "filePath": "upstream/bun/docs/runtime/templating/create.mdx",
+      "url": "https://bun.com/docs/runtime/templating/create"
+    },
+    {
+      "tab": "Runtime",
+      "group": "Core Runtime",
+      "route": "/runtime/index",
+      "filePath": "upstream/bun/docs/runtime/index.mdx",
+      "url": "https://bun.com/docs/runtime/index"
+    },
+    {
+      "tab": "Runtime",
+      "group": "Core Runtime",
+      "route": "/runtime/watch-mode",
+      "filePath": "upstream/bun/docs/runtime/watch-mode.mdx",
+      "url": "https://bun.com/docs/runtime/watch-mode"
+    },
+    {
+      "tab": "Runtime",
+      "group": "Core Runtime",
+      "route": "/runtime/check",
+      "filePath": "upstream/bun/docs/runtime/check.mdx",
+      "url": "https://bun.com/docs/runtime/check"
+    },
+    {
+      "tab": "Runtime",
+      "group": "Core Runtime",
+      "route": "/runtime/debugger",
+      "filePath": "upstream/bun/docs/runtime/debugger.mdx",
+      "url": "https://bun.com/docs/runtime/debugger"
+    },
+    {
+      "tab": "Runtime",
+      "group": "Core Runtime",
+      "route": "/runtime/repl",
+      "filePath": "upstream/bun/docs/runtime/repl.mdx",
+      "url": "https://bun.com/docs/runtime/repl"
+    },
+    {
+      "tab": "Runtime",
+      "group": "Core Runtime",
+      "route": "/runtime/bunfig",
+      "filePath": "upstream/bun/docs/runtime/bunfig.mdx",
+      "url": "https://bun.com/docs/runtime/bunfig"
+    },
+    {
+      "tab": "Runtime",
+      "group": "Core Runtime",
+      "route": "/runtime/code-generation-from-strings",
+      "filePath": "upstream/bun/docs/runtime/code-generation-from-strings.mdx",
+      "url": "https://bun.com/docs/runtime/code-generation-from-strings"
+    },
+    {
+      "tab": "Runtime",
+      "group": "File & Module System",
+      "route": "/runtime/file-types",
+      "filePath": "upstream/bun/docs/runtime/file-types.mdx",
+      "url": "https://bun.com/docs/runtime/file-types"
+    },
+    {
+      "tab": "Runtime",
+      "group": "File & Module System",
+      "route": "/runtime/module-resolution",
+      "filePath": "upstream/bun/docs/runtime/module-resolution.mdx",
+      "url": "https://bun.com/docs/runtime/module-resolution"
+    },
+    {
+      "tab": "Runtime",
+      "group": "File & Module System",
+      "route": "/runtime/jsx",
+      "filePath": "upstream/bun/docs/runtime/jsx.mdx",
+      "url": "https://bun.com/docs/runtime/jsx"
+    },
+    {
+      "tab": "Runtime",
+      "group": "File & Module System",
+      "route": "/runtime/auto-install",
+      "filePath": "upstream/bun/docs/runtime/auto-install.mdx",
+      "url": "https://bun.com/docs/runtime/auto-install"
+    },
+    {
+      "tab": "Runtime",
+      "group": "File & Module System",
+      "route": "/runtime/plugins",
+      "filePath": "upstream/bun/docs/runtime/plugins.mdx",
+      "url": "https://bun.com/docs/runtime/plugins"
+    },
+    {
+      "tab": "Runtime",
+      "group": "File & Module System",
+      "route": "/runtime/file-system-router",
+      "filePath": "upstream/bun/docs/runtime/file-system-router.mdx",
+      "url": "https://bun.com/docs/runtime/file-system-router"
+    },
+    {
+      "tab": "Runtime",
+      "group": "HTTP server",
+      "route": "/runtime/http/server",
+      "filePath": "upstream/bun/docs/runtime/http/server.mdx",
+      "url": "https://bun.com/docs/runtime/http/server"
+    },
+    {
+      "tab": "Runtime",
+      "group": "HTTP server",
+      "route": "/runtime/http/routing",
+      "filePath": "upstream/bun/docs/runtime/http/routing.mdx",
+      "url": "https://bun.com/docs/runtime/http/routing"
+    },
+    {
+      "tab": "Runtime",
+      "group": "HTTP server",
+      "route": "/runtime/http/cookies",
+      "filePath": "upstream/bun/docs/runtime/http/cookies.mdx",
+      "url": "https://bun.com/docs/runtime/http/cookies"
+    },
+    {
+      "tab": "Runtime",
+      "group": "HTTP server",
+      "route": "/runtime/http/tls",
+      "filePath": "upstream/bun/docs/runtime/http/tls.mdx",
+      "url": "https://bun.com/docs/runtime/http/tls"
+    },
+    {
+      "tab": "Runtime",
+      "group": "HTTP server",
+      "route": "/runtime/http/error-handling",
+      "filePath": "upstream/bun/docs/runtime/http/error-handling.mdx",
+      "url": "https://bun.com/docs/runtime/http/error-handling"
+    },
+    {
+      "tab": "Runtime",
+      "group": "HTTP server",
+      "route": "/runtime/http/metrics",
+      "filePath": "upstream/bun/docs/runtime/http/metrics.mdx",
+      "url": "https://bun.com/docs/runtime/http/metrics"
+    },
+    {
+      "tab": "Runtime",
+      "group": "Networking",
+      "route": "/runtime/networking/fetch",
+      "filePath": "upstream/bun/docs/runtime/networking/fetch.mdx",
+      "url": "https://bun.com/docs/runtime/networking/fetch"
+    },
+    {
+      "tab": "Runtime",
+      "group": "Networking",
+      "route": "/runtime/http/websockets",
+      "filePath": "upstream/bun/docs/runtime/http/websockets.mdx",
+      "url": "https://bun.com/docs/runtime/http/websockets"
+    },
+    {
+      "tab": "Runtime",
+      "group": "Networking",
+      "route": "/runtime/networking/tcp",
+      "filePath": "upstream/bun/docs/runtime/networking/tcp.mdx",
+      "url": "https://bun.com/docs/runtime/networking/tcp"
+    },
+    {
+      "tab": "Runtime",
+      "group": "Networking",
+      "route": "/runtime/networking/udp",
+      "filePath": "upstream/bun/docs/runtime/networking/udp.mdx",
+      "url": "https://bun.com/docs/runtime/networking/udp"
+    },
+    {
+      "tab": "Runtime",
+      "group": "Networking",
+      "route": "/runtime/networking/dns",
+      "filePath": "upstream/bun/docs/runtime/networking/dns.mdx",
+      "url": "https://bun.com/docs/runtime/networking/dns"
+    },
+    {
+      "tab": "Runtime",
+      "group": "Data & Storage",
+      "route": "/runtime/cookies",
+      "filePath": "upstream/bun/docs/runtime/cookies.mdx",
+      "url": "https://bun.com/docs/runtime/cookies"
+    },
+    {
+      "tab": "Runtime",
+      "group": "Data & Storage",
+      "route": "/runtime/file-io",
+      "filePath": "upstream/bun/docs/runtime/file-io.mdx",
+      "url": "https://bun.com/docs/runtime/file-io"
+    },
+    {
+      "tab": "Runtime",
+      "group": "Data & Storage",
+      "route": "/runtime/streams",
+      "filePath": "upstream/bun/docs/runtime/streams.mdx",
+      "url": "https://bun.com/docs/runtime/streams"
+    },
+    {
+      "tab": "Runtime",
+      "group": "Data & Storage",
+      "route": "/runtime/binary-data",
+      "filePath": "upstream/bun/docs/runtime/binary-data.mdx",
+      "url": "https://bun.com/docs/runtime/binary-data"
+    },
+    {
+      "tab": "Runtime",
+      "group": "Data & Storage",
+      "route": "/runtime/archive",
+      "filePath": "upstream/bun/docs/runtime/archive.mdx",
+      "url": "https://bun.com/docs/runtime/archive"
+    },
+    {
+      "tab": "Runtime",
+      "group": "Data & Storage",
+      "route": "/runtime/sql",
+      "filePath": "upstream/bun/docs/runtime/sql.mdx",
+      "url": "https://bun.com/docs/runtime/sql"
+    },
+    {
+      "tab": "Runtime",
+      "group": "Data & Storage",
+      "route": "/runtime/sqlite",
+      "filePath": "upstream/bun/docs/runtime/sqlite.mdx",
+      "url": "https://bun.com/docs/runtime/sqlite"
+    },
+    {
+      "tab": "Runtime",
+      "group": "Data & Storage",
+      "route": "/runtime/s3",
+      "filePath": "upstream/bun/docs/runtime/s3.mdx",
+      "url": "https://bun.com/docs/runtime/s3"
+    },
+    {
+      "tab": "Runtime",
+      "group": "Data & Storage",
+      "route": "/runtime/redis",
+      "filePath": "upstream/bun/docs/runtime/redis.mdx",
+      "url": "https://bun.com/docs/runtime/redis"
+    },
+    {
+      "tab": "Runtime",
+      "group": "Concurrency",
+      "route": "/runtime/workers",
+      "filePath": "upstream/bun/docs/runtime/workers.mdx",
+      "url": "https://bun.com/docs/runtime/workers"
+    },
+    {
+      "tab": "Runtime",
+      "group": "Concurrency",
+      "route": "/runtime/module-graph",
+      "filePath": "upstream/bun/docs/runtime/module-graph.mdx",
+      "url": "https://bun.com/docs/runtime/module-graph"
+    },
+    {
+      "tab": "Runtime",
+      "group": "Process & System",
+      "route": "/runtime/environment-variables",
+      "filePath": "upstream/bun/docs/runtime/environment-variables.mdx",
+      "url": "https://bun.com/docs/runtime/environment-variables"
+    },
+    {
+      "tab": "Runtime",
+      "group": "Process & System",
+      "route": "/runtime/shell",
+      "filePath": "upstream/bun/docs/runtime/shell.mdx",
+      "url": "https://bun.com/docs/runtime/shell"
+    },
+    {
+      "tab": "Runtime",
+      "group": "Process & System",
+      "route": "/runtime/child-process",
+      "filePath": "upstream/bun/docs/runtime/child-process.mdx",
+      "url": "https://bun.com/docs/runtime/child-process"
+    },
+    {
+      "tab": "Runtime",
+      "group": "Process & System",
+      "route": "/runtime/webview",
+      "filePath": "upstream/bun/docs/runtime/webview.mdx",
+      "url": "https://bun.com/docs/runtime/webview"
+    },
+    {
+      "tab": "Runtime",
+      "group": "Process & System",
+      "route": "/runtime/cron",
+      "filePath": "upstream/bun/docs/runtime/cron.mdx",
+      "url": "https://bun.com/docs/runtime/cron"
+    },
+    {
+      "tab": "Runtime",
+      "group": "Interop & Tooling",
+      "route": "/runtime/node-api",
+      "filePath": "upstream/bun/docs/runtime/node-api.mdx",
+      "url": "https://bun.com/docs/runtime/node-api"
+    },
+    {
+      "tab": "Runtime",
+      "group": "Interop & Tooling",
+      "route": "/runtime/ffi",
+      "filePath": "upstream/bun/docs/runtime/ffi.mdx",
+      "url": "https://bun.com/docs/runtime/ffi"
+    },
+    {
+      "tab": "Runtime",
+      "group": "Interop & Tooling",
+      "route": "/runtime/c-compiler",
+      "filePath": "upstream/bun/docs/runtime/c-compiler.mdx",
+      "url": "https://bun.com/docs/runtime/c-compiler"
+    },
+    {
+      "tab": "Runtime",
+      "group": "Interop & Tooling",
+      "route": "/runtime/transpiler",
+      "filePath": "upstream/bun/docs/runtime/transpiler.mdx",
+      "url": "https://bun.com/docs/runtime/transpiler"
+    },
+    {
+      "tab": "Runtime",
+      "group": "Utilities",
+      "route": "/runtime/csrf",
+      "filePath": "upstream/bun/docs/runtime/csrf.mdx",
+      "url": "https://bun.com/docs/runtime/csrf"
+    },
+    {
+      "tab": "Runtime",
+      "group": "Utilities",
+      "route": "/runtime/secrets",
+      "filePath": "upstream/bun/docs/runtime/secrets.mdx",
+      "url": "https://bun.com/docs/runtime/secrets"
+    },
+    {
+      "tab": "Runtime",
+      "group": "Utilities",
+      "route": "/runtime/console",
+      "filePath": "upstream/bun/docs/runtime/console.mdx",
+      "url": "https://bun.com/docs/runtime/console"
+    },
+    {
+      "tab": "Runtime",
+      "group": "Utilities",
+      "route": "/runtime/toml",
+      "filePath": "upstream/bun/docs/runtime/toml.mdx",
+      "url": "https://bun.com/docs/runtime/toml"
+    },
+    {
+      "tab": "Runtime",
+      "group": "Utilities",
+      "route": "/runtime/yaml",
+      "filePath": "upstream/bun/docs/runtime/yaml.mdx",
+      "url": "https://bun.com/docs/runtime/yaml"
+    },
+    {
+      "tab": "Runtime",
+      "group": "Utilities",
+      "route": "/runtime/markdown",
+      "filePath": "upstream/bun/docs/runtime/markdown.mdx",
+      "url": "https://bun.com/docs/runtime/markdown"
+    },
+    {
+      "tab": "Runtime",
+      "group": "Utilities",
+      "route": "/runtime/json5",
+      "filePath": "upstream/bun/docs/runtime/json5.mdx",
+      "url": "https://bun.com/docs/runtime/json5"
+    },
+    {
+      "tab": "Runtime",
+      "group": "Utilities",
+      "route": "/runtime/xml",
+      "filePath": "upstream/bun/docs/runtime/xml.mdx",
+      "url": "https://bun.com/docs/runtime/xml"
+    },
+    {
+      "tab": "Runtime",
+      "group": "Utilities",
+      "route": "/runtime/jsonl",
+      "filePath": "upstream/bun/docs/runtime/jsonl.mdx",
+      "url": "https://bun.com/docs/runtime/jsonl"
+    },
+    {
+      "tab": "Runtime",
+      "group": "Utilities",
+      "route": "/runtime/html-rewriter",
+      "filePath": "upstream/bun/docs/runtime/html-rewriter.mdx",
+      "url": "https://bun.com/docs/runtime/html-rewriter"
+    },
+    {
+      "tab": "Runtime",
+      "group": "Utilities",
+      "route": "/runtime/image",
+      "filePath": "upstream/bun/docs/runtime/image.mdx",
+      "url": "https://bun.com/docs/runtime/image"
+    },
+    {
+      "tab": "Runtime",
+      "group": "Utilities",
+      "route": "/runtime/hashing",
+      "filePath": "upstream/bun/docs/runtime/hashing.mdx",
+      "url": "https://bun.com/docs/runtime/hashing"
+    },
+    {
+      "tab": "Runtime",
+      "group": "Utilities",
+      "route": "/runtime/glob",
+      "filePath": "upstream/bun/docs/runtime/glob.mdx",
+      "url": "https://bun.com/docs/runtime/glob"
+    },
+    {
+      "tab": "Runtime",
+      "group": "Utilities",
+      "route": "/runtime/semver",
+      "filePath": "upstream/bun/docs/runtime/semver.mdx",
+      "url": "https://bun.com/docs/runtime/semver"
+    },
+    {
+      "tab": "Runtime",
+      "group": "Utilities",
+      "route": "/runtime/color",
+      "filePath": "upstream/bun/docs/runtime/color.mdx",
+      "url": "https://bun.com/docs/runtime/color"
+    },
+    {
+      "tab": "Runtime",
+      "group": "Utilities",
+      "route": "/runtime/utils",
+      "filePath": "upstream/bun/docs/runtime/utils.mdx",
+      "url": "https://bun.com/docs/runtime/utils"
+    },
+    {
+      "tab": "Runtime",
+      "group": "Standards & Compatibility",
+      "route": "/runtime/globals",
+      "filePath": "upstream/bun/docs/runtime/globals.mdx",
+      "url": "https://bun.com/docs/runtime/globals"
+    },
+    {
+      "tab": "Runtime",
+      "group": "Standards & Compatibility",
+      "route": "/runtime/bun-apis",
+      "filePath": "upstream/bun/docs/runtime/bun-apis.mdx",
+      "url": "https://bun.com/docs/runtime/bun-apis"
+    },
+    {
+      "tab": "Runtime",
+      "group": "Standards & Compatibility",
+      "route": "/runtime/web-apis",
+      "filePath": "upstream/bun/docs/runtime/web-apis.mdx",
+      "url": "https://bun.com/docs/runtime/web-apis"
+    },
+    {
+      "tab": "Runtime",
+      "group": "Standards & Compatibility",
+      "route": "/runtime/nodejs-compat",
+      "filePath": "upstream/bun/docs/runtime/nodejs-compat.mdx",
+      "url": "https://bun.com/docs/runtime/nodejs-compat"
+    },
+    {
+      "tab": "Runtime",
+      "group": "Contributing",
+      "route": "/project/roadmap",
+      "filePath": "upstream/bun/docs/project/roadmap.mdx",
+      "url": "https://bun.com/docs/project/roadmap"
+    },
+    {
+      "tab": "Runtime",
+      "group": "Contributing",
+      "route": "/project/benchmarking",
+      "filePath": "upstream/bun/docs/project/benchmarking.mdx",
+      "url": "https://bun.com/docs/project/benchmarking"
+    },
+    {
+      "tab": "Runtime",
+      "group": "Contributing",
+      "route": "/project/contributing",
+      "filePath": "upstream/bun/docs/project/contributing.mdx",
+      "url": "https://bun.com/docs/project/contributing"
+    },
+    {
+      "tab": "Runtime",
+      "group": "Contributing",
+      "route": "/project/building-windows",
+      "filePath": "upstream/bun/docs/project/building-windows.mdx",
+      "url": "https://bun.com/docs/project/building-windows"
+    },
+    {
+      "tab": "Runtime",
+      "group": "Contributing",
+      "route": "/project/bindgen",
+      "filePath": "upstream/bun/docs/project/bindgen.mdx",
+      "url": "https://bun.com/docs/project/bindgen"
+    },
+    {
+      "tab": "Runtime",
+      "group": "Contributing",
+      "route": "/project/license",
+      "filePath": "upstream/bun/docs/project/license.mdx",
+      "url": "https://bun.com/docs/project/license"
+    },
+    {
+      "tab": "Package Manager",
+      "group": "Core Commands",
+      "route": "/pm/cli/install",
+      "filePath": "upstream/bun/docs/pm/cli/install.mdx",
+      "url": "https://bun.com/docs/pm/cli/install"
+    },
+    {
+      "tab": "Package Manager",
+      "group": "Core Commands",
+      "route": "/pm/cli/add",
+      "filePath": "upstream/bun/docs/pm/cli/add.mdx",
+      "url": "https://bun.com/docs/pm/cli/add"
+    },
+    {
+      "tab": "Package Manager",
+      "group": "Core Commands",
+      "route": "/pm/cli/remove",
+      "filePath": "upstream/bun/docs/pm/cli/remove.mdx",
+      "url": "https://bun.com/docs/pm/cli/remove"
+    },
+    {
+      "tab": "Package Manager",
+      "group": "Core Commands",
+      "route": "/pm/cli/update",
+      "filePath": "upstream/bun/docs/pm/cli/update.mdx",
+      "url": "https://bun.com/docs/pm/cli/update"
+    },
+    {
+      "tab": "Package Manager",
+      "group": "Core Commands",
+      "route": "/pm/cli/dedupe",
+      "filePath": "upstream/bun/docs/pm/cli/dedupe.mdx",
+      "url": "https://bun.com/docs/pm/cli/dedupe"
+    },
+    {
+      "tab": "Package Manager",
+      "group": "Core Commands",
+      "route": "/pm/cli/prune",
+      "filePath": "upstream/bun/docs/pm/cli/prune.mdx",
+      "url": "https://bun.com/docs/pm/cli/prune"
+    },
+    {
+      "tab": "Package Manager",
+      "group": "Core Commands",
+      "route": "/pm/bunx",
+      "filePath": "upstream/bun/docs/pm/bunx.mdx",
+      "url": "https://bun.com/docs/pm/bunx"
+    },
+    {
+      "tab": "Package Manager",
+      "group": "Publishing & Analysis",
+      "route": "/pm/cli/publish",
+      "filePath": "upstream/bun/docs/pm/cli/publish.mdx",
+      "url": "https://bun.com/docs/pm/cli/publish"
+    },
+    {
+      "tab": "Package Manager",
+      "group": "Publishing & Analysis",
+      "route": "/pm/cli/outdated",
+      "filePath": "upstream/bun/docs/pm/cli/outdated.mdx",
+      "url": "https://bun.com/docs/pm/cli/outdated"
+    },
+    {
+      "tab": "Package Manager",
+      "group": "Publishing & Analysis",
+      "route": "/pm/cli/why",
+      "filePath": "upstream/bun/docs/pm/cli/why.mdx",
+      "url": "https://bun.com/docs/pm/cli/why"
+    },
+    {
+      "tab": "Package Manager",
+      "group": "Publishing & Analysis",
+      "route": "/pm/cli/audit",
+      "filePath": "upstream/bun/docs/pm/cli/audit.mdx",
+      "url": "https://bun.com/docs/pm/cli/audit"
+    },
+    {
+      "tab": "Package Manager",
+      "group": "Publishing & Analysis",
+      "route": "/pm/cli/info",
+      "filePath": "upstream/bun/docs/pm/cli/info.mdx",
+      "url": "https://bun.com/docs/pm/cli/info"
+    },
+    {
+      "tab": "Package Manager",
+      "group": "Workspace Management",
+      "route": "/pm/workspaces",
+      "filePath": "upstream/bun/docs/pm/workspaces.mdx",
+      "url": "https://bun.com/docs/pm/workspaces"
+    },
+    {
+      "tab": "Package Manager",
+      "group": "Workspace Management",
+      "route": "/pm/catalogs",
+      "filePath": "upstream/bun/docs/pm/catalogs.mdx",
+      "url": "https://bun.com/docs/pm/catalogs"
+    },
+    {
+      "tab": "Package Manager",
+      "group": "Workspace Management",
+      "route": "/pm/cli/link",
+      "filePath": "upstream/bun/docs/pm/cli/link.mdx",
+      "url": "https://bun.com/docs/pm/cli/link"
+    },
+    {
+      "tab": "Package Manager",
+      "group": "Workspace Management",
+      "route": "/pm/cli/pm",
+      "filePath": "upstream/bun/docs/pm/cli/pm.mdx",
+      "url": "https://bun.com/docs/pm/cli/pm"
+    },
+    {
+      "tab": "Package Manager",
+      "group": "Advanced Configuration",
+      "route": "/pm/cli/patch",
+      "filePath": "upstream/bun/docs/pm/cli/patch.mdx",
+      "url": "https://bun.com/docs/pm/cli/patch"
+    },
+    {
+      "tab": "Package Manager",
+      "group": "Advanced Configuration",
+      "route": "/pm/filter",
+      "filePath": "upstream/bun/docs/pm/filter.mdx",
+      "url": "https://bun.com/docs/pm/filter"
+    },
+    {
+      "tab": "Package Manager",
+      "group": "Advanced Configuration",
+      "route": "/pm/global-cache",
+      "filePath": "upstream/bun/docs/pm/global-cache.mdx",
+      "url": "https://bun.com/docs/pm/global-cache"
+    },
+    {
+      "tab": "Package Manager",
+      "group": "Advanced Configuration",
+      "route": "/pm/global-store",
+      "filePath": "upstream/bun/docs/pm/global-store.mdx",
+      "url": "https://bun.com/docs/pm/global-store"
+    },
+    {
+      "tab": "Package Manager",
+      "group": "Advanced Configuration",
+      "route": "/pm/isolated-installs",
+      "filePath": "upstream/bun/docs/pm/isolated-installs.mdx",
+      "url": "https://bun.com/docs/pm/isolated-installs"
+    },
+    {
+      "tab": "Package Manager",
+      "group": "Advanced Configuration",
+      "route": "/pm/lockfile",
+      "filePath": "upstream/bun/docs/pm/lockfile.mdx",
+      "url": "https://bun.com/docs/pm/lockfile"
+    },
+    {
+      "tab": "Package Manager",
+      "group": "Advanced Configuration",
+      "route": "/pm/lifecycle",
+      "filePath": "upstream/bun/docs/pm/lifecycle.mdx",
+      "url": "https://bun.com/docs/pm/lifecycle"
+    },
+    {
+      "tab": "Package Manager",
+      "group": "Advanced Configuration",
+      "route": "/pm/scopes-registries",
+      "filePath": "upstream/bun/docs/pm/scopes-registries.mdx",
+      "url": "https://bun.com/docs/pm/scopes-registries"
+    },
+    {
+      "tab": "Package Manager",
+      "group": "Advanced Configuration",
+      "route": "/pm/overrides",
+      "filePath": "upstream/bun/docs/pm/overrides.mdx",
+      "url": "https://bun.com/docs/pm/overrides"
+    },
+    {
+      "tab": "Package Manager",
+      "group": "Advanced Configuration",
+      "route": "/pm/package-extensions",
+      "filePath": "upstream/bun/docs/pm/package-extensions.mdx",
+      "url": "https://bun.com/docs/pm/package-extensions"
+    },
+    {
+      "tab": "Package Manager",
+      "group": "Advanced Configuration",
+      "route": "/pm/security-scanner-api",
+      "filePath": "upstream/bun/docs/pm/security-scanner-api.mdx",
+      "url": "https://bun.com/docs/pm/security-scanner-api"
+    },
+    {
+      "tab": "Package Manager",
+      "group": "Advanced Configuration",
+      "route": "/pm/npmrc",
+      "filePath": "upstream/bun/docs/pm/npmrc.mdx",
+      "url": "https://bun.com/docs/pm/npmrc"
+    },
+    {
+      "tab": "Bundler",
+      "group": "Core",
+      "route": "/bundler/index",
+      "filePath": "upstream/bun/docs/bundler/index.mdx",
+      "url": "https://bun.com/docs/bundler/index"
+    },
+    {
+      "tab": "Bundler",
+      "group": "Development Server",
+      "route": "/bundler/fullstack",
+      "filePath": "upstream/bun/docs/bundler/fullstack.mdx",
+      "url": "https://bun.com/docs/bundler/fullstack"
+    },
+    {
+      "tab": "Bundler",
+      "group": "Development Server",
+      "route": "/bundler/hot-reloading",
+      "filePath": "upstream/bun/docs/bundler/hot-reloading.mdx",
+      "url": "https://bun.com/docs/bundler/hot-reloading"
+    },
+    {
+      "tab": "Bundler",
+      "group": "Asset Processing",
+      "route": "/bundler/html-static",
+      "filePath": "upstream/bun/docs/bundler/html-static.mdx",
+      "url": "https://bun.com/docs/bundler/html-static"
+    },
+    {
+      "tab": "Bundler",
+      "group": "Asset Processing",
+      "route": "/bundler/standalone-html",
+      "filePath": "upstream/bun/docs/bundler/standalone-html.mdx",
+      "url": "https://bun.com/docs/bundler/standalone-html"
+    },
+    {
+      "tab": "Bundler",
+      "group": "Asset Processing",
+      "route": "/bundler/css",
+      "filePath": "upstream/bun/docs/bundler/css.mdx",
+      "url": "https://bun.com/docs/bundler/css"
+    },
+    {
+      "tab": "Bundler",
+      "group": "Asset Processing",
+      "route": "/bundler/loaders",
+      "filePath": "upstream/bun/docs/bundler/loaders.mdx",
+      "url": "https://bun.com/docs/bundler/loaders"
+    },
+    {
+      "tab": "Bundler",
+      "group": "Extensions",
+      "route": "/bundler/plugins",
+      "filePath": "upstream/bun/docs/bundler/plugins.mdx",
+      "url": "https://bun.com/docs/bundler/plugins"
+    },
+    {
+      "tab": "Bundler",
+      "group": "Extensions",
+      "route": "/bundler/macros",
+      "filePath": "upstream/bun/docs/bundler/macros.mdx",
+      "url": "https://bun.com/docs/bundler/macros"
+    },
+    {
+      "tab": "Bundler",
+      "group": "Optimization",
+      "route": "/bundler/minifier",
+      "filePath": "upstream/bun/docs/bundler/minifier.mdx",
+      "url": "https://bun.com/docs/bundler/minifier"
+    },
+    {
+      "tab": "Bundler",
+      "group": "Migration",
+      "route": "/bundler/esbuild",
+      "filePath": "upstream/bun/docs/bundler/esbuild.mdx",
+      "url": "https://bun.com/docs/bundler/esbuild"
+    },
+    {
+      "tab": "Compiler",
+      "group": "Getting Started",
+      "route": "/compiler/index",
+      "filePath": "upstream/bun/docs/compiler/index.mdx",
+      "url": "https://bun.com/docs/compiler/index"
+    },
+    {
+      "tab": "Compiler",
+      "group": "Single File Executable",
+      "route": "/compiler/executables",
+      "filePath": "upstream/bun/docs/compiler/executables.mdx",
+      "url": "https://bun.com/docs/compiler/executables"
+    },
+    {
+      "tab": "Compiler",
+      "group": "Single File Executable",
+      "route": "/compiler/bytecode",
+      "filePath": "upstream/bun/docs/compiler/bytecode.mdx",
+      "url": "https://bun.com/docs/compiler/bytecode"
+    },
+    {
+      "tab": "Compiler",
+      "group": "Ahead-of-Time Compilation",
+      "route": "/compiler/aot",
+      "filePath": "upstream/bun/docs/compiler/aot.mdx",
+      "url": "https://bun.com/docs/compiler/aot"
+    },
+    {
+      "tab": "Compiler",
+      "group": "Ahead-of-Time Compilation",
+      "route": "/compiler/types",
+      "filePath": "upstream/bun/docs/compiler/types.mdx",
+      "url": "https://bun.com/docs/compiler/types"
+    },
+    {
+      "tab": "Compiler",
+      "group": "Ahead-of-Time Compilation",
+      "route": "/compiler/explain",
+      "filePath": "upstream/bun/docs/compiler/explain.mdx",
+      "url": "https://bun.com/docs/compiler/explain"
+    },
+    {
+      "tab": "Compiler",
+      "group": "Ahead-of-Time Compilation",
+      "route": "/compiler/compatibility",
+      "filePath": "upstream/bun/docs/compiler/compatibility.mdx",
+      "url": "https://bun.com/docs/compiler/compatibility"
+    },
+    {
+      "tab": "Compiler",
+      "group": "Ahead-of-Time Compilation",
+      "route": "/compiler/debugging",
+      "filePath": "upstream/bun/docs/compiler/debugging.mdx",
+      "url": "https://bun.com/docs/compiler/debugging"
+    },
+    {
+      "tab": "Compiler",
+      "group": "Ahead-of-Time Compilation",
+      "route": "/compiler/size",
+      "filePath": "upstream/bun/docs/compiler/size.mdx",
+      "url": "https://bun.com/docs/compiler/size"
+    },
+    {
+      "tab": "Compiler",
+      "group": "Ahead-of-Time Compilation",
+      "route": "/compiler/libraries",
+      "filePath": "upstream/bun/docs/compiler/libraries.mdx",
+      "url": "https://bun.com/docs/compiler/libraries"
+    },
+    {
+      "tab": "Compiler",
+      "group": "Ahead-of-Time Compilation",
+      "route": "/compiler/troubleshooting",
+      "filePath": "upstream/bun/docs/compiler/troubleshooting.mdx",
+      "url": "https://bun.com/docs/compiler/troubleshooting"
+    },
+    {
+      "tab": "Compiler",
+      "group": "Ahead-of-Time Compilation",
+      "route": "/compiler/internals",
+      "filePath": "upstream/bun/docs/compiler/internals.mdx",
+      "url": "https://bun.com/docs/compiler/internals"
+    },
+    {
+      "tab": "Compiler",
+      "group": "Guides",
+      "route": "/guides/runtime/codesign-macos-executable",
+      "filePath": "upstream/bun/docs/guides/runtime/codesign-macos-executable.mdx",
+      "url": "https://bun.com/docs/guides/runtime/codesign-macos-executable"
+    },
+    {
+      "tab": "Compiler",
+      "group": "Guides",
+      "route": "/guides/runtime/build-time-constants",
+      "filePath": "upstream/bun/docs/guides/runtime/build-time-constants.mdx",
+      "url": "https://bun.com/docs/guides/runtime/build-time-constants"
+    },
+    {
+      "tab": "Test Runner",
+      "group": "Getting Started",
+      "route": "/test/index",
+      "filePath": "upstream/bun/docs/test/index.mdx",
+      "url": "https://bun.com/docs/test/index"
+    },
+    {
+      "tab": "Test Runner",
+      "group": "Getting Started",
+      "route": "/test/writing-tests",
+      "filePath": "upstream/bun/docs/test/writing-tests.mdx",
+      "url": "https://bun.com/docs/test/writing-tests"
+    },
+    {
+      "tab": "Test Runner",
+      "group": "Getting Started",
+      "route": "/test/configuration",
+      "filePath": "upstream/bun/docs/test/configuration.mdx",
+      "url": "https://bun.com/docs/test/configuration"
+    },
+    {
+      "tab": "Test Runner",
+      "group": "Test Execution",
+      "route": "/test/runtime-behavior",
+      "filePath": "upstream/bun/docs/test/runtime-behavior.mdx",
+      "url": "https://bun.com/docs/test/runtime-behavior"
+    },
+    {
+      "tab": "Test Runner",
+      "group": "Test Execution",
+      "route": "/test/discovery",
+      "filePath": "upstream/bun/docs/test/discovery.mdx",
+      "url": "https://bun.com/docs/test/discovery"
+    },
+    {
+      "tab": "Test Runner",
+      "group": "Test Execution",
+      "route": "/test/parallel",
+      "filePath": "upstream/bun/docs/test/parallel.mdx",
+      "url": "https://bun.com/docs/test/parallel"
+    },
+    {
+      "tab": "Test Runner",
+      "group": "Test Features",
+      "route": "/test/lifecycle",
+      "filePath": "upstream/bun/docs/test/lifecycle.mdx",
+      "url": "https://bun.com/docs/test/lifecycle"
+    },
+    {
+      "tab": "Test Runner",
+      "group": "Test Features",
+      "route": "/test/mocks",
+      "filePath": "upstream/bun/docs/test/mocks.mdx",
+      "url": "https://bun.com/docs/test/mocks"
+    },
+    {
+      "tab": "Test Runner",
+      "group": "Test Features",
+      "route": "/test/snapshots",
+      "filePath": "upstream/bun/docs/test/snapshots.mdx",
+      "url": "https://bun.com/docs/test/snapshots"
+    },
+    {
+      "tab": "Test Runner",
+      "group": "Test Features",
+      "route": "/test/dates-times",
+      "filePath": "upstream/bun/docs/test/dates-times.mdx",
+      "url": "https://bun.com/docs/test/dates-times"
+    },
+    {
+      "tab": "Test Runner",
+      "group": "Specialized Testing",
+      "route": "/test/dom",
+      "filePath": "upstream/bun/docs/test/dom.mdx",
+      "url": "https://bun.com/docs/test/dom"
+    },
+    {
+      "tab": "Test Runner",
+      "group": "Reporting",
+      "route": "/test/code-coverage",
+      "filePath": "upstream/bun/docs/test/code-coverage.mdx",
+      "url": "https://bun.com/docs/test/code-coverage"
+    },
+    {
+      "tab": "Test Runner",
+      "group": "Reporting",
+      "route": "/test/reporters",
+      "filePath": "upstream/bun/docs/test/reporters.mdx",
+      "url": "https://bun.com/docs/test/reporters"
+    },
+    {
+      "tab": "Linter",
+      "group": "Getting Started",
+      "route": "/lint/index",
+      "filePath": "upstream/bun/docs/lint/index.mdx",
+      "url": "https://bun.com/docs/lint/index"
+    },
+    {
+      "tab": "Linter",
+      "group": "Rules",
+      "route": "/lint/rules/index",
+      "filePath": "upstream/bun/docs/lint/rules/index.mdx",
+      "url": "https://bun.com/docs/lint/rules/index"
+    },
+    {
+      "tab": "Linter",
+      "group": "Rules",
+      "route": "/lint/plugins",
+      "filePath": "upstream/bun/docs/lint/plugins.mdx",
+      "url": "https://bun.com/docs/lint/plugins"
+    },
+    {
+      "tab": "Linter",
+      "group": "Migrate",
+      "route": "/guides/lint/migrate-from-eslint",
+      "filePath": "upstream/bun/docs/guides/lint/migrate-from-eslint.mdx",
+      "url": "https://bun.com/docs/guides/lint/migrate-from-eslint"
+    },
+    {
+      "tab": "Linter",
+      "group": "Migrate",
+      "route": "/guides/lint/migrate-from-oxlint",
+      "filePath": "upstream/bun/docs/guides/lint/migrate-from-oxlint.mdx",
+      "url": "https://bun.com/docs/guides/lint/migrate-from-oxlint"
+    },
+    {
+      "tab": "Formatter",
+      "group": "Getting Started",
+      "route": "/format/index",
+      "filePath": "upstream/bun/docs/format/index.mdx",
+      "url": "https://bun.com/docs/format/index"
+    },
+    {
+      "tab": "Formatter",
+      "group": "Migrate",
+      "route": "/guides/format/migrate-from-prettier",
+      "filePath": "upstream/bun/docs/guides/format/migrate-from-prettier.mdx",
+      "url": "https://bun.com/docs/guides/format/migrate-from-prettier"
+    },
+    {
+      "tab": "Formatter",
+      "group": "Migrate",
+      "route": "/guides/format/migrate-from-oxfmt",
+      "filePath": "upstream/bun/docs/guides/format/migrate-from-oxfmt.mdx",
+      "url": "https://bun.com/docs/guides/format/migrate-from-oxfmt"
+    },
+    {
+      "tab": "Guides",
+      "group": "Overview",
+      "route": "/guides/index",
+      "filePath": "upstream/bun/docs/guides/index.mdx",
+      "url": "https://bun.com/docs/guides/index"
+    },
+    {
+      "tab": "Guides",
+      "group": "Deployment",
+      "route": "/guides/deployment/vercel",
+      "filePath": "upstream/bun/docs/guides/deployment/vercel.mdx",
+      "url": "https://bun.com/docs/guides/deployment/vercel"
+    },
+    {
+      "tab": "Guides",
+      "group": "Deployment",
+      "route": "/guides/deployment/railway",
+      "filePath": "upstream/bun/docs/guides/deployment/railway.mdx",
+      "url": "https://bun.com/docs/guides/deployment/railway"
+    },
+    {
+      "tab": "Guides",
+      "group": "Deployment",
+      "route": "/guides/deployment/render",
+      "filePath": "upstream/bun/docs/guides/deployment/render.mdx",
+      "url": "https://bun.com/docs/guides/deployment/render"
+    },
+    {
+      "tab": "Guides",
+      "group": "Deployment",
+      "route": "/guides/deployment/aws-lambda",
+      "filePath": "upstream/bun/docs/guides/deployment/aws-lambda.mdx",
+      "url": "https://bun.com/docs/guides/deployment/aws-lambda"
+    },
+    {
+      "tab": "Guides",
+      "group": "Deployment",
+      "route": "/guides/deployment/digital-ocean",
+      "filePath": "upstream/bun/docs/guides/deployment/digital-ocean.mdx",
+      "url": "https://bun.com/docs/guides/deployment/digital-ocean"
+    },
+    {
+      "tab": "Guides",
+      "group": "Deployment",
+      "route": "/guides/deployment/google-cloud-run",
+      "filePath": "upstream/bun/docs/guides/deployment/google-cloud-run.mdx",
+      "url": "https://bun.com/docs/guides/deployment/google-cloud-run"
+    },
+    {
+      "tab": "Guides",
+      "group": "Runtime & Debugging",
+      "route": "/guides/runtime/typescript",
+      "filePath": "upstream/bun/docs/guides/runtime/typescript.mdx",
+      "url": "https://bun.com/docs/guides/runtime/typescript"
+    },
+    {
+      "tab": "Guides",
+      "group": "Runtime & Debugging",
+      "route": "/guides/runtime/tsconfig-paths",
+      "filePath": "upstream/bun/docs/guides/runtime/tsconfig-paths.mdx",
+      "url": "https://bun.com/docs/guides/runtime/tsconfig-paths"
+    },
+    {
+      "tab": "Guides",
+      "group": "Runtime & Debugging",
+      "route": "/guides/runtime/vscode-debugger",
+      "filePath": "upstream/bun/docs/guides/runtime/vscode-debugger.mdx",
+      "url": "https://bun.com/docs/guides/runtime/vscode-debugger"
+    },
+    {
+      "tab": "Guides",
+      "group": "Runtime & Debugging",
+      "route": "/guides/runtime/web-debugger",
+      "filePath": "upstream/bun/docs/guides/runtime/web-debugger.mdx",
+      "url": "https://bun.com/docs/guides/runtime/web-debugger"
+    },
+    {
+      "tab": "Guides",
+      "group": "Runtime & Debugging",
+      "route": "/guides/runtime/heap-snapshot",
+      "filePath": "upstream/bun/docs/guides/runtime/heap-snapshot.mdx",
+      "url": "https://bun.com/docs/guides/runtime/heap-snapshot"
+    },
+    {
+      "tab": "Guides",
+      "group": "Runtime & Debugging",
+      "route": "/guides/runtime/build-time-constants",
+      "filePath": "upstream/bun/docs/guides/runtime/build-time-constants.mdx",
+      "url": "https://bun.com/docs/guides/runtime/build-time-constants"
+    },
+    {
+      "tab": "Guides",
+      "group": "Runtime & Debugging",
+      "route": "/guides/runtime/define-constant",
+      "filePath": "upstream/bun/docs/guides/runtime/define-constant.mdx",
+      "url": "https://bun.com/docs/guides/runtime/define-constant"
+    },
+    {
+      "tab": "Guides",
+      "group": "Runtime & Debugging",
+      "route": "/guides/runtime/cicd",
+      "filePath": "upstream/bun/docs/guides/runtime/cicd.mdx",
+      "url": "https://bun.com/docs/guides/runtime/cicd"
+    },
+    {
+      "tab": "Guides",
+      "group": "Runtime & Debugging",
+      "route": "/guides/runtime/codesign-macos-executable",
+      "filePath": "upstream/bun/docs/guides/runtime/codesign-macos-executable.mdx",
+      "url": "https://bun.com/docs/guides/runtime/codesign-macos-executable"
+    },
+    {
+      "tab": "Guides",
+      "group": "Utilities",
+      "route": "/guides/util/upgrade",
+      "filePath": "upstream/bun/docs/guides/util/upgrade.mdx",
+      "url": "https://bun.com/docs/guides/util/upgrade"
+    },
+    {
+      "tab": "Guides",
+      "group": "Utilities",
+      "route": "/guides/util/detect-bun",
+      "filePath": "upstream/bun/docs/guides/util/detect-bun.mdx",
+      "url": "https://bun.com/docs/guides/util/detect-bun"
+    },
+    {
+      "tab": "Guides",
+      "group": "Utilities",
+      "route": "/guides/util/version",
+      "filePath": "upstream/bun/docs/guides/util/version.mdx",
+      "url": "https://bun.com/docs/guides/util/version"
+    },
+    {
+      "tab": "Guides",
+      "group": "Utilities",
+      "route": "/guides/util/hash-a-password",
+      "filePath": "upstream/bun/docs/guides/util/hash-a-password.mdx",
+      "url": "https://bun.com/docs/guides/util/hash-a-password"
+    },
+    {
+      "tab": "Guides",
+      "group": "Utilities",
+      "route": "/guides/util/javascript-uuid",
+      "filePath": "upstream/bun/docs/guides/util/javascript-uuid.mdx",
+      "url": "https://bun.com/docs/guides/util/javascript-uuid"
+    },
+    {
+      "tab": "Guides",
+      "group": "Utilities",
+      "route": "/guides/util/base64",
+      "filePath": "upstream/bun/docs/guides/util/base64.mdx",
+      "url": "https://bun.com/docs/guides/util/base64"
+    },
+    {
+      "tab": "Guides",
+      "group": "Utilities",
+      "route": "/guides/util/gzip",
+      "filePath": "upstream/bun/docs/guides/util/gzip.mdx",
+      "url": "https://bun.com/docs/guides/util/gzip"
+    },
+    {
+      "tab": "Guides",
+      "group": "Utilities",
+      "route": "/guides/util/deflate",
+      "filePath": "upstream/bun/docs/guides/util/deflate.mdx",
+      "url": "https://bun.com/docs/guides/util/deflate"
+    },
+    {
+      "tab": "Guides",
+      "group": "Utilities",
+      "route": "/guides/util/escape-html",
+      "filePath": "upstream/bun/docs/guides/util/escape-html.mdx",
+      "url": "https://bun.com/docs/guides/util/escape-html"
+    },
+    {
+      "tab": "Guides",
+      "group": "Utilities",
+      "route": "/guides/util/deep-equals",
+      "filePath": "upstream/bun/docs/guides/util/deep-equals.mdx",
+      "url": "https://bun.com/docs/guides/util/deep-equals"
+    },
+    {
+      "tab": "Guides",
+      "group": "Utilities",
+      "route": "/guides/util/sleep",
+      "filePath": "upstream/bun/docs/guides/util/sleep.mdx",
+      "url": "https://bun.com/docs/guides/util/sleep"
+    },
+    {
+      "tab": "Guides",
+      "group": "Utilities",
+      "route": "/guides/util/file-url-to-path",
+      "filePath": "upstream/bun/docs/guides/util/file-url-to-path.mdx",
+      "url": "https://bun.com/docs/guides/util/file-url-to-path"
+    },
+    {
+      "tab": "Guides",
+      "group": "Utilities",
+      "route": "/guides/util/path-to-file-url",
+      "filePath": "upstream/bun/docs/guides/util/path-to-file-url.mdx",
+      "url": "https://bun.com/docs/guides/util/path-to-file-url"
+    },
+    {
+      "tab": "Guides",
+      "group": "Utilities",
+      "route": "/guides/util/which-path-to-executable-bin",
+      "filePath": "upstream/bun/docs/guides/util/which-path-to-executable-bin.mdx",
+      "url": "https://bun.com/docs/guides/util/which-path-to-executable-bin"
+    },
+    {
+      "tab": "Guides",
+      "group": "Utilities",
+      "route": "/guides/util/import-meta-dir",
+      "filePath": "upstream/bun/docs/guides/util/import-meta-dir.mdx",
+      "url": "https://bun.com/docs/guides/util/import-meta-dir"
+    },
+    {
+      "tab": "Guides",
+      "group": "Utilities",
+      "route": "/guides/util/import-meta-file",
+      "filePath": "upstream/bun/docs/guides/util/import-meta-file.mdx",
+      "url": "https://bun.com/docs/guides/util/import-meta-file"
+    },
+    {
+      "tab": "Guides",
+      "group": "Utilities",
+      "route": "/guides/util/import-meta-path",
+      "filePath": "upstream/bun/docs/guides/util/import-meta-path.mdx",
+      "url": "https://bun.com/docs/guides/util/import-meta-path"
+    },
+    {
+      "tab": "Guides",
+      "group": "Utilities",
+      "route": "/guides/util/entrypoint",
+      "filePath": "upstream/bun/docs/guides/util/entrypoint.mdx",
+      "url": "https://bun.com/docs/guides/util/entrypoint"
+    },
+    {
+      "tab": "Guides",
+      "group": "Utilities",
+      "route": "/guides/util/main",
+      "filePath": "upstream/bun/docs/guides/util/main.mdx",
+      "url": "https://bun.com/docs/guides/util/main"
+    },
+    {
+      "tab": "Guides",
+      "group": "Ecosystem & Frameworks",
+      "route": "/guides/ecosystem/astro",
+      "filePath": "upstream/bun/docs/guides/ecosystem/astro.mdx",
+      "url": "https://bun.com/docs/guides/ecosystem/astro"
+    },
+    {
+      "tab": "Guides",
+      "group": "Ecosystem & Frameworks",
+      "route": "/guides/ecosystem/discordjs",
+      "filePath": "upstream/bun/docs/guides/ecosystem/discordjs.mdx",
+      "url": "https://bun.com/docs/guides/ecosystem/discordjs"
+    },
+    {
+      "tab": "Guides",
+      "group": "Ecosystem & Frameworks",
+      "route": "/guides/ecosystem/docker",
+      "filePath": "upstream/bun/docs/guides/ecosystem/docker.mdx",
+      "url": "https://bun.com/docs/guides/ecosystem/docker"
+    },
+    {
+      "tab": "Guides",
+      "group": "Ecosystem & Frameworks",
+      "route": "/guides/ecosystem/drizzle",
+      "filePath": "upstream/bun/docs/guides/ecosystem/drizzle.mdx",
+      "url": "https://bun.com/docs/guides/ecosystem/drizzle"
+    },
+    {
+      "tab": "Guides",
+      "group": "Ecosystem & Frameworks",
+      "route": "/guides/ecosystem/gel",
+      "filePath": "upstream/bun/docs/guides/ecosystem/gel.mdx",
+      "url": "https://bun.com/docs/guides/ecosystem/gel"
+    },
+    {
+      "tab": "Guides",
+      "group": "Ecosystem & Frameworks",
+      "route": "/guides/ecosystem/elysia",
+      "filePath": "upstream/bun/docs/guides/ecosystem/elysia.mdx",
+      "url": "https://bun.com/docs/guides/ecosystem/elysia"
+    },
+    {
+      "tab": "Guides",
+      "group": "Ecosystem & Frameworks",
+      "route": "/guides/ecosystem/express",
+      "filePath": "upstream/bun/docs/guides/ecosystem/express.mdx",
+      "url": "https://bun.com/docs/guides/ecosystem/express"
+    },
+    {
+      "tab": "Guides",
+      "group": "Ecosystem & Frameworks",
+      "route": "/guides/ecosystem/hono",
+      "filePath": "upstream/bun/docs/guides/ecosystem/hono.mdx",
+      "url": "https://bun.com/docs/guides/ecosystem/hono"
+    },
+    {
+      "tab": "Guides",
+      "group": "Ecosystem & Frameworks",
+      "route": "/guides/ecosystem/mongoose",
+      "filePath": "upstream/bun/docs/guides/ecosystem/mongoose.mdx",
+      "url": "https://bun.com/docs/guides/ecosystem/mongoose"
+    },
+    {
+      "tab": "Guides",
+      "group": "Ecosystem & Frameworks",
+      "route": "/guides/ecosystem/neon-drizzle",
+      "filePath": "upstream/bun/docs/guides/ecosystem/neon-drizzle.mdx",
+      "url": "https://bun.com/docs/guides/ecosystem/neon-drizzle"
+    },
+    {
+      "tab": "Guides",
+      "group": "Ecosystem & Frameworks",
+      "route": "/guides/ecosystem/neon-serverless-postgres",
+      "filePath": "upstream/bun/docs/guides/ecosystem/neon-serverless-postgres.mdx",
+      "url": "https://bun.com/docs/guides/ecosystem/neon-serverless-postgres"
+    },
+    {
+      "tab": "Guides",
+      "group": "Ecosystem & Frameworks",
+      "route": "/guides/ecosystem/nextjs",
+      "filePath": "upstream/bun/docs/guides/ecosystem/nextjs.mdx",
+      "url": "https://bun.com/docs/guides/ecosystem/nextjs"
+    },
+    {
+      "tab": "Guides",
+      "group": "Ecosystem & Frameworks",
+      "route": "/guides/ecosystem/nuxt",
+      "filePath": "upstream/bun/docs/guides/ecosystem/nuxt.mdx",
+      "url": "https://bun.com/docs/guides/ecosystem/nuxt"
+    },
+    {
+      "tab": "Guides",
+      "group": "Ecosystem & Frameworks",
+      "route": "/guides/ecosystem/pm2",
+      "filePath": "upstream/bun/docs/guides/ecosystem/pm2.mdx",
+      "url": "https://bun.com/docs/guides/ecosystem/pm2"
+    },
+    {
+      "tab": "Guides",
+      "group": "Ecosystem & Frameworks",
+      "route": "/guides/ecosystem/prisma",
+      "filePath": "upstream/bun/docs/guides/ecosystem/prisma.mdx",
+      "url": "https://bun.com/docs/guides/ecosystem/prisma"
+    },
+    {
+      "tab": "Guides",
+      "group": "Ecosystem & Frameworks",
+      "route": "/guides/ecosystem/prisma-postgres",
+      "filePath": "upstream/bun/docs/guides/ecosystem/prisma-postgres.mdx",
+      "url": "https://bun.com/docs/guides/ecosystem/prisma-postgres"
+    },
+    {
+      "tab": "Guides",
+      "group": "Ecosystem & Frameworks",
+      "route": "/guides/ecosystem/qwik",
+      "filePath": "upstream/bun/docs/guides/ecosystem/qwik.mdx",
+      "url": "https://bun.com/docs/guides/ecosystem/qwik"
+    },
+    {
+      "tab": "Guides",
+      "group": "Ecosystem & Frameworks",
+      "route": "/guides/ecosystem/react",
+      "filePath": "upstream/bun/docs/guides/ecosystem/react.mdx",
+      "url": "https://bun.com/docs/guides/ecosystem/react"
+    },
+    {
+      "tab": "Guides",
+      "group": "Ecosystem & Frameworks",
+      "route": "/guides/ecosystem/remix",
+      "filePath": "upstream/bun/docs/guides/ecosystem/remix.mdx",
+      "url": "https://bun.com/docs/guides/ecosystem/remix"
+    },
+    {
+      "tab": "Guides",
+      "group": "Ecosystem & Frameworks",
+      "route": "/guides/ecosystem/tanstack-start",
+      "filePath": "upstream/bun/docs/guides/ecosystem/tanstack-start.mdx",
+      "url": "https://bun.com/docs/guides/ecosystem/tanstack-start"
+    },
+    {
+      "tab": "Guides",
+      "group": "Ecosystem & Frameworks",
+      "route": "/guides/ecosystem/sentry",
+      "filePath": "upstream/bun/docs/guides/ecosystem/sentry.mdx",
+      "url": "https://bun.com/docs/guides/ecosystem/sentry"
+    },
+    {
+      "tab": "Guides",
+      "group": "Ecosystem & Frameworks",
+      "route": "/guides/ecosystem/solidstart",
+      "filePath": "upstream/bun/docs/guides/ecosystem/solidstart.mdx",
+      "url": "https://bun.com/docs/guides/ecosystem/solidstart"
+    },
+    {
+      "tab": "Guides",
+      "group": "Ecosystem & Frameworks",
+      "route": "/guides/ecosystem/ssr-react",
+      "filePath": "upstream/bun/docs/guides/ecosystem/ssr-react.mdx",
+      "url": "https://bun.com/docs/guides/ecosystem/ssr-react"
+    },
+    {
+      "tab": "Guides",
+      "group": "Ecosystem & Frameworks",
+      "route": "/guides/ecosystem/sveltekit",
+      "filePath": "upstream/bun/docs/guides/ecosystem/sveltekit.mdx",
+      "url": "https://bun.com/docs/guides/ecosystem/sveltekit"
+    },
+    {
+      "tab": "Guides",
+      "group": "Ecosystem & Frameworks",
+      "route": "/guides/ecosystem/systemd",
+      "filePath": "upstream/bun/docs/guides/ecosystem/systemd.mdx",
+      "url": "https://bun.com/docs/guides/ecosystem/systemd"
+    },
+    {
+      "tab": "Guides",
+      "group": "Ecosystem & Frameworks",
+      "route": "/guides/ecosystem/vite",
+      "filePath": "upstream/bun/docs/guides/ecosystem/vite.mdx",
+      "url": "https://bun.com/docs/guides/ecosystem/vite"
+    },
+    {
+      "tab": "Guides",
+      "group": "Ecosystem & Frameworks",
+      "route": "/guides/ecosystem/upstash",
+      "filePath": "upstream/bun/docs/guides/ecosystem/upstash.mdx",
+      "url": "https://bun.com/docs/guides/ecosystem/upstash"
+    },
+    {
+      "tab": "Guides",
+      "group": "HTTP & Networking",
+      "route": "/guides/http/server",
+      "filePath": "upstream/bun/docs/guides/http/server.mdx",
+      "url": "https://bun.com/docs/guides/http/server"
+    },
+    {
+      "tab": "Guides",
+      "group": "HTTP & Networking",
+      "route": "/guides/http/simple",
+      "filePath": "upstream/bun/docs/guides/http/simple.mdx",
+      "url": "https://bun.com/docs/guides/http/simple"
+    },
+    {
+      "tab": "Guides",
+      "group": "HTTP & Networking",
+      "route": "/guides/http/fetch",
+      "filePath": "upstream/bun/docs/guides/http/fetch.mdx",
+      "url": "https://bun.com/docs/guides/http/fetch"
+    },
+    {
+      "tab": "Guides",
+      "group": "HTTP & Networking",
+      "route": "/guides/http/hot",
+      "filePath": "upstream/bun/docs/guides/http/hot.mdx",
+      "url": "https://bun.com/docs/guides/http/hot"
+    },
+    {
+      "tab": "Guides",
+      "group": "HTTP & Networking",
+      "route": "/guides/http/cluster",
+      "filePath": "upstream/bun/docs/guides/http/cluster.mdx",
+      "url": "https://bun.com/docs/guides/http/cluster"
+    },
+    {
+      "tab": "Guides",
+      "group": "HTTP & Networking",
+      "route": "/guides/http/tls",
+      "filePath": "upstream/bun/docs/guides/http/tls.mdx",
+      "url": "https://bun.com/docs/guides/http/tls"
+    },
+    {
+      "tab": "Guides",
+      "group": "HTTP & Networking",
+      "route": "/guides/http/proxy",
+      "filePath": "upstream/bun/docs/guides/http/proxy.mdx",
+      "url": "https://bun.com/docs/guides/http/proxy"
+    },
+    {
+      "tab": "Guides",
+      "group": "HTTP & Networking",
+      "route": "/guides/http/stream-file",
+      "filePath": "upstream/bun/docs/guides/http/stream-file.mdx",
+      "url": "https://bun.com/docs/guides/http/stream-file"
+    },
+    {
+      "tab": "Guides",
+      "group": "HTTP & Networking",
+      "route": "/guides/http/file-uploads",
+      "filePath": "upstream/bun/docs/guides/http/file-uploads.mdx",
+      "url": "https://bun.com/docs/guides/http/file-uploads"
+    },
+    {
+      "tab": "Guides",
+      "group": "HTTP & Networking",
+      "route": "/guides/http/fetch-unix",
+      "filePath": "upstream/bun/docs/guides/http/fetch-unix.mdx",
+      "url": "https://bun.com/docs/guides/http/fetch-unix"
+    },
+    {
+      "tab": "Guides",
+      "group": "HTTP & Networking",
+      "route": "/guides/http/stream-iterator",
+      "filePath": "upstream/bun/docs/guides/http/stream-iterator.mdx",
+      "url": "https://bun.com/docs/guides/http/stream-iterator"
+    },
+    {
+      "tab": "Guides",
+      "group": "HTTP & Networking",
+      "route": "/guides/http/sse",
+      "filePath": "upstream/bun/docs/guides/http/sse.mdx",
+      "url": "https://bun.com/docs/guides/http/sse"
+    },
+    {
+      "tab": "Guides",
+      "group": "HTTP & Networking",
+      "route": "/guides/http/stream-node-streams-in-bun",
+      "filePath": "upstream/bun/docs/guides/http/stream-node-streams-in-bun.mdx",
+      "url": "https://bun.com/docs/guides/http/stream-node-streams-in-bun"
+    },
+    {
+      "tab": "Guides",
+      "group": "WebSocket",
+      "route": "/guides/websocket/simple",
+      "filePath": "upstream/bun/docs/guides/websocket/simple.mdx",
+      "url": "https://bun.com/docs/guides/websocket/simple"
+    },
+    {
+      "tab": "Guides",
+      "group": "WebSocket",
+      "route": "/guides/websocket/pubsub",
+      "filePath": "upstream/bun/docs/guides/websocket/pubsub.mdx",
+      "url": "https://bun.com/docs/guides/websocket/pubsub"
+    },
+    {
+      "tab": "Guides",
+      "group": "WebSocket",
+      "route": "/guides/websocket/context",
+      "filePath": "upstream/bun/docs/guides/websocket/context.mdx",
+      "url": "https://bun.com/docs/guides/websocket/context"
+    },
+    {
+      "tab": "Guides",
+      "group": "WebSocket",
+      "route": "/guides/websocket/compression",
+      "filePath": "upstream/bun/docs/guides/websocket/compression.mdx",
+      "url": "https://bun.com/docs/guides/websocket/compression"
+    },
+    {
+      "tab": "Guides",
+      "group": "Processes & System",
+      "route": "/guides/process/spawn",
+      "filePath": "upstream/bun/docs/guides/process/spawn.mdx",
+      "url": "https://bun.com/docs/guides/process/spawn"
+    },
+    {
+      "tab": "Guides",
+      "group": "Processes & System",
+      "route": "/guides/process/spawn-stdout",
+      "filePath": "upstream/bun/docs/guides/process/spawn-stdout.mdx",
+      "url": "https://bun.com/docs/guides/process/spawn-stdout"
+    },
+    {
+      "tab": "Guides",
+      "group": "Processes & System",
+      "route": "/guides/process/spawn-stderr",
+      "filePath": "upstream/bun/docs/guides/process/spawn-stderr.mdx",
+      "url": "https://bun.com/docs/guides/process/spawn-stderr"
+    },
+    {
+      "tab": "Guides",
+      "group": "Processes & System",
+      "route": "/guides/process/argv",
+      "filePath": "upstream/bun/docs/guides/process/argv.mdx",
+      "url": "https://bun.com/docs/guides/process/argv"
+    },
+    {
+      "tab": "Guides",
+      "group": "Processes & System",
+      "route": "/guides/process/stdin",
+      "filePath": "upstream/bun/docs/guides/process/stdin.mdx",
+      "url": "https://bun.com/docs/guides/process/stdin"
+    },
+    {
+      "tab": "Guides",
+      "group": "Processes & System",
+      "route": "/guides/process/ipc",
+      "filePath": "upstream/bun/docs/guides/process/ipc.mdx",
+      "url": "https://bun.com/docs/guides/process/ipc"
+    },
+    {
+      "tab": "Guides",
+      "group": "Processes & System",
+      "route": "/guides/process/ctrl-c",
+      "filePath": "upstream/bun/docs/guides/process/ctrl-c.mdx",
+      "url": "https://bun.com/docs/guides/process/ctrl-c"
+    },
+    {
+      "tab": "Guides",
+      "group": "Processes & System",
+      "route": "/guides/process/os-signals",
+      "filePath": "upstream/bun/docs/guides/process/os-signals.mdx",
+      "url": "https://bun.com/docs/guides/process/os-signals"
+    },
+    {
+      "tab": "Guides",
+      "group": "Processes & System",
+      "route": "/guides/process/nanoseconds",
+      "filePath": "upstream/bun/docs/guides/process/nanoseconds.mdx",
+      "url": "https://bun.com/docs/guides/process/nanoseconds"
+    },
+    {
+      "tab": "Guides",
+      "group": "Processes & System",
+      "route": "/guides/runtime/shell",
+      "filePath": "upstream/bun/docs/guides/runtime/shell.mdx",
+      "url": "https://bun.com/docs/guides/runtime/shell"
+    },
+    {
+      "tab": "Guides",
+      "group": "Processes & System",
+      "route": "/guides/runtime/timezone",
+      "filePath": "upstream/bun/docs/guides/runtime/timezone.mdx",
+      "url": "https://bun.com/docs/guides/runtime/timezone"
+    },
+    {
+      "tab": "Guides",
+      "group": "Processes & System",
+      "route": "/guides/runtime/set-env",
+      "filePath": "upstream/bun/docs/guides/runtime/set-env.mdx",
+      "url": "https://bun.com/docs/guides/runtime/set-env"
+    },
+    {
+      "tab": "Guides",
+      "group": "Processes & System",
+      "route": "/guides/runtime/read-env",
+      "filePath": "upstream/bun/docs/guides/runtime/read-env.mdx",
+      "url": "https://bun.com/docs/guides/runtime/read-env"
+    },
+    {
+      "tab": "Guides",
+      "group": "Package Manager",
+      "route": "/guides/install/add",
+      "filePath": "upstream/bun/docs/guides/install/add.mdx",
+      "url": "https://bun.com/docs/guides/install/add"
+    },
+    {
+      "tab": "Guides",
+      "group": "Package Manager",
+      "route": "/guides/install/add-dev",
+      "filePath": "upstream/bun/docs/guides/install/add-dev.mdx",
+      "url": "https://bun.com/docs/guides/install/add-dev"
+    },
+    {
+      "tab": "Guides",
+      "group": "Package Manager",
+      "route": "/guides/install/add-optional",
+      "filePath": "upstream/bun/docs/guides/install/add-optional.mdx",
+      "url": "https://bun.com/docs/guides/install/add-optional"
+    },
+    {
+      "tab": "Guides",
+      "group": "Package Manager",
+      "route": "/guides/install/add-peer",
+      "filePath": "upstream/bun/docs/guides/install/add-peer.mdx",
+      "url": "https://bun.com/docs/guides/install/add-peer"
+    },
+    {
+      "tab": "Guides",
+      "group": "Package Manager",
+      "route": "/guides/install/add-git",
+      "filePath": "upstream/bun/docs/guides/install/add-git.mdx",
+      "url": "https://bun.com/docs/guides/install/add-git"
+    },
+    {
+      "tab": "Guides",
+      "group": "Package Manager",
+      "route": "/guides/install/add-tarball",
+      "filePath": "upstream/bun/docs/guides/install/add-tarball.mdx",
+      "url": "https://bun.com/docs/guides/install/add-tarball"
+    },
+    {
+      "tab": "Guides",
+      "group": "Package Manager",
+      "route": "/guides/install/npm-alias",
+      "filePath": "upstream/bun/docs/guides/install/npm-alias.mdx",
+      "url": "https://bun.com/docs/guides/install/npm-alias"
+    },
+    {
+      "tab": "Guides",
+      "group": "Package Manager",
+      "route": "/guides/install/workspaces",
+      "filePath": "upstream/bun/docs/guides/install/workspaces.mdx",
+      "url": "https://bun.com/docs/guides/install/workspaces"
+    },
+    {
+      "tab": "Guides",
+      "group": "Package Manager",
+      "route": "/guides/install/custom-registry",
+      "filePath": "upstream/bun/docs/guides/install/custom-registry.mdx",
+      "url": "https://bun.com/docs/guides/install/custom-registry"
+    },
+    {
+      "tab": "Guides",
+      "group": "Package Manager",
+      "route": "/guides/install/registry-scope",
+      "filePath": "upstream/bun/docs/guides/install/registry-scope.mdx",
+      "url": "https://bun.com/docs/guides/install/registry-scope"
+    },
+    {
+      "tab": "Guides",
+      "group": "Package Manager",
+      "route": "/guides/install/azure-artifacts",
+      "filePath": "upstream/bun/docs/guides/install/azure-artifacts.mdx",
+      "url": "https://bun.com/docs/guides/install/azure-artifacts"
+    },
+    {
+      "tab": "Guides",
+      "group": "Package Manager",
+      "route": "/guides/install/jfrog-artifactory",
+      "filePath": "upstream/bun/docs/guides/install/jfrog-artifactory.mdx",
+      "url": "https://bun.com/docs/guides/install/jfrog-artifactory"
+    },
+    {
+      "tab": "Guides",
+      "group": "Package Manager",
+      "route": "/guides/install/trusted",
+      "filePath": "upstream/bun/docs/guides/install/trusted.mdx",
+      "url": "https://bun.com/docs/guides/install/trusted"
+    },
+    {
+      "tab": "Guides",
+      "group": "Package Manager",
+      "route": "/guides/install/yarnlock",
+      "filePath": "upstream/bun/docs/guides/install/yarnlock.mdx",
+      "url": "https://bun.com/docs/guides/install/yarnlock"
+    },
+    {
+      "tab": "Guides",
+      "group": "Package Manager",
+      "route": "/guides/install/from-npm-install-to-bun-install",
+      "filePath": "upstream/bun/docs/guides/install/from-npm-install-to-bun-install.mdx",
+      "url": "https://bun.com/docs/guides/install/from-npm-install-to-bun-install"
+    },
+    {
+      "tab": "Guides",
+      "group": "Package Manager",
+      "route": "/guides/install/git-diff-bun-lockfile",
+      "filePath": "upstream/bun/docs/guides/install/git-diff-bun-lockfile.mdx",
+      "url": "https://bun.com/docs/guides/install/git-diff-bun-lockfile"
+    },
+    {
+      "tab": "Guides",
+      "group": "Package Manager",
+      "route": "/guides/install/cicd",
+      "filePath": "upstream/bun/docs/guides/install/cicd.mdx",
+      "url": "https://bun.com/docs/guides/install/cicd"
+    },
+    {
+      "tab": "Guides",
+      "group": "Test Runner",
+      "route": "/guides/test/run-tests",
+      "filePath": "upstream/bun/docs/guides/test/run-tests.mdx",
+      "url": "https://bun.com/docs/guides/test/run-tests"
+    },
+    {
+      "tab": "Guides",
+      "group": "Test Runner",
+      "route": "/guides/test/watch-mode",
+      "filePath": "upstream/bun/docs/guides/test/watch-mode.mdx",
+      "url": "https://bun.com/docs/guides/test/watch-mode"
+    },
+    {
+      "tab": "Guides",
+      "group": "Test Runner",
+      "route": "/guides/test/migrate-from-jest",
+      "filePath": "upstream/bun/docs/guides/test/migrate-from-jest.mdx",
+      "url": "https://bun.com/docs/guides/test/migrate-from-jest"
+    },
+    {
+      "tab": "Guides",
+      "group": "Test Runner",
+      "route": "/guides/test/mock-functions",
+      "filePath": "upstream/bun/docs/guides/test/mock-functions.mdx",
+      "url": "https://bun.com/docs/guides/test/mock-functions"
+    },
+    {
+      "tab": "Guides",
+      "group": "Test Runner",
+      "route": "/guides/test/spy-on",
+      "filePath": "upstream/bun/docs/guides/test/spy-on.mdx",
+      "url": "https://bun.com/docs/guides/test/spy-on"
+    },
+    {
+      "tab": "Guides",
+      "group": "Test Runner",
+      "route": "/guides/test/mock-clock",
+      "filePath": "upstream/bun/docs/guides/test/mock-clock.mdx",
+      "url": "https://bun.com/docs/guides/test/mock-clock"
+    },
+    {
+      "tab": "Guides",
+      "group": "Test Runner",
+      "route": "/guides/test/snapshot",
+      "filePath": "upstream/bun/docs/guides/test/snapshot.mdx",
+      "url": "https://bun.com/docs/guides/test/snapshot"
+    },
+    {
+      "tab": "Guides",
+      "group": "Test Runner",
+      "route": "/guides/test/update-snapshots",
+      "filePath": "upstream/bun/docs/guides/test/update-snapshots.mdx",
+      "url": "https://bun.com/docs/guides/test/update-snapshots"
+    },
+    {
+      "tab": "Guides",
+      "group": "Test Runner",
+      "route": "/guides/test/coverage",
+      "filePath": "upstream/bun/docs/guides/test/coverage.mdx",
+      "url": "https://bun.com/docs/guides/test/coverage"
+    },
+    {
+      "tab": "Guides",
+      "group": "Test Runner",
+      "route": "/guides/test/coverage-threshold",
+      "filePath": "upstream/bun/docs/guides/test/coverage-threshold.mdx",
+      "url": "https://bun.com/docs/guides/test/coverage-threshold"
+    },
+    {
+      "tab": "Guides",
+      "group": "Test Runner",
+      "route": "/guides/test/concurrent-test-glob",
+      "filePath": "upstream/bun/docs/guides/test/concurrent-test-glob.mdx",
+      "url": "https://bun.com/docs/guides/test/concurrent-test-glob"
+    },
+    {
+      "tab": "Guides",
+      "group": "Test Runner",
+      "route": "/guides/test/skip-tests",
+      "filePath": "upstream/bun/docs/guides/test/skip-tests.mdx",
+      "url": "https://bun.com/docs/guides/test/skip-tests"
+    },
+    {
+      "tab": "Guides",
+      "group": "Test Runner",
+      "route": "/guides/test/todo-tests",
+      "filePath": "upstream/bun/docs/guides/test/todo-tests.mdx",
+      "url": "https://bun.com/docs/guides/test/todo-tests"
+    },
+    {
+      "tab": "Guides",
+      "group": "Test Runner",
+      "route": "/guides/test/timeout",
+      "filePath": "upstream/bun/docs/guides/test/timeout.mdx",
+      "url": "https://bun.com/docs/guides/test/timeout"
+    },
+    {
+      "tab": "Guides",
+      "group": "Test Runner",
+      "route": "/guides/test/bail",
+      "filePath": "upstream/bun/docs/guides/test/bail.mdx",
+      "url": "https://bun.com/docs/guides/test/bail"
+    },
+    {
+      "tab": "Guides",
+      "group": "Test Runner",
+      "route": "/guides/test/rerun-each",
+      "filePath": "upstream/bun/docs/guides/test/rerun-each.mdx",
+      "url": "https://bun.com/docs/guides/test/rerun-each"
+    },
+    {
+      "tab": "Guides",
+      "group": "Test Runner",
+      "route": "/guides/test/testing-library",
+      "filePath": "upstream/bun/docs/guides/test/testing-library.mdx",
+      "url": "https://bun.com/docs/guides/test/testing-library"
+    },
+    {
+      "tab": "Guides",
+      "group": "Test Runner",
+      "route": "/guides/test/happy-dom",
+      "filePath": "upstream/bun/docs/guides/test/happy-dom.mdx",
+      "url": "https://bun.com/docs/guides/test/happy-dom"
+    },
+    {
+      "tab": "Guides",
+      "group": "Test Runner",
+      "route": "/guides/test/svelte-test",
+      "filePath": "upstream/bun/docs/guides/test/svelte-test.mdx",
+      "url": "https://bun.com/docs/guides/test/svelte-test"
+    },
+    {
+      "tab": "Guides",
+      "group": "Linter & Formatter",
+      "route": "/guides/lint/migrate-from-eslint",
+      "filePath": "upstream/bun/docs/guides/lint/migrate-from-eslint.mdx",
+      "url": "https://bun.com/docs/guides/lint/migrate-from-eslint"
+    },
+    {
+      "tab": "Guides",
+      "group": "Linter & Formatter",
+      "route": "/guides/lint/migrate-from-oxlint",
+      "filePath": "upstream/bun/docs/guides/lint/migrate-from-oxlint.mdx",
+      "url": "https://bun.com/docs/guides/lint/migrate-from-oxlint"
+    },
+    {
+      "tab": "Guides",
+      "group": "Linter & Formatter",
+      "route": "/guides/format/migrate-from-prettier",
+      "filePath": "upstream/bun/docs/guides/format/migrate-from-prettier.mdx",
+      "url": "https://bun.com/docs/guides/format/migrate-from-prettier"
+    },
+    {
+      "tab": "Guides",
+      "group": "Linter & Formatter",
+      "route": "/guides/format/migrate-from-oxfmt",
+      "filePath": "upstream/bun/docs/guides/format/migrate-from-oxfmt.mdx",
+      "url": "https://bun.com/docs/guides/format/migrate-from-oxfmt"
+    },
+    {
+      "tab": "Guides",
+      "group": "Runtime & Debugging",
+      "route": "/guides/runtime/vscode-debugger",
+      "filePath": "upstream/bun/docs/guides/runtime/vscode-debugger.mdx",
+      "url": "https://bun.com/docs/guides/runtime/vscode-debugger"
+    },
+    {
+      "tab": "Guides",
+      "group": "Runtime & Debugging",
+      "route": "/guides/runtime/web-debugger",
+      "filePath": "upstream/bun/docs/guides/runtime/web-debugger.mdx",
+      "url": "https://bun.com/docs/guides/runtime/web-debugger"
+    },
+    {
+      "tab": "Guides",
+      "group": "Runtime & Debugging",
+      "route": "/guides/runtime/heap-snapshot",
+      "filePath": "upstream/bun/docs/guides/runtime/heap-snapshot.mdx",
+      "url": "https://bun.com/docs/guides/runtime/heap-snapshot"
+    },
+    {
+      "tab": "Guides",
+      "group": "Runtime & Debugging",
+      "route": "/guides/runtime/build-time-constants",
+      "filePath": "upstream/bun/docs/guides/runtime/build-time-constants.mdx",
+      "url": "https://bun.com/docs/guides/runtime/build-time-constants"
+    },
+    {
+      "tab": "Guides",
+      "group": "Runtime & Debugging",
+      "route": "/guides/runtime/define-constant",
+      "filePath": "upstream/bun/docs/guides/runtime/define-constant.mdx",
+      "url": "https://bun.com/docs/guides/runtime/define-constant"
+    },
+    {
+      "tab": "Guides",
+      "group": "Runtime & Debugging",
+      "route": "/guides/runtime/cicd",
+      "filePath": "upstream/bun/docs/guides/runtime/cicd.mdx",
+      "url": "https://bun.com/docs/guides/runtime/cicd"
+    },
+    {
+      "tab": "Guides",
+      "group": "Runtime & Debugging",
+      "route": "/guides/runtime/codesign-macos-executable",
+      "filePath": "upstream/bun/docs/guides/runtime/codesign-macos-executable.mdx",
+      "url": "https://bun.com/docs/guides/runtime/codesign-macos-executable"
+    },
+    {
+      "tab": "Guides",
+      "group": "Module System",
+      "route": "/guides/runtime/import-json",
+      "filePath": "upstream/bun/docs/guides/runtime/import-json.mdx",
+      "url": "https://bun.com/docs/guides/runtime/import-json"
+    },
+    {
+      "tab": "Guides",
+      "group": "Module System",
+      "route": "/guides/runtime/import-toml",
+      "filePath": "upstream/bun/docs/guides/runtime/import-toml.mdx",
+      "url": "https://bun.com/docs/guides/runtime/import-toml"
+    },
+    {
+      "tab": "Guides",
+      "group": "Module System",
+      "route": "/guides/runtime/import-yaml",
+      "filePath": "upstream/bun/docs/guides/runtime/import-yaml.mdx",
+      "url": "https://bun.com/docs/guides/runtime/import-yaml"
+    },
+    {
+      "tab": "Guides",
+      "group": "Module System",
+      "route": "/guides/runtime/import-json5",
+      "filePath": "upstream/bun/docs/guides/runtime/import-json5.mdx",
+      "url": "https://bun.com/docs/guides/runtime/import-json5"
+    },
+    {
+      "tab": "Guides",
+      "group": "Module System",
+      "route": "/guides/runtime/import-xml",
+      "filePath": "upstream/bun/docs/guides/runtime/import-xml.mdx",
+      "url": "https://bun.com/docs/guides/runtime/import-xml"
+    },
+    {
+      "tab": "Guides",
+      "group": "Module System",
+      "route": "/guides/runtime/import-html",
+      "filePath": "upstream/bun/docs/guides/runtime/import-html.mdx",
+      "url": "https://bun.com/docs/guides/runtime/import-html"
+    },
+    {
+      "tab": "Guides",
+      "group": "Module System",
+      "route": "/guides/util/import-meta-dir",
+      "filePath": "upstream/bun/docs/guides/util/import-meta-dir.mdx",
+      "url": "https://bun.com/docs/guides/util/import-meta-dir"
+    },
+    {
+      "tab": "Guides",
+      "group": "Module System",
+      "route": "/guides/util/import-meta-file",
+      "filePath": "upstream/bun/docs/guides/util/import-meta-file.mdx",
+      "url": "https://bun.com/docs/guides/util/import-meta-file"
+    },
+    {
+      "tab": "Guides",
+      "group": "Module System",
+      "route": "/guides/util/import-meta-path",
+      "filePath": "upstream/bun/docs/guides/util/import-meta-path.mdx",
+      "url": "https://bun.com/docs/guides/util/import-meta-path"
+    },
+    {
+      "tab": "Guides",
+      "group": "Module System",
+      "route": "/guides/util/entrypoint",
+      "filePath": "upstream/bun/docs/guides/util/entrypoint.mdx",
+      "url": "https://bun.com/docs/guides/util/entrypoint"
+    },
+    {
+      "tab": "Guides",
+      "group": "Module System",
+      "route": "/guides/util/main",
+      "filePath": "upstream/bun/docs/guides/util/main.mdx",
+      "url": "https://bun.com/docs/guides/util/main"
+    },
+    {
+      "tab": "Guides",
+      "group": "File System",
+      "route": "/guides/read-file/string",
+      "filePath": "upstream/bun/docs/guides/read-file/string.mdx",
+      "url": "https://bun.com/docs/guides/read-file/string"
+    },
+    {
+      "tab": "Guides",
+      "group": "File System",
+      "route": "/guides/read-file/buffer",
+      "filePath": "upstream/bun/docs/guides/read-file/buffer.mdx",
+      "url": "https://bun.com/docs/guides/read-file/buffer"
+    },
+    {
+      "tab": "Guides",
+      "group": "File System",
+      "route": "/guides/read-file/uint8array",
+      "filePath": "upstream/bun/docs/guides/read-file/uint8array.mdx",
+      "url": "https://bun.com/docs/guides/read-file/uint8array"
+    },
+    {
+      "tab": "Guides",
+      "group": "File System",
+      "route": "/guides/read-file/arraybuffer",
+      "filePath": "upstream/bun/docs/guides/read-file/arraybuffer.mdx",
+      "url": "https://bun.com/docs/guides/read-file/arraybuffer"
+    },
+    {
+      "tab": "Guides",
+      "group": "File System",
+      "route": "/guides/read-file/json",
+      "filePath": "upstream/bun/docs/guides/read-file/json.mdx",
+      "url": "https://bun.com/docs/guides/read-file/json"
+    },
+    {
+      "tab": "Guides",
+      "group": "File System",
+      "route": "/guides/read-file/mime",
+      "filePath": "upstream/bun/docs/guides/read-file/mime.mdx",
+      "url": "https://bun.com/docs/guides/read-file/mime"
+    },
+    {
+      "tab": "Guides",
+      "group": "File System",
+      "route": "/guides/read-file/exists",
+      "filePath": "upstream/bun/docs/guides/read-file/exists.mdx",
+      "url": "https://bun.com/docs/guides/read-file/exists"
+    },
+    {
+      "tab": "Guides",
+      "group": "File System",
+      "route": "/guides/read-file/watch",
+      "filePath": "upstream/bun/docs/guides/read-file/watch.mdx",
+      "url": "https://bun.com/docs/guides/read-file/watch"
+    },
+    {
+      "tab": "Guides",
+      "group": "File System",
+      "route": "/guides/read-file/stream",
+      "filePath": "upstream/bun/docs/guides/read-file/stream.mdx",
+      "url": "https://bun.com/docs/guides/read-file/stream"
+    },
+    {
+      "tab": "Guides",
+      "group": "File System",
+      "route": "/guides/write-file/basic",
+      "filePath": "upstream/bun/docs/guides/write-file/basic.mdx",
+      "url": "https://bun.com/docs/guides/write-file/basic"
+    },
+    {
+      "tab": "Guides",
+      "group": "File System",
+      "route": "/guides/write-file/blob",
+      "filePath": "upstream/bun/docs/guides/write-file/blob.mdx",
+      "url": "https://bun.com/docs/guides/write-file/blob"
+    },
+    {
+      "tab": "Guides",
+      "group": "File System",
+      "route": "/guides/write-file/response",
+      "filePath": "upstream/bun/docs/guides/write-file/response.mdx",
+      "url": "https://bun.com/docs/guides/write-file/response"
+    },
+    {
+      "tab": "Guides",
+      "group": "File System",
+      "route": "/guides/write-file/append",
+      "filePath": "upstream/bun/docs/guides/write-file/append.mdx",
+      "url": "https://bun.com/docs/guides/write-file/append"
+    },
+    {
+      "tab": "Guides",
+      "group": "File System",
+      "route": "/guides/write-file/filesink",
+      "filePath": "upstream/bun/docs/guides/write-file/filesink.mdx",
+      "url": "https://bun.com/docs/guides/write-file/filesink"
+    },
+    {
+      "tab": "Guides",
+      "group": "File System",
+      "route": "/guides/write-file/stream",
+      "filePath": "upstream/bun/docs/guides/write-file/stream.mdx",
+      "url": "https://bun.com/docs/guides/write-file/stream"
+    },
+    {
+      "tab": "Guides",
+      "group": "File System",
+      "route": "/guides/write-file/stdout",
+      "filePath": "upstream/bun/docs/guides/write-file/stdout.mdx",
+      "url": "https://bun.com/docs/guides/write-file/stdout"
+    },
+    {
+      "tab": "Guides",
+      "group": "File System",
+      "route": "/guides/write-file/cat",
+      "filePath": "upstream/bun/docs/guides/write-file/cat.mdx",
+      "url": "https://bun.com/docs/guides/write-file/cat"
+    },
+    {
+      "tab": "Guides",
+      "group": "File System",
+      "route": "/guides/write-file/file-cp",
+      "filePath": "upstream/bun/docs/guides/write-file/file-cp.mdx",
+      "url": "https://bun.com/docs/guides/write-file/file-cp"
+    },
+    {
+      "tab": "Guides",
+      "group": "File System",
+      "route": "/guides/write-file/unlink",
+      "filePath": "upstream/bun/docs/guides/write-file/unlink.mdx",
+      "url": "https://bun.com/docs/guides/write-file/unlink"
+    },
+    {
+      "tab": "Guides",
+      "group": "File System",
+      "route": "/guides/runtime/delete-file",
+      "filePath": "upstream/bun/docs/guides/runtime/delete-file.mdx",
+      "url": "https://bun.com/docs/guides/runtime/delete-file"
+    },
+    {
+      "tab": "Guides",
+      "group": "File System",
+      "route": "/guides/runtime/delete-directory",
+      "filePath": "upstream/bun/docs/guides/runtime/delete-directory.mdx",
+      "url": "https://bun.com/docs/guides/runtime/delete-directory"
+    },
+    {
+      "tab": "Guides",
+      "group": "Utilities",
+      "route": "/guides/util/hash-a-password",
+      "filePath": "upstream/bun/docs/guides/util/hash-a-password.mdx",
+      "url": "https://bun.com/docs/guides/util/hash-a-password"
+    },
+    {
+      "tab": "Guides",
+      "group": "Utilities",
+      "route": "/guides/util/javascript-uuid",
+      "filePath": "upstream/bun/docs/guides/util/javascript-uuid.mdx",
+      "url": "https://bun.com/docs/guides/util/javascript-uuid"
+    },
+    {
+      "tab": "Guides",
+      "group": "Utilities",
+      "route": "/guides/util/base64",
+      "filePath": "upstream/bun/docs/guides/util/base64.mdx",
+      "url": "https://bun.com/docs/guides/util/base64"
+    },
+    {
+      "tab": "Guides",
+      "group": "Utilities",
+      "route": "/guides/util/gzip",
+      "filePath": "upstream/bun/docs/guides/util/gzip.mdx",
+      "url": "https://bun.com/docs/guides/util/gzip"
+    },
+    {
+      "tab": "Guides",
+      "group": "Utilities",
+      "route": "/guides/util/deflate",
+      "filePath": "upstream/bun/docs/guides/util/deflate.mdx",
+      "url": "https://bun.com/docs/guides/util/deflate"
+    },
+    {
+      "tab": "Guides",
+      "group": "Utilities",
+      "route": "/guides/util/escape-html",
+      "filePath": "upstream/bun/docs/guides/util/escape-html.mdx",
+      "url": "https://bun.com/docs/guides/util/escape-html"
+    },
+    {
+      "tab": "Guides",
+      "group": "Utilities",
+      "route": "/guides/util/deep-equals",
+      "filePath": "upstream/bun/docs/guides/util/deep-equals.mdx",
+      "url": "https://bun.com/docs/guides/util/deep-equals"
+    },
+    {
+      "tab": "Guides",
+      "group": "Utilities",
+      "route": "/guides/util/sleep",
+      "filePath": "upstream/bun/docs/guides/util/sleep.mdx",
+      "url": "https://bun.com/docs/guides/util/sleep"
+    },
+    {
+      "tab": "Guides",
+      "group": "Utilities",
+      "route": "/guides/util/file-url-to-path",
+      "filePath": "upstream/bun/docs/guides/util/file-url-to-path.mdx",
+      "url": "https://bun.com/docs/guides/util/file-url-to-path"
+    },
+    {
+      "tab": "Guides",
+      "group": "Utilities",
+      "route": "/guides/util/path-to-file-url",
+      "filePath": "upstream/bun/docs/guides/util/path-to-file-url.mdx",
+      "url": "https://bun.com/docs/guides/util/path-to-file-url"
+    },
+    {
+      "tab": "Guides",
+      "group": "Utilities",
+      "route": "/guides/util/which-path-to-executable-bin",
+      "filePath": "upstream/bun/docs/guides/util/which-path-to-executable-bin.mdx",
+      "url": "https://bun.com/docs/guides/util/which-path-to-executable-bin"
+    },
+    {
+      "tab": "Guides",
+      "group": "HTML Processing",
+      "route": "/guides/html-rewriter/extract-links",
+      "filePath": "upstream/bun/docs/guides/html-rewriter/extract-links.mdx",
+      "url": "https://bun.com/docs/guides/html-rewriter/extract-links"
+    },
+    {
+      "tab": "Guides",
+      "group": "HTML Processing",
+      "route": "/guides/html-rewriter/extract-social-meta",
+      "filePath": "upstream/bun/docs/guides/html-rewriter/extract-social-meta.mdx",
+      "url": "https://bun.com/docs/guides/html-rewriter/extract-social-meta"
+    },
+    {
+      "tab": "Guides",
+      "group": "Binary Data",
+      "route": "/guides/binary/arraybuffer-to-string",
+      "filePath": "upstream/bun/docs/guides/binary/arraybuffer-to-string.mdx",
+      "url": "https://bun.com/docs/guides/binary/arraybuffer-to-string"
+    },
+    {
+      "tab": "Guides",
+      "group": "Binary Data",
+      "route": "/guides/binary/arraybuffer-to-buffer",
+      "filePath": "upstream/bun/docs/guides/binary/arraybuffer-to-buffer.mdx",
+      "url": "https://bun.com/docs/guides/binary/arraybuffer-to-buffer"
+    },
+    {
+      "tab": "Guides",
+      "group": "Binary Data",
+      "route": "/guides/binary/arraybuffer-to-blob",
+      "filePath": "upstream/bun/docs/guides/binary/arraybuffer-to-blob.mdx",
+      "url": "https://bun.com/docs/guides/binary/arraybuffer-to-blob"
+    },
+    {
+      "tab": "Guides",
+      "group": "Binary Data",
+      "route": "/guides/binary/arraybuffer-to-array",
+      "filePath": "upstream/bun/docs/guides/binary/arraybuffer-to-array.mdx",
+      "url": "https://bun.com/docs/guides/binary/arraybuffer-to-array"
+    },
+    {
+      "tab": "Guides",
+      "group": "Binary Data",
+      "route": "/guides/binary/arraybuffer-to-typedarray",
+      "filePath": "upstream/bun/docs/guides/binary/arraybuffer-to-typedarray.mdx",
+      "url": "https://bun.com/docs/guides/binary/arraybuffer-to-typedarray"
+    },
+    {
+      "tab": "Guides",
+      "group": "Binary Data",
+      "route": "/guides/binary/buffer-to-string",
+      "filePath": "upstream/bun/docs/guides/binary/buffer-to-string.mdx",
+      "url": "https://bun.com/docs/guides/binary/buffer-to-string"
+    },
+    {
+      "tab": "Guides",
+      "group": "Binary Data",
+      "route": "/guides/binary/buffer-to-arraybuffer",
+      "filePath": "upstream/bun/docs/guides/binary/buffer-to-arraybuffer.mdx",
+      "url": "https://bun.com/docs/guides/binary/buffer-to-arraybuffer"
+    },
+    {
+      "tab": "Guides",
+      "group": "Binary Data",
+      "route": "/guides/binary/buffer-to-blob",
+      "filePath": "upstream/bun/docs/guides/binary/buffer-to-blob.mdx",
+      "url": "https://bun.com/docs/guides/binary/buffer-to-blob"
+    },
+    {
+      "tab": "Guides",
+      "group": "Binary Data",
+      "route": "/guides/binary/buffer-to-typedarray",
+      "filePath": "upstream/bun/docs/guides/binary/buffer-to-typedarray.mdx",
+      "url": "https://bun.com/docs/guides/binary/buffer-to-typedarray"
+    },
+    {
+      "tab": "Guides",
+      "group": "Binary Data",
+      "route": "/guides/binary/buffer-to-readablestream",
+      "filePath": "upstream/bun/docs/guides/binary/buffer-to-readablestream.mdx",
+      "url": "https://bun.com/docs/guides/binary/buffer-to-readablestream"
+    },
+    {
+      "tab": "Guides",
+      "group": "Binary Data",
+      "route": "/guides/binary/blob-to-string",
+      "filePath": "upstream/bun/docs/guides/binary/blob-to-string.mdx",
+      "url": "https://bun.com/docs/guides/binary/blob-to-string"
+    },
+    {
+      "tab": "Guides",
+      "group": "Binary Data",
+      "route": "/guides/binary/blob-to-arraybuffer",
+      "filePath": "upstream/bun/docs/guides/binary/blob-to-arraybuffer.mdx",
+      "url": "https://bun.com/docs/guides/binary/blob-to-arraybuffer"
+    },
+    {
+      "tab": "Guides",
+      "group": "Binary Data",
+      "route": "/guides/binary/blob-to-typedarray",
+      "filePath": "upstream/bun/docs/guides/binary/blob-to-typedarray.mdx",
+      "url": "https://bun.com/docs/guides/binary/blob-to-typedarray"
+    },
+    {
+      "tab": "Guides",
+      "group": "Binary Data",
+      "route": "/guides/binary/blob-to-dataview",
+      "filePath": "upstream/bun/docs/guides/binary/blob-to-dataview.mdx",
+      "url": "https://bun.com/docs/guides/binary/blob-to-dataview"
+    },
+    {
+      "tab": "Guides",
+      "group": "Binary Data",
+      "route": "/guides/binary/blob-to-stream",
+      "filePath": "upstream/bun/docs/guides/binary/blob-to-stream.mdx",
+      "url": "https://bun.com/docs/guides/binary/blob-to-stream"
+    },
+    {
+      "tab": "Guides",
+      "group": "Binary Data",
+      "route": "/guides/binary/typedarray-to-string",
+      "filePath": "upstream/bun/docs/guides/binary/typedarray-to-string.mdx",
+      "url": "https://bun.com/docs/guides/binary/typedarray-to-string"
+    },
+    {
+      "tab": "Guides",
+      "group": "Binary Data",
+      "route": "/guides/binary/typedarray-to-arraybuffer",
+      "filePath": "upstream/bun/docs/guides/binary/typedarray-to-arraybuffer.mdx",
+      "url": "https://bun.com/docs/guides/binary/typedarray-to-arraybuffer"
+    },
+    {
+      "tab": "Guides",
+      "group": "Binary Data",
+      "route": "/guides/binary/typedarray-to-buffer",
+      "filePath": "upstream/bun/docs/guides/binary/typedarray-to-buffer.mdx",
+      "url": "https://bun.com/docs/guides/binary/typedarray-to-buffer"
+    },
+    {
+      "tab": "Guides",
+      "group": "Binary Data",
+      "route": "/guides/binary/typedarray-to-blob",
+      "filePath": "upstream/bun/docs/guides/binary/typedarray-to-blob.mdx",
+      "url": "https://bun.com/docs/guides/binary/typedarray-to-blob"
+    },
+    {
+      "tab": "Guides",
+      "group": "Binary Data",
+      "route": "/guides/binary/typedarray-to-dataview",
+      "filePath": "upstream/bun/docs/guides/binary/typedarray-to-dataview.mdx",
+      "url": "https://bun.com/docs/guides/binary/typedarray-to-dataview"
+    },
+    {
+      "tab": "Guides",
+      "group": "Binary Data",
+      "route": "/guides/binary/typedarray-to-readablestream",
+      "filePath": "upstream/bun/docs/guides/binary/typedarray-to-readablestream.mdx",
+      "url": "https://bun.com/docs/guides/binary/typedarray-to-readablestream"
+    },
+    {
+      "tab": "Guides",
+      "group": "Binary Data",
+      "route": "/guides/binary/dataview-to-string",
+      "filePath": "upstream/bun/docs/guides/binary/dataview-to-string.mdx",
+      "url": "https://bun.com/docs/guides/binary/dataview-to-string"
+    },
+    {
+      "tab": "Guides",
+      "group": "Streams",
+      "route": "/guides/streams/to-string",
+      "filePath": "upstream/bun/docs/guides/streams/to-string.mdx",
+      "url": "https://bun.com/docs/guides/streams/to-string"
+    },
+    {
+      "tab": "Guides",
+      "group": "Streams",
+      "route": "/guides/streams/to-json",
+      "filePath": "upstream/bun/docs/guides/streams/to-json.mdx",
+      "url": "https://bun.com/docs/guides/streams/to-json"
+    },
+    {
+      "tab": "Guides",
+      "group": "Streams",
+      "route": "/guides/streams/to-blob",
+      "filePath": "upstream/bun/docs/guides/streams/to-blob.mdx",
+      "url": "https://bun.com/docs/guides/streams/to-blob"
+    },
+    {
+      "tab": "Guides",
+      "group": "Streams",
+      "route": "/guides/streams/to-buffer",
+      "filePath": "upstream/bun/docs/guides/streams/to-buffer.mdx",
+      "url": "https://bun.com/docs/guides/streams/to-buffer"
+    },
+    {
+      "tab": "Guides",
+      "group": "Streams",
+      "route": "/guides/streams/to-arraybuffer",
+      "filePath": "upstream/bun/docs/guides/streams/to-arraybuffer.mdx",
+      "url": "https://bun.com/docs/guides/streams/to-arraybuffer"
+    },
+    {
+      "tab": "Guides",
+      "group": "Streams",
+      "route": "/guides/streams/to-typedarray",
+      "filePath": "upstream/bun/docs/guides/streams/to-typedarray.mdx",
+      "url": "https://bun.com/docs/guides/streams/to-typedarray"
+    },
+    {
+      "tab": "Guides",
+      "group": "Streams",
+      "route": "/guides/streams/to-array",
+      "filePath": "upstream/bun/docs/guides/streams/to-array.mdx",
+      "url": "https://bun.com/docs/guides/streams/to-array"
+    },
+    {
+      "tab": "Guides",
+      "group": "Streams",
+      "route": "/guides/streams/node-readable-to-string",
+      "filePath": "upstream/bun/docs/guides/streams/node-readable-to-string.mdx",
+      "url": "https://bun.com/docs/guides/streams/node-readable-to-string"
+    },
+    {
+      "tab": "Guides",
+      "group": "Streams",
+      "route": "/guides/streams/node-readable-to-json",
+      "filePath": "upstream/bun/docs/guides/streams/node-readable-to-json.mdx",
+      "url": "https://bun.com/docs/guides/streams/node-readable-to-json"
+    },
+    {
+      "tab": "Guides",
+      "group": "Streams",
+      "route": "/guides/streams/node-readable-to-blob",
+      "filePath": "upstream/bun/docs/guides/streams/node-readable-to-blob.mdx",
+      "url": "https://bun.com/docs/guides/streams/node-readable-to-blob"
+    },
+    {
+      "tab": "Guides",
+      "group": "Streams",
+      "route": "/guides/streams/node-readable-to-uint8array",
+      "filePath": "upstream/bun/docs/guides/streams/node-readable-to-uint8array.mdx",
+      "url": "https://bun.com/docs/guides/streams/node-readable-to-uint8array"
+    },
+    {
+      "tab": "Guides",
+      "group": "Streams",
+      "route": "/guides/streams/node-readable-to-arraybuffer",
+      "filePath": "upstream/bun/docs/guides/streams/node-readable-to-arraybuffer.mdx",
+      "url": "https://bun.com/docs/guides/streams/node-readable-to-arraybuffer"
+    }
+  ]
+}

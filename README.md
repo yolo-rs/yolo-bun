@@ -37,7 +37,7 @@ The package roadmap covers locked `yolo-os` image plans, pacman for the selected
 
 ## Current evidence
 
-- `upstream/bun` is a local ignored, shallow checkout of the earlier upstream snapshot `05a0ec93`; it does not match the current source-lock revision `e57d89ba`. It is clean and detached, with no declared Git submodules, and is not yet a built or modified YOLO runtime. See [the source receipt](docs/receipts/bun-upstream-checkout.json).
+- `upstream/bun` is synchronized at the locked upstream revision `e57d89ba63a7504957faa2ccc8f416ce2fb15453` (`origin` -> `https://github.com/oven-sh/bun.git`, `yolo-fork` -> `https://github.com/yolo-rs/bun.git`). It is clean and detached, with no declared Git submodules, and includes the full `https://bun.com` documentation and site fork under `upstream/bun/docs` (369 navigation routes, 1,407 MDX files indexed in `catalog/bun-com-index.json` and `docs/upstream/bun-com-llms.txt`). See [the source receipt](docs/receipts/bun-upstream-checkout.json).
 - The current locked revision `e57d89ba` was independently materialized from that local object store at `vendor/bun-e57d89ba63a7`; it has no Git object alternates and the patch queue was empty. See [the preparation receipt](docs/receipts/bun-prepared-source.json). No runtime build or parity claim follows from source preparation.
 
 - `yolo-rs/bun` was synchronized to upstream `main` at `e57d89ba63a7504957faa2ccc8f416ce2fb15453` on 2026-11-04.

@@ -26,6 +26,12 @@
       "url": "https://github.com/aphrody-labs/bun",
       "commit": "7c57ac563e12c35be817697c4b5488b0fd64cc09",
       "role": "archived integration reference; do not treat as current upstream"
+    },
+    {
+      "name": "bun-com-docs-fork",
+      "url": "https://bun.com",
+      "commit": "e57d89ba63a7504957faa2ccc8f416ce2fb15453",
+      "role": "canonical bun.com documentation and portal fork (upstream/bun/docs)"
     }
   ]
 }
