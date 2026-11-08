@@ -131,6 +131,10 @@ async function main() {
       console.log(JSON.stringify(inspectDepotTools(), null, 2));
       return;
     }
+    if (command === "cros" && args.length === 0) {
+      console.log(JSON.stringify(CHROMIUM_OS_SOVEREIGN_PROFILE, null, 2));
+      return;
+    }
     if (command === "orchestrate") {
       const report = orchestrateSrcTree(args[0] ?? "C:/src");
       console.log(JSON.stringify(report, null, 2));
